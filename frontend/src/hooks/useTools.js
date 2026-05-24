@@ -3,24 +3,8 @@ import { toolsService } from '@services/toolsService'
 import { filterToolsByQuery, groupToolsByCategory, sortTools, storage } from '@utils/helpers'
 import { STORAGE_KEYS, ERROR_MESSAGES, SUCCESS_MESSAGES } from '@utils/constants'
 import categoriesData from '@data/categories.json'
+import { getAllTools } from '@data/tools/index.js'
 import toast from 'react-hot-toast'
-
-// Importar todos los archivos de herramientas directamente
-import buscadoresGenerales from '@data/tools/buscadores-generales.json'
-import redesSociales from '@data/tools/redes-sociales.json'
-import email from '@data/tools/email.json'
-import dominiosIps from '@data/tools/dominios-ips.json'
-import geolocalizacion from '@data/tools/geolocalizacion.json'
-import imagenesVideos from '@data/tools/imagenes-videos.json'
-import documentosMetadatos from '@data/tools/documentos-metadatos.json'
-import darkwebAmenazas from '@data/tools/darkweb-amenazas.json'
-import argentinaLatam from '@data/tools/argentina-latam.json'
-import telefonos from '@data/tools/telefonos.json'
-import archivos from '@data/tools/archivos.json'
-import criptomonedas from '@data/tools/criptomonedas.json'
-import utilidadesVarios from '@data/tools/utilidades-varios.json'
-import analisisVisualizacion from '@data/tools/analisis-visualizacion.json'
-import sistemaInfraestructura from '@data/tools/sistema-infraestructura.json'
 
 // Hook principal para manejar herramientas
 export const useTools = () => {
@@ -39,24 +23,7 @@ export const useTools = () => {
       // Usar datos locales directamente
       console.log('Cargando herramientas desde archivos locales...')
 
-      // Combinar todas las herramientas de los archivos JSON
-      const allTools = [
-        ...buscadoresGenerales.tools,
-        ...redesSociales.tools,
-        ...email.tools,
-        ...dominiosIps.tools,
-        ...geolocalizacion.tools,
-        ...imagenesVideos.tools,
-        ...documentosMetadatos.tools,
-        ...darkwebAmenazas.tools,
-        ...argentinaLatam.tools,
-        ...telefonos.tools,
-        ...archivos.tools,
-        ...criptomonedas.tools,
-        ...utilidadesVarios.tools,
-        ...analisisVisualizacion.tools,
-        ...sistemaInfraestructura.tools
-      ]
+      const allTools = getAllTools().tools
 
       console.log('Herramientas cargadas:', allTools.length)
 

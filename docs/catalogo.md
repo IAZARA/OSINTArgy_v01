@@ -10,9 +10,16 @@ Ejecutá:
 npm run validate:data
 ```
 
+Si agregás o quitás herramientas, sincronizá también el fallback usado por el frontend:
+
+```bash
+npm run sync:data
+```
+
 El validador revisa:
 
 - campos obligatorios por herramienta;
+- sincronización de `frontend/src/data/tools.json` con los JSON por categoría;
 - IDs únicos en todo el catálogo;
 - URLs HTTP/HTTPS o rutas internas válidas;
 - categorías y subcategorías existentes en `frontend/src/data/categories.json`;

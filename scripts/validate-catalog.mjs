@@ -5,6 +5,7 @@ import process from 'node:process'
 const repoRoot = new URL('..', import.meta.url)
 const toolsDir = new URL('../frontend/src/data/tools/', import.meta.url)
 const categoriesPath = new URL('../frontend/src/data/categories.json', import.meta.url)
+const fallbackToolsPath = new URL('../frontend/src/data/tools.json', import.meta.url)
 
 const REQUIRED_FIELDS = [
   'id',
@@ -206,6 +207,24 @@ const main = async () => {
   const duplicateUrls = [...urls.entries()].filter(([, locations]) => locations.length > 1)
   for (const [url, locations] of duplicateUrls) {
     warnings.push(`url duplicada "${url}" en ${locations.join(', ')}`)
+  }
+
+  const fallbackData = await readJson(fallbackToolsPath)
+  if (!Array.isArray(fallbackData.tools)) {
+    errors.push('frontend/src/data/tools.json: tools debe ser un array')
+  } else {
+    const catalogIds = new Set(allTools.map(entry => entry.tool.id).filter(Boolean))
+    const fallbackIds = new Set(fallbackData.tools.map(tool => tool.id).filter(Boolean))
+    const missingInFallback = [...catalogIds].filter(id => !fallbackIds.has(id)).sort()
+    const extraInFallback = [...fallbackIds].filter(id => !catalogIds.has(id)).sort()
+
+    if (missingInFallback.length > 0) {
+      errors.push(`frontend/src/data/tools.json no incluye ${missingInFallback.length} herramientas del catálogo: ${missingInFallback.join(', ')}`)
+    }
+
+    if (extraInFallback.length > 0) {
+      errors.push(`frontend/src/data/tools.json incluye ${extraInFallback.length} herramientas fuera del catálogo: ${extraInFallback.join(', ')}`)
+    }
   }
 
   const summary = {

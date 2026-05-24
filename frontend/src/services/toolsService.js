@@ -1,7 +1,6 @@
 import { toolsAPI, categoriesAPI, favoritesAPI, ratingsAPI } from './api'
 import { storage, filterToolsByQuery, sortTools } from '@utils/helpers'
 import { SEARCH, PAGINATION } from '@utils/constants'
-import toolsData from '@data/tools/index.js'
 
 /**
  * Servicio de herramientas para OSINTArgy

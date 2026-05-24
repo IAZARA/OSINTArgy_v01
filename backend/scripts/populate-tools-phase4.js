@@ -48,21 +48,9 @@ async function connectDB() {
  */
 function loadToolsData() {
   const toolsDir = path.join(__dirname, '../../frontend/src/data/tools');
-  const toolFiles = [
-    'buscadores-generales.json',
-    'redes-sociales.json',
-    'email.json',
-    'dominios-ips.json',
-    'geolocalizacion.json',
-    'imagenes-videos.json',
-    'darkweb-amenazas.json',
-    'argentina-latam.json',
-    'telefonos.json',
-    'archivos.json',
-    'criptomonedas.json',
-    'utilidades-varios.json',
-    'analisis-visualizacion.json'
-  ];
+  const toolFiles = fs.readdirSync(toolsDir)
+    .filter(fileName => fileName.endsWith('.json'))
+    .sort();
 
   let allTools = [];
   let categoriesCount = {};

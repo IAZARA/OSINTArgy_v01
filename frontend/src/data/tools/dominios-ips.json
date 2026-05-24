@@ -1040,6 +1040,95 @@
       "requires_registration": true,
       "is_free": true,
       "difficulty_level": "advanced"
+    },
+    {
+      "id": "circl-passive-dns",
+      "name": "CIRCL Passive DNS",
+      "description": "Servicio de Passive DNS operado por CIRCL para histórico de resoluciones.",
+      "utility": "Ayuda a pivotar entre dominios, subdominios e IPs observadas históricamente en investigaciones de infraestructura.",
+      "url": "https://www.circl.lu/services/passive-dns/",
+      "category": "dominios-ips",
+      "subcategory": "dns",
+      "tags": [
+        "passive dns",
+        "histórico",
+        "dominios",
+        "infraestructura"
+      ],
+      "type": "api",
+      "indicators": [
+        "D",
+        "R"
+      ],
+      "region": "internacional",
+      "language": "en",
+      "rating": 4.4,
+      "usage_count": 3600,
+      "last_updated": "2026-05-24",
+      "status": "active",
+      "requires_registration": true,
+      "is_free": true,
+      "difficulty_level": "intermediate"
+    },
+    {
+      "id": "apility",
+      "name": "Apility.io",
+      "description": "API de reputación para IPs, dominios y emails asociados a abuso, spam y fraude.",
+      "utility": "Enriquece indicadores con señales de listas de bloqueo y fuentes de abuso para análisis defensivo.",
+      "url": "https://www.apility.io",
+      "category": "dominios-ips",
+      "subcategory": "analisis-ips",
+      "tags": [
+        "reputación",
+        "abuse",
+        "fraude",
+        "api"
+      ],
+      "type": "api",
+      "indicators": [
+        "D",
+        "R",
+        "S"
+      ],
+      "region": "internacional",
+      "language": "en",
+      "rating": 4.2,
+      "usage_count": 2400,
+      "last_updated": "2026-05-24",
+      "status": "active",
+      "requires_registration": true,
+      "is_free": true,
+      "difficulty_level": "beginner"
+    },
+    {
+      "id": "onyphe",
+      "name": "ONYPHE",
+      "description": "Motor de búsqueda y data lake de ciberseguridad para superficie expuesta en internet.",
+      "utility": "Correlaciona IPs, dominios, banners, certificados y señales de amenaza para análisis de infraestructura externa.",
+      "url": "https://www.onyphe.io",
+      "category": "dominios-ips",
+      "subcategory": "analisis-ips",
+      "tags": [
+        "asm",
+        "banners",
+        "data lake",
+        "infraestructura"
+      ],
+      "type": "web",
+      "indicators": [
+        "D",
+        "R",
+        "S"
+      ],
+      "region": "internacional",
+      "language": "en",
+      "rating": 4.4,
+      "usage_count": 5200,
+      "last_updated": "2026-05-24",
+      "status": "active",
+      "requires_registration": true,
+      "is_free": true,
+      "difficulty_level": "intermediate"
     }
   ]
 }

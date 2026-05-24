@@ -9,9 +9,17 @@
       "url": "https://earth.google.com",
       "category": "geolocalizacion",
       "subcategory": "mapas-satelitales",
-      "tags": ["mapas", "satélite", "geolocalización", "3d"],
+      "tags": [
+        "mapas",
+        "satélite",
+        "geolocalización",
+        "3d"
+      ],
       "type": "web",
-      "indicators": ["D", "A"],
+      "indicators": [
+        "D",
+        "A"
+      ],
       "region": "internacional",
       "language": "es",
       "rating": 4.8,
@@ -30,9 +38,16 @@
       "url": "https://www.bing.com/maps",
       "category": "geolocalizacion",
       "subcategory": "mapas-satelitales",
-      "tags": ["bing", "mapas", "aéreo", "microsoft"],
+      "tags": [
+        "bing",
+        "mapas",
+        "aéreo",
+        "microsoft"
+      ],
       "type": "web",
-      "indicators": ["D"],
+      "indicators": [
+        "D"
+      ],
       "region": "internacional",
       "language": "es",
       "rating": 4.4,
@@ -51,9 +66,16 @@
       "url": "https://yandex.com/maps",
       "category": "geolocalizacion",
       "subcategory": "mapas-satelitales",
-      "tags": ["yandex", "rusia", "europa del este", "street view"],
+      "tags": [
+        "yandex",
+        "rusia",
+        "europa del este",
+        "street view"
+      ],
       "type": "web",
-      "indicators": ["D"],
+      "indicators": [
+        "D"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.3,
@@ -72,9 +94,16 @@
       "url": "https://what3words.com",
       "category": "geolocalizacion",
       "subcategory": "coordenadas",
-      "tags": ["coordenadas", "tres palabras", "ubicación", "preciso"],
+      "tags": [
+        "coordenadas",
+        "tres palabras",
+        "ubicación",
+        "preciso"
+      ],
       "type": "web",
-      "indicators": ["D"],
+      "indicators": [
+        "D"
+      ],
       "region": "internacional",
       "language": "es",
       "rating": 4.5,
@@ -93,9 +122,16 @@
       "url": "https://plus.codes",
       "category": "geolocalizacion",
       "subcategory": "coordenadas",
-      "tags": ["plus codes", "google", "código abierto", "ubicación"],
+      "tags": [
+        "plus codes",
+        "google",
+        "código abierto",
+        "ubicación"
+      ],
       "type": "web",
-      "indicators": ["D"],
+      "indicators": [
+        "D"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.2,
@@ -114,9 +150,16 @@
       "url": "https://www.earthcam.com",
       "category": "geolocalizacion",
       "subcategory": "camaras-vivo",
-      "tags": ["cámaras", "en vivo", "tiempo real", "ciudades"],
+      "tags": [
+        "cámaras",
+        "en vivo",
+        "tiempo real",
+        "ciudades"
+      ],
       "type": "web",
-      "indicators": ["D"],
+      "indicators": [
+        "D"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.6,
@@ -135,9 +178,16 @@
       "url": "http://www.insecam.org",
       "category": "geolocalizacion",
       "subcategory": "camaras-vivo",
-      "tags": ["cámaras", "seguridad", "público", "ético"],
+      "tags": [
+        "cámaras",
+        "seguridad",
+        "público",
+        "ético"
+      ],
       "type": "web",
-      "indicators": ["D"],
+      "indicators": [
+        "D"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 3.8,
@@ -156,9 +206,16 @@
       "url": "https://www.windy.com",
       "category": "geolocalizacion",
       "subcategory": "mapas-satelitales",
-      "tags": ["meteorología", "viento", "clima", "tiempo real"],
+      "tags": [
+        "meteorología",
+        "viento",
+        "clima",
+        "tiempo real"
+      ],
       "type": "web",
-      "indicators": ["D"],
+      "indicators": [
+        "D"
+      ],
       "region": "internacional",
       "language": "es",
       "rating": 4.7,
@@ -177,9 +234,16 @@
       "url": "https://www.flightradar24.com",
       "category": "geolocalizacion",
       "subcategory": "camaras-vivo",
-      "tags": ["vuelos", "aviación", "tiempo real", "rastreo"],
+      "tags": [
+        "vuelos",
+        "aviación",
+        "tiempo real",
+        "rastreo"
+      ],
       "type": "web",
-      "indicators": ["D"],
+      "indicators": [
+        "D"
+      ],
       "region": "internacional",
       "language": "es",
       "rating": 4.8,
@@ -198,9 +262,16 @@
       "url": "https://www.marinetraffic.com",
       "category": "geolocalizacion",
       "subcategory": "camaras-vivo",
-      "tags": ["barcos", "marítimo", "ais", "tiempo real"],
+      "tags": [
+        "barcos",
+        "marítimo",
+        "ais",
+        "tiempo real"
+      ],
       "type": "web",
-      "indicators": ["D"],
+      "indicators": [
+        "D"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.6,
@@ -219,9 +290,16 @@
       "url": "https://www.openstreetmap.org",
       "category": "geolocalizacion",
       "subcategory": "mapas-satelitales",
-      "tags": ["código abierto", "colaborativo", "libre", "editable"],
+      "tags": [
+        "código abierto",
+        "colaborativo",
+        "libre",
+        "editable"
+      ],
       "type": "web",
-      "indicators": ["D"],
+      "indicators": [
+        "D"
+      ],
       "region": "internacional",
       "language": "es",
       "rating": 4.5,
@@ -240,9 +318,16 @@
       "url": "https://www.suncalc.org",
       "category": "geolocalizacion",
       "subcategory": "coordenadas",
-      "tags": ["sol", "luna", "sombras", "verificación"],
+      "tags": [
+        "sol",
+        "luna",
+        "sombras",
+        "verificación"
+      ],
       "type": "web",
-      "indicators": ["A"],
+      "indicators": [
+        "A"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.4,
@@ -261,9 +346,17 @@
       "url": "https://nova.astrometry.net/",
       "category": "geolocalizacion",
       "subcategory": "coordenadas",
-      "tags": ["astronomía", "identificación", "ubicación", "fotos"],
+      "tags": [
+        "astronomía",
+        "identificación",
+        "ubicación",
+        "fotos"
+      ],
       "type": "web",
-      "indicators": ["A", "G"],
+      "indicators": [
+        "A",
+        "G"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.3,
@@ -282,9 +375,17 @@
       "url": "http://www.gpsvisualizer.com/geocode",
       "category": "geolocalizacion",
       "subcategory": "coordenadas",
-      "tags": ["gps", "conversión", "coordenadas", "mapas"],
+      "tags": [
+        "gps",
+        "conversión",
+        "coordenadas",
+        "mapas"
+      ],
       "type": "web",
-      "indicators": ["G", "A"],
+      "indicators": [
+        "G",
+        "A"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.2,
@@ -303,9 +404,16 @@
       "url": "https://www.doogal.co.uk/BatchGeocoding.php",
       "category": "geolocalizacion",
       "subcategory": "coordenadas",
-      "tags": ["geocodificación", "masivo", "direcciones", "coordenadas"],
+      "tags": [
+        "geocodificación",
+        "masivo",
+        "direcciones",
+        "coordenadas"
+      ],
       "type": "web",
-      "indicators": ["G"],
+      "indicators": [
+        "G"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.1,
@@ -324,9 +432,17 @@
       "url": "https://batchgeo.com/",
       "category": "geolocalizacion",
       "subcategory": "mapas-satelitales",
-      "tags": ["mapas", "interactivos", "datos", "visualización"],
+      "tags": [
+        "mapas",
+        "interactivos",
+        "datos",
+        "visualización"
+      ],
       "type": "web",
-      "indicators": ["G", "D"],
+      "indicators": [
+        "G",
+        "D"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.3,
@@ -345,9 +461,16 @@
       "url": "https://opensignal.com/",
       "category": "geolocalizacion",
       "subcategory": "mapas-satelitales",
-      "tags": ["redes móviles", "cobertura", "internet", "velocidad"],
+      "tags": [
+        "redes móviles",
+        "cobertura",
+        "internet",
+        "velocidad"
+      ],
       "type": "web",
-      "indicators": ["D"],
+      "indicators": [
+        "D"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.2,
@@ -366,12 +489,19 @@
       "url": "http://www.antennasearch.com/",
       "category": "geolocalizacion",
       "subcategory": "mapas-satelitales",
-      "tags": ["antenas", "torres", "comunicaciones", "radio"],
+      "tags": [
+        "antenas",
+        "torres",
+        "comunicaciones",
+        "radio"
+      ],
       "type": "web",
-      "indicators": ["D"],
+      "indicators": [
+        "D"
+      ],
       "region": "estados unidos",
       "language": "en",
-      "rating": 4.0,
+      "rating": 4,
       "usage_count": 3450,
       "last_updated": "2025-06-19",
       "status": "active",
@@ -387,9 +517,16 @@
       "url": "https://maps.here.com/",
       "category": "geolocalizacion",
       "subcategory": "mapas-satelitales",
-      "tags": ["mapas", "navegación", "tráfico", "internacional"],
+      "tags": [
+        "mapas",
+        "navegación",
+        "tráfico",
+        "internacional"
+      ],
       "type": "web",
-      "indicators": ["D"],
+      "indicators": [
+        "D"
+      ],
       "region": "internacional",
       "language": "es",
       "rating": 4.4,
@@ -408,9 +545,16 @@
       "url": "http://data.mashedworld.com/dualmaps/map.htm",
       "category": "geolocalizacion",
       "subcategory": "mapas-satelitales",
-      "tags": ["comparación", "múltiples", "proveedores", "lado a lado"],
+      "tags": [
+        "comparación",
+        "múltiples",
+        "proveedores",
+        "lado a lado"
+      ],
       "type": "web",
-      "indicators": ["D"],
+      "indicators": [
+        "D"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.1,
@@ -429,12 +573,19 @@
       "url": "http://www.instantstreetview.com/",
       "category": "geolocalizacion",
       "subcategory": "mapas-satelitales",
-      "tags": ["street view", "rápido", "directo", "coordenadas"],
+      "tags": [
+        "street view",
+        "rápido",
+        "directo",
+        "coordenadas"
+      ],
       "type": "web",
-      "indicators": ["D"],
+      "indicators": [
+        "D"
+      ],
       "region": "internacional",
       "language": "en",
-      "rating": 4.0,
+      "rating": 4,
       "usage_count": 4560,
       "last_updated": "2025-06-19",
       "status": "active",
@@ -450,9 +601,16 @@
       "url": "http://wikimapia.org/",
       "category": "geolocalizacion",
       "subcategory": "mapas-satelitales",
-      "tags": ["colaborativo", "información", "lugares", "edificios"],
+      "tags": [
+        "colaborativo",
+        "información",
+        "lugares",
+        "edificios"
+      ],
       "type": "web",
-      "indicators": ["D"],
+      "indicators": [
+        "D"
+      ],
       "region": "internacional",
       "language": "es",
       "rating": 4.2,
@@ -471,9 +629,16 @@
       "url": "http://www.historicaerials.com/",
       "category": "geolocalizacion",
       "subcategory": "mapas-satelitales",
-      "tags": ["históricas", "aéreas", "cambios", "tiempo"],
+      "tags": [
+        "históricas",
+        "aéreas",
+        "cambios",
+        "tiempo"
+      ],
       "type": "web",
-      "indicators": ["D"],
+      "indicators": [
+        "D"
+      ],
       "region": "estados unidos",
       "language": "en",
       "rating": 4.5,
@@ -492,9 +657,16 @@
       "url": "http://map.baidu.com/",
       "category": "geolocalizacion",
       "subcategory": "mapas-satelitales",
-      "tags": ["china", "cobertura", "street view", "detalle"],
+      "tags": [
+        "china",
+        "cobertura",
+        "street view",
+        "detalle"
+      ],
       "type": "web",
-      "indicators": ["D"],
+      "indicators": [
+        "D"
+      ],
       "region": "china",
       "language": "zh",
       "rating": 4.3,
@@ -513,9 +685,16 @@
       "url": "https://earthexplorer.usgs.gov/",
       "category": "geolocalizacion",
       "subcategory": "mapas-satelitales",
-      "tags": ["usgs", "landsat", "modis", "observación"],
+      "tags": [
+        "usgs",
+        "landsat",
+        "modis",
+        "observación"
+      ],
       "type": "web",
-      "indicators": ["D"],
+      "indicators": [
+        "D"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.6,
@@ -534,9 +713,16 @@
       "url": "http://travelbydrone.com/",
       "category": "geolocalizacion",
       "subcategory": "camaras-vivo",
-      "tags": ["drones", "videos", "aéreos", "reconocimiento"],
+      "tags": [
+        "drones",
+        "videos",
+        "aéreos",
+        "reconocimiento"
+      ],
       "type": "web",
-      "indicators": ["D"],
+      "indicators": [
+        "D"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.4,
@@ -555,9 +741,16 @@
       "url": "https://www.mapquest.com/",
       "category": "geolocalizacion",
       "subcategory": "mapas-satelitales",
-      "tags": ["direcciones", "américa del norte", "navegación", "clásico"],
+      "tags": [
+        "direcciones",
+        "américa del norte",
+        "navegación",
+        "clásico"
+      ],
       "type": "web",
-      "indicators": ["D"],
+      "indicators": [
+        "D"
+      ],
       "region": "américa del norte",
       "language": "en",
       "rating": 4.1,
@@ -576,9 +769,16 @@
       "url": "http://www.openrailwaymap.org/",
       "category": "geolocalizacion",
       "subcategory": "mapas-satelitales",
-      "tags": ["ferrocarril", "vías", "estaciones", "infraestructura"],
+      "tags": [
+        "ferrocarril",
+        "vías",
+        "estaciones",
+        "infraestructura"
+      ],
       "type": "web",
-      "indicators": ["D"],
+      "indicators": [
+        "D"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.3,
@@ -597,9 +797,16 @@
       "url": "https://livingatlas.arcgis.com/wayback/",
       "category": "geolocalizacion",
       "subcategory": "mapas-satelitales",
-      "tags": ["históricas", "esri", "cambios", "temporales"],
+      "tags": [
+        "históricas",
+        "esri",
+        "cambios",
+        "temporales"
+      ],
       "type": "web",
-      "indicators": ["D"],
+      "indicators": [
+        "D"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.5,
@@ -618,9 +825,19 @@
       "url": "https://geospy.ai/",
       "category": "geolocalizacion",
       "subcategory": "analisis-geoespacial",
-      "tags": ["ia", "geolocalización", "imágenes", "análisis visual", "osint"],
+      "tags": [
+        "ia",
+        "geolocalización",
+        "imágenes",
+        "análisis visual",
+        "osint"
+      ],
       "type": "web",
-      "indicators": ["D", "A", "F"],
+      "indicators": [
+        "D",
+        "A",
+        "F"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.6,
@@ -629,6 +846,124 @@
       "status": "active",
       "requires_registration": true,
       "is_free": false,
+      "difficulty_level": "intermediate"
+    },
+    {
+      "id": "overpass-turbo",
+      "name": "Overpass Turbo",
+      "description": "Interfaz web para consultar datos de OpenStreetMap con Overpass API.",
+      "utility": "Extrae puntos de interés, infraestructura, rutas y objetos geográficos para contextualizar ubicaciones.",
+      "url": "https://overpass-turbo.eu/",
+      "category": "geolocalizacion",
+      "subcategory": "analisis-geoespacial",
+      "tags": [
+        "openstreetmap",
+        "overpass",
+        "poi",
+        "consultas"
+      ],
+      "type": "web",
+      "indicators": [
+        "G",
+        "D"
+      ],
+      "region": "internacional",
+      "language": "en",
+      "rating": 4.7,
+      "usage_count": 9700,
+      "last_updated": "2026-05-24",
+      "status": "active",
+      "requires_registration": false,
+      "is_free": true,
+      "difficulty_level": "intermediate"
+    },
+    {
+      "id": "qgis",
+      "name": "QGIS",
+      "description": "Sistema de información geográfica open source para análisis espacial avanzado.",
+      "utility": "Cruza capas satelitales, vectoriales y datasets abiertos para análisis OSINT geográfico profesional.",
+      "url": "https://qgis.org",
+      "category": "geolocalizacion",
+      "subcategory": "analisis-geoespacial",
+      "tags": [
+        "gis",
+        "mapas",
+        "capas",
+        "análisis espacial"
+      ],
+      "type": "desktop",
+      "indicators": [
+        "T",
+        "G",
+        "A"
+      ],
+      "region": "internacional",
+      "language": "multi",
+      "rating": 4.8,
+      "usage_count": 14300,
+      "last_updated": "2026-05-24",
+      "status": "active",
+      "requires_registration": false,
+      "is_free": true,
+      "difficulty_level": "advanced"
+    },
+    {
+      "id": "carto",
+      "name": "CARTO",
+      "description": "Plataforma web para análisis, enriquecimiento y visualización de datos geoespaciales.",
+      "utility": "Crea mapas interactivos y análisis espaciales de incidentes, entidades, infraestructura o actividad pública.",
+      "url": "https://carto.com",
+      "category": "geolocalizacion",
+      "subcategory": "analisis-geoespacial",
+      "tags": [
+        "mapas",
+        "dashboards",
+        "geoespacial",
+        "visualización"
+      ],
+      "type": "web",
+      "indicators": [
+        "G",
+        "A",
+        "R"
+      ],
+      "region": "internacional",
+      "language": "en",
+      "rating": 4.4,
+      "usage_count": 6100,
+      "last_updated": "2026-05-24",
+      "status": "active",
+      "requires_registration": true,
+      "is_free": true,
+      "difficulty_level": "intermediate"
+    },
+    {
+      "id": "sentinel-hub-eo-browser",
+      "name": "Sentinel Hub EO Browser",
+      "description": "Explorador de imágenes satelitales Sentinel, Landsat y otras misiones de observación terrestre.",
+      "utility": "Permite verificar cambios físicos, infraestructura, terreno y actividad visible desde satélite en investigaciones OSINT.",
+      "url": "https://apps.sentinel-hub.com/eo-browser/",
+      "category": "geolocalizacion",
+      "subcategory": "mapas-satelitales",
+      "tags": [
+        "satélite",
+        "sentinel",
+        "landsat",
+        "observación terrestre"
+      ],
+      "type": "web",
+      "indicators": [
+        "G",
+        "A"
+      ],
+      "region": "internacional",
+      "language": "en",
+      "rating": 4.6,
+      "usage_count": 8200,
+      "last_updated": "2026-05-24",
+      "status": "active",
+      "requires_registration": false,
+      "is_free": true,
       "difficulty_level": "intermediate"
     }
   ]

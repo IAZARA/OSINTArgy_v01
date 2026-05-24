@@ -606,6 +606,162 @@
       "requires_registration": false,
       "is_free": true,
       "difficulty_level": "intermediate"
+    },
+    {
+      "id": "opencti",
+      "name": "OpenCTI",
+      "description": "Plataforma open source para modelar y centralizar inteligencia de amenazas.",
+      "utility": "Organiza indicadores, actores, campañas, TTPs y relaciones en formato estructurado para investigaciones defensivas.",
+      "url": "https://filigran.io/platform/opencti/",
+      "category": "darkweb-amenazas",
+      "subcategory": "threat-intelligence",
+      "tags": [
+        "threat intelligence",
+        "stix",
+        "mitre attack",
+        "ioc"
+      ],
+      "type": "app",
+      "indicators": [
+        "T",
+        "S",
+        "D",
+        "A"
+      ],
+      "region": "internacional",
+      "language": "en",
+      "rating": 4.8,
+      "usage_count": 9200,
+      "last_updated": "2026-05-24",
+      "status": "active",
+      "requires_registration": false,
+      "is_free": true,
+      "difficulty_level": "advanced"
+    },
+    {
+      "id": "intelowl",
+      "name": "IntelOwl",
+      "description": "Plataforma open source para automatizar análisis de indicadores y artefactos.",
+      "utility": "Orquesta analizadores OSINT para dominios, IPs, URLs, hashes y archivos desde una interfaz y API propias.",
+      "url": "https://github.com/intelowlproject/IntelOwl",
+      "category": "darkweb-amenazas",
+      "subcategory": "threat-intelligence",
+      "tags": [
+        "automatización",
+        "ioc",
+        "análisis",
+        "api"
+      ],
+      "type": "app",
+      "indicators": [
+        "T",
+        "S",
+        "D",
+        "R",
+        "F"
+      ],
+      "region": "internacional",
+      "language": "en",
+      "rating": 4.6,
+      "usage_count": 5100,
+      "last_updated": "2026-05-24",
+      "status": "active",
+      "requires_registration": false,
+      "is_free": true,
+      "difficulty_level": "advanced"
+    },
+    {
+      "id": "attack-navigator",
+      "name": "MITRE ATT&CK Navigator",
+      "description": "Visualizador interactivo de matrices MITRE ATT&CK.",
+      "utility": "Permite mapear hallazgos OSINT, técnicas, campañas y cobertura defensiva sobre ATT&CK.",
+      "url": "https://mitre-attack.github.io/attack-navigator/",
+      "category": "darkweb-amenazas",
+      "subcategory": "threat-intelligence",
+      "tags": [
+        "mitre attack",
+        "ttps",
+        "matriz",
+        "defensa"
+      ],
+      "type": "web",
+      "indicators": [
+        "T",
+        "S"
+      ],
+      "region": "internacional",
+      "language": "en",
+      "rating": 4.7,
+      "usage_count": 7400,
+      "last_updated": "2026-05-24",
+      "status": "active",
+      "requires_registration": false,
+      "is_free": true,
+      "difficulty_level": "intermediate"
+    },
+    {
+      "id": "thehive",
+      "name": "TheHive",
+      "description": "Plataforma de gestión de casos para respuesta a incidentes e investigaciones de seguridad.",
+      "utility": "Estructura casos, observables, tareas y evidencias OSINT para investigaciones colaborativas defensivas.",
+      "url": "https://docs.strangebee.com/thehive/",
+      "category": "darkweb-amenazas",
+      "subcategory": "threat-intelligence",
+      "tags": [
+        "case management",
+        "incidentes",
+        "colaboración",
+        "observables"
+      ],
+      "type": "app",
+      "indicators": [
+        "T",
+        "S",
+        "D",
+        "R",
+        "F"
+      ],
+      "region": "internacional",
+      "language": "en",
+      "rating": 4.6,
+      "usage_count": 6200,
+      "last_updated": "2026-05-24",
+      "status": "active",
+      "requires_registration": false,
+      "is_free": true,
+      "difficulty_level": "advanced"
+    },
+    {
+      "id": "cortex-thehive",
+      "name": "Cortex",
+      "description": "Motor de análisis y respuesta integrado al ecosistema TheHive.",
+      "utility": "Ejecuta analizadores sobre observables como IPs, dominios, URLs, hashes y archivos para enriquecer casos OSINT.",
+      "url": "https://docs.strangebee.com/cortex/",
+      "category": "darkweb-amenazas",
+      "subcategory": "threat-intelligence",
+      "tags": [
+        "analyzers",
+        "ioc",
+        "automatización",
+        "thehive"
+      ],
+      "type": "app",
+      "indicators": [
+        "T",
+        "S",
+        "D",
+        "R",
+        "F"
+      ],
+      "region": "internacional",
+      "language": "en",
+      "rating": 4.5,
+      "usage_count": 4300,
+      "last_updated": "2026-05-24",
+      "status": "active",
+      "requires_registration": false,
+      "is_free": true,
+      "difficulty_level": "advanced"
     }
   ]
 }

@@ -286,6 +286,66 @@
       "requires_registration": false,
       "is_free": true,
       "difficulty_level": "advanced"
+    },
+    {
+      "id": "pdfix",
+      "name": "PDFix",
+      "description": "Herramientas y API para extraer, convertir y estructurar contenido de documentos PDF.",
+      "utility": "Convierte PDFs públicos en texto y datos reutilizables para búsqueda, clasificación y análisis documental.",
+      "url": "https://pdfix.net/",
+      "category": "documentos-metadatos",
+      "subcategory": "extraccion-metadatos",
+      "tags": [
+        "pdf",
+        "extracción",
+        "api",
+        "documentos"
+      ],
+      "type": "api",
+      "indicators": [
+        "M",
+        "F",
+        "R"
+      ],
+      "region": "internacional",
+      "language": "en",
+      "rating": 4.2,
+      "usage_count": 2100,
+      "last_updated": "2026-05-24",
+      "status": "active",
+      "requires_registration": true,
+      "is_free": true,
+      "difficulty_level": "intermediate"
+    },
+    {
+      "id": "gotenberg",
+      "name": "Gotenberg",
+      "description": "API open source para convertir documentos y páginas web a PDF mediante contenedores.",
+      "utility": "Estandariza documentos OSINT de distintos formatos para archivado, OCR, extracción o procesamiento posterior.",
+      "url": "https://gotenberg.dev",
+      "category": "documentos-metadatos",
+      "subcategory": "extraccion-metadatos",
+      "tags": [
+        "pdf",
+        "conversión",
+        "api",
+        "contenedores"
+      ],
+      "type": "api",
+      "indicators": [
+        "T",
+        "M",
+        "F"
+      ],
+      "region": "internacional",
+      "language": "en",
+      "rating": 4.5,
+      "usage_count": 3900,
+      "last_updated": "2026-05-24",
+      "status": "active",
+      "requires_registration": false,
+      "is_free": true,
+      "difficulty_level": "intermediate"
     }
   ]
 }

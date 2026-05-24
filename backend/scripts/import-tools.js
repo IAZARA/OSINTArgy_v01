@@ -30,24 +30,9 @@ const readJSONFile = (filePath) => {
 
 // Función para obtener todas las herramientas desde los archivos del frontend
 const getAllToolsFromFrontend = () => {
-  const toolFiles = [
-    'buscadores-generales.json',
-    'redes-sociales.json',
-    'email.json',
-    'dominios-ips.json',
-    'geolocalizacion.json',
-    'imagenes-videos.json',
-    'documentos-metadatos.json',
-    'darkweb-amenazas.json',
-    'argentina-latam.json',
-    'telefonos.json',
-    'archivos.json',
-    'criptomonedas.json',
-    'utilidades-varios.json',
-    'analisis-visualizacion.json',
-    'nuevas-herramientas.json',
-    'sistema-infraestructura.json'
-  ]
+  const toolFiles = fs.readdirSync(frontendToolsPath)
+    .filter(fileName => fileName.endsWith('.json') && fileName !== 'index.js')
+    .sort()
 
   const allTools = []
   

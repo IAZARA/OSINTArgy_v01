@@ -1557,6 +1557,66 @@
       "requires_registration": true,
       "is_free": true,
       "difficulty_level": "beginner"
+    },
+    {
+      "id": "social-analyzer",
+      "name": "Social Analyzer",
+      "description": "Herramienta open source para buscar perfiles y nombres de usuario en múltiples plataformas.",
+      "utility": "Detecta presencia digital asociada a usernames y ayuda a pivotar identidades entre redes y sitios públicos.",
+      "url": "https://github.com/qeeqbox/social-analyzer",
+      "category": "redes-sociales",
+      "subcategory": "herramientas-analisis",
+      "tags": [
+        "usernames",
+        "perfiles",
+        "identidad",
+        "open source"
+      ],
+      "type": "cli",
+      "indicators": [
+        "T",
+        "P",
+        "S"
+      ],
+      "region": "internacional",
+      "language": "en",
+      "rating": 4.5,
+      "usage_count": 6800,
+      "last_updated": "2026-05-24",
+      "status": "active",
+      "requires_registration": false,
+      "is_free": true,
+      "difficulty_level": "intermediate"
+    },
+    {
+      "id": "fourcat",
+      "name": "4CAT",
+      "description": "Capture and Analysis Toolkit para recolección y análisis académico de datos sociales.",
+      "utility": "Permite recopilar, procesar y analizar datasets de plataformas y comunidades online en investigaciones reproducibles.",
+      "url": "https://4cat.nl/",
+      "category": "redes-sociales",
+      "subcategory": "herramientas-analisis",
+      "tags": [
+        "datasets",
+        "redes sociales",
+        "análisis",
+        "investigación académica"
+      ],
+      "type": "app",
+      "indicators": [
+        "T",
+        "S",
+        "A"
+      ],
+      "region": "internacional",
+      "language": "en",
+      "rating": 4.3,
+      "usage_count": 3100,
+      "last_updated": "2026-05-24",
+      "status": "active",
+      "requires_registration": false,
+      "is_free": true,
+      "difficulty_level": "advanced"
     }
   ]
 }

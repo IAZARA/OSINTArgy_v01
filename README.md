@@ -220,7 +220,7 @@ Las herramientas se mantienen como JSON en `frontend/src/data/tools/` y datos ba
 
 ## Catálogo
 
-El formato editorial del catálogo está documentado en [docs/catalogo.md](docs/catalogo.md). El comando `npm run validate:data` verifica estructura, IDs únicos, categorías, subcategorías, tipos, indicadores y campos obligatorios.
+El formato editorial del catálogo está documentado en [docs/catalogo.md](docs/catalogo.md). Usá `npm run sync:data` para actualizar el fallback del frontend y `npm run validate:data` para verificar estructura, IDs únicos, categorías, subcategorías, tipos, indicadores, campos obligatorios y sincronización.
 
 ## Roadmap
 

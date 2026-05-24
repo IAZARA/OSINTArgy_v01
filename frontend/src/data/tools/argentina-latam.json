@@ -9,9 +9,16 @@
       "url": "https://www.afip.gob.ar/sitio/externos/default.asp",
       "category": "argentina-latam",
       "subcategory": "registros-publicos-ar",
-      "tags": ["cuit", "afip", "argentina", "contribuyentes"],
+      "tags": [
+        "cuit",
+        "afip",
+        "argentina",
+        "contribuyentes"
+      ],
       "type": "web",
-      "indicators": ["R"],
+      "indicators": [
+        "R"
+      ],
       "region": "argentina",
       "language": "es",
       "rating": 4.5,
@@ -30,9 +37,17 @@
       "url": "https://www.anses.gob.ar",
       "category": "argentina-latam",
       "subcategory": "registros-publicos-ar",
-      "tags": ["cuil", "anses", "argentina", "beneficios"],
+      "tags": [
+        "cuil",
+        "anses",
+        "argentina",
+        "beneficios"
+      ],
       "type": "web",
-      "indicators": ["R", "P"],
+      "indicators": [
+        "R",
+        "P"
+      ],
       "region": "argentina",
       "language": "es",
       "rating": 4.3,
@@ -51,9 +66,17 @@
       "url": "https://www.argentina.gob.ar/interior/renaper",
       "category": "argentina-latam",
       "subcategory": "registros-publicos-ar",
-      "tags": ["dni", "renaper", "identidad", "registro civil"],
+      "tags": [
+        "dni",
+        "renaper",
+        "identidad",
+        "registro civil"
+      ],
       "type": "web",
-      "indicators": ["R", "P"],
+      "indicators": [
+        "R",
+        "P"
+      ],
       "region": "argentina",
       "language": "es",
       "rating": 4.2,
@@ -72,12 +95,19 @@
       "url": "https://www.pjn.gov.ar",
       "category": "argentina-latam",
       "subcategory": "registros-publicos-ar",
-      "tags": ["judicial", "causas", "expedientes", "justicia"],
+      "tags": [
+        "judicial",
+        "causas",
+        "expedientes",
+        "justicia"
+      ],
       "type": "web",
-      "indicators": ["R"],
+      "indicators": [
+        "R"
+      ],
       "region": "argentina",
       "language": "es",
-      "rating": 4.0,
+      "rating": 4,
       "usage_count": 3450,
       "last_updated": "2025-06-19",
       "status": "active",
@@ -93,9 +123,16 @@
       "url": "http://www.bcra.gov.ar/SistemasFinancierosYdePagos/Entidades_financieras.asp",
       "category": "argentina-latam",
       "subcategory": "registros-publicos-ar",
-      "tags": ["bcra", "bancos", "financieras", "sistema financiero"],
+      "tags": [
+        "bcra",
+        "bancos",
+        "financieras",
+        "sistema financiero"
+      ],
       "type": "web",
-      "indicators": ["R"],
+      "indicators": [
+        "R"
+      ],
       "region": "argentina",
       "language": "es",
       "rating": 4.4,
@@ -114,9 +151,16 @@
       "url": "https://www.clarin.com",
       "category": "argentina-latam",
       "subcategory": "medios-comunicacion-ar",
-      "tags": ["clarín", "noticias", "archivo", "periodismo"],
+      "tags": [
+        "clarín",
+        "noticias",
+        "archivo",
+        "periodismo"
+      ],
       "type": "web",
-      "indicators": ["D"],
+      "indicators": [
+        "D"
+      ],
       "region": "argentina",
       "language": "es",
       "rating": 4.3,
@@ -135,9 +179,16 @@
       "url": "https://www.lanacion.com.ar",
       "category": "argentina-latam",
       "subcategory": "medios-comunicacion-ar",
-      "tags": ["la nación", "noticias", "archivo", "historia"],
+      "tags": [
+        "la nación",
+        "noticias",
+        "archivo",
+        "historia"
+      ],
       "type": "web",
-      "indicators": ["D"],
+      "indicators": [
+        "D"
+      ],
       "region": "argentina",
       "language": "es",
       "rating": 4.4,
@@ -156,9 +207,16 @@
       "url": "https://www.pagina12.com.ar",
       "category": "argentina-latam",
       "subcategory": "medios-comunicacion-ar",
-      "tags": ["página 12", "noticias", "política", "archivo"],
+      "tags": [
+        "página 12",
+        "noticias",
+        "política",
+        "archivo"
+      ],
       "type": "web",
-      "indicators": ["D"],
+      "indicators": [
+        "D"
+      ],
       "region": "argentina",
       "language": "es",
       "rating": 4.1,
@@ -177,9 +235,16 @@
       "url": "https://www.infobae.com",
       "category": "argentina-latam",
       "subcategory": "medios-comunicacion-ar",
-      "tags": ["infobae", "digital", "noticias", "actualidad"],
+      "tags": [
+        "infobae",
+        "digital",
+        "noticias",
+        "actualidad"
+      ],
       "type": "web",
-      "indicators": ["D"],
+      "indicators": [
+        "D"
+      ],
       "region": "argentina",
       "language": "es",
       "rating": 4.2,
@@ -198,9 +263,17 @@
       "url": "https://www.ambito.com",
       "category": "argentina-latam",
       "subcategory": "medios-comunicacion-ar",
-      "tags": ["economía", "finanzas", "empresas", "mercado"],
+      "tags": [
+        "economía",
+        "finanzas",
+        "empresas",
+        "mercado"
+      ],
       "type": "web",
-      "indicators": ["D", "R"],
+      "indicators": [
+        "D",
+        "R"
+      ],
       "region": "argentina",
       "language": "es",
       "rating": 4.3,
@@ -219,9 +292,17 @@
       "url": "https://www.boletinoficial.gob.ar",
       "category": "argentina-latam",
       "subcategory": "bases-datos-gov",
-      "tags": ["boletín oficial", "leyes", "decretos", "licitaciones"],
+      "tags": [
+        "boletín oficial",
+        "leyes",
+        "decretos",
+        "licitaciones"
+      ],
       "type": "web",
-      "indicators": ["R", "D"],
+      "indicators": [
+        "R",
+        "D"
+      ],
       "region": "argentina",
       "language": "es",
       "rating": 4.6,
@@ -240,9 +321,17 @@
       "url": "http://servicios.infoleg.gob.ar",
       "category": "argentina-latam",
       "subcategory": "bases-datos-gov",
-      "tags": ["infoleg", "leyes", "normativa", "legislación"],
+      "tags": [
+        "infoleg",
+        "leyes",
+        "normativa",
+        "legislación"
+      ],
       "type": "web",
-      "indicators": ["R", "D"],
+      "indicators": [
+        "R",
+        "D"
+      ],
       "region": "argentina",
       "language": "es",
       "rating": 4.5,
@@ -261,9 +350,17 @@
       "url": "https://www.nosis.com",
       "category": "argentina-latam",
       "subcategory": "bases-datos-gov",
-      "tags": ["nosis", "comercial", "crediticio", "empresas"],
+      "tags": [
+        "nosis",
+        "comercial",
+        "crediticio",
+        "empresas"
+      ],
       "type": "web",
-      "indicators": ["R", "P"],
+      "indicators": [
+        "R",
+        "P"
+      ],
       "region": "argentina",
       "language": "es",
       "rating": 4.4,
@@ -282,9 +379,16 @@
       "url": "https://www.argentina.gob.ar/justicia/registro-publico-comercio",
       "category": "argentina-latam",
       "subcategory": "registros-publicos-ar",
-      "tags": ["registro comercial", "sociedades", "empresas", "contratos"],
+      "tags": [
+        "registro comercial",
+        "sociedades",
+        "empresas",
+        "contratos"
+      ],
       "type": "web",
-      "indicators": ["R"],
+      "indicators": [
+        "R"
+      ],
       "region": "argentina",
       "language": "es",
       "rating": 4.1,
@@ -303,9 +407,16 @@
       "url": "https://www.gov.br/receitafederal/pt-br",
       "category": "argentina-latam",
       "subcategory": "herramientas-latam",
-      "tags": ["brasil", "cnpj", "cpf", "receita federal"],
+      "tags": [
+        "brasil",
+        "cnpj",
+        "cpf",
+        "receita federal"
+      ],
       "type": "web",
-      "indicators": ["R"],
+      "indicators": [
+        "R"
+      ],
       "region": "brasil",
       "language": "pt",
       "rating": 4.3,
@@ -324,9 +435,16 @@
       "url": "https://www.sii.cl",
       "category": "argentina-latam",
       "subcategory": "herramientas-latam",
-      "tags": ["chile", "rut", "sii", "tributario"],
+      "tags": [
+        "chile",
+        "rut",
+        "sii",
+        "tributario"
+      ],
       "type": "web",
-      "indicators": ["R"],
+      "indicators": [
+        "R"
+      ],
       "region": "chile",
       "language": "es",
       "rating": 4.2,
@@ -345,9 +463,16 @@
       "url": "https://www.dian.gov.co",
       "category": "argentina-latam",
       "subcategory": "herramientas-latam",
-      "tags": ["colombia", "nit", "dian", "tributario"],
+      "tags": [
+        "colombia",
+        "nit",
+        "dian",
+        "tributario"
+      ],
       "type": "web",
-      "indicators": ["R"],
+      "indicators": [
+        "R"
+      ],
       "region": "colombia",
       "language": "es",
       "rating": 4.1,
@@ -366,12 +491,19 @@
       "url": "https://www.sat.gob.mx",
       "category": "argentina-latam",
       "subcategory": "herramientas-latam",
-      "tags": ["méxico", "rfc", "sat", "fiscal"],
+      "tags": [
+        "méxico",
+        "rfc",
+        "sat",
+        "fiscal"
+      ],
       "type": "web",
-      "indicators": ["R"],
+      "indicators": [
+        "R"
+      ],
       "region": "méxico",
       "language": "es",
-      "rating": 4.0,
+      "rating": 4,
       "usage_count": 3450,
       "last_updated": "2025-06-19",
       "status": "active",
@@ -387,9 +519,16 @@
       "url": "https://www.sunat.gob.pe",
       "category": "argentina-latam",
       "subcategory": "herramientas-latam",
-      "tags": ["perú", "ruc", "sunat", "tributario"],
+      "tags": [
+        "perú",
+        "ruc",
+        "sunat",
+        "tributario"
+      ],
       "type": "web",
-      "indicators": ["R"],
+      "indicators": [
+        "R"
+      ],
       "region": "perú",
       "language": "es",
       "rating": 4.1,
@@ -408,9 +547,16 @@
       "url": "https://www.dgi.gub.uy",
       "category": "argentina-latam",
       "subcategory": "herramientas-latam",
-      "tags": ["uruguay", "rut", "dgi", "tributario"],
+      "tags": [
+        "uruguay",
+        "rut",
+        "dgi",
+        "tributario"
+      ],
       "type": "web",
-      "indicators": ["R"],
+      "indicators": [
+        "R"
+      ],
       "region": "uruguay",
       "language": "es",
       "rating": 4.2,
@@ -420,6 +566,96 @@
       "requires_registration": true,
       "is_free": true,
       "difficulty_level": "beginner"
+    },
+    {
+      "id": "datos-gob-ar",
+      "name": "Datos.gob.ar",
+      "description": "Portal oficial de datos abiertos de la República Argentina.",
+      "utility": "Centraliza datasets públicos sobre organismos, economía, geografía, compras, estadísticas e infraestructura argentina.",
+      "url": "https://www.datos.gob.ar",
+      "category": "argentina-latam",
+      "subcategory": "bases-datos-gov",
+      "tags": [
+        "argentina",
+        "datos abiertos",
+        "gobierno",
+        "datasets"
+      ],
+      "type": "dataset",
+      "indicators": [
+        "A",
+        "D",
+        "G"
+      ],
+      "region": "argentina",
+      "language": "es",
+      "rating": 4.7,
+      "usage_count": 9300,
+      "last_updated": "2026-05-24",
+      "status": "active",
+      "requires_registration": false,
+      "is_free": true,
+      "difficulty_level": "beginner"
+    },
+    {
+      "id": "datos-gob-mx",
+      "name": "Datos.gob.mx",
+      "description": "Portal nacional de datos abiertos de México.",
+      "utility": "Aporta datasets públicos mexicanos para investigación regional, contexto de entidades y análisis comparativo LATAM.",
+      "url": "https://datos.gob.mx",
+      "category": "argentina-latam",
+      "subcategory": "bases-datos-gov",
+      "tags": [
+        "méxico",
+        "datos abiertos",
+        "gobierno",
+        "latam"
+      ],
+      "type": "dataset",
+      "indicators": [
+        "A",
+        "D",
+        "G"
+      ],
+      "region": "latam",
+      "language": "es",
+      "rating": 4.3,
+      "usage_count": 6200,
+      "last_updated": "2026-05-24",
+      "status": "active",
+      "requires_registration": false,
+      "is_free": true,
+      "difficulty_level": "beginner"
+    },
+    {
+      "id": "opencorporates",
+      "name": "OpenCorporates",
+      "description": "Base de datos global de compañías y registros corporativos.",
+      "utility": "Ayuda a identificar personas jurídicas, jurisdicciones, directivos y relaciones corporativas con cobertura internacional y LATAM.",
+      "url": "https://opencorporates.com",
+      "category": "argentina-latam",
+      "subcategory": "herramientas-latam",
+      "tags": [
+        "empresas",
+        "registros mercantiles",
+        "beneficiarios",
+        "corporativo"
+      ],
+      "type": "web",
+      "indicators": [
+        "P",
+        "R",
+        "A"
+      ],
+      "region": "internacional",
+      "language": "en",
+      "rating": 4.6,
+      "usage_count": 11200,
+      "last_updated": "2026-05-24",
+      "status": "active",
+      "requires_registration": false,
+      "is_free": true,
+      "difficulty_level": "intermediate"
     }
   ]
 }

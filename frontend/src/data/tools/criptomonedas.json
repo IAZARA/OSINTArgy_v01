@@ -9,9 +9,17 @@
       "url": "https://oxt.me",
       "category": "criptomonedas",
       "subcategory": "exploradores-bitcoin",
-      "tags": ["bitcoin", "análisis", "transacciones", "grafos"],
+      "tags": [
+        "bitcoin",
+        "análisis",
+        "transacciones",
+        "grafos"
+      ],
       "type": "web",
-      "indicators": ["D", "A"],
+      "indicators": [
+        "D",
+        "A"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.8,
@@ -30,9 +38,16 @@
       "url": "https://www.blocktrail.com/BTC",
       "category": "criptomonedas",
       "subcategory": "exploradores-bitcoin",
-      "tags": ["bitcoin", "blockchain", "explorador", "api"],
+      "tags": [
+        "bitcoin",
+        "blockchain",
+        "explorador",
+        "api"
+      ],
       "type": "web",
-      "indicators": ["D"],
+      "indicators": [
+        "D"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.4,
@@ -51,9 +66,16 @@
       "url": "https://blockchain.info/",
       "category": "criptomonedas",
       "subcategory": "exploradores-bitcoin",
-      "tags": ["bitcoin", "explorador", "popular", "estadísticas"],
+      "tags": [
+        "bitcoin",
+        "explorador",
+        "popular",
+        "estadísticas"
+      ],
       "type": "web",
-      "indicators": ["D"],
+      "indicators": [
+        "D"
+      ],
       "region": "internacional",
       "language": "es",
       "rating": 4.6,
@@ -72,9 +94,16 @@
       "url": "https://blockexplorer.com/",
       "category": "criptomonedas",
       "subcategory": "exploradores-bitcoin",
-      "tags": ["bitcoin", "explorador", "simple", "búsqueda"],
+      "tags": [
+        "bitcoin",
+        "explorador",
+        "simple",
+        "búsqueda"
+      ],
       "type": "web",
-      "indicators": ["D"],
+      "indicators": [
+        "D"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.2,
@@ -93,9 +122,16 @@
       "url": "http://blockr.io/",
       "category": "criptomonedas",
       "subcategory": "exploradores-multi",
-      "tags": ["multi-coin", "bitcoin", "litecoin", "dogecoin"],
+      "tags": [
+        "multi-coin",
+        "bitcoin",
+        "litecoin",
+        "dogecoin"
+      ],
       "type": "web",
-      "indicators": ["D"],
+      "indicators": [
+        "D"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.1,
@@ -114,9 +150,16 @@
       "url": "https://bitref.com/",
       "category": "criptomonedas",
       "subcategory": "verificacion-direcciones",
-      "tags": ["bitcoin", "direcciones", "verificación", "balance"],
+      "tags": [
+        "bitcoin",
+        "direcciones",
+        "verificación",
+        "balance"
+      ],
       "type": "web",
-      "indicators": ["D"],
+      "indicators": [
+        "D"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.3,
@@ -135,9 +178,17 @@
       "url": "https://www.walletexplorer.com/",
       "category": "criptomonedas",
       "subcategory": "identificacion-wallets",
-      "tags": ["bitcoin", "wallets", "identificación", "etiquetas"],
+      "tags": [
+        "bitcoin",
+        "wallets",
+        "identificación",
+        "etiquetas"
+      ],
       "type": "web",
-      "indicators": ["D", "A"],
+      "indicators": [
+        "D",
+        "A"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.7,
@@ -156,9 +207,17 @@
       "url": "https://graphsense.info/",
       "category": "criptomonedas",
       "subcategory": "analisis-forense",
-      "tags": ["análisis forense", "grafos", "clustering", "visualización"],
+      "tags": [
+        "análisis forense",
+        "grafos",
+        "clustering",
+        "visualización"
+      ],
       "type": "web",
-      "indicators": ["D", "A"],
+      "indicators": [
+        "D",
+        "A"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.6,
@@ -177,9 +236,16 @@
       "url": "https://www.blockonomics.co/",
       "category": "criptomonedas",
       "subcategory": "exploradores-bitcoin",
-      "tags": ["bitcoin", "privacidad", "comerciantes", "análisis"],
+      "tags": [
+        "bitcoin",
+        "privacidad",
+        "comerciantes",
+        "análisis"
+      ],
       "type": "web",
-      "indicators": ["D"],
+      "indicators": [
+        "D"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.4,
@@ -198,9 +264,17 @@
       "url": "http://bitcoinwhoswho.com/",
       "category": "criptomonedas",
       "subcategory": "seguridad-fraudes",
-      "tags": ["estafas", "fraudes", "seguridad", "verificación"],
+      "tags": [
+        "estafas",
+        "fraudes",
+        "seguridad",
+        "verificación"
+      ],
       "type": "web",
-      "indicators": ["D", "S"],
+      "indicators": [
+        "D",
+        "S"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.2,
@@ -219,9 +293,17 @@
       "url": "https://github.com/s0md3v/Orbit",
       "category": "criptomonedas",
       "subcategory": "herramientas-cli",
-      "tags": ["cli", "automatización", "github", "investigación"],
+      "tags": [
+        "cli",
+        "automatización",
+        "github",
+        "investigación"
+      ],
       "type": "tool",
-      "indicators": ["T", "D"],
+      "indicators": [
+        "T",
+        "D"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.5,
@@ -240,9 +322,16 @@
       "url": "https://live.ether.camp/transactions",
       "category": "criptomonedas",
       "subcategory": "exploradores-ethereum",
-      "tags": ["ethereum", "tiempo real", "transacciones", "monitoreo"],
+      "tags": [
+        "ethereum",
+        "tiempo real",
+        "transacciones",
+        "monitoreo"
+      ],
       "type": "web",
-      "indicators": ["D"],
+      "indicators": [
+        "D"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.1,
@@ -261,9 +350,16 @@
       "url": "https://etherchain.org/accounts/",
       "category": "criptomonedas",
       "subcategory": "exploradores-ethereum",
-      "tags": ["ethereum", "cuentas", "contratos", "estadísticas"],
+      "tags": [
+        "ethereum",
+        "cuentas",
+        "contratos",
+        "estadísticas"
+      ],
       "type": "web",
-      "indicators": ["D"],
+      "indicators": [
+        "D"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.3,
@@ -282,9 +378,16 @@
       "url": "https://etherscan.io/",
       "category": "criptomonedas",
       "subcategory": "exploradores-ethereum",
-      "tags": ["ethereum", "contratos inteligentes", "tokens", "popular"],
+      "tags": [
+        "ethereum",
+        "contratos inteligentes",
+        "tokens",
+        "popular"
+      ],
       "type": "web",
-      "indicators": ["D"],
+      "indicators": [
+        "D"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.8,
@@ -303,9 +406,16 @@
       "url": "https://xmrchain.net/",
       "category": "criptomonedas",
       "subcategory": "exploradores-monero",
-      "tags": ["monero", "privacidad", "xmr", "blockchain"],
+      "tags": [
+        "monero",
+        "privacidad",
+        "xmr",
+        "blockchain"
+      ],
       "type": "web",
-      "indicators": ["D"],
+      "indicators": [
+        "D"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.4,
@@ -324,9 +434,16 @@
       "url": "http://moneroblocks.info/",
       "category": "criptomonedas",
       "subcategory": "exploradores-monero",
-      "tags": ["monero", "bloques", "minería", "estadísticas"],
+      "tags": [
+        "monero",
+        "bloques",
+        "minería",
+        "estadísticas"
+      ],
       "type": "web",
-      "indicators": ["D"],
+      "indicators": [
+        "D"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.2,
@@ -345,9 +462,16 @@
       "url": "https://chainradar.com/xmr/blocks",
       "category": "criptomonedas",
       "subcategory": "exploradores-monero",
-      "tags": ["monero", "explorador", "bloques", "interfaz limpia"],
+      "tags": [
+        "monero",
+        "explorador",
+        "bloques",
+        "interfaz limpia"
+      ],
       "type": "web",
-      "indicators": ["D"],
+      "indicators": [
+        "D"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.3,
@@ -357,6 +481,95 @@
       "requires_registration": false,
       "is_free": true,
       "difficulty_level": "beginner"
+    },
+    {
+      "id": "breadcrumbs",
+      "name": "Breadcrumbs",
+      "description": "Plataforma para trazado y visualización de transacciones blockchain.",
+      "utility": "Mapea movimientos entre wallets, servicios y entidades para investigar fraudes o patrones de actividad cripto.",
+      "url": "https://www.breadcrumbs.app",
+      "category": "criptomonedas",
+      "subcategory": "analisis-forense",
+      "tags": [
+        "blockchain",
+        "trazado",
+        "wallets",
+        "fraude"
+      ],
+      "type": "web",
+      "indicators": [
+        "C",
+        "A",
+        "R"
+      ],
+      "region": "internacional",
+      "language": "en",
+      "rating": 4.5,
+      "usage_count": 4700,
+      "last_updated": "2026-05-24",
+      "status": "active",
+      "requires_registration": true,
+      "is_free": true,
+      "difficulty_level": "intermediate"
+    },
+    {
+      "id": "bloxy",
+      "name": "Bloxy",
+      "description": "Analítica de transacciones, contratos y tokens para redes EVM.",
+      "utility": "Explora actividad de contratos, wallets y tokens en Ethereum y cadenas compatibles para análisis on-chain.",
+      "url": "https://bloxy.info",
+      "category": "criptomonedas",
+      "subcategory": "exploradores-multi",
+      "tags": [
+        "ethereum",
+        "evm",
+        "contratos",
+        "tokens"
+      ],
+      "type": "web",
+      "indicators": [
+        "C",
+        "A"
+      ],
+      "region": "internacional",
+      "language": "en",
+      "rating": 4.2,
+      "usage_count": 3300,
+      "last_updated": "2026-05-24",
+      "status": "active",
+      "requires_registration": false,
+      "is_free": true,
+      "difficulty_level": "intermediate"
+    },
+    {
+      "id": "dune",
+      "name": "Dune",
+      "description": "Plataforma de consultas SQL y dashboards sobre datos blockchain.",
+      "utility": "Permite crear paneles reproducibles para analizar wallets, protocolos, tokens y patrones de actividad on-chain.",
+      "url": "https://dune.com",
+      "category": "criptomonedas",
+      "subcategory": "analisis-forense",
+      "tags": [
+        "sql",
+        "dashboards",
+        "blockchain",
+        "datasets"
+      ],
+      "type": "web",
+      "indicators": [
+        "C",
+        "A",
+        "R"
+      ],
+      "region": "internacional",
+      "language": "en",
+      "rating": 4.7,
+      "usage_count": 12400,
+      "last_updated": "2026-05-24",
+      "status": "active",
+      "requires_registration": true,
+      "is_free": true,
+      "difficulty_level": "advanced"
     }
   ]
 }

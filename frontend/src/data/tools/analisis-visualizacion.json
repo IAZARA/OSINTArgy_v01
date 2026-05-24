@@ -9,9 +9,18 @@
       "url": "https://www.maltego.com/",
       "category": "analisis-visualizacion",
       "subcategory": "mapeo-relaciones",
-      "tags": ["análisis de enlaces", "visualización", "mapeo", "relaciones"],
+      "tags": [
+        "análisis de enlaces",
+        "visualización",
+        "mapeo",
+        "relaciones"
+      ],
       "type": "desktop",
-      "indicators": ["A", "D", "R"],
+      "indicators": [
+        "A",
+        "D",
+        "R"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.8,
@@ -30,9 +39,17 @@
       "url": "https://www.overviewdocs.com/",
       "category": "analisis-visualizacion",
       "subcategory": "analisis-documentos",
-      "tags": ["documentos", "periodismo", "patrones", "organización"],
+      "tags": [
+        "documentos",
+        "periodismo",
+        "patrones",
+        "organización"
+      ],
       "type": "web",
-      "indicators": ["D", "A"],
+      "indicators": [
+        "D",
+        "A"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.5,
@@ -42,6 +59,127 @@
       "requires_registration": true,
       "is_free": true,
       "difficulty_level": "intermediate"
+    },
+    {
+      "id": "openrefine",
+      "name": "OpenRefine",
+      "description": "Aplicación open source para limpiar, transformar y reconciliar datasets.",
+      "utility": "Normaliza CSV, JSON y tablas antes de analizarlas, deduplicarlas o cruzarlas con otras fuentes OSINT.",
+      "url": "https://openrefine.org",
+      "category": "analisis-visualizacion",
+      "subcategory": "analisis-documentos",
+      "tags": [
+        "limpieza de datos",
+        "datasets",
+        "normalización",
+        "reconciliación"
+      ],
+      "type": "desktop",
+      "indicators": [
+        "T",
+        "A",
+        "M"
+      ],
+      "region": "internacional",
+      "language": "en",
+      "rating": 4.7,
+      "usage_count": 8600,
+      "last_updated": "2026-05-24",
+      "status": "active",
+      "requires_registration": false,
+      "is_free": true,
+      "difficulty_level": "intermediate"
+    },
+    {
+      "id": "gephi",
+      "name": "Gephi",
+      "description": "Software open source para análisis y visualización de grafos.",
+      "utility": "Explora redes de personas, cuentas, organizaciones, dominios o transacciones mediante métricas y comunidades.",
+      "url": "https://gephi.org",
+      "category": "analisis-visualizacion",
+      "subcategory": "mapeo-relaciones",
+      "tags": [
+        "grafos",
+        "redes",
+        "visualización",
+        "comunidades"
+      ],
+      "type": "desktop",
+      "indicators": [
+        "T",
+        "A",
+        "S"
+      ],
+      "region": "internacional",
+      "language": "en",
+      "rating": 4.7,
+      "usage_count": 11800,
+      "last_updated": "2026-05-24",
+      "status": "active",
+      "requires_registration": false,
+      "is_free": true,
+      "difficulty_level": "intermediate"
+    },
+    {
+      "id": "tulip",
+      "name": "Tulip",
+      "description": "Framework y aplicación para visualizar, filtrar y analizar grafos grandes.",
+      "utility": "Permite aplicar algoritmos de grafos a relaciones OSINT complejas con filtros y layouts avanzados.",
+      "url": "https://tulip.labri.fr/site/",
+      "category": "analisis-visualizacion",
+      "subcategory": "mapeo-relaciones",
+      "tags": [
+        "grafos",
+        "algoritmos",
+        "visualización",
+        "redes complejas"
+      ],
+      "type": "desktop",
+      "indicators": [
+        "T",
+        "A",
+        "S"
+      ],
+      "region": "internacional",
+      "language": "en",
+      "rating": 4.3,
+      "usage_count": 2800,
+      "last_updated": "2026-05-24",
+      "status": "active",
+      "requires_registration": false,
+      "is_free": true,
+      "difficulty_level": "advanced"
+    },
+    {
+      "id": "kibana",
+      "name": "Kibana",
+      "description": "Interfaz de Elastic para explorar datos, crear dashboards y visualizar eventos.",
+      "utility": "Centraliza datasets OSINT, indicadores, logs y eventos para análisis temporal, geográfico y exploratorio.",
+      "url": "https://www.elastic.co/kibana",
+      "category": "analisis-visualizacion",
+      "subcategory": "mapeo-relaciones",
+      "tags": [
+        "dashboards",
+        "elastic",
+        "visualización",
+        "series temporales"
+      ],
+      "type": "app",
+      "indicators": [
+        "T",
+        "A",
+        "D",
+        "G"
+      ],
+      "region": "internacional",
+      "language": "en",
+      "rating": 4.6,
+      "usage_count": 10400,
+      "last_updated": "2026-05-24",
+      "status": "active",
+      "requires_registration": false,
+      "is_free": true,
+      "difficulty_level": "advanced"
     }
   ]
 }

@@ -9,9 +9,17 @@
       "url": "https://github.com/datasploit/datasploit/",
       "category": "utilidades-varios",
       "subcategory": "herramientas-cli",
-      "tags": ["framework", "automatización", "osint", "python"],
+      "tags": [
+        "framework",
+        "automatización",
+        "osint",
+        "python"
+      ],
       "type": "tool",
-      "indicators": ["T", "D"],
+      "indicators": [
+        "T",
+        "D"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.3,
@@ -30,9 +38,17 @@
       "url": "http://www.spiderfoot.net/",
       "category": "utilidades-varios",
       "subcategory": "herramientas-cli",
-      "tags": ["reconocimiento", "automatización", "módulos", "inteligencia"],
+      "tags": [
+        "reconocimiento",
+        "automatización",
+        "módulos",
+        "inteligencia"
+      ],
       "type": "tool",
-      "indicators": ["T", "D"],
+      "indicators": [
+        "T",
+        "D"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.6,
@@ -51,9 +67,16 @@
       "url": "https://ifttt.com/",
       "category": "utilidades-varios",
       "subcategory": "automatización",
-      "tags": ["automatización", "conectividad", "monitoreo", "alertas"],
+      "tags": [
+        "automatización",
+        "conectividad",
+        "monitoreo",
+        "alertas"
+      ],
       "type": "web",
-      "indicators": ["D"],
+      "indicators": [
+        "D"
+      ],
       "region": "internacional",
       "language": "es",
       "rating": 4.1,
@@ -72,9 +95,16 @@
       "url": "https://www.stringify.com/",
       "category": "utilidades-varios",
       "subcategory": "automatización",
-      "tags": ["iot", "automatización", "flujos", "monitoreo"],
+      "tags": [
+        "iot",
+        "automatización",
+        "flujos",
+        "monitoreo"
+      ],
       "type": "web",
-      "indicators": ["D"],
+      "indicators": [
+        "D"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 3.8,
@@ -93,9 +123,17 @@
       "url": "https://github.com/i3visio/osrframework",
       "category": "utilidades-varios",
       "subcategory": "herramientas-cli",
-      "tags": ["python", "framework", "usuarios", "emails"],
+      "tags": [
+        "python",
+        "framework",
+        "usuarios",
+        "emails"
+      ],
       "type": "tool",
-      "indicators": ["T", "D"],
+      "indicators": [
+        "T",
+        "D"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.5,
@@ -114,9 +152,17 @@
       "url": "https://github.com/penafieljlm/inquisitor",
       "category": "utilidades-varios",
       "subcategory": "herramientas-cli",
-      "tags": ["reconocimiento", "objetivos", "automatización", "información"],
+      "tags": [
+        "reconocimiento",
+        "objetivos",
+        "automatización",
+        "información"
+      ],
       "type": "tool",
-      "indicators": ["T", "D"],
+      "indicators": [
+        "T",
+        "D"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.1,
@@ -135,12 +181,20 @@
       "url": "https://github.com/bharshbarger/AutOSINT",
       "category": "utilidades-varios",
       "subcategory": "herramientas-cli",
-      "tags": ["automatización", "inteligencia", "reportes", "fuentes abiertas"],
+      "tags": [
+        "automatización",
+        "inteligencia",
+        "reportes",
+        "fuentes abiertas"
+      ],
       "type": "tool",
-      "indicators": ["T", "D"],
+      "indicators": [
+        "T",
+        "D"
+      ],
       "region": "internacional",
       "language": "en",
-      "rating": 4.0,
+      "rating": 4,
       "usage_count": 1890,
       "last_updated": "2025-06-19",
       "status": "active",
@@ -156,9 +210,17 @@
       "url": "https://github.com/NullArray/IntRec-Pack",
       "category": "utilidades-varios",
       "subcategory": "herramientas-cli",
-      "tags": ["pentesting", "reconocimiento", "scripts", "automatización"],
+      "tags": [
+        "pentesting",
+        "reconocimiento",
+        "scripts",
+        "automatización"
+      ],
       "type": "tool",
-      "indicators": ["T", "D"],
+      "indicators": [
+        "T",
+        "D"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.2,
@@ -177,12 +239,20 @@
       "url": "https://github.com/SharadKumar97/OSINT-SPY",
       "category": "utilidades-varios",
       "subcategory": "herramientas-cli",
-      "tags": ["gui", "reconocimiento", "interfaz gráfica", "osint"],
+      "tags": [
+        "gui",
+        "reconocimiento",
+        "interfaz gráfica",
+        "osint"
+      ],
       "type": "tool",
-      "indicators": ["T", "D"],
+      "indicators": [
+        "T",
+        "D"
+      ],
       "region": "internacional",
       "language": "en",
-      "rating": 4.0,
+      "rating": 4,
       "usage_count": 1560,
       "last_updated": "2025-06-19",
       "status": "active",
@@ -198,9 +268,16 @@
       "url": "https://flow.microsoft.com/en-us/",
       "category": "utilidades-varios",
       "subcategory": "automatización",
-      "tags": ["microsoft", "automatización", "flujos", "conectividad"],
+      "tags": [
+        "microsoft",
+        "automatización",
+        "flujos",
+        "conectividad"
+      ],
       "type": "web",
-      "indicators": ["D"],
+      "indicators": [
+        "D"
+      ],
       "region": "internacional",
       "language": "es",
       "rating": 4.3,
@@ -219,9 +296,16 @@
       "url": "https://analystresearchtools.com",
       "category": "utilidades-varios",
       "subcategory": "recursos-educativos",
-      "tags": ["recursos", "analistas", "directorio", "educación"],
+      "tags": [
+        "recursos",
+        "analistas",
+        "directorio",
+        "educación"
+      ],
       "type": "web",
-      "indicators": ["D"],
+      "indicators": [
+        "D"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.5,
@@ -240,9 +324,16 @@
       "url": "http://www.vmware.com/products/player/playerpro-evaluation.html",
       "category": "utilidades-varios",
       "subcategory": "virtualizacion",
-      "tags": ["virtualización", "sistemas operativos", "aislamiento", "seguridad"],
+      "tags": [
+        "virtualización",
+        "sistemas operativos",
+        "aislamiento",
+        "seguridad"
+      ],
       "type": "desktop",
-      "indicators": ["T"],
+      "indicators": [
+        "T"
+      ],
       "region": "internacional",
       "language": "es",
       "rating": 4.6,
@@ -261,9 +352,16 @@
       "url": "https://www.virtualbox.org/",
       "category": "utilidades-varios",
       "subcategory": "virtualizacion",
-      "tags": ["virtualización", "código abierto", "gratuito", "multiplataforma"],
+      "tags": [
+        "virtualización",
+        "código abierto",
+        "gratuito",
+        "multiplataforma"
+      ],
       "type": "desktop",
-      "indicators": ["T"],
+      "indicators": [
+        "T"
+      ],
       "region": "internacional",
       "language": "es",
       "rating": 4.4,
@@ -282,9 +380,16 @@
       "url": "https://inteltechniques.com/buscador/index.html",
       "category": "utilidades-varios",
       "subcategory": "sistemas-operativos",
-      "tags": ["linux", "osint", "preconfigurado", "investigaciones"],
+      "tags": [
+        "linux",
+        "osint",
+        "preconfigurado",
+        "investigaciones"
+      ],
       "type": "desktop",
-      "indicators": ["T"],
+      "indicators": [
+        "T"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.7,
@@ -303,9 +408,16 @@
       "url": "https://www.kali.org/",
       "category": "utilidades-varios",
       "subcategory": "sistemas-operativos",
-      "tags": ["linux", "pentesting", "seguridad", "forense"],
+      "tags": [
+        "linux",
+        "pentesting",
+        "seguridad",
+        "forense"
+      ],
       "type": "desktop",
-      "indicators": ["T"],
+      "indicators": [
+        "T"
+      ],
       "region": "internacional",
       "language": "es",
       "rating": 4.8,
@@ -324,9 +436,16 @@
       "url": "https://www.parrotsec.org/",
       "category": "utilidades-varios",
       "subcategory": "sistemas-operativos",
-      "tags": ["linux", "seguridad", "privacidad", "anonimato"],
+      "tags": [
+        "linux",
+        "seguridad",
+        "privacidad",
+        "anonimato"
+      ],
       "type": "desktop",
-      "indicators": ["T"],
+      "indicators": [
+        "T"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.5,
@@ -345,9 +464,16 @@
       "url": "https://developer.microsoft.com/en-us/microsoft-edge/tools/vms/",
       "category": "utilidades-varios",
       "subcategory": "virtualizacion",
-      "tags": ["microsoft", "vms", "desarrollo", "testing"],
+      "tags": [
+        "microsoft",
+        "vms",
+        "desarrollo",
+        "testing"
+      ],
       "type": "desktop",
-      "indicators": ["T"],
+      "indicators": [
+        "T"
+      ],
       "region": "internacional",
       "language": "es",
       "rating": 4.2,
@@ -366,9 +492,16 @@
       "url": "https://subgraph.com/index.en.html",
       "category": "utilidades-varios",
       "subcategory": "sistemas-operativos",
-      "tags": ["seguridad", "anonimato", "periodistas", "activistas"],
+      "tags": [
+        "seguridad",
+        "anonimato",
+        "periodistas",
+        "activistas"
+      ],
       "type": "desktop",
-      "indicators": ["T"],
+      "indicators": [
+        "T"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.3,
@@ -387,9 +520,16 @@
       "url": "https://tails.boum.org/",
       "category": "utilidades-varios",
       "subcategory": "sistemas-operativos",
-      "tags": ["privacidad", "anonimato", "tor", "amnésico"],
+      "tags": [
+        "privacidad",
+        "anonimato",
+        "tor",
+        "amnésico"
+      ],
       "type": "desktop",
-      "indicators": ["T"],
+      "indicators": [
+        "T"
+      ],
       "region": "internacional",
       "language": "es",
       "rating": 4.6,
@@ -408,9 +548,16 @@
       "url": "https://www.whonix.org/wiki/Main_Page",
       "category": "utilidades-varios",
       "subcategory": "sistemas-operativos",
-      "tags": ["tor", "anonimato", "aislamiento", "vms"],
+      "tags": [
+        "tor",
+        "anonimato",
+        "aislamiento",
+        "vms"
+      ],
       "type": "desktop",
-      "indicators": ["T"],
+      "indicators": [
+        "T"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.4,
@@ -429,9 +576,17 @@
       "url": "https://github.com/OWASP/D4N155",
       "category": "utilidades-varios",
       "subcategory": "herramientas-cli",
-      "tags": ["owasp", "ia", "inteligencia artificial", "análisis"],
+      "tags": [
+        "owasp",
+        "ia",
+        "inteligencia artificial",
+        "análisis"
+      ],
       "type": "tool",
-      "indicators": ["T", "A"],
+      "indicators": [
+        "T",
+        "A"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.3,
@@ -450,14 +605,49 @@
       "url": "https://app.wgen.io/",
       "category": "utilidades-varios",
       "subcategory": "generadores",
-      "tags": ["datos falsos", "identidades", "testing", "privacidad"],
+      "tags": [
+        "datos falsos",
+        "identidades",
+        "testing",
+        "privacidad"
+      ],
       "type": "web",
-      "indicators": ["D"],
+      "indicators": [
+        "D"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.1,
       "usage_count": 3450,
       "last_updated": "2025-06-19",
+      "status": "active",
+      "requires_registration": false,
+      "is_free": true,
+      "difficulty_level": "beginner"
+    },
+    {
+      "id": "meta-osint",
+      "name": "Meta-OSINT",
+      "description": "Recurso metodológico para seleccionar herramientas OSINT según objetivos de investigación.",
+      "utility": "Sirve como guía para elegir técnicas, fuentes y herramientas de forma trazable antes de iniciar una investigación.",
+      "url": "https://meta-osint.github.io/",
+      "category": "utilidades-varios",
+      "subcategory": "recursos-educativos",
+      "tags": [
+        "metodología",
+        "recursos",
+        "selección de herramientas",
+        "osint"
+      ],
+      "type": "web",
+      "indicators": [
+        "D"
+      ],
+      "region": "internacional",
+      "language": "en",
+      "rating": 4.2,
+      "usage_count": 2700,
+      "last_updated": "2026-05-24",
       "status": "active",
       "requires_registration": false,
       "is_free": true,

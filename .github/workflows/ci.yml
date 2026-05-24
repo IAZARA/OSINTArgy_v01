@@ -1,0 +1,70 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    name: Validate, test and build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: 20.x
+          cache: npm
+          cache-dependency-path: |
+            package-lock.json
+            frontend/package-lock.json
+            backend/package-lock.json
+
+      - name: Install root dependencies
+        run: npm ci
+
+      - name: Install frontend dependencies
+        run: npm ci
+        working-directory: frontend
+
+      - name: Install backend dependencies
+        run: npm ci
+        working-directory: backend
+
+      - name: Sync catalog fallback
+        run: npm run sync:data
+
+      - name: Ensure catalog fallback is committed
+        run: git diff --exit-code -- frontend/src/data/tools.json
+
+      - name: Validate catalog
+        run: npm run validate:data
+
+      - name: Run tests
+        run: npm test
+
+      - name: Lint frontend
+        run: npm run lint
+        working-directory: frontend
+
+      - name: Build frontend
+        run: npm run build
+
+      - name: Audit root dependencies
+        run: npm audit --omit=dev
+
+      - name: Audit frontend dependencies
+        run: npm audit --omit=dev
+        working-directory: frontend
+
+      - name: Audit backend dependencies
+        run: npm audit --omit=dev
+        working-directory: backend

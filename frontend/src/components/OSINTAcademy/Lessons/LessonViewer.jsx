@@ -1743,6 +1743,11 @@ const LessonViewer = () => {
   }
 
   const currentLesson = lessons[lessonId]
+  const currentSlideData = currentLesson?.slides?.[currentSlide]
+  const safeSlideContent = useMemo(
+    () => DOMPurify.sanitize(currentSlideData?.content || ''),
+    [currentSlideData?.content]
+  )
 
   useEffect(() => {
     if (currentLesson) {
@@ -1771,8 +1776,7 @@ const LessonViewer = () => {
   }
 
   const calculateQuizScore = () => {
-    const currentSlideData = currentLesson.slides[currentSlide]
-    if (!currentSlideData.interactive || currentSlideData.interactive.type !== 'quiz') return 0
+    if (!currentSlideData?.interactive || currentSlideData.interactive.type !== 'quiz') return 0
     
     const questions = currentSlideData.interactive.questions
     let correct = 0
@@ -1804,12 +1808,6 @@ const LessonViewer = () => {
       </div>
     )
   }
-
-  const currentSlideData = currentLesson.slides[currentSlide]
-  const safeSlideContent = useMemo(
-    () => DOMPurify.sanitize(currentSlideData.content),
-    [currentSlideData.content]
-  )
 
   return (
     <div className="lesson-viewer">

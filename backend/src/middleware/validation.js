@@ -88,10 +88,16 @@ const toolSchema = Joi.object({
       'any.required': 'Utilidad es requerida'
     }),
   url: Joi.string()
-    .uri()
+    .custom((value, helpers) => {
+      if (/^https?:\/\/.+/.test(value) || /^\/[a-z0-9][a-z0-9/_-]*$/i.test(value)) {
+        return value
+      }
+
+      return helpers.error('string.uri')
+    })
     .required()
     .messages({
-      'string.uri': 'URL debe ser válida',
+      'string.uri': 'URL debe ser HTTP/HTTPS o una ruta interna válida',
       'any.required': 'URL es requerida'
     }),
   category: Joi.string()
@@ -112,28 +118,28 @@ const toolSchema = Joi.object({
       'string.max': 'Cada tag no puede tener más de 50 caracteres'
     }),
   type: Joi.string()
-    .valid('web', 'desktop', 'mobile', 'api', 'browser-extension')
+    .valid('web', 'desktop', 'mobile', 'api', 'browser-extension', 'extension', 'tool', 'dataset', 'cli', 'app', 'internal')
     .default('web')
     .messages({
-      'any.only': 'Tipo debe ser: web, desktop, mobile, api o browser-extension'
+      'any.only': 'Tipo de herramienta no permitido'
     }),
   indicators: Joi.array()
-    .items(Joi.string().valid('D', 'R', 'F', 'P', 'A'))
+    .items(Joi.string().valid('D', 'R', 'F', 'P', 'A', 'S', 'G', 'T', 'I', 'M', 'V', 'C'))
     .optional()
     .messages({
-      'any.only': 'Indicadores deben ser: D, R, F, P o A'
+      'any.only': 'Indicador OSINT no permitido'
     }),
   region: Joi.string()
-    .valid('internacional', 'argentina', 'latam', 'europa', 'norteamerica', 'asia')
+    .valid('internacional', 'argentina', 'latam', 'europa', 'norteamerica', 'asia', 'estados unidos', 'reino unido', 'rusia', 'china', 'corea', 'europa del este')
     .default('internacional')
     .messages({
-      'any.only': 'Región debe ser: internacional, argentina, latam, europa, norteamerica o asia'
+      'any.only': 'Región no permitida'
     }),
   language: Joi.string()
-    .valid('es', 'en', 'pt', 'fr', 'de', 'it', 'ru', 'zh', 'ja', 'multi')
+    .valid('es', 'en', 'pt', 'fr', 'de', 'it', 'ru', 'zh', 'ja', 'ko', 'multi')
     .default('es')
     .messages({
-      'any.only': 'Idioma debe ser: es, en, pt, fr, de, it, ru, zh, ja o multi'
+      'any.only': 'Idioma no permitido'
     }),
   requires_registration: Joi.boolean()
     .default(false),

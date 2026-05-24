@@ -33,9 +33,9 @@ const toolSchema = new mongoose.Schema({
     trim: true,
     validate: {
       validator: function(v) {
-        return /^https?:\/\/.+/.test(v)
+        return /^https?:\/\/.+/.test(v) || /^\/[a-z0-9][a-z0-9/_-]*$/i.test(v)
       },
-      message: 'URL debe ser válida'
+      message: 'URL debe ser HTTP/HTTPS o una ruta interna válida'
     }
   },
   category: {
@@ -56,12 +56,12 @@ const toolSchema = new mongoose.Schema({
   type: {
     type: String,
     required: true,
-    enum: ['web', 'desktop', 'mobile', 'api', 'browser-extension', 'extension', 'tool', 'dataset', 'cli'],
+    enum: ['web', 'desktop', 'mobile', 'api', 'browser-extension', 'extension', 'tool', 'dataset', 'cli', 'app', 'internal'],
     default: 'web'
   },
   indicators: [{
     type: String,
-    enum: ['D', 'R', 'F', 'P', 'A', 'T', 'M', 'S', 'G', 'V'], // D=Datos, R=Registros, F=Forense, P=Personas, A=Análisis, T=Tool, M=Manual, S=Security, G=Geolocation, V=Verification
+    enum: ['D', 'R', 'F', 'P', 'A', 'S', 'G', 'T', 'I', 'M', 'V', 'C'],
     uppercase: true
   }],
   region: {
@@ -93,7 +93,7 @@ const toolSchema = new mongoose.Schema({
   },
   status: {
     type: String,
-    enum: ['active', 'inactive', 'deprecated', 'maintenance'],
+    enum: ['active', 'deprecated', 'offline', 'unknown', 'inactive', 'maintenance'],
     default: 'active'
   },
   requires_registration: {

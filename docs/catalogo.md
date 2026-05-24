@@ -16,6 +16,12 @@ Si agregás o quitás herramientas, sincronizá también el fallback usado por e
 npm run sync:data
 ```
 
+Para revisar disponibilidad de URLs externas:
+
+```bash
+npm run check:links -- --report-only --output link-check-report.json --markdown link-check-report.md
+```
+
 El validador revisa:
 
 - campos obligatorios por herramienta;
@@ -64,3 +70,14 @@ Las URLs duplicadas se informan como advertencia para permitir casos editoriales
 - Mantener `status` actualizado: `active`, `deprecated`, `offline` o `unknown`.
 - No incluir servicios que promuevan abuso, doxxing, intrusión o acceso no autorizado.
 - Las herramientas internas pueden usar rutas como `/infrastructure-scanner` y `type: "internal"`.
+
+## Link checker
+
+`scripts/check-links.mjs` revisa las URLs del catálogo con concurrencia y timeout configurables. Las rutas internas y servicios `.onion` se omiten. Los estados `401`, `403`, `405` y `429` se consideran alcanzables porque suelen indicar autenticación, protecciones anti-bot o rate limiting.
+
+Ejemplos:
+
+```bash
+npm run check:links -- --report-only
+npm run check:links -- --concurrency 4 --timeout 12000 --markdown link-check-report.md
+```

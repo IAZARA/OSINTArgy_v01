@@ -1,25 +1,11 @@
-import React, { useState, useEffect } from 'react'
+import React, { Suspense, lazy, useState } from 'react'
 import { Routes, Route, useLocation } from 'react-router-dom'
 import { Toaster } from 'react-hot-toast'
 
 // Componentes
 import Header from '@components/Header/Header'
-import GalaxyView from '@components/GalaxyView/GalaxyView'
 import Loading from '@components/Common/Loading'
-import OSINTFlowcharts from '@components/OSINTFlowcharts/OSINTFlowcharts'
-import DorkGenerator from '@components/DorkGenerator/DorkGenerator'
-import EmailOSINT from '@components/EmailOSINT/EmailOSINT'
-import FileAnalysis from '@components/FileAnalysis/FileAnalysis'
-import UsernameOSINT from '@components/UsernameOSINT/UsernameOSINT'
-import InfrastructureScanner from '@components/InfrastructureScanner/InfrastructureScanner'
 import DisclaimerModal from '@components/DisclaimerModal/DisclaimerModal'
-import About from '@components/About/About'
-import AcademyDashboard from '@components/OSINTAcademy/AcademyDashboard'
-import DetectiveGame from '@components/OSINTAcademy/DetectiveGame/DetectiveGame'
-import OSINTMindMap from '@components/OSINTAcademy/MindMap/OSINTMindMap'
-import DorkSimulator from '@components/OSINTAcademy/Simulator/DorkSimulator'
-import LessonViewer from '@components/OSINTAcademy/Lessons/LessonViewer'
-import AudioPlayer from '@components/OSINTAcademy/Audio/AudioPlayer'
 import FloatingHomeButton from '@components/Common/FloatingHomeButton'
 
 // Hooks
@@ -29,6 +15,27 @@ import { useDisclaimer } from '@hooks/useDisclaimer'
 // Estilos
 import './App.css'
 import './styles/maltego-theme.css'
+
+const GalaxyView = lazy(() => import('@components/GalaxyView/GalaxyView'))
+const OSINTFlowcharts = lazy(() => import('@components/OSINTFlowcharts/OSINTFlowcharts'))
+const DorkGenerator = lazy(() => import('@components/DorkGenerator/DorkGenerator'))
+const EmailOSINT = lazy(() => import('@components/EmailOSINT/EmailOSINT'))
+const FileAnalysis = lazy(() => import('@components/FileAnalysis/FileAnalysis'))
+const UsernameOSINT = lazy(() => import('@components/UsernameOSINT/UsernameOSINT'))
+const InfrastructureScanner = lazy(() => import('@components/InfrastructureScanner/InfrastructureScanner'))
+const About = lazy(() => import('@components/About/About'))
+const AcademyDashboard = lazy(() => import('@components/OSINTAcademy/AcademyDashboard'))
+const DetectiveGame = lazy(() => import('@components/OSINTAcademy/DetectiveGame/DetectiveGame'))
+const OSINTMindMap = lazy(() => import('@components/OSINTAcademy/MindMap/OSINTMindMap'))
+const DorkSimulator = lazy(() => import('@components/OSINTAcademy/Simulator/DorkSimulator'))
+const LessonViewer = lazy(() => import('@components/OSINTAcademy/Lessons/LessonViewer'))
+const AudioPlayer = lazy(() => import('@components/OSINTAcademy/Audio/AudioPlayer'))
+
+const RouteLoading = () => (
+  <div className="app-route-loading">
+    <Loading />
+  </div>
+)
 
 function App() {
   const [searchQuery, setSearchQuery] = useState('')
@@ -127,36 +134,38 @@ function App() {
 
       {/* Contenido principal */}
       <main className="app-main">
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <div className="app-content">
-                <GalaxyView
-                  tools={filteredTools}
-                  categories={categories}
-                  onCategorySelect={handleCategorySelect}
-                  selectedCategory={selectedCategory}
-                  searchQuery={searchQuery}
-                />
-              </div>
-            }
-          />
+        <Suspense fallback={<RouteLoading />}>
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <div className="app-content">
+                  <GalaxyView
+                    tools={filteredTools}
+                    categories={categories}
+                    onCategorySelect={handleCategorySelect}
+                    selectedCategory={selectedCategory}
+                    searchQuery={searchQuery}
+                  />
+                </div>
+              }
+            />
 
-          <Route path="/osint-flowcharts" element={<OSINTFlowcharts />} />
-          <Route path="/dorks" element={<DorkGenerator />} />
-          <Route path="/email-osint" element={<EmailOSINT />} />
-          <Route path="/file-analysis" element={<FileAnalysis />} />
-          <Route path="/username-osint" element={<UsernameOSINT />} />
-          <Route path="/infrastructure-scanner" element={<InfrastructureScanner />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/academy" element={<AcademyDashboard />} />
-          <Route path="/academy/detective-game" element={<DetectiveGame />} />
-          <Route path="/academy/mindmap" element={<OSINTMindMap />} />
-          <Route path="/academy/dork-simulator" element={<DorkSimulator />} />
-          <Route path="/academy/lesson/:lessonId" element={<LessonViewer />} />
-          <Route path="/academy/audio" element={<AudioPlayer />} />
-        </Routes>
+            <Route path="/osint-flowcharts" element={<OSINTFlowcharts />} />
+            <Route path="/dorks" element={<DorkGenerator />} />
+            <Route path="/email-osint" element={<EmailOSINT />} />
+            <Route path="/file-analysis" element={<FileAnalysis />} />
+            <Route path="/username-osint" element={<UsernameOSINT />} />
+            <Route path="/infrastructure-scanner" element={<InfrastructureScanner />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/academy" element={<AcademyDashboard />} />
+            <Route path="/academy/detective-game" element={<DetectiveGame />} />
+            <Route path="/academy/mindmap" element={<OSINTMindMap />} />
+            <Route path="/academy/dork-simulator" element={<DorkSimulator />} />
+            <Route path="/academy/lesson/:lessonId" element={<LessonViewer />} />
+            <Route path="/academy/audio" element={<AudioPlayer />} />
+          </Routes>
+        </Suspense>
       </main>
 
       {/* Botón flotante para volver al inicio - Solo mostrar en Academy y Flowcharts */}

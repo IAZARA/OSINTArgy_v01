@@ -56,8 +56,8 @@ OSINTArgy está pensado para investigación sobre fuentes públicas, auditoría 
 
 ## Requisitos
 
-- Node.js 18 o superior.
-- npm 9 o superior.
+- Node.js 20 o superior.
+- npm 10 o superior.
 - MongoDB 5 o superior para desarrollo local.
 - Docker y Docker Compose si preferís levantar el entorno containerizado.
 
@@ -128,7 +128,11 @@ También configurá `FRONTEND_URL` con el origen real autorizado para CORS.
 | `npm run dev` | Inicia frontend y backend en paralelo. |
 | `npm run build` | Genera el build del frontend. |
 | `npm run install:all` | Instala dependencias de raíz, frontend y backend. |
-| `npm run test` | Ejecuta las suites de frontend y backend. |
+| `npm run sync:data` | Regenera `frontend/src/data/tools.json` desde los JSON por categoría. |
+| `npm run validate:data` | Valida estructura, IDs, categorías y fallback del catálogo. |
+| `npm run check:links` | Revisa URLs externas del catálogo y puede generar reportes JSON/Markdown. |
+| `npm run test` | Ejecuta smoke tests de scripts, frontend y backend. |
+| `cd frontend && npm run lint` | Ejecuta ESLint sobre el frontend. |
 | `npm run clean` | Detiene procesos locales de Vite, Nodemon y Node asociados al proyecto. |
 
 ## Estructura
@@ -137,6 +141,8 @@ También configurá `FRONTEND_URL` con el origen real autorizado para CORS.
 OSINTArgy/
 ├── backend/                 # API Express, modelos, rutas, controladores y scripts de datos
 ├── frontend/                # Aplicación React + Vite
+├── .github/                 # CI, CodeQL, Dependabot y plantillas
+├── docs/                    # Documentación técnica y catálogo
 ├── docs/assets/             # Branding y recursos visuales del repositorio
 ├── scripts/                 # Scripts auxiliares versionados
 ├── docker-compose.yml       # Entorno Docker de desarrollo
@@ -204,9 +210,12 @@ Las herramientas se mantienen como JSON en `frontend/src/data/tools/` y datos ba
 - Mantener secretos y configuraciones locales fuera de Git.
 - No commitear `frontend/dist/`, `logs/`, `data/*.db`, `node_modules/`, `.claude/` ni `mcp-*`.
 - Validar el catálogo con `npm run validate:data` antes de publicar cambios.
+- Sincronizar el fallback con `npm run sync:data` cuando cambie el catálogo.
+- Revisar links externos con `npm run check:links -- --report-only --markdown link-check-report.md`.
 - Documentar cambios funcionales en el README o en archivos dentro de `docs/`.
 - Agregar tests cuando el cambio toque API, autenticación, parsing, carga de datos o flujos de usuario.
 - Validar con `npm run build` antes de abrir un PR cuando se modifique frontend.
+- La documentación de arquitectura está en [docs/arquitectura.md](docs/arquitectura.md).
 
 ## Seguridad
 
@@ -222,6 +231,13 @@ Las herramientas se mantienen como JSON en `frontend/src/data/tools/` y datos ba
 
 El formato editorial del catálogo está documentado en [docs/catalogo.md](docs/catalogo.md). Usá `npm run sync:data` para actualizar el fallback del frontend y `npm run validate:data` para verificar estructura, IDs únicos, categorías, subcategorías, tipos, indicadores, campos obligatorios y sincronización.
 
+## Automatización
+
+- CI valida catálogo, fallback, tests, build y audits en cada push o PR a `main`.
+- CodeQL analiza JavaScript/TypeScript de forma automática.
+- Dependabot revisa npm, GitHub Actions y Docker semanalmente.
+- Link Check corre semanalmente o manualmente en modo reporte para detectar URLs caídas sin bloquear cambios por fallos transitorios externos.
+
 ## Roadmap
 
 - Mejorar cobertura de tests en API y componentes críticos.
@@ -235,8 +251,9 @@ El formato editorial del catálogo está documentado en [docs/catalogo.md](docs/
 1. Hacé un fork del repositorio.
 2. Creá una rama descriptiva: `git checkout -b feature/nombre-del-cambio`.
 3. Realizá cambios chicos y revisables.
-4. Ejecutá build o tests según corresponda.
-5. Abrí un Pull Request con contexto, capturas si aplica y pasos de verificación.
+4. Revisá [CONTRIBUTING.md](CONTRIBUTING.md).
+5. Ejecutá build o tests según corresponda.
+6. Abrí un Pull Request con contexto, capturas si aplica y pasos de verificación.
 
 ## Licencia
 

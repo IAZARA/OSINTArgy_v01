@@ -1,0 +1,38 @@
+name: Link caido
+description: Reportar una URL rota o desactualizada del catalogo.
+title: "[Link]: "
+labels: ["catalogo", "link-caido"]
+body:
+  - type: input
+    id: tool
+    attributes:
+      label: Herramienta
+      placeholder: OpenCTI
+    validations:
+      required: true
+  - type: input
+    id: url
+    attributes:
+      label: URL afectada
+      placeholder: https://example.com
+    validations:
+      required: true
+  - type: input
+    id: status
+    attributes:
+      label: Error observado
+      description: Codigo HTTP, redirect inesperado o mensaje de error.
+      placeholder: "404"
+    validations:
+      required: true
+  - type: input
+    id: replacement
+    attributes:
+      label: URL alternativa
+      description: Si conoces una URL oficial de reemplazo, agregala aca.
+      placeholder: https://example.com/docs
+  - type: textarea
+    id: notes
+    attributes:
+      label: Notas
+      description: Contexto adicional para validar el reporte.

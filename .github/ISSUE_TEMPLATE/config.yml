@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Reporte de seguridad
+    url: https://github.com/IAZARA/OSINTArgy_v01/security/policy
+    about: Usa SECURITY.md para reportes sensibles o vulnerabilidades.

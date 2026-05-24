@@ -1,0 +1,58 @@
+name: Nueva herramienta OSINT
+description: Sugerir una herramienta para sumar al catalogo.
+title: "[Tool]: "
+labels: ["catalogo", "herramienta"]
+body:
+  - type: input
+    id: name
+    attributes:
+      label: Nombre
+      description: Nombre publico de la herramienta.
+      placeholder: OpenCTI
+    validations:
+      required: true
+  - type: input
+    id: url
+    attributes:
+      label: URL oficial
+      description: Link oficial, repositorio principal o documentacion primaria.
+      placeholder: https://example.com
+    validations:
+      required: true
+  - type: dropdown
+    id: category
+    attributes:
+      label: Categoria sugerida
+      options:
+        - buscadores-generales
+        - redes-sociales
+        - email
+        - dominios-ips
+        - geolocalizacion
+        - imagenes-videos
+        - documentos-metadatos
+        - darkweb-amenazas
+        - argentina-latam
+        - telefonos
+        - archivos
+        - criptomonedas
+        - utilidades-varios
+        - analisis-visualizacion
+    validations:
+      required: true
+  - type: textarea
+    id: utility
+    attributes:
+      label: Utilidad OSINT
+      description: Explica que problema resuelve y en que investigacion defensiva ayuda.
+    validations:
+      required: true
+  - type: checkboxes
+    id: safety
+    attributes:
+      label: Criterios
+      options:
+        - label: La herramienta no promueve intrusiones, doxxing, abuso ni acceso no autorizado.
+          required: true
+        - label: Revise que no exista ya en el catalogo.
+          required: true

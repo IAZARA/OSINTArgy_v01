@@ -5,7 +5,7 @@ import rateLimit from 'express-rate-limit'
 import dotenv from 'dotenv'
 import mongoose from 'mongoose'
 import winston from 'winston'
-import { fileURLToPath } from 'url'
+import { fileURLToPath, pathToFileURL } from 'url'
 import { dirname, join } from 'path'
 import { getAllowedOrigins, validateSecurityConfig } from './config/security.js'
 
@@ -38,7 +38,7 @@ const __dirname = dirname(__filename)
 
 // Crear directorio de logs si no existe
 import fs from 'fs'
-const logsDir = join(__dirname, '../../logs')
+const logsDir = process.env.LOG_DIR || join(__dirname, '../../logs')
 if (!fs.existsSync(logsDir)) {
   fs.mkdirSync(logsDir, { recursive: true })
 }
@@ -178,6 +178,11 @@ process.on('uncaughtException', (err) => {
 })
 
 // Iniciar la aplicación
-startServer()
+const isMainModule = process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href
 
+if (isMainModule) {
+  startServer()
+}
+
+export { app, connectDB, startServer }
 export default app

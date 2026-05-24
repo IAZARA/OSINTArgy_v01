@@ -21,6 +21,7 @@ frontend/dist/
 # Logs and runtime data
 logs/
 *.log
+link-check-report.*
 backend/logs/
 data/*.db
 data/*.sqlite

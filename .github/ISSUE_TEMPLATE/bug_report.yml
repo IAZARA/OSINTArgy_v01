@@ -1,0 +1,39 @@
+name: Bug
+description: Reportar un problema reproducible.
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: textarea
+    id: current
+    attributes:
+      label: Comportamiento actual
+      description: Que ocurre y donde ocurre.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Comportamiento esperado
+      description: Que deberia ocurrir.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Pasos para reproducir
+      placeholder: |
+        1. Ir a ...
+        2. Buscar ...
+        3. Ver error ...
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: Entorno
+      placeholder: macOS, Chrome, Node 20, Docker, etc.
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs o capturas
+      render: shell

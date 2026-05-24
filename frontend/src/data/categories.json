@@ -31,6 +31,42 @@
           "name": "Operadores Avanzados",
           "description": "Google Dorks, Bing Dorks",
           "order": 4
+        },
+        {
+          "id": "academicos",
+          "name": "Academicos",
+          "description": "Herramientas de academicos",
+          "order": 5
+        },
+        {
+          "id": "archivos",
+          "name": "Archivos",
+          "description": "Herramientas de archivos",
+          "order": 6
+        },
+        {
+          "id": "busqueda-personas",
+          "name": "Busqueda Personas",
+          "description": "Herramientas de busqueda personas",
+          "order": 7
+        },
+        {
+          "id": "codigo",
+          "name": "Codigo",
+          "description": "Herramientas de codigo",
+          "order": 8
+        },
+        {
+          "id": "herramientas-cli",
+          "name": "Herramientas Cli",
+          "description": "Herramientas de herramientas cli",
+          "order": 9
+        },
+        {
+          "id": "motores-especializados",
+          "name": "Motores Especializados",
+          "description": "Herramientas de motores especializados",
+          "order": 10
         }
       ]
     },
@@ -65,6 +101,12 @@
           "name": "Verificación de Perfiles",
           "description": "Sherlock, WhatsMyName",
           "order": 4
+        },
+        {
+          "id": "herramientas-monitoreo",
+          "name": "Herramientas Monitoreo",
+          "description": "Herramientas de herramientas monitoreo",
+          "order": 5
         }
       ]
     },
@@ -195,6 +237,18 @@
           "name": "Reconocimiento Facial",
           "description": "PimEyes, FindClone",
           "order": 4
+        },
+        {
+          "id": "deteccion-deepfakes",
+          "name": "Deteccion Deepfakes",
+          "description": "Herramientas de deteccion deepfakes",
+          "order": 5
+        },
+        {
+          "id": "transcripcion",
+          "name": "Transcripcion",
+          "description": "Herramientas de transcripcion",
+          "order": 6
         }
       ]
     },
@@ -223,10 +277,21 @@
           "name": "Búsqueda de Documentos",
           "description": "Google Filetype, DocumentCloud",
           "order": 3
+        },
+        {
+          "id": "analisis-binarios",
+          "name": "Analisis Binarios",
+          "description": "Herramientas de analisis binarios",
+          "order": 4
+        },
+        {
+          "id": "limpieza-metadatos",
+          "name": "Limpieza Metadatos",
+          "description": "Herramientas de limpieza metadatos",
+          "order": 5
         }
       ]
     },
-
     {
       "id": "darkweb-amenazas",
       "name": "Dark Web y Amenazas",
@@ -320,6 +385,36 @@
           "name": "Sistema e Infraestructura",
           "description": "Scanner de infraestructura, monitoreo defensivo",
           "order": 4
+        },
+        {
+          "id": "automatización",
+          "name": "Automatización",
+          "description": "Herramientas de automatización",
+          "order": 5
+        },
+        {
+          "id": "herramientas-cli",
+          "name": "Herramientas Cli",
+          "description": "Herramientas de herramientas cli",
+          "order": 6
+        },
+        {
+          "id": "recursos-educativos",
+          "name": "Recursos Educativos",
+          "description": "Herramientas de recursos educativos",
+          "order": 7
+        },
+        {
+          "id": "sistemas-operativos",
+          "name": "Sistemas Operativos",
+          "description": "Herramientas de sistemas operativos",
+          "order": 8
+        },
+        {
+          "id": "virtualizacion",
+          "name": "Virtualizacion",
+          "description": "Herramientas de virtualizacion",
+          "order": 9
         }
       ]
     },
@@ -388,6 +483,12 @@
           "name": "APIs y Herramientas de Desarrollo",
           "description": "APIs y herramientas para desarrolladores",
           "order": 4
+        },
+        {
+          "id": "herramientas-cli",
+          "name": "Herramientas Cli",
+          "description": "Herramientas de herramientas cli",
+          "order": 5
         }
       ]
     },
@@ -434,6 +535,48 @@
           "name": "Datasets de Investigación",
           "description": "Datasets académicos y de investigación",
           "order": 6
+        },
+        {
+          "id": "bases-datos",
+          "name": "Bases Datos",
+          "description": "Herramientas de bases datos",
+          "order": 7
+        },
+        {
+          "id": "capturas-pantalla",
+          "name": "Capturas Pantalla",
+          "description": "Herramientas de capturas pantalla",
+          "order": 8
+        },
+        {
+          "id": "conversion-archivos",
+          "name": "Conversion Archivos",
+          "description": "Herramientas de conversion archivos",
+          "order": 9
+        },
+        {
+          "id": "datos-abiertos",
+          "name": "Datos Abiertos",
+          "description": "Herramientas de datos abiertos",
+          "order": 10
+        },
+        {
+          "id": "herramientas-cli",
+          "name": "Herramientas Cli",
+          "description": "Herramientas de herramientas cli",
+          "order": 11
+        },
+        {
+          "id": "herramientas-navegador",
+          "name": "Herramientas Navegador",
+          "description": "Herramientas de herramientas navegador",
+          "order": 12
+        },
+        {
+          "id": "medios-audiovisuales",
+          "name": "Medios Audiovisuales",
+          "description": "Herramientas de medios audiovisuales",
+          "order": 13
         }
       ]
     },
@@ -480,6 +623,24 @@
           "name": "Seguridad y Fraudes",
           "description": "Bitcoin Who's Who, detección de estafas",
           "order": 6
+        },
+        {
+          "id": "exploradores-multi",
+          "name": "Exploradores Multi",
+          "description": "Herramientas de exploradores multi",
+          "order": 7
+        },
+        {
+          "id": "herramientas-cli",
+          "name": "Herramientas Cli",
+          "description": "Herramientas de herramientas cli",
+          "order": 8
+        },
+        {
+          "id": "verificacion-direcciones",
+          "name": "Verificacion Direcciones",
+          "description": "Herramientas de verificacion direcciones",
+          "order": 9
         }
       ]
     }

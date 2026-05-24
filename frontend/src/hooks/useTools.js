@@ -20,7 +20,6 @@ import archivos from '@data/tools/archivos.json'
 import criptomonedas from '@data/tools/criptomonedas.json'
 import utilidadesVarios from '@data/tools/utilidades-varios.json'
 import analisisVisualizacion from '@data/tools/analisis-visualizacion.json'
-import nuevasHerramientas from '@data/tools/nuevas-herramientas.json'
 import sistemaInfraestructura from '@data/tools/sistema-infraestructura.json'
 
 // Hook principal para manejar herramientas
@@ -56,7 +55,6 @@ export const useTools = () => {
         ...criptomonedas.tools,
         ...utilidadesVarios.tools,
         ...analisisVisualizacion.tools,
-        ...nuevasHerramientas.tools,
         ...sistemaInfraestructura.tools
       ]
 

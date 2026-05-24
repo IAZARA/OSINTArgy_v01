@@ -20,7 +20,7 @@ import OSINTMindMap from '@components/OSINTAcademy/MindMap/OSINTMindMap'
 import DorkSimulator from '@components/OSINTAcademy/Simulator/DorkSimulator'
 import LessonViewer from '@components/OSINTAcademy/Lessons/LessonViewer'
 import AudioPlayer from '@components/OSINTAcademy/Audio/AudioPlayer'
-import FloatingHomeButton from '@components/common/FloatingHomeButton'
+import FloatingHomeButton from '@components/Common/FloatingHomeButton'
 
 // Hooks
 import { useTools } from '@hooks/useTools'

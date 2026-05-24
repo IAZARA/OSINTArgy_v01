@@ -7,6 +7,7 @@ import email from './email.json';
 import dominiosIps from './dominios-ips.json';
 import geolocalizacion from './geolocalizacion.json';
 import imagenesVideos from './imagenes-videos.json';
+import documentosMetadatos from './documentos-metadatos.json';
 import darkwebAmenazas from './darkweb-amenazas.json';
 import argentinaLatam from './argentina-latam.json';
 import telefonos from './telefonos.json';
@@ -14,6 +15,7 @@ import archivos from './archivos.json';
 import criptomonedas from './criptomonedas.json';
 import utilidadesVarios from './utilidades-varios.json';
 import analisisVisualizacion from './analisis-visualizacion.json';
+import sistemaInfraestructura from './sistema-infraestructura.json';
 
 /**
  * Combina todas las herramientas de diferentes categorías
@@ -27,13 +29,15 @@ export const getAllTools = () => {
     ...dominiosIps.tools,
     ...geolocalizacion.tools,
     ...imagenesVideos.tools,
+    ...documentosMetadatos.tools,
     ...darkwebAmenazas.tools,
     ...argentinaLatam.tools,
     ...telefonos.tools,
     ...archivos.tools,
     ...criptomonedas.tools,
     ...utilidadesVarios.tools,
-    ...analisisVisualizacion.tools
+    ...analisisVisualizacion.tools,
+    ...sistemaInfraestructura.tools
   ];
 
   return {
@@ -46,12 +50,16 @@ export const getAllTools = () => {
       'dominios-ips': dominiosIps.tools,
       'geolocalizacion': geolocalizacion.tools,
       'imagenes-videos': imagenesVideos.tools,
+      'documentos-metadatos': documentosMetadatos.tools,
       'darkweb-amenazas': darkwebAmenazas.tools,
       'argentina-latam': argentinaLatam.tools,
       'telefonos': telefonos.tools,
       'archivos': archivos.tools,
       'criptomonedas': criptomonedas.tools,
-      'utilidades-varios': utilidadesVarios.tools,
+      'utilidades-varios': [
+        ...utilidadesVarios.tools,
+        ...sistemaInfraestructura.tools
+      ],
       'analisis-visualizacion': analisisVisualizacion.tools
     }
   };

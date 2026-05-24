@@ -9,9 +9,16 @@
       "url": "https://www.facebook.com/search",
       "category": "redes-sociales",
       "subcategory": "plataformas-principales",
-      "tags": ["facebook", "redes sociales", "personas", "publicaciones"],
+      "tags": [
+        "facebook",
+        "redes sociales",
+        "personas",
+        "publicaciones"
+      ],
       "type": "web",
-      "indicators": ["P"],
+      "indicators": [
+        "P"
+      ],
       "region": "internacional",
       "language": "es",
       "rating": 4.2,
@@ -30,9 +37,17 @@
       "url": "https://twitter.com/search-advanced",
       "category": "redes-sociales",
       "subcategory": "plataformas-principales",
-      "tags": ["twitter", "x", "tweets", "búsqueda avanzada"],
+      "tags": [
+        "twitter",
+        "x",
+        "tweets",
+        "búsqueda avanzada"
+      ],
       "type": "web",
-      "indicators": ["P", "D"],
+      "indicators": [
+        "P",
+        "D"
+      ],
       "region": "internacional",
       "language": "es",
       "rating": 4.4,
@@ -51,9 +66,17 @@
       "url": "https://www.instagram.com/explore",
       "category": "redes-sociales",
       "subcategory": "plataformas-principales",
-      "tags": ["instagram", "fotos", "hashtags", "ubicaciones"],
+      "tags": [
+        "instagram",
+        "fotos",
+        "hashtags",
+        "ubicaciones"
+      ],
       "type": "web",
-      "indicators": ["P", "F"],
+      "indicators": [
+        "P",
+        "F"
+      ],
       "region": "internacional",
       "language": "es",
       "rating": 4.1,
@@ -72,9 +95,17 @@
       "url": "https://www.linkedin.com/search",
       "category": "redes-sociales",
       "subcategory": "plataformas-principales",
-      "tags": ["linkedin", "profesional", "empresas", "networking"],
+      "tags": [
+        "linkedin",
+        "profesional",
+        "empresas",
+        "networking"
+      ],
       "type": "web",
-      "indicators": ["P", "R"],
+      "indicators": [
+        "P",
+        "R"
+      ],
       "region": "internacional",
       "language": "es",
       "rating": 4.5,
@@ -93,12 +124,20 @@
       "url": "https://www.tiktok.com/search",
       "category": "redes-sociales",
       "subcategory": "plataformas-emergentes",
-      "tags": ["tiktok", "videos", "tendencias", "jóvenes"],
+      "tags": [
+        "tiktok",
+        "videos",
+        "tendencias",
+        "jóvenes"
+      ],
       "type": "web",
-      "indicators": ["P", "F"],
+      "indicators": [
+        "P",
+        "F"
+      ],
       "region": "internacional",
       "language": "es",
-      "rating": 4.0,
+      "rating": 4,
       "usage_count": 5430,
       "last_updated": "2025-06-19",
       "status": "active",
@@ -114,9 +153,16 @@
       "url": "https://discord.com",
       "category": "redes-sociales",
       "subcategory": "plataformas-emergentes",
-      "tags": ["discord", "gaming", "comunidades", "chat"],
+      "tags": [
+        "discord",
+        "gaming",
+        "comunidades",
+        "chat"
+      ],
       "type": "web",
-      "indicators": ["P"],
+      "indicators": [
+        "P"
+      ],
       "region": "internacional",
       "language": "es",
       "rating": 3.9,
@@ -135,9 +181,16 @@
       "url": "https://telegram.org",
       "category": "redes-sociales",
       "subcategory": "plataformas-emergentes",
-      "tags": ["telegram", "canales", "grupos", "mensajería"],
+      "tags": [
+        "telegram",
+        "canales",
+        "grupos",
+        "mensajería"
+      ],
       "type": "web",
-      "indicators": ["P"],
+      "indicators": [
+        "P"
+      ],
       "region": "internacional",
       "language": "es",
       "rating": 4.2,
@@ -156,9 +209,17 @@
       "url": "https://github.com/sherlock-project/sherlock",
       "category": "redes-sociales",
       "subcategory": "herramientas-analisis",
-      "tags": ["username", "múltiples plataformas", "automatización", "github"],
+      "tags": [
+        "username",
+        "múltiples plataformas",
+        "automatización",
+        "github"
+      ],
       "type": "cli",
-      "indicators": ["P", "A"],
+      "indicators": [
+        "P",
+        "A"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.7,
@@ -177,9 +238,16 @@
       "url": "https://whatsmyname.app",
       "category": "redes-sociales",
       "subcategory": "herramientas-analisis",
-      "tags": ["username", "verificación", "disponibilidad", "web"],
+      "tags": [
+        "username",
+        "verificación",
+        "disponibilidad",
+        "web"
+      ],
       "type": "web",
-      "indicators": ["P"],
+      "indicators": [
+        "P"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.4,
@@ -198,9 +266,17 @@
       "url": "https://www.social-searcher.com",
       "category": "redes-sociales",
       "subcategory": "herramientas-analisis",
-      "tags": ["menciones", "hashtags", "tiempo real", "múltiples redes"],
+      "tags": [
+        "menciones",
+        "hashtags",
+        "tiempo real",
+        "múltiples redes"
+      ],
       "type": "web",
-      "indicators": ["P", "D"],
+      "indicators": [
+        "P",
+        "D"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.3,
@@ -219,9 +295,17 @@
       "url": "https://github.com/twintproject/twint",
       "category": "redes-sociales",
       "subcategory": "herramientas-analisis",
-      "tags": ["twitter", "scraping", "sin api", "python"],
+      "tags": [
+        "twitter",
+        "scraping",
+        "sin api",
+        "python"
+      ],
       "type": "cli",
-      "indicators": ["P", "A"],
+      "indicators": [
+        "P",
+        "A"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.5,
@@ -240,9 +324,17 @@
       "url": "https://instaloader.github.io",
       "category": "redes-sociales",
       "subcategory": "herramientas-analisis",
-      "tags": ["instagram", "descarga", "metadatos", "python"],
+      "tags": [
+        "instagram",
+        "descarga",
+        "metadatos",
+        "python"
+      ],
       "type": "cli",
-      "indicators": ["F", "A"],
+      "indicators": [
+        "F",
+        "A"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.6,
@@ -261,9 +353,17 @@
       "url": "https://bereal.com",
       "category": "redes-sociales",
       "subcategory": "plataformas-emergentes",
-      "tags": ["auténtico", "tiempo real", "sin filtros", "jóvenes"],
+      "tags": [
+        "auténtico",
+        "tiempo real",
+        "sin filtros",
+        "jóvenes"
+      ],
       "type": "web",
-      "indicators": ["P", "F"],
+      "indicators": [
+        "P",
+        "F"
+      ],
       "region": "internacional",
       "language": "es",
       "rating": 4.1,
@@ -284,12 +384,20 @@
       "url": "https://www.clubhouse.com",
       "category": "redes-sociales",
       "subcategory": "plataformas-emergentes",
-      "tags": ["audio", "tiempo real", "conversaciones", "influencers"],
+      "tags": [
+        "audio",
+        "tiempo real",
+        "conversaciones",
+        "influencers"
+      ],
       "type": "web",
-      "indicators": ["P", "D"],
+      "indicators": [
+        "P",
+        "D"
+      ],
       "region": "internacional",
       "language": "en",
-      "rating": 4.0,
+      "rating": 4,
       "usage_count": 2890,
       "last_updated": "2025-06-19",
       "status": "active",
@@ -307,9 +415,17 @@
       "url": "https://mastodon.social",
       "category": "redes-sociales",
       "subcategory": "plataformas-emergentes",
-      "tags": ["descentralizado", "privacidad", "comunidad", "código abierto"],
+      "tags": [
+        "descentralizado",
+        "privacidad",
+        "comunidad",
+        "código abierto"
+      ],
       "type": "web",
-      "indicators": ["P", "D"],
+      "indicators": [
+        "P",
+        "D"
+      ],
       "region": "internacional",
       "language": "es",
       "rating": 4.3,
@@ -330,9 +446,17 @@
       "url": "https://truthsocial.com",
       "category": "redes-sociales",
       "subcategory": "plataformas-emergentes",
-      "tags": ["político", "conservador", "libre expresión", "tendencias"],
+      "tags": [
+        "político",
+        "conservador",
+        "libre expresión",
+        "tendencias"
+      ],
       "type": "web",
-      "indicators": ["P", "D"],
+      "indicators": [
+        "P",
+        "D"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 3.8,
@@ -353,9 +477,17 @@
       "url": "https://gettr.com",
       "category": "redes-sociales",
       "subcategory": "plataformas-emergentes",
-      "tags": ["libre expresión", "conservador", "político", "alternativo"],
+      "tags": [
+        "libre expresión",
+        "conservador",
+        "político",
+        "alternativo"
+      ],
       "type": "web",
-      "indicators": ["P", "D"],
+      "indicators": [
+        "P",
+        "D"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 3.9,
@@ -376,9 +508,17 @@
       "url": "https://parler.com",
       "category": "redes-sociales",
       "subcategory": "plataformas-emergentes",
-      "tags": ["conservador", "político", "libre expresión", "alternativo"],
+      "tags": [
+        "conservador",
+        "político",
+        "libre expresión",
+        "alternativo"
+      ],
       "type": "web",
-      "indicators": ["P", "D"],
+      "indicators": [
+        "P",
+        "D"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 3.7,
@@ -399,12 +539,19 @@
       "url": "https://mewe.com",
       "category": "redes-sociales",
       "subcategory": "plataformas-emergentes",
-      "tags": ["privacidad", "seguridad", "cifrado", "sin anuncios"],
+      "tags": [
+        "privacidad",
+        "seguridad",
+        "cifrado",
+        "sin anuncios"
+      ],
       "type": "web",
-      "indicators": ["P"],
+      "indicators": [
+        "P"
+      ],
       "region": "internacional",
       "language": "en",
-      "rating": 4.0,
+      "rating": 4,
       "usage_count": 2340,
       "last_updated": "2025-06-19",
       "status": "active",
@@ -422,9 +569,17 @@
       "url": "https://www.minds.com",
       "category": "redes-sociales",
       "subcategory": "plataformas-emergentes",
-      "tags": ["blockchain", "criptomonedas", "descentralizado", "recompensas"],
+      "tags": [
+        "blockchain",
+        "criptomonedas",
+        "descentralizado",
+        "recompensas"
+      ],
       "type": "web",
-      "indicators": ["P", "D"],
+      "indicators": [
+        "P",
+        "D"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.1,
@@ -445,9 +600,18 @@
       "url": "https://www.talkwalker.com",
       "category": "redes-sociales",
       "subcategory": "herramientas-monitoreo",
-      "tags": ["ia", "monitoreo", "sentimientos", "amenazas"],
+      "tags": [
+        "ia",
+        "monitoreo",
+        "sentimientos",
+        "amenazas"
+      ],
       "type": "web",
-      "indicators": ["P", "D", "A"],
+      "indicators": [
+        "P",
+        "D",
+        "A"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.6,
@@ -468,9 +632,18 @@
       "url": "https://www.hootsuite.com/products/insights",
       "category": "redes-sociales",
       "subcategory": "herramientas-monitoreo",
-      "tags": ["análisis", "monitoreo", "visual", "marcas"],
+      "tags": [
+        "análisis",
+        "monitoreo",
+        "visual",
+        "marcas"
+      ],
       "type": "web",
-      "indicators": ["P", "D", "A"],
+      "indicators": [
+        "P",
+        "D",
+        "A"
+      ],
       "region": "internacional",
       "language": "es",
       "rating": 4.4,
@@ -491,9 +664,17 @@
       "url": "https://paliscope.com",
       "category": "redes-sociales",
       "subcategory": "herramientas-analisis",
-      "tags": ["visualización", "conexiones", "análisis", "relaciones"],
+      "tags": [
+        "visualización",
+        "conexiones",
+        "análisis",
+        "relaciones"
+      ],
       "type": "web",
-      "indicators": ["P", "A"],
+      "indicators": [
+        "P",
+        "A"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.3,
@@ -514,9 +695,18 @@
       "url": "https://mention.com",
       "category": "redes-sociales",
       "subcategory": "herramientas-monitoreo",
-      "tags": ["monitoreo", "palabras clave", "sentimientos", "alertas"],
+      "tags": [
+        "monitoreo",
+        "palabras clave",
+        "sentimientos",
+        "alertas"
+      ],
       "type": "web",
-      "indicators": ["P", "D", "A"],
+      "indicators": [
+        "P",
+        "D",
+        "A"
+      ],
       "region": "internacional",
       "language": "es",
       "rating": 4.5,
@@ -537,9 +727,18 @@
       "url": "https://sproutsocial.com",
       "category": "redes-sociales",
       "subcategory": "herramientas-monitoreo",
-      "tags": ["gestión", "análisis", "dashboards", "múltiples cuentas"],
+      "tags": [
+        "gestión",
+        "análisis",
+        "dashboards",
+        "múltiples cuentas"
+      ],
       "type": "web",
-      "indicators": ["P", "D", "A"],
+      "indicators": [
+        "P",
+        "D",
+        "A"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.6,
@@ -560,9 +759,17 @@
       "url": "https://brand24.com",
       "category": "redes-sociales",
       "subcategory": "herramientas-monitoreo",
-      "tags": ["marca", "monitoreo", "palabras clave", "sentimientos"],
+      "tags": [
+        "marca",
+        "monitoreo",
+        "palabras clave",
+        "sentimientos"
+      ],
       "type": "web",
-      "indicators": ["P", "D"],
+      "indicators": [
+        "P",
+        "D"
+      ],
       "region": "internacional",
       "language": "es",
       "rating": 4.3,
@@ -583,9 +790,17 @@
       "url": "https://buffer.com/analytics",
       "category": "redes-sociales",
       "subcategory": "herramientas-analisis",
-      "tags": ["analytics", "rendimiento", "engagement", "audiencia"],
+      "tags": [
+        "analytics",
+        "rendimiento",
+        "engagement",
+        "audiencia"
+      ],
       "type": "web",
-      "indicators": ["P", "D"],
+      "indicators": [
+        "P",
+        "D"
+      ],
       "region": "internacional",
       "language": "es",
       "rating": 4.2,
@@ -606,9 +821,17 @@
       "url": "https://www.crowdtangle.com",
       "category": "redes-sociales",
       "subcategory": "herramientas-monitoreo",
-      "tags": ["conversaciones", "picos actividad", "múltiples plataformas", "timing"],
+      "tags": [
+        "conversaciones",
+        "picos actividad",
+        "múltiples plataformas",
+        "timing"
+      ],
       "type": "web",
-      "indicators": ["P", "D"],
+      "indicators": [
+        "P",
+        "D"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.4,
@@ -629,9 +852,17 @@
       "url": "https://tweetdeck.twitter.com",
       "category": "redes-sociales",
       "subcategory": "plataformas-principales",
-      "tags": ["twitter", "gestión", "tiempo real", "columnas"],
+      "tags": [
+        "twitter",
+        "gestión",
+        "tiempo real",
+        "columnas"
+      ],
       "type": "web",
-      "indicators": ["P", "D"],
+      "indicators": [
+        "P",
+        "D"
+      ],
       "region": "internacional",
       "language": "es",
       "rating": 4.3,
@@ -652,9 +883,17 @@
       "url": "https://analytics.twitter.com",
       "category": "redes-sociales",
       "subcategory": "plataformas-principales",
-      "tags": ["twitter", "métricas", "engagement", "demografía"],
+      "tags": [
+        "twitter",
+        "métricas",
+        "engagement",
+        "demografía"
+      ],
       "type": "web",
-      "indicators": ["P", "D"],
+      "indicators": [
+        "P",
+        "D"
+      ],
       "region": "internacional",
       "language": "es",
       "rating": 4.1,
@@ -675,9 +914,17 @@
       "url": "https://business.instagram.com/getting-started/insights",
       "category": "redes-sociales",
       "subcategory": "plataformas-principales",
-      "tags": ["instagram", "insights", "engagement", "demografía"],
+      "tags": [
+        "instagram",
+        "insights",
+        "engagement",
+        "demografía"
+      ],
       "type": "web",
-      "indicators": ["P", "D"],
+      "indicators": [
+        "P",
+        "D"
+      ],
       "region": "internacional",
       "language": "es",
       "rating": 4.2,
@@ -698,9 +945,17 @@
       "url": "https://business.linkedin.com/sales-solutions/sales-navigator",
       "category": "redes-sociales",
       "subcategory": "plataformas-principales",
-      "tags": ["linkedin", "prospección", "ventas", "profesionales"],
+      "tags": [
+        "linkedin",
+        "prospección",
+        "ventas",
+        "profesionales"
+      ],
       "type": "web",
-      "indicators": ["P", "R"],
+      "indicators": [
+        "P",
+        "R"
+      ],
       "region": "internacional",
       "language": "es",
       "rating": 4.4,
@@ -721,9 +976,17 @@
       "url": "https://osint.industries",
       "category": "redes-sociales",
       "subcategory": "herramientas-analisis",
-      "tags": ["perfiles ocultos", "múltiples plataformas", "investigación", "osint"],
+      "tags": [
+        "perfiles ocultos",
+        "múltiples plataformas",
+        "investigación",
+        "osint"
+      ],
       "type": "web",
-      "indicators": ["P", "A"],
+      "indicators": [
+        "P",
+        "A"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.5,
@@ -737,29 +1000,6 @@
       "verified_by": "perplexity"
     },
     {
-      "id": "youtube-dataviewer",
-      "name": "YouTube DataViewer",
-      "description": "Herramienta de Amnesty International para análisis de videos de YouTube.",
-      "utility": "Extrae metadatos de videos de YouTube incluyendo fecha de subida, thumbnails y información técnica.",
-      "url": "https://citizenevidence.amnestyusa.org",
-      "category": "redes-sociales",
-      "subcategory": "plataformas-principales",
-      "tags": ["youtube", "metadatos", "videos", "verificación"],
-      "type": "web",
-      "indicators": ["F", "A"],
-      "region": "internacional",
-      "language": "en",
-      "rating": 4.6,
-      "usage_count": 6540,
-      "last_updated": "2025-06-19",
-      "status": "active",
-      "requires_registration": false,
-      "is_free": true,
-      "difficulty_level": "intermediate",
-      "verification_date": "2025-06-19",
-      "verified_by": "perplexity"
-    },
-    {
       "id": "reddit-search-tools",
       "name": "Reddit Search Tools",
       "description": "Conjunto de herramientas para búsqueda avanzada en Reddit.",
@@ -767,9 +1007,17 @@
       "url": "https://www.reddit.com/search",
       "category": "redes-sociales",
       "subcategory": "plataformas-emergentes",
-      "tags": ["reddit", "posts", "comentarios", "subreddits"],
+      "tags": [
+        "reddit",
+        "posts",
+        "comentarios",
+        "subreddits"
+      ],
       "type": "web",
-      "indicators": ["P", "D"],
+      "indicators": [
+        "P",
+        "D"
+      ],
       "region": "internacional",
       "language": "es",
       "rating": 4.1,
@@ -790,12 +1038,20 @@
       "url": "https://map.snapchat.com",
       "category": "redes-sociales",
       "subcategory": "plataformas-emergentes",
-      "tags": ["snapchat", "mapa", "ubicación", "geolocalización"],
+      "tags": [
+        "snapchat",
+        "mapa",
+        "ubicación",
+        "geolocalización"
+      ],
       "type": "web",
-      "indicators": ["P", "F"],
+      "indicators": [
+        "P",
+        "F"
+      ],
       "region": "internacional",
       "language": "es",
-      "rating": 4.0,
+      "rating": 4,
       "usage_count": 5670,
       "last_updated": "2025-06-19",
       "status": "active",
@@ -813,9 +1069,17 @@
       "url": "https://www.pinterest.com/search",
       "category": "redes-sociales",
       "subcategory": "plataformas-emergentes",
-      "tags": ["pinterest", "visual", "pins", "tableros"],
+      "tags": [
+        "pinterest",
+        "visual",
+        "pins",
+        "tableros"
+      ],
       "type": "web",
-      "indicators": ["P", "F"],
+      "indicators": [
+        "P",
+        "F"
+      ],
       "region": "internacional",
       "language": "es",
       "rating": 3.9,
@@ -836,9 +1100,17 @@
       "url": "https://www.tumblr.com/search",
       "category": "redes-sociales",
       "subcategory": "plataformas-emergentes",
-      "tags": ["tumblr", "blogs", "subculturas", "nicho"],
+      "tags": [
+        "tumblr",
+        "blogs",
+        "subculturas",
+        "nicho"
+      ],
       "type": "web",
-      "indicators": ["P", "D"],
+      "indicators": [
+        "P",
+        "D"
+      ],
       "region": "internacional",
       "language": "es",
       "rating": 3.8,
@@ -859,9 +1131,17 @@
       "url": "https://www.facebook.com/public?query=email@gmail.com&nomc=0",
       "category": "redes-sociales",
       "subcategory": "plataformas-principales",
-      "tags": ["facebook", "email", "búsqueda", "perfiles"],
+      "tags": [
+        "facebook",
+        "email",
+        "búsqueda",
+        "perfiles"
+      ],
       "type": "web",
-      "indicators": ["P", "R"],
+      "indicators": [
+        "P",
+        "R"
+      ],
       "region": "internacional",
       "language": "es",
       "rating": 4.2,
@@ -880,9 +1160,17 @@
       "url": "https://lookup-id.com/",
       "category": "redes-sociales",
       "subcategory": "plataformas-principales",
-      "tags": ["facebook", "id", "conversión", "técnico"],
+      "tags": [
+        "facebook",
+        "id",
+        "conversión",
+        "técnico"
+      ],
       "type": "web",
-      "indicators": ["P", "A"],
+      "indicators": [
+        "P",
+        "A"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.3,
@@ -901,9 +1189,17 @@
       "url": "https://inflact.com/profiles/instagram-viewer/",
       "category": "redes-sociales",
       "subcategory": "plataformas-principales",
-      "tags": ["instagram", "anónimo", "viewer", "discreto"],
+      "tags": [
+        "instagram",
+        "anónimo",
+        "viewer",
+        "discreto"
+      ],
       "type": "web",
-      "indicators": ["P", "F"],
+      "indicators": [
+        "P",
+        "F"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.4,
@@ -922,9 +1218,17 @@
       "url": "https://github.com/Datalux/Osintgram",
       "category": "redes-sociales",
       "subcategory": "herramientas-analisis",
-      "tags": ["instagram", "terminal", "osint", "automatización"],
+      "tags": [
+        "instagram",
+        "terminal",
+        "osint",
+        "automatización"
+      ],
       "type": "cli",
-      "indicators": ["P", "A"],
+      "indicators": [
+        "P",
+        "A"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.6,
@@ -943,9 +1247,17 @@
       "url": "http://backtweets.com/",
       "category": "redes-sociales",
       "subcategory": "herramientas-analisis",
-      "tags": ["twitter", "enlaces", "urls", "menciones"],
+      "tags": [
+        "twitter",
+        "enlaces",
+        "urls",
+        "menciones"
+      ],
       "type": "web",
-      "indicators": ["P", "D"],
+      "indicators": [
+        "P",
+        "D"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.1,
@@ -964,9 +1276,17 @@
       "url": "https://followerwonk.com/",
       "category": "redes-sociales",
       "subcategory": "herramientas-analisis",
-      "tags": ["twitter", "seguidores", "análisis", "influencers"],
+      "tags": [
+        "twitter",
+        "seguidores",
+        "análisis",
+        "influencers"
+      ],
       "type": "web",
-      "indicators": ["P", "A"],
+      "indicators": [
+        "P",
+        "A"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.3,
@@ -985,12 +1305,20 @@
       "url": "https://tweeterid.com/",
       "category": "redes-sociales",
       "subcategory": "herramientas-analisis",
-      "tags": ["twitter", "id", "conversión", "api"],
+      "tags": [
+        "twitter",
+        "id",
+        "conversión",
+        "api"
+      ],
       "type": "web",
-      "indicators": ["P", "A"],
+      "indicators": [
+        "P",
+        "A"
+      ],
       "region": "internacional",
       "language": "en",
-      "rating": 4.0,
+      "rating": 4,
       "usage_count": 2890,
       "last_updated": "2025-06-19",
       "status": "active",
@@ -1006,9 +1334,17 @@
       "url": "http://www.twitonomy.com/",
       "category": "redes-sociales",
       "subcategory": "herramientas-analisis",
-      "tags": ["twitter", "análisis", "estadísticas", "comportamiento"],
+      "tags": [
+        "twitter",
+        "análisis",
+        "estadísticas",
+        "comportamiento"
+      ],
       "type": "web",
-      "indicators": ["P", "A"],
+      "indicators": [
+        "P",
+        "A"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.2,
@@ -1027,9 +1363,17 @@
       "url": "https://foller.me/",
       "category": "redes-sociales",
       "subcategory": "herramientas-analisis",
-      "tags": ["twitter", "analytics", "métricas", "seguidores"],
+      "tags": [
+        "twitter",
+        "analytics",
+        "métricas",
+        "seguidores"
+      ],
       "type": "web",
-      "indicators": ["P", "A"],
+      "indicators": [
+        "P",
+        "A"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.1,
@@ -1048,9 +1392,17 @@
       "url": "http://socialblade.com/",
       "category": "redes-sociales",
       "subcategory": "herramientas-analisis",
-      "tags": ["estadísticas", "múltiples plataformas", "crecimiento", "youtube"],
+      "tags": [
+        "estadísticas",
+        "múltiples plataformas",
+        "crecimiento",
+        "youtube"
+      ],
       "type": "web",
-      "indicators": ["P", "A"],
+      "indicators": [
+        "P",
+        "A"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.5,
@@ -1069,9 +1421,17 @@
       "url": "https://redditmetis.com/",
       "category": "redes-sociales",
       "subcategory": "plataformas-emergentes",
-      "tags": ["reddit", "análisis", "usuarios", "comportamiento"],
+      "tags": [
+        "reddit",
+        "análisis",
+        "usuarios",
+        "comportamiento"
+      ],
       "type": "web",
-      "indicators": ["P", "A"],
+      "indicators": [
+        "P",
+        "A"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.3,
@@ -1090,9 +1450,17 @@
       "url": "https://github.com/vysec/LinkedInt",
       "category": "redes-sociales",
       "subcategory": "herramientas-analisis",
-      "tags": ["linkedin", "reconocimiento", "empleados", "corporativo"],
+      "tags": [
+        "linkedin",
+        "reconocimiento",
+        "empleados",
+        "corporativo"
+      ],
       "type": "cli",
-      "indicators": ["P", "R"],
+      "indicators": [
+        "P",
+        "R"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.4,
@@ -1111,9 +1479,17 @@
       "url": "https://urlebird.com/",
       "category": "redes-sociales",
       "subcategory": "plataformas-emergentes",
-      "tags": ["tiktok", "anónimo", "viewer", "videos"],
+      "tags": [
+        "tiktok",
+        "anónimo",
+        "viewer",
+        "videos"
+      ],
       "type": "web",
-      "indicators": ["P", "F"],
+      "indicators": [
+        "P",
+        "F"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.2,
@@ -1132,9 +1508,17 @@
       "url": "https://vk.com/",
       "category": "redes-sociales",
       "subcategory": "plataformas-emergentes",
-      "tags": ["rusia", "europa del este", "vkontakte", "regional"],
+      "tags": [
+        "rusia",
+        "europa del este",
+        "vkontakte",
+        "regional"
+      ],
       "type": "web",
-      "indicators": ["P", "R"],
+      "indicators": [
+        "P",
+        "R"
+      ],
       "region": "europa del este",
       "language": "ru",
       "rating": 4.1,
@@ -1153,9 +1537,17 @@
       "url": "http://ok.ru/",
       "category": "redes-sociales",
       "subcategory": "plataformas-emergentes",
-      "tags": ["rusia", "compañeros", "escuela", "universidad"],
+      "tags": [
+        "rusia",
+        "compañeros",
+        "escuela",
+        "universidad"
+      ],
       "type": "web",
-      "indicators": ["P", "R"],
+      "indicators": [
+        "P",
+        "R"
+      ],
       "region": "europa del este",
       "language": "ru",
       "rating": 3.9,

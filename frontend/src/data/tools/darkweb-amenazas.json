@@ -9,9 +9,16 @@
       "url": "https://ahmia.fi",
       "category": "darkweb-amenazas",
       "subcategory": "motores-darkweb",
-      "tags": ["tor", "onion", "dark web", "seguro"],
+      "tags": [
+        "tor",
+        "onion",
+        "dark web",
+        "seguro"
+      ],
       "type": "web",
-      "indicators": ["D"],
+      "indicators": [
+        "D"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.3,
@@ -30,9 +37,17 @@
       "url": "https://duckduckgogg42ts72.onion",
       "category": "darkweb-amenazas",
       "subcategory": "motores-darkweb",
-      "tags": ["duckduckgo", "anónimo", "tor", "privacidad"],
+      "tags": [
+        "duckduckgo",
+        "anónimo",
+        "tor",
+        "privacidad"
+      ],
       "type": "web",
-      "indicators": ["D", "P"],
+      "indicators": [
+        "D",
+        "P"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.5,
@@ -51,9 +66,16 @@
       "url": "http://xmh57jrzrnw6insl.onion",
       "category": "darkweb-amenazas",
       "subcategory": "motores-darkweb",
-      "tags": ["torch", "antiguo", "amplio índice", "onion"],
+      "tags": [
+        "torch",
+        "antiguo",
+        "amplio índice",
+        "onion"
+      ],
       "type": "web",
-      "indicators": ["D"],
+      "indicators": [
+        "D"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.1,
@@ -72,9 +94,17 @@
       "url": "https://www.virustotal.com",
       "category": "darkweb-amenazas",
       "subcategory": "threat-intelligence",
-      "tags": ["malware", "antivirus", "análisis", "seguridad"],
+      "tags": [
+        "malware",
+        "antivirus",
+        "análisis",
+        "seguridad"
+      ],
       "type": "web",
-      "indicators": ["F", "A"],
+      "indicators": [
+        "F",
+        "A"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.7,
@@ -93,9 +123,17 @@
       "url": "https://www.hybrid-analysis.com",
       "category": "darkweb-amenazas",
       "subcategory": "threat-intelligence",
-      "tags": ["sandbox", "malware", "análisis", "comportamiento"],
+      "tags": [
+        "sandbox",
+        "malware",
+        "análisis",
+        "comportamiento"
+      ],
       "type": "web",
-      "indicators": ["F", "A"],
+      "indicators": [
+        "F",
+        "A"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.6,
@@ -114,9 +152,17 @@
       "url": "https://any.run",
       "category": "darkweb-amenazas",
       "subcategory": "threat-intelligence",
-      "tags": ["sandbox", "interactivo", "tiempo real", "control"],
+      "tags": [
+        "sandbox",
+        "interactivo",
+        "tiempo real",
+        "control"
+      ],
       "type": "web",
-      "indicators": ["F", "A"],
+      "indicators": [
+        "F",
+        "A"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.5,
@@ -135,9 +181,17 @@
       "url": "https://www.urlvoid.com",
       "category": "darkweb-amenazas",
       "subcategory": "threat-intelligence",
-      "tags": ["urls", "reputación", "listas negras", "maliciosos"],
+      "tags": [
+        "urls",
+        "reputación",
+        "listas negras",
+        "maliciosos"
+      ],
       "type": "web",
-      "indicators": ["A", "R"],
+      "indicators": [
+        "A",
+        "R"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.4,
@@ -156,9 +210,17 @@
       "url": "https://github.com/DedSecInside/TorBot",
       "category": "darkweb-amenazas",
       "subcategory": "motores-darkweb",
-      "tags": ["bot", "crawling", "automatizado", "github"],
+      "tags": [
+        "bot",
+        "crawling",
+        "automatizado",
+        "github"
+      ],
       "type": "cli",
-      "indicators": ["D", "A"],
+      "indicators": [
+        "D",
+        "A"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.2,
@@ -177,9 +239,17 @@
       "url": "https://github.com/s-rah/onionscan",
       "category": "darkweb-amenazas",
       "subcategory": "motores-darkweb",
-      "tags": ["escaneo", "vulnerabilidades", "filtraciones", "análisis"],
+      "tags": [
+        "escaneo",
+        "vulnerabilidades",
+        "filtraciones",
+        "análisis"
+      ],
       "type": "cli",
-      "indicators": ["A", "D"],
+      "indicators": [
+        "A",
+        "D"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.3,
@@ -198,9 +268,17 @@
       "url": "https://www.recordedfuture.com",
       "category": "darkweb-amenazas",
       "subcategory": "breach-monitoring",
-      "tags": ["monitoreo", "comercial", "credenciales", "empresas"],
+      "tags": [
+        "monitoreo",
+        "comercial",
+        "credenciales",
+        "empresas"
+      ],
       "type": "web",
-      "indicators": ["R", "A"],
+      "indicators": [
+        "R",
+        "A"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.6,
@@ -219,9 +297,17 @@
       "url": "https://psbdmp.ws",
       "category": "darkweb-amenazas",
       "subcategory": "breach-monitoring",
-      "tags": ["pastebin", "filtraciones", "credenciales", "monitoreo"],
+      "tags": [
+        "pastebin",
+        "filtraciones",
+        "credenciales",
+        "monitoreo"
+      ],
       "type": "web",
-      "indicators": ["D", "R"],
+      "indicators": [
+        "D",
+        "R"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.4,
@@ -240,9 +326,16 @@
       "url": "https://honeyscore.shodan.io",
       "category": "darkweb-amenazas",
       "subcategory": "threat-intelligence",
-      "tags": ["honeypot", "ataques", "automatizados", "detección"],
+      "tags": [
+        "honeypot",
+        "ataques",
+        "automatizados",
+        "detección"
+      ],
       "type": "web",
-      "indicators": ["A"],
+      "indicators": [
+        "A"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.5,
@@ -261,9 +354,17 @@
       "url": "https://www.threatcrowd.org",
       "category": "darkweb-amenazas",
       "subcategory": "threat-intelligence",
-      "tags": ["iocs", "amenazas", "indicadores", "conexiones"],
+      "tags": [
+        "iocs",
+        "amenazas",
+        "indicadores",
+        "conexiones"
+      ],
       "type": "web",
-      "indicators": ["A", "D"],
+      "indicators": [
+        "A",
+        "D"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.3,
@@ -282,9 +383,17 @@
       "url": "https://otx.alienvault.com",
       "category": "darkweb-amenazas",
       "subcategory": "threat-intelligence",
-      "tags": ["colaborativa", "comunidad", "indicadores", "análisis"],
+      "tags": [
+        "colaborativa",
+        "comunidad",
+        "indicadores",
+        "análisis"
+      ],
       "type": "web",
-      "indicators": ["A", "R"],
+      "indicators": [
+        "A",
+        "R"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.6,
@@ -303,9 +412,17 @@
       "url": "https://www.threatminer.org/",
       "category": "darkweb-amenazas",
       "subcategory": "threat-intelligence",
-      "tags": ["threat intelligence", "iocs", "malware", "análisis"],
+      "tags": [
+        "threat intelligence",
+        "iocs",
+        "malware",
+        "análisis"
+      ],
       "type": "web",
-      "indicators": ["A", "D"],
+      "indicators": [
+        "A",
+        "D"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.5,
@@ -324,9 +441,17 @@
       "url": "https://exchange.xforce.ibmcloud.com/",
       "category": "darkweb-amenazas",
       "subcategory": "threat-intelligence",
-      "tags": ["ibm", "colaborativa", "reportes", "enterprise"],
+      "tags": [
+        "ibm",
+        "colaborativa",
+        "reportes",
+        "enterprise"
+      ],
       "type": "web",
-      "indicators": ["A", "R"],
+      "indicators": [
+        "A",
+        "R"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.7,
@@ -345,9 +470,17 @@
       "url": "https://www.misp-project.org/",
       "category": "darkweb-amenazas",
       "subcategory": "threat-intelligence",
-      "tags": ["open source", "sharing", "correlación", "iocs"],
+      "tags": [
+        "open source",
+        "sharing",
+        "correlación",
+        "iocs"
+      ],
       "type": "tool",
-      "indicators": ["A", "R"],
+      "indicators": [
+        "A",
+        "R"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.6,
@@ -357,6 +490,122 @@
       "requires_registration": false,
       "is_free": true,
       "difficulty_level": "advanced"
+    },
+    {
+      "id": "threatpipes",
+      "name": "ThreatPipes (T)",
+      "description": "Plataforma de análisis de amenazas y correlación de datos de inteligencia.",
+      "utility": "Correlaciona y analiza datos de amenazas de múltiples fuentes para generar inteligencia accionable.",
+      "url": "https://www.threatpipes.com",
+      "category": "darkweb-amenazas",
+      "subcategory": "threat-intelligence",
+      "tags": [
+        "amenazas",
+        "correlación",
+        "inteligencia",
+        "análisis"
+      ],
+      "type": "tool",
+      "indicators": [
+        "T",
+        "A"
+      ],
+      "region": "internacional",
+      "language": "en",
+      "rating": 4.4,
+      "usage_count": 2890,
+      "last_updated": "2025-06-19",
+      "status": "active",
+      "requires_registration": true,
+      "is_free": false,
+      "difficulty_level": "advanced"
+    },
+    {
+      "id": "omnibus",
+      "name": "Omnibus (T)",
+      "description": "Framework para análisis de archivos y correlación de indicadores de compromiso.",
+      "utility": "Analiza archivos maliciosos y correlaciona indicadores de compromiso para investigaciones de seguridad.",
+      "url": "https://github.com/InQuest/omnibus",
+      "category": "darkweb-amenazas",
+      "subcategory": "threat-intelligence",
+      "tags": [
+        "malware",
+        "ioc",
+        "análisis",
+        "seguridad"
+      ],
+      "type": "tool",
+      "indicators": [
+        "T",
+        "A"
+      ],
+      "region": "internacional",
+      "language": "en",
+      "rating": 4.2,
+      "usage_count": 1890,
+      "last_updated": "2025-06-19",
+      "status": "active",
+      "requires_registration": false,
+      "is_free": true,
+      "difficulty_level": "advanced"
+    },
+    {
+      "id": "low-hanging-fruit",
+      "name": "Low Hanging Fruit (T)",
+      "description": "Herramienta para identificar vulnerabilidades y configuraciones débiles.",
+      "utility": "Identifica configuraciones débiles y vulnerabilidades comunes en sistemas y aplicaciones web.",
+      "url": "https://github.com/blindfuzzy/LHF",
+      "category": "darkweb-amenazas",
+      "subcategory": "threat-intelligence",
+      "tags": [
+        "vulnerabilidades",
+        "configuraciones",
+        "seguridad",
+        "pentesting"
+      ],
+      "type": "tool",
+      "indicators": [
+        "T",
+        "S"
+      ],
+      "region": "internacional",
+      "language": "en",
+      "rating": 4.1,
+      "usage_count": 2340,
+      "last_updated": "2025-06-19",
+      "status": "active",
+      "requires_registration": false,
+      "is_free": true,
+      "difficulty_level": "advanced"
+    },
+    {
+      "id": "nikto-online",
+      "name": "Online Nikto scanner",
+      "description": "Escáner de vulnerabilidades web basado en Nikto disponible online.",
+      "utility": "Escanea sitios web en busca de vulnerabilidades comunes y configuraciones inseguras desde el navegador.",
+      "url": "https://nikto.online/",
+      "category": "darkweb-amenazas",
+      "subcategory": "threat-intelligence",
+      "tags": [
+        "vulnerabilidades",
+        "escaneo",
+        "web",
+        "seguridad"
+      ],
+      "type": "web",
+      "indicators": [
+        "D",
+        "S"
+      ],
+      "region": "internacional",
+      "language": "en",
+      "rating": 4.2,
+      "usage_count": 4560,
+      "last_updated": "2025-06-19",
+      "status": "active",
+      "requires_registration": false,
+      "is_free": true,
+      "difficulty_level": "intermediate"
     }
   ]
 }

@@ -9,9 +9,16 @@
       "url": "https://tineye.com",
       "category": "imagenes-videos",
       "subcategory": "busqueda-inversa",
-      "tags": ["imágenes", "búsqueda inversa", "verificación"],
+      "tags": [
+        "imágenes",
+        "búsqueda inversa",
+        "verificación"
+      ],
       "type": "web",
-      "indicators": ["D", "F"],
+      "indicators": [
+        "D",
+        "F"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.5,
@@ -30,9 +37,17 @@
       "url": "https://images.google.com",
       "category": "imagenes-videos",
       "subcategory": "busqueda-inversa",
-      "tags": ["google", "imágenes", "búsqueda inversa", "similar"],
+      "tags": [
+        "google",
+        "imágenes",
+        "búsqueda inversa",
+        "similar"
+      ],
       "type": "web",
-      "indicators": ["D", "F"],
+      "indicators": [
+        "D",
+        "F"
+      ],
       "region": "internacional",
       "language": "es",
       "rating": 4.7,
@@ -51,9 +66,17 @@
       "url": "https://yandex.com/images",
       "category": "imagenes-videos",
       "subcategory": "busqueda-inversa",
-      "tags": ["yandex", "rostros", "personas", "precisión"],
+      "tags": [
+        "yandex",
+        "rostros",
+        "personas",
+        "precisión"
+      ],
       "type": "web",
-      "indicators": ["D", "F"],
+      "indicators": [
+        "D",
+        "F"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.6,
@@ -72,9 +95,17 @@
       "url": "https://www.bing.com/visualsearch",
       "category": "imagenes-videos",
       "subcategory": "busqueda-inversa",
-      "tags": ["bing", "visual", "objetos", "lugares"],
+      "tags": [
+        "bing",
+        "visual",
+        "objetos",
+        "lugares"
+      ],
       "type": "web",
-      "indicators": ["D", "F"],
+      "indicators": [
+        "D",
+        "F"
+      ],
       "region": "internacional",
       "language": "es",
       "rating": 4.3,
@@ -93,9 +124,17 @@
       "url": "https://pimeyes.com",
       "category": "imagenes-videos",
       "subcategory": "reconocimiento-facial",
-      "tags": ["reconocimiento facial", "rostros", "personas", "privacidad"],
+      "tags": [
+        "reconocimiento facial",
+        "rostros",
+        "personas",
+        "privacidad"
+      ],
       "type": "web",
-      "indicators": ["P", "F"],
+      "indicators": [
+        "P",
+        "F"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.2,
@@ -114,9 +153,16 @@
       "url": "https://findclone.ru",
       "category": "imagenes-videos",
       "subcategory": "reconocimiento-facial",
-      "tags": ["rostros similares", "redes sociales", "público"],
+      "tags": [
+        "rostros similares",
+        "redes sociales",
+        "público"
+      ],
       "type": "web",
-      "indicators": ["P", "F"],
+      "indicators": [
+        "P",
+        "F"
+      ],
       "region": "rusia",
       "language": "ru",
       "rating": 3.9,
@@ -135,9 +181,17 @@
       "url": "https://exiftool.org",
       "category": "imagenes-videos",
       "subcategory": "analisis-metadatos",
-      "tags": ["exif", "metadatos", "gps", "línea de comandos"],
+      "tags": [
+        "exif",
+        "metadatos",
+        "gps",
+        "línea de comandos"
+      ],
       "type": "cli",
-      "indicators": ["F", "A"],
+      "indicators": [
+        "F",
+        "A"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.8,
@@ -156,9 +210,16 @@
       "url": "http://exif.regex.info/exif.cgi",
       "category": "imagenes-videos",
       "subcategory": "analisis-metadatos",
-      "tags": ["exif", "online", "metadatos", "web"],
+      "tags": [
+        "exif",
+        "online",
+        "metadatos",
+        "web"
+      ],
       "type": "web",
-      "indicators": ["F"],
+      "indicators": [
+        "F"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.4,
@@ -177,9 +238,17 @@
       "url": "http://fotoforensics.com",
       "category": "imagenes-videos",
       "subcategory": "analisis-metadatos",
-      "tags": ["forense", "manipulación", "ela", "autenticidad"],
+      "tags": [
+        "forense",
+        "manipulación",
+        "ela",
+        "autenticidad"
+      ],
       "type": "web",
-      "indicators": ["F", "A"],
+      "indicators": [
+        "F",
+        "A"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.5,
@@ -198,9 +267,17 @@
       "url": "https://www.invid-project.eu/tools-and-services/invid-verification-plugin",
       "category": "imagenes-videos",
       "subcategory": "analisis-metadatos",
-      "tags": ["verificación", "periodismo", "plugin", "manipulaciones"],
+      "tags": [
+        "verificación",
+        "periodismo",
+        "plugin",
+        "manipulaciones"
+      ],
       "type": "extension",
-      "indicators": ["F", "A"],
+      "indicators": [
+        "F",
+        "A"
+      ],
       "region": "europa",
       "language": "en",
       "rating": 4.6,
@@ -219,9 +296,16 @@
       "url": "https://reveye.it",
       "category": "imagenes-videos",
       "subcategory": "busqueda-inversa",
-      "tags": ["extensión", "múltiples motores", "clic derecho", "rápido"],
+      "tags": [
+        "extensión",
+        "múltiples motores",
+        "clic derecho",
+        "rápido"
+      ],
       "type": "extension",
-      "indicators": ["F"],
+      "indicators": [
+        "F"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.4,
@@ -240,9 +324,16 @@
       "url": "http://karmadecay.com",
       "category": "imagenes-videos",
       "subcategory": "busqueda-inversa",
-      "tags": ["reddit", "reposts", "duplicados", "karma"],
+      "tags": [
+        "reddit",
+        "reposts",
+        "duplicados",
+        "karma"
+      ],
       "type": "web",
-      "indicators": ["F"],
+      "indicators": [
+        "F"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.1,
@@ -261,9 +352,16 @@
       "url": "https://citizenevidence.amnestyusa.org",
       "category": "imagenes-videos",
       "subcategory": "analisis-metadatos",
-      "tags": ["youtube", "amnesty", "metadatos", "fecha"],
+      "tags": [
+        "youtube",
+        "amnesty",
+        "metadatos",
+        "fecha"
+      ],
       "type": "web",
-      "indicators": ["F"],
+      "indicators": [
+        "F"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.7,
@@ -282,9 +380,16 @@
       "url": "https://image.baidu.com",
       "category": "imagenes-videos",
       "subcategory": "busqueda-inversa",
-      "tags": ["baidu", "china", "asiático", "contenido regional"],
+      "tags": [
+        "baidu",
+        "china",
+        "asiático",
+        "contenido regional"
+      ],
       "type": "web",
-      "indicators": ["F"],
+      "indicators": [
+        "F"
+      ],
       "region": "china",
       "language": "zh",
       "rating": 4.2,
@@ -303,9 +408,17 @@
       "url": "https://lenso.ai",
       "category": "imagenes-videos",
       "subcategory": "busqueda-inversa",
-      "tags": ["ia", "filtros avanzados", "personas", "lugares"],
+      "tags": [
+        "ia",
+        "filtros avanzados",
+        "personas",
+        "lugares"
+      ],
       "type": "web",
-      "indicators": ["F", "A"],
+      "indicators": [
+        "F",
+        "A"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.5,
@@ -326,9 +439,17 @@
       "url": "https://lens.google.com",
       "category": "imagenes-videos",
       "subcategory": "busqueda-inversa",
-      "tags": ["google", "ia", "productos", "lugares"],
+      "tags": [
+        "google",
+        "ia",
+        "productos",
+        "lugares"
+      ],
       "type": "web",
-      "indicators": ["F", "D"],
+      "indicators": [
+        "F",
+        "D"
+      ],
       "region": "internacional",
       "language": "es",
       "rating": 4.7,
@@ -349,9 +470,16 @@
       "url": "https://www.reverseimagesearch.com",
       "category": "imagenes-videos",
       "subcategory": "busqueda-inversa",
-      "tags": ["diseñador", "casual", "simple", "efectivo"],
+      "tags": [
+        "diseñador",
+        "casual",
+        "simple",
+        "efectivo"
+      ],
       "type": "web",
-      "indicators": ["F"],
+      "indicators": [
+        "F"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.2,
@@ -372,9 +500,16 @@
       "url": "https://reversely.ai",
       "category": "imagenes-videos",
       "subcategory": "busqueda-inversa",
-      "tags": ["similares", "ia", "gratuito", "premium"],
+      "tags": [
+        "similares",
+        "ia",
+        "gratuito",
+        "premium"
+      ],
       "type": "web",
-      "indicators": ["F"],
+      "indicators": [
+        "F"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.1,
@@ -395,9 +530,16 @@
       "url": "https://copyseeker.net",
       "category": "imagenes-videos",
       "subcategory": "busqueda-inversa",
-      "tags": ["coincidencias exactas", "robadas", "no autorizado", "detección"],
+      "tags": [
+        "coincidencias exactas",
+        "robadas",
+        "no autorizado",
+        "detección"
+      ],
       "type": "web",
-      "indicators": ["F"],
+      "indicators": [
+        "F"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.3,
@@ -418,12 +560,20 @@
       "url": "https://profacefinder.com",
       "category": "imagenes-videos",
       "subcategory": "reconocimiento-facial",
-      "tags": ["verificación", "identidades", "catfish", "perfiles falsos"],
+      "tags": [
+        "verificación",
+        "identidades",
+        "catfish",
+        "perfiles falsos"
+      ],
       "type": "web",
-      "indicators": ["P", "F"],
+      "indicators": [
+        "P",
+        "F"
+      ],
       "region": "internacional",
       "language": "en",
-      "rating": 4.0,
+      "rating": 4,
       "usage_count": 2340,
       "last_updated": "2025-06-19",
       "status": "active",
@@ -441,9 +591,16 @@
       "url": "https://saucenao.com",
       "category": "imagenes-videos",
       "subcategory": "busqueda-inversa",
-      "tags": ["anime", "manga", "arte digital", "otaku"],
+      "tags": [
+        "anime",
+        "manga",
+        "arte digital",
+        "otaku"
+      ],
       "type": "web",
-      "indicators": ["F"],
+      "indicators": [
+        "F"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.4,
@@ -464,9 +621,16 @@
       "url": "https://iqdb.org",
       "category": "imagenes-videos",
       "subcategory": "busqueda-inversa",
-      "tags": ["multi-servicio", "bases de datos", "anime", "simultáneo"],
+      "tags": [
+        "multi-servicio",
+        "bases de datos",
+        "anime",
+        "simultáneo"
+      ],
       "type": "web",
-      "indicators": ["F"],
+      "indicators": [
+        "F"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.2,
@@ -487,9 +651,16 @@
       "url": "https://ascii2d.net",
       "category": "imagenes-videos",
       "subcategory": "busqueda-inversa",
-      "tags": ["japonés", "ilustraciones", "arte digital", "precisión"],
+      "tags": [
+        "japonés",
+        "ilustraciones",
+        "arte digital",
+        "precisión"
+      ],
       "type": "web",
-      "indicators": ["F"],
+      "indicators": [
+        "F"
+      ],
       "region": "japón",
       "language": "ja",
       "rating": 4.1,
@@ -510,9 +681,17 @@
       "url": "https://sensity.ai",
       "category": "imagenes-videos",
       "subcategory": "deteccion-deepfakes",
-      "tags": ["deepfakes", "ia", "manipulaciones", "precisión"],
+      "tags": [
+        "deepfakes",
+        "ia",
+        "manipulaciones",
+        "precisión"
+      ],
       "type": "web",
-      "indicators": ["F", "A"],
+      "indicators": [
+        "F",
+        "A"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.6,
@@ -533,9 +712,17 @@
       "url": "https://www.microsoft.com/en-us/ai/responsible-ai",
       "category": "imagenes-videos",
       "subcategory": "deteccion-deepfakes",
-      "tags": ["microsoft", "deepfakes", "metadatos", "ia"],
+      "tags": [
+        "microsoft",
+        "deepfakes",
+        "metadatos",
+        "ia"
+      ],
       "type": "web",
-      "indicators": ["F", "A"],
+      "indicators": [
+        "F",
+        "A"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.5,
@@ -556,9 +743,17 @@
       "url": "https://ffmpeg.org",
       "category": "imagenes-videos",
       "subcategory": "analisis-metadatos",
-      "tags": ["multimedia", "metadatos", "timestamps", "geolocalización"],
+      "tags": [
+        "multimedia",
+        "metadatos",
+        "timestamps",
+        "geolocalización"
+      ],
       "type": "cli",
-      "indicators": ["F", "A"],
+      "indicators": [
+        "F",
+        "A"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.8,
@@ -579,9 +774,16 @@
       "url": "https://www.videolan.org/vlc",
       "category": "imagenes-videos",
       "subcategory": "analisis-metadatos",
-      "tags": ["reproductor", "metadatos", "audio", "forense"],
+      "tags": [
+        "reproductor",
+        "metadatos",
+        "audio",
+        "forense"
+      ],
       "type": "desktop",
-      "indicators": ["F"],
+      "indicators": [
+        "F"
+      ],
       "region": "internacional",
       "language": "es",
       "rating": 4.7,
@@ -602,9 +804,17 @@
       "url": "https://mediaarea.net/MediaInfo",
       "category": "imagenes-videos",
       "subcategory": "analisis-metadatos",
-      "tags": ["técnico", "códecs", "bitrates", "detallado"],
+      "tags": [
+        "técnico",
+        "códecs",
+        "bitrates",
+        "detallado"
+      ],
       "type": "desktop",
-      "indicators": ["F", "A"],
+      "indicators": [
+        "F",
+        "A"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.6,
@@ -625,9 +835,17 @@
       "url": "https://29a.ch/photo-forensics",
       "category": "imagenes-videos",
       "subcategory": "analisis-metadatos",
-      "tags": ["forense", "ela", "clonado", "ruido"],
+      "tags": [
+        "forense",
+        "ela",
+        "clonado",
+        "ruido"
+      ],
       "type": "web",
-      "indicators": ["F", "A"],
+      "indicators": [
+        "F",
+        "A"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.5,
@@ -648,9 +866,17 @@
       "url": "https://www.getghiro.org",
       "category": "imagenes-videos",
       "subcategory": "analisis-metadatos",
-      "tags": ["código abierto", "forense digital", "objetos", "personalizable"],
+      "tags": [
+        "código abierto",
+        "forense digital",
+        "objetos",
+        "personalizable"
+      ],
       "type": "desktop",
-      "indicators": ["F", "A"],
+      "indicators": [
+        "F",
+        "A"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.4,
@@ -671,9 +897,17 @@
       "url": "https://openai.com/research/whisper",
       "category": "imagenes-videos",
       "subcategory": "transcripcion",
-      "tags": ["transcripción", "openai", "audio", "texto"],
+      "tags": [
+        "transcripción",
+        "openai",
+        "audio",
+        "texto"
+      ],
       "type": "api",
-      "indicators": ["F", "A"],
+      "indicators": [
+        "F",
+        "A"
+      ],
       "region": "internacional",
       "language": "es",
       "rating": 4.7,
@@ -694,9 +928,17 @@
       "url": "https://cloud.google.com/speech-to-text",
       "category": "imagenes-videos",
       "subcategory": "transcripcion",
-      "tags": ["google cloud", "transcripción", "automática", "análisis"],
+      "tags": [
+        "google cloud",
+        "transcripción",
+        "automática",
+        "análisis"
+      ],
       "type": "api",
-      "indicators": ["F", "A"],
+      "indicators": [
+        "F",
+        "A"
+      ],
       "region": "internacional",
       "language": "es",
       "rating": 4.6,
@@ -717,9 +959,16 @@
       "url": "https://www.gettyimages.com",
       "category": "imagenes-videos",
       "subcategory": "busqueda-inversa",
-      "tags": ["stock", "profesional", "comercial", "búsqueda"],
+      "tags": [
+        "stock",
+        "profesional",
+        "comercial",
+        "búsqueda"
+      ],
       "type": "web",
-      "indicators": ["F"],
+      "indicators": [
+        "F"
+      ],
       "region": "internacional",
       "language": "es",
       "rating": 4.3,
@@ -740,9 +989,17 @@
       "url": "https://ampedsoftware.com/five",
       "category": "imagenes-videos",
       "subcategory": "analisis-metadatos",
-      "tags": ["profesional", "forense avanzado", "mejora", "autenticación"],
+      "tags": [
+        "profesional",
+        "forense avanzado",
+        "mejora",
+        "autenticación"
+      ],
       "type": "desktop",
-      "indicators": ["F", "A"],
+      "indicators": [
+        "F",
+        "A"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.8,
@@ -763,9 +1020,17 @@
       "url": "https://photosherlock.com",
       "category": "imagenes-videos",
       "subcategory": "analisis-metadatos",
-      "tags": ["manipulaciones", "detección", "fotografías", "avanzado"],
+      "tags": [
+        "manipulaciones",
+        "detección",
+        "fotografías",
+        "avanzado"
+      ],
       "type": "web",
-      "indicators": ["F", "A"],
+      "indicators": [
+        "F",
+        "A"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.4,
@@ -786,12 +1051,19 @@
       "url": "http://images.yahoo.com/",
       "category": "imagenes-videos",
       "subcategory": "busqueda-inversa",
-      "tags": ["yahoo", "búsqueda", "filtros", "único"],
+      "tags": [
+        "yahoo",
+        "búsqueda",
+        "filtros",
+        "único"
+      ],
       "type": "web",
-      "indicators": ["F"],
+      "indicators": [
+        "F"
+      ],
       "region": "internacional",
       "language": "es",
-      "rating": 4.0,
+      "rating": 4,
       "usage_count": 3450,
       "last_updated": "2025-06-19",
       "status": "active",
@@ -807,9 +1079,16 @@
       "url": "https://www.imageraider.com/",
       "category": "imagenes-videos",
       "subcategory": "busqueda-inversa",
-      "tags": ["múltiples motores", "simultáneo", "origen", "completo"],
+      "tags": [
+        "múltiples motores",
+        "simultáneo",
+        "origen",
+        "completo"
+      ],
       "type": "web",
-      "indicators": ["F"],
+      "indicators": [
+        "F"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.2,
@@ -828,9 +1107,16 @@
       "url": "https://ccsearch.creativecommons.org/",
       "category": "imagenes-videos",
       "subcategory": "busqueda-inversa",
-      "tags": ["creative commons", "licencias", "legal", "libre"],
+      "tags": [
+        "creative commons",
+        "licencias",
+        "legal",
+        "libre"
+      ],
       "type": "web",
-      "indicators": ["F"],
+      "indicators": [
+        "F"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.3,
@@ -849,9 +1135,16 @@
       "url": "http://camfindapp.com/",
       "category": "imagenes-videos",
       "subcategory": "busqueda-inversa",
-      "tags": ["móvil", "cámara", "objetos", "productos"],
+      "tags": [
+        "móvil",
+        "cámara",
+        "objetos",
+        "productos"
+      ],
       "type": "app",
-      "indicators": ["F"],
+      "indicators": [
+        "F"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.1,
@@ -870,9 +1163,17 @@
       "url": "http://image-net.org/",
       "category": "imagenes-videos",
       "subcategory": "busqueda-inversa",
-      "tags": ["académico", "base de datos", "wordnet", "investigación"],
+      "tags": [
+        "académico",
+        "base de datos",
+        "wordnet",
+        "investigación"
+      ],
       "type": "web",
-      "indicators": ["F", "A"],
+      "indicators": [
+        "F",
+        "A"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.4,
@@ -891,9 +1192,17 @@
       "url": "https://picarta.ai/",
       "category": "imagenes-videos",
       "subcategory": "busqueda-inversa",
-      "tags": ["ia", "inteligente", "mejores resultados", "avanzado"],
+      "tags": [
+        "ia",
+        "inteligente",
+        "mejores resultados",
+        "avanzado"
+      ],
       "type": "web",
-      "indicators": ["F", "A"],
+      "indicators": [
+        "F",
+        "A"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.3,
@@ -912,9 +1221,17 @@
       "url": "https://www.flickr.com/map/",
       "category": "imagenes-videos",
       "subcategory": "busqueda-inversa",
-      "tags": ["mapa", "geolocalización", "ubicación", "explorar"],
+      "tags": [
+        "mapa",
+        "geolocalización",
+        "ubicación",
+        "explorar"
+      ],
       "type": "web",
-      "indicators": ["F", "G"],
+      "indicators": [
+        "F",
+        "G"
+      ],
       "region": "internacional",
       "language": "es",
       "rating": 4.2,
@@ -933,9 +1250,16 @@
       "url": "https://exifeditor.io",
       "category": "imagenes-videos",
       "subcategory": "analisis-metadatos",
-      "tags": ["editor", "online", "exif", "visualizar"],
+      "tags": [
+        "editor",
+        "online",
+        "exif",
+        "visualizar"
+      ],
       "type": "web",
-      "indicators": ["F"],
+      "indicators": [
+        "F"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.1,
@@ -954,9 +1278,16 @@
       "url": "http://imgops.com/",
       "category": "imagenes-videos",
       "subcategory": "busqueda-inversa",
-      "tags": ["múltiples herramientas", "operaciones", "plataforma", "completo"],
+      "tags": [
+        "múltiples herramientas",
+        "operaciones",
+        "plataforma",
+        "completo"
+      ],
       "type": "web",
-      "indicators": ["F"],
+      "indicators": [
+        "F"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.4,
@@ -975,9 +1306,16 @@
       "url": "http://metapicz.com/",
       "category": "imagenes-videos",
       "subcategory": "analisis-metadatos",
-      "tags": ["metadatos", "exif", "iptc", "xmp"],
+      "tags": [
+        "metadatos",
+        "exif",
+        "iptc",
+        "xmp"
+      ],
       "type": "web",
-      "indicators": ["F"],
+      "indicators": [
+        "F"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.2,
@@ -996,12 +1334,20 @@
       "url": "http://www.cameratrace.com/trace",
       "category": "imagenes-videos",
       "subcategory": "analisis-metadatos",
-      "tags": ["cámara", "modelo", "patrones", "origen"],
+      "tags": [
+        "cámara",
+        "modelo",
+        "patrones",
+        "origen"
+      ],
       "type": "web",
-      "indicators": ["F", "A"],
+      "indicators": [
+        "F",
+        "A"
+      ],
       "region": "internacional",
       "language": "en",
-      "rating": 4.0,
+      "rating": 4,
       "usage_count": 2340,
       "last_updated": "2025-06-19",
       "status": "active",
@@ -1017,9 +1363,16 @@
       "url": "http://www.free-ocr.com/",
       "category": "imagenes-videos",
       "subcategory": "analisis-metadatos",
-      "tags": ["ocr", "texto", "documentos", "conversión"],
+      "tags": [
+        "ocr",
+        "texto",
+        "documentos",
+        "conversión"
+      ],
       "type": "web",
-      "indicators": ["F"],
+      "indicators": [
+        "F"
+      ],
       "region": "internacional",
       "language": "es",
       "rating": 4.1,
@@ -1038,9 +1391,16 @@
       "url": "https://vimeo.com/search",
       "category": "imagenes-videos",
       "subcategory": "busqueda-inversa",
-      "tags": ["vimeo", "videos", "filtros", "calidad"],
+      "tags": [
+        "vimeo",
+        "videos",
+        "filtros",
+        "calidad"
+      ],
       "type": "web",
-      "indicators": ["F"],
+      "indicators": [
+        "F"
+      ],
       "region": "internacional",
       "language": "es",
       "rating": 4.3,
@@ -1059,9 +1419,16 @@
       "url": "https://archive.org/details/opensource_movies",
       "category": "imagenes-videos",
       "subcategory": "busqueda-inversa",
-      "tags": ["histórico", "documentales", "archivo", "temporal"],
+      "tags": [
+        "histórico",
+        "documentales",
+        "archivo",
+        "temporal"
+      ],
       "type": "web",
-      "indicators": ["F"],
+      "indicators": [
+        "F"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.5,
@@ -1080,9 +1447,17 @@
       "url": "https://www.facebook.com/livemap",
       "category": "imagenes-videos",
       "subcategory": "busqueda-inversa",
-      "tags": ["transmisiones", "vivo", "mapa", "tiempo real"],
+      "tags": [
+        "transmisiones",
+        "vivo",
+        "mapa",
+        "tiempo real"
+      ],
       "type": "web",
-      "indicators": ["F", "G"],
+      "indicators": [
+        "F",
+        "G"
+      ],
       "region": "internacional",
       "language": "es",
       "rating": 4.2,
@@ -1094,27 +1469,6 @@
       "difficulty_level": "beginner"
     },
     {
-      "id": "earthcam",
-      "name": "EarthCam",
-      "description": "Red global de cámaras web en vivo.",
-      "utility": "Acceso a cámaras web públicas de todo el mundo para investigaciones de ubicación en tiempo real.",
-      "url": "http://www.earthcam.com/",
-      "category": "imagenes-videos",
-      "subcategory": "busqueda-inversa",
-      "tags": ["cámaras web", "global", "tiempo real", "ubicación"],
-      "type": "web",
-      "indicators": ["F", "G"],
-      "region": "internacional",
-      "language": "en",
-      "rating": 4.4,
-      "usage_count": 5670,
-      "last_updated": "2025-06-19",
-      "status": "active",
-      "requires_registration": false,
-      "is_free": true,
-      "difficulty_level": "beginner"
-    },
-    {
       "id": "scribd-search",
       "name": "Scribd",
       "description": "Plataforma de documentos y libros digitales.",
@@ -1122,9 +1476,16 @@
       "url": "https://www.scribd.com/",
       "category": "imagenes-videos",
       "subcategory": "analisis-metadatos",
-      "tags": ["documentos", "libros", "académico", "publicaciones"],
+      "tags": [
+        "documentos",
+        "libros",
+        "académico",
+        "publicaciones"
+      ],
       "type": "web",
-      "indicators": ["D"],
+      "indicators": [
+        "D"
+      ],
       "region": "internacional",
       "language": "es",
       "rating": 4.1,
@@ -1143,9 +1504,16 @@
       "url": "https://search.wikileaks.org/advanced",
       "category": "imagenes-videos",
       "subcategory": "analisis-metadatos",
-      "tags": ["filtrados", "cables", "diplomáticos", "documentos"],
+      "tags": [
+        "filtrados",
+        "cables",
+        "diplomáticos",
+        "documentos"
+      ],
       "type": "web",
-      "indicators": ["D"],
+      "indicators": [
+        "D"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.6,
@@ -1164,9 +1532,16 @@
       "url": "https://www.myfonts.com/WhatTheFont/",
       "category": "imagenes-videos",
       "subcategory": "analisis-metadatos",
-      "tags": ["fuentes", "tipografía", "identificación", "diseño"],
+      "tags": [
+        "fuentes",
+        "tipografía",
+        "identificación",
+        "diseño"
+      ],
       "type": "web",
-      "indicators": ["F"],
+      "indicators": [
+        "F"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.3,

@@ -11,6 +11,7 @@
     "build": "cd frontend && npm run build",
     "start:backend": "cd backend && npm start",
     "install:all": "npm install && cd frontend && npm install && cd ../backend && npm install",
+    "validate:data": "node scripts/validate-catalog.mjs",
     "test": "npm run test:frontend && npm run test:backend",
     "test:frontend": "cd frontend && npm test",
     "test:backend": "cd backend && npm test",

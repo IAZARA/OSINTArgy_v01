@@ -9,9 +9,17 @@
       "url": "https://whois.net",
       "category": "dominios-ips",
       "subcategory": "informacion-dominios",
-      "tags": ["whois", "dominios", "dns", "registro"],
+      "tags": [
+        "whois",
+        "dominios",
+        "dns",
+        "registro"
+      ],
       "type": "web",
-      "indicators": ["D", "R"],
+      "indicators": [
+        "D",
+        "R"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.4,
@@ -30,9 +38,18 @@
       "url": "https://www.domaintools.com",
       "category": "dominios-ips",
       "subcategory": "informacion-dominios",
-      "tags": ["dominios", "histórico", "inteligencia", "malware"],
+      "tags": [
+        "dominios",
+        "histórico",
+        "inteligencia",
+        "malware"
+      ],
       "type": "web",
-      "indicators": ["D", "A", "R"],
+      "indicators": [
+        "D",
+        "A",
+        "R"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.7,
@@ -51,9 +68,17 @@
       "url": "https://securitytrails.com",
       "category": "dominios-ips",
       "subcategory": "informacion-dominios",
-      "tags": ["dns", "subdominios", "ssl", "infraestructura"],
+      "tags": [
+        "dns",
+        "subdominios",
+        "ssl",
+        "infraestructura"
+      ],
       "type": "web",
-      "indicators": ["D", "A"],
+      "indicators": [
+        "D",
+        "A"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.6,
@@ -72,9 +97,17 @@
       "url": "https://www.whoisxmlapi.com",
       "category": "dominios-ips",
       "subcategory": "informacion-dominios",
-      "tags": ["api", "whois", "histórico", "programático"],
+      "tags": [
+        "api",
+        "whois",
+        "histórico",
+        "programático"
+      ],
       "type": "api",
-      "indicators": ["D", "A"],
+      "indicators": [
+        "D",
+        "A"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.5,
@@ -93,9 +126,17 @@
       "url": "https://ipinfo.io",
       "category": "dominios-ips",
       "subcategory": "analisis-ips",
-      "tags": ["ip", "geolocalización", "isp", "api"],
+      "tags": [
+        "ip",
+        "geolocalización",
+        "isp",
+        "api"
+      ],
       "type": "web",
-      "indicators": ["D", "A"],
+      "indicators": [
+        "D",
+        "A"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.5,
@@ -114,9 +155,17 @@
       "url": "https://www.maxmind.com",
       "category": "dominios-ips",
       "subcategory": "analisis-ips",
-      "tags": ["geolocalización", "precisión", "proxies", "fraude"],
+      "tags": [
+        "geolocalización",
+        "precisión",
+        "proxies",
+        "fraude"
+      ],
       "type": "web",
-      "indicators": ["D", "A"],
+      "indicators": [
+        "D",
+        "A"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.7,
@@ -135,9 +184,17 @@
       "url": "https://www.abuseipdb.com",
       "category": "dominios-ips",
       "subcategory": "analisis-ips",
-      "tags": ["maliciosas", "reputación", "colaborativa", "seguridad"],
+      "tags": [
+        "maliciosas",
+        "reputación",
+        "colaborativa",
+        "seguridad"
+      ],
       "type": "web",
-      "indicators": ["A", "R"],
+      "indicators": [
+        "A",
+        "R"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.6,
@@ -156,9 +213,17 @@
       "url": "https://www.virustotal.com",
       "category": "dominios-ips",
       "subcategory": "analisis-ips",
-      "tags": ["virustotal", "múltiples motores", "amenazas", "listas negras"],
+      "tags": [
+        "virustotal",
+        "múltiples motores",
+        "amenazas",
+        "listas negras"
+      ],
       "type": "web",
-      "indicators": ["A", "R"],
+      "indicators": [
+        "A",
+        "R"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.8,
@@ -177,9 +242,16 @@
       "url": "https://dnsdumpster.com",
       "category": "dominios-ips",
       "subcategory": "dns",
-      "tags": ["dns", "subdominios", "reconocimiento", "gratuito"],
+      "tags": [
+        "dns",
+        "subdominios",
+        "reconocimiento",
+        "gratuito"
+      ],
       "type": "web",
-      "indicators": ["D"],
+      "indicators": [
+        "D"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.5,
@@ -198,9 +270,17 @@
       "url": "https://viewdns.info",
       "category": "dominios-ips",
       "subcategory": "dns",
-      "tags": ["dns", "reverse ip", "traceroute", "suite"],
+      "tags": [
+        "dns",
+        "reverse ip",
+        "traceroute",
+        "suite"
+      ],
       "type": "web",
-      "indicators": ["D", "A"],
+      "indicators": [
+        "D",
+        "A"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.4,
@@ -219,9 +299,16 @@
       "url": "https://crt.sh",
       "category": "dominios-ips",
       "subcategory": "dns",
-      "tags": ["ssl", "certificados", "transparency", "subdominios"],
+      "tags": [
+        "ssl",
+        "certificados",
+        "transparency",
+        "subdominios"
+      ],
       "type": "web",
-      "indicators": ["D"],
+      "indicators": [
+        "D"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.6,
@@ -240,9 +327,16 @@
       "url": "https://github.com/aboul3la/Sublist3r",
       "category": "dominios-ips",
       "subcategory": "dns",
-      "tags": ["subdominios", "enumeración", "python", "github"],
+      "tags": [
+        "subdominios",
+        "enumeración",
+        "python",
+        "github"
+      ],
       "type": "cli",
-      "indicators": ["D"],
+      "indicators": [
+        "D"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.7,
@@ -261,9 +355,17 @@
       "url": "https://github.com/OWASP/Amass",
       "category": "dominios-ips",
       "subcategory": "dns",
-      "tags": ["owasp", "subdominios", "superficie de ataque", "avanzado"],
+      "tags": [
+        "owasp",
+        "subdominios",
+        "superficie de ataque",
+        "avanzado"
+      ],
       "type": "cli",
-      "indicators": ["D", "A"],
+      "indicators": [
+        "D",
+        "A"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.8,
@@ -282,9 +384,17 @@
       "url": "https://builtwith.com",
       "category": "dominios-ips",
       "subcategory": "informacion-dominios",
-      "tags": ["tecnologías", "frameworks", "analytics", "servicios"],
+      "tags": [
+        "tecnologías",
+        "frameworks",
+        "analytics",
+        "servicios"
+      ],
       "type": "web",
-      "indicators": ["D", "A"],
+      "indicators": [
+        "D",
+        "A"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.5,
@@ -303,9 +413,17 @@
       "url": "https://www.wappalyzer.com",
       "category": "dominios-ips",
       "subcategory": "informacion-dominios",
-      "tags": ["cms", "frameworks", "javascript", "detección"],
+      "tags": [
+        "cms",
+        "frameworks",
+        "javascript",
+        "detección"
+      ],
       "type": "web",
-      "indicators": ["D", "A"],
+      "indicators": [
+        "D",
+        "A"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.6,
@@ -324,9 +442,17 @@
       "url": "http://centralops.net/co/DomainDossier.aspx",
       "category": "dominios-ips",
       "subcategory": "informacion-dominios",
-      "tags": ["completo", "whois", "dns", "traceroute"],
+      "tags": [
+        "completo",
+        "whois",
+        "dns",
+        "traceroute"
+      ],
       "type": "web",
-      "indicators": ["D", "A"],
+      "indicators": [
+        "D",
+        "A"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.4,
@@ -345,9 +471,17 @@
       "url": "https://www.robtex.com/",
       "category": "dominios-ips",
       "subcategory": "dns",
-      "tags": ["visual", "reverse dns", "mapeo", "relaciones"],
+      "tags": [
+        "visual",
+        "reverse dns",
+        "mapeo",
+        "relaciones"
+      ],
       "type": "web",
-      "indicators": ["D", "A"],
+      "indicators": [
+        "D",
+        "A"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.5,
@@ -366,9 +500,17 @@
       "url": "https://www.shodan.io/",
       "category": "dominios-ips",
       "subcategory": "analisis-ips",
-      "tags": ["iot", "dispositivos", "servidores", "expuestos"],
+      "tags": [
+        "iot",
+        "dispositivos",
+        "servidores",
+        "expuestos"
+      ],
       "type": "web",
-      "indicators": ["A", "D"],
+      "indicators": [
+        "A",
+        "D"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.8,
@@ -387,9 +529,17 @@
       "url": "https://netlas.io/",
       "category": "dominios-ips",
       "subcategory": "analisis-ips",
-      "tags": ["activos", "vulnerabilidades", "filtrado", "ciberseguridad"],
+      "tags": [
+        "activos",
+        "vulnerabilidades",
+        "filtrado",
+        "ciberseguridad"
+      ],
       "type": "web",
-      "indicators": ["A", "D"],
+      "indicators": [
+        "A",
+        "D"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.6,
@@ -408,9 +558,17 @@
       "url": "https://censys.io/",
       "category": "dominios-ips",
       "subcategory": "analisis-ips",
-      "tags": ["activos", "certificados", "servicios", "seguridad"],
+      "tags": [
+        "activos",
+        "certificados",
+        "servicios",
+        "seguridad"
+      ],
       "type": "web",
-      "indicators": ["A", "D"],
+      "indicators": [
+        "A",
+        "D"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.7,
@@ -429,9 +587,17 @@
       "url": "https://urlscan.io/",
       "category": "dominios-ips",
       "subcategory": "informacion-dominios",
-      "tags": ["urls", "sandbox", "screenshots", "malicioso"],
+      "tags": [
+        "urls",
+        "sandbox",
+        "screenshots",
+        "malicioso"
+      ],
       "type": "web",
-      "indicators": ["A", "D"],
+      "indicators": [
+        "A",
+        "D"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.6,
@@ -450,9 +616,17 @@
       "url": "https://whoisology.com/",
       "category": "dominios-ips",
       "subcategory": "informacion-dominios",
-      "tags": ["histórico", "whois", "conexiones", "registros"],
+      "tags": [
+        "histórico",
+        "whois",
+        "conexiones",
+        "registros"
+      ],
       "type": "web",
-      "indicators": ["D", "R"],
+      "indicators": [
+        "D",
+        "R"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.4,
@@ -471,9 +645,17 @@
       "url": "https://spyse.com/",
       "category": "dominios-ips",
       "subcategory": "analisis-ips",
-      "tags": ["inteligencia", "correlación", "certificados", "tecnologías"],
+      "tags": [
+        "inteligencia",
+        "correlación",
+        "certificados",
+        "tecnologías"
+      ],
       "type": "web",
-      "indicators": ["A", "D"],
+      "indicators": [
+        "A",
+        "D"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.5,
@@ -492,9 +674,16 @@
       "url": "https://findsubdomains.com/",
       "category": "dominios-ips",
       "subcategory": "dns",
-      "tags": ["subdominios", "certificate transparency", "brute force", "online"],
+      "tags": [
+        "subdominios",
+        "certificate transparency",
+        "brute force",
+        "online"
+      ],
       "type": "web",
-      "indicators": ["D"],
+      "indicators": [
+        "D"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.2,
@@ -513,9 +702,17 @@
       "url": "https://github.com/elceef/dnstwist",
       "category": "dominios-ips",
       "subcategory": "informacion-dominios",
-      "tags": ["typosquatting", "phishing", "homógrafo", "variaciones"],
+      "tags": [
+        "typosquatting",
+        "phishing",
+        "homógrafo",
+        "variaciones"
+      ],
       "type": "cli",
-      "indicators": ["D", "A"],
+      "indicators": [
+        "D",
+        "A"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.6,
@@ -534,9 +731,17 @@
       "url": "https://dnstwister.report/",
       "category": "dominios-ips",
       "subcategory": "informacion-dominios",
-      "tags": ["web", "typosquatting", "phishing", "detección"],
+      "tags": [
+        "web",
+        "typosquatting",
+        "phishing",
+        "detección"
+      ],
       "type": "web",
-      "indicators": ["D", "A"],
+      "indicators": [
+        "D",
+        "A"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.3,
@@ -548,27 +753,6 @@
       "difficulty_level": "beginner"
     },
     {
-      "id": "threatcrowd",
-      "name": "ThreatCrowd",
-      "description": "Motor de búsqueda de inteligencia de amenazas.",
-      "utility": "Busca dominios, IPs y hashes maliciosos en una base de datos colaborativa de amenazas.",
-      "url": "https://www.threatcrowd.org/",
-      "category": "dominios-ips",
-      "subcategory": "analisis-ips",
-      "tags": ["amenazas", "maliciosos", "colaborativa", "hashes"],
-      "type": "web",
-      "indicators": ["A", "D"],
-      "region": "internacional",
-      "language": "en",
-      "rating": 4.4,
-      "usage_count": 5670,
-      "last_updated": "2025-06-19",
-      "status": "active",
-      "requires_registration": false,
-      "is_free": true,
-      "difficulty_level": "intermediate"
-    },
-    {
       "id": "passivetotal",
       "name": "PassiveTotal",
       "description": "Plataforma de inteligencia de amenazas y análisis de infraestructura.",
@@ -576,9 +760,17 @@
       "url": "https://www.passivetotal.org/",
       "category": "dominios-ips",
       "subcategory": "informacion-dominios",
-      "tags": ["pasivo", "histórico", "correlación", "avanzado"],
+      "tags": [
+        "pasivo",
+        "histórico",
+        "correlación",
+        "avanzado"
+      ],
       "type": "web",
-      "indicators": ["A", "D"],
+      "indicators": [
+        "A",
+        "D"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.7,
@@ -597,9 +789,16 @@
       "url": "https://viz.greynoise.io/",
       "category": "dominios-ips",
       "subcategory": "analisis-ips",
-      "tags": ["ruido", "tráfico", "benigno", "escaneos"],
+      "tags": [
+        "ruido",
+        "tráfico",
+        "benigno",
+        "escaneos"
+      ],
       "type": "web",
-      "indicators": ["A"],
+      "indicators": [
+        "A"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.5,
@@ -618,9 +817,17 @@
       "url": "http://bgp.he.net/",
       "category": "dominios-ips",
       "subcategory": "analisis-ips",
-      "tags": ["bgp", "asn", "enrutamiento", "prefijos"],
+      "tags": [
+        "bgp",
+        "asn",
+        "enrutamiento",
+        "prefijos"
+      ],
       "type": "web",
-      "indicators": ["A", "D"],
+      "indicators": [
+        "A",
+        "D"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.6,
@@ -639,9 +846,17 @@
       "url": "https://www.ip2location.com/demo",
       "category": "dominios-ips",
       "subcategory": "analisis-ips",
-      "tags": ["geolocalización", "isp", "conexión", "ubicación"],
+      "tags": [
+        "geolocalización",
+        "isp",
+        "conexión",
+        "ubicación"
+      ],
       "type": "web",
-      "indicators": ["D", "A"],
+      "indicators": [
+        "D",
+        "A"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.3,
@@ -660,9 +875,17 @@
       "url": "https://securityheaders.io/",
       "category": "dominios-ips",
       "subcategory": "informacion-dominios",
-      "tags": ["seguridad", "http", "cabeceras", "configuración"],
+      "tags": [
+        "seguridad",
+        "http",
+        "cabeceras",
+        "configuración"
+      ],
       "type": "web",
-      "indicators": ["A", "D"],
+      "indicators": [
+        "A",
+        "D"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.4,
@@ -681,9 +904,17 @@
       "url": "https://github.com/urbanadventurer/WhatWeb",
       "category": "dominios-ips",
       "subcategory": "informacion-dominios",
-      "tags": ["reconocimiento", "cms", "plugins", "precisión"],
+      "tags": [
+        "reconocimiento",
+        "cms",
+        "plugins",
+        "precisión"
+      ],
       "type": "cli",
-      "indicators": ["D", "A"],
+      "indicators": [
+        "D",
+        "A"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.7,
@@ -702,9 +933,17 @@
       "url": "https://nmap.org/",
       "category": "dominios-ips",
       "subcategory": "analisis-ips",
-      "tags": ["escáner", "servicios", "vulnerabilidades", "redes"],
+      "tags": [
+        "escáner",
+        "servicios",
+        "vulnerabilidades",
+        "redes"
+      ],
       "type": "cli",
-      "indicators": ["A", "D"],
+      "indicators": [
+        "A",
+        "D"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.9,
@@ -723,9 +962,16 @@
       "url": "https://github.com/robertdavidgraham/masscan",
       "category": "dominios-ips",
       "subcategory": "analisis-ips",
-      "tags": ["puertos", "velocidad", "masivo", "reconocimiento"],
+      "tags": [
+        "puertos",
+        "velocidad",
+        "masivo",
+        "reconocimiento"
+      ],
       "type": "cli",
-      "indicators": ["A"],
+      "indicators": [
+        "A"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.6,
@@ -744,9 +990,18 @@
       "url": "https://github.com/s0md3v/ReconDog",
       "category": "dominios-ips",
       "subcategory": "informacion-dominios",
-      "tags": ["reconocimiento", "todo-en-uno", "subdominios", "tecnologías"],
+      "tags": [
+        "reconocimiento",
+        "todo-en-uno",
+        "subdominios",
+        "tecnologías"
+      ],
       "type": "tool",
-      "indicators": ["T", "D", "A"],
+      "indicators": [
+        "T",
+        "D",
+        "A"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.4,
@@ -765,9 +1020,17 @@
       "url": "https://intrigue.io/",
       "category": "dominios-ips",
       "subcategory": "analisis-ips",
-      "tags": ["superficie de ataque", "automatizado", "activos digitales", "mapeo"],
+      "tags": [
+        "superficie de ataque",
+        "automatizado",
+        "activos digitales",
+        "mapeo"
+      ],
       "type": "web",
-      "indicators": ["D", "A"],
+      "indicators": [
+        "D",
+        "A"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.3,

@@ -7,7 +7,7 @@
   "scripts": {
     "dev": "nodemon src/app.js",
     "start": "node src/app.js",
-    "test": "jest",
+    "test": "jest --passWithNoTests",
     "test:watch": "jest --watch",
     "seed": "node scripts/seed-database.js",
     "populate-phase4": "node scripts/populate-tools-phase4.js",

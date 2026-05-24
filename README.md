@@ -203,6 +203,7 @@ Las herramientas se mantienen como JSON en `frontend/src/data/tools/` y datos ba
 
 - Mantener secretos y configuraciones locales fuera de Git.
 - No commitear `frontend/dist/`, `logs/`, `data/*.db`, `node_modules/`, `.claude/` ni `mcp-*`.
+- Validar el catálogo con `npm run validate:data` antes de publicar cambios.
 - Documentar cambios funcionales en el README o en archivos dentro de `docs/`.
 - Agregar tests cuando el cambio toque API, autenticación, parsing, carga de datos o flujos de usuario.
 - Validar con `npm run build` antes de abrir un PR cuando se modifique frontend.
@@ -216,6 +217,10 @@ Las herramientas se mantienen como JSON en `frontend/src/data/tools/` y datos ba
 - El contenido HTML del frontend se sanitiza antes de renderizarse.
 - Ejecutar `npm audit --omit=dev` en raíz, `backend/` y `frontend/` antes de publicar cambios.
 - Ver [SECURITY.md](SECURITY.md) para reporte responsable y alcance.
+
+## Catálogo
+
+El formato editorial del catálogo está documentado en [docs/catalogo.md](docs/catalogo.md). El comando `npm run validate:data` verifica estructura, IDs únicos, categorías, subcategorías, tipos, indicadores y campos obligatorios.
 
 ## Roadmap
 

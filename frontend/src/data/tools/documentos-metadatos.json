@@ -2,48 +2,6 @@
   "category": "documentos-metadatos",
   "tools": [
     {
-      "id": "exiftool",
-      "name": "ExifTool",
-      "description": "Herramienta de línea de comandos para leer, escribir y editar metadatos de archivos.",
-      "utility": "Extrae metadatos de imágenes, documentos PDF, videos y otros archivos. Esencial para análisis forense digital.",
-      "url": "https://exiftool.org/",
-      "category": "documentos-metadatos",
-      "subcategory": "extraccion-metadatos",
-      "tags": ["metadatos", "exif", "forense", "línea de comandos"],
-      "type": "cli",
-      "indicators": ["F", "A"],
-      "region": "internacional",
-      "language": "en",
-      "rating": 4.9,
-      "usage_count": 15420,
-      "last_updated": "2025-06-19",
-      "status": "active",
-      "requires_registration": false,
-      "is_free": true,
-      "difficulty_level": "intermediate"
-    },
-    {
-      "id": "jeffrey-exif-viewer",
-      "name": "Jeffrey's Exif Viewer",
-      "description": "Visor online de metadatos EXIF de imágenes.",
-      "utility": "Analiza metadatos EXIF de imágenes subidas, incluyendo información de cámara, GPS y configuraciones.",
-      "url": "http://exif.regex.info/exif.cgi",
-      "category": "documentos-metadatos",
-      "subcategory": "extraccion-metadatos",
-      "tags": ["exif", "imágenes", "online", "gps"],
-      "type": "web",
-      "indicators": ["F"],
-      "region": "internacional",
-      "language": "en",
-      "rating": 4.6,
-      "usage_count": 8920,
-      "last_updated": "2025-06-19",
-      "status": "active",
-      "requires_registration": false,
-      "is_free": true,
-      "difficulty_level": "beginner"
-    },
-    {
       "id": "foca",
       "name": "FOCA",
       "description": "Herramienta para extraer metadatos de documentos públicos.",
@@ -51,9 +9,17 @@
       "url": "https://github.com/ElevenPaths/FOCA",
       "category": "documentos-metadatos",
       "subcategory": "extraccion-metadatos",
-      "tags": ["metadatos", "documentos", "pdf", "office"],
+      "tags": [
+        "metadatos",
+        "documentos",
+        "pdf",
+        "office"
+      ],
       "type": "desktop",
-      "indicators": ["F", "A"],
+      "indicators": [
+        "F",
+        "A"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.5,
@@ -72,9 +38,17 @@
       "url": "https://blog.didierstevens.com/programs/pdf-tools/",
       "category": "documentos-metadatos",
       "subcategory": "analisis-pdfs",
-      "tags": ["pdf", "parser", "forense", "seguridad"],
+      "tags": [
+        "pdf",
+        "parser",
+        "forense",
+        "seguridad"
+      ],
       "type": "cli",
-      "indicators": ["F", "A"],
+      "indicators": [
+        "F",
+        "A"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.7,
@@ -93,9 +67,17 @@
       "url": "https://github.com/jesparza/peepdf",
       "category": "documentos-metadatos",
       "subcategory": "analisis-pdfs",
-      "tags": ["pdf", "malware", "javascript", "python"],
+      "tags": [
+        "pdf",
+        "malware",
+        "javascript",
+        "python"
+      ],
       "type": "cli",
-      "indicators": ["F", "S"],
+      "indicators": [
+        "F",
+        "S"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.4,
@@ -114,9 +96,17 @@
       "url": "https://www.documentcloud.org/",
       "category": "documentos-metadatos",
       "subcategory": "busqueda-documentos",
-      "tags": ["documentos", "búsqueda", "anotaciones", "texto"],
+      "tags": [
+        "documentos",
+        "búsqueda",
+        "anotaciones",
+        "texto"
+      ],
       "type": "web",
-      "indicators": ["D", "A"],
+      "indicators": [
+        "D",
+        "A"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.3,
@@ -135,9 +125,16 @@
       "url": "https://www.google.com/search?q=filetype%3Apdf",
       "category": "documentos-metadatos",
       "subcategory": "busqueda-documentos",
-      "tags": ["google", "filetype", "documentos", "operadores"],
+      "tags": [
+        "google",
+        "filetype",
+        "documentos",
+        "operadores"
+      ],
       "type": "web",
-      "indicators": ["D"],
+      "indicators": [
+        "D"
+      ],
       "region": "internacional",
       "language": "es",
       "rating": 4.8,
@@ -156,9 +153,16 @@
       "url": "https://www.metadata2go.com/",
       "category": "documentos-metadatos",
       "subcategory": "extraccion-metadatos",
-      "tags": ["metadatos", "online", "edición", "múltiples formatos"],
+      "tags": [
+        "metadatos",
+        "online",
+        "edición",
+        "múltiples formatos"
+      ],
       "type": "web",
-      "indicators": ["F"],
+      "indicators": [
+        "F"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.2,
@@ -177,9 +181,17 @@
       "url": "https://0xacab.org/jvoisin/mat2",
       "category": "documentos-metadatos",
       "subcategory": "limpieza-metadatos",
-      "tags": ["limpieza", "privacidad", "metadatos", "anonimización"],
+      "tags": [
+        "limpieza",
+        "privacidad",
+        "metadatos",
+        "anonimización"
+      ],
       "type": "cli",
-      "indicators": ["P", "F"],
+      "indicators": [
+        "P",
+        "F"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.5,
@@ -198,9 +210,17 @@
       "url": "https://github.com/ReFirmLabs/binwalk",
       "category": "documentos-metadatos",
       "subcategory": "analisis-binarios",
-      "tags": ["firmware", "binarios", "extracción", "reversa"],
+      "tags": [
+        "firmware",
+        "binarios",
+        "extracción",
+        "reversa"
+      ],
       "type": "cli",
-      "indicators": ["F", "A"],
+      "indicators": [
+        "F",
+        "A"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.6,
@@ -219,9 +239,16 @@
       "url": "https://linux.die.net/man/1/strings",
       "category": "documentos-metadatos",
       "subcategory": "analisis-binarios",
-      "tags": ["strings", "binarios", "texto", "unix"],
+      "tags": [
+        "strings",
+        "binarios",
+        "texto",
+        "unix"
+      ],
       "type": "cli",
-      "indicators": ["F"],
+      "indicators": [
+        "F"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.4,
@@ -240,9 +267,16 @@
       "url": "https://linux.die.net/man/1/hexdump",
       "category": "documentos-metadatos",
       "subcategory": "analisis-binarios",
-      "tags": ["hexadecimal", "binarios", "forense", "bajo nivel"],
+      "tags": [
+        "hexadecimal",
+        "binarios",
+        "forense",
+        "bajo nivel"
+      ],
       "type": "cli",
-      "indicators": ["F"],
+      "indicators": [
+        "F"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.3,

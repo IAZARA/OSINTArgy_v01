@@ -8,13 +8,34 @@
       "url": "/infrastructure-scanner",
       "category": "utilidades-varios",
       "subcategory": "sistema-infraestructura",
-      "tags": ["scanner", "infraestructura", "subdominios", "seguridad", "ssl", "monitoreo", "defensivo", "superficie de ataque", "osint"],
+      "tags": [
+        "scanner",
+        "infraestructura",
+        "subdominios",
+        "seguridad",
+        "ssl",
+        "monitoreo",
+        "defensivo",
+        "superficie de ataque",
+        "osint"
+      ],
       "type": "internal",
-      "indicators": ["S", "D", "A", "I"],
+      "indicators": [
+        "S",
+        "D",
+        "A",
+        "I"
+      ],
+      "region": "internacional",
+      "language": "es",
+      "rating": 4.8,
+      "usage_count": 1,
+      "last_updated": "2024-06-24",
+      "status": "active",
+      "requires_registration": false,
+      "is_free": true,
       "difficulty_level": "intermediate",
-      "author": "OSINTArgy Team",
-      "created_at": "2024-06-24",
-      "updated_at": "2024-06-24",
+      "api_available": true,
       "features": [
         "Descubrimiento automatizado de subdominios",
         "Análisis de certificados SSL/TLS",
@@ -27,21 +48,6 @@
         "Monitoreo de superficie de ataque",
         "Búsqueda en Certificate Transparency"
       ],
-      "languages": ["Español"],
-      "cost": "free",
-      "requires_registration": false,
-      "api_available": true,
-      "rating": {
-        "average": 4.8,
-        "count": 1,
-        "distribution": {
-          "5": 1,
-          "4": 0,
-          "3": 0,
-          "2": 0,
-          "1": 0
-        }
-      },
       "documentation": {
         "description": "El Infrastructure Scanner es una herramienta de auto-reconocimiento defensivo que te permite ver tu infraestructura desde la perspectiva de un atacante. Utiliza técnicas OSINT para descubrir assets, analizar configuraciones de seguridad y evaluar el riesgo de tu superficie de ataque.",
         "use_cases": [
@@ -61,7 +67,10 @@
           "Evaluación de configuración SSL",
           "Verificación de archivos expuestos"
         ],
-        "output_formats": ["Interfaz web interactiva", "Reporte TXT descargable"],
+        "output_formats": [
+          "Interfaz web interactiva",
+          "Reporte TXT descargable"
+        ],
         "limitations": [
           "Requiere conectividad a internet",
           "Dependiente de fuentes públicas",
@@ -70,5 +79,6 @@
         ]
       }
     }
-  ]
+  ],
+  "category": "utilidades-varios"
 }

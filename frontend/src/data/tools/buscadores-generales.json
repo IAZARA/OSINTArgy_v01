@@ -9,9 +9,16 @@
       "url": "https://www.google.com/advanced_search",
       "category": "buscadores-generales",
       "subcategory": "motores-busqueda",
-      "tags": ["búsqueda", "google", "operadores", "dorks"],
+      "tags": [
+        "búsqueda",
+        "google",
+        "operadores",
+        "dorks"
+      ],
       "type": "web",
-      "indicators": ["D"],
+      "indicators": [
+        "D"
+      ],
       "region": "internacional",
       "language": "es",
       "rating": 4.8,
@@ -30,9 +37,16 @@
       "url": "https://www.bing.com/search?form=QBLH&sp=-1&lq=0&pq=&sc=0-0&qs=n&sk=&cvid=",
       "category": "buscadores-generales",
       "subcategory": "motores-busqueda",
-      "tags": ["bing", "microsoft", "búsqueda", "operadores"],
+      "tags": [
+        "bing",
+        "microsoft",
+        "búsqueda",
+        "operadores"
+      ],
       "type": "web",
-      "indicators": ["D"],
+      "indicators": [
+        "D"
+      ],
       "region": "internacional",
       "language": "es",
       "rating": 4.3,
@@ -51,9 +65,17 @@
       "url": "https://yandex.com",
       "category": "buscadores-generales",
       "subcategory": "motores-busqueda",
-      "tags": ["yandex", "rusia", "cirílico", "europa del este"],
+      "tags": [
+        "yandex",
+        "rusia",
+        "cirílico",
+        "europa del este"
+      ],
       "type": "web",
-      "indicators": ["D", "F"],
+      "indicators": [
+        "D",
+        "F"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.4,
@@ -72,9 +94,16 @@
       "url": "https://www.baidu.com",
       "category": "buscadores-generales",
       "subcategory": "motores-busqueda",
-      "tags": ["baidu", "china", "chino", "asia"],
+      "tags": [
+        "baidu",
+        "china",
+        "chino",
+        "asia"
+      ],
       "type": "web",
-      "indicators": ["D"],
+      "indicators": [
+        "D"
+      ],
       "region": "china",
       "language": "zh",
       "rating": 4.2,
@@ -93,9 +122,17 @@
       "url": "https://searx.space",
       "category": "buscadores-generales",
       "subcategory": "metabuscadores",
-      "tags": ["metabuscador", "privacidad", "código abierto", "anónimo"],
+      "tags": [
+        "metabuscador",
+        "privacidad",
+        "código abierto",
+        "anónimo"
+      ],
       "type": "web",
-      "indicators": ["D", "P"],
+      "indicators": [
+        "D",
+        "P"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.5,
@@ -114,9 +151,17 @@
       "url": "https://www.startpage.com",
       "category": "buscadores-generales",
       "subcategory": "metabuscadores",
-      "tags": ["privacidad", "google", "anónimo", "sin rastreo"],
+      "tags": [
+        "privacidad",
+        "google",
+        "anónimo",
+        "sin rastreo"
+      ],
       "type": "web",
-      "indicators": ["D", "P"],
+      "indicators": [
+        "D",
+        "P"
+      ],
       "region": "internacional",
       "language": "es",
       "rating": 4.6,
@@ -135,9 +180,17 @@
       "url": "https://duckduckgo.com",
       "category": "buscadores-generales",
       "subcategory": "metabuscadores",
-      "tags": ["privacidad", "sin rastreo", "bangs", "neutral"],
+      "tags": [
+        "privacidad",
+        "sin rastreo",
+        "bangs",
+        "neutral"
+      ],
       "type": "web",
-      "indicators": ["D", "P"],
+      "indicators": [
+        "D",
+        "P"
+      ],
       "region": "internacional",
       "language": "es",
       "rating": 4.4,
@@ -149,48 +202,6 @@
       "difficulty_level": "beginner"
     },
     {
-      "id": "shodan",
-      "name": "Shodan",
-      "description": "Motor de búsqueda para dispositivos conectados a Internet.",
-      "utility": "Encuentra cámaras, servidores, routers y otros dispositivos IoT expuestos. Esencial para reconocimiento de infraestructura.",
-      "url": "https://www.shodan.io",
-      "category": "buscadores-generales",
-      "subcategory": "busquedas-especializadas",
-      "tags": ["iot", "dispositivos", "vulnerabilidades", "ciberseguridad"],
-      "type": "web",
-      "indicators": ["D", "A"],
-      "region": "internacional",
-      "language": "en",
-      "rating": 4.6,
-      "usage_count": 12350,
-      "last_updated": "2025-06-18",
-      "status": "active",
-      "requires_registration": true,
-      "is_free": false,
-      "difficulty_level": "intermediate"
-    },
-    {
-      "id": "censys",
-      "name": "Censys",
-      "description": "Plataforma de búsqueda para dispositivos y certificados en Internet.",
-      "utility": "Escanea Internet para encontrar hosts, certificados y configuraciones. Complementa a Shodan con diferentes perspectivas.",
-      "url": "https://censys.io",
-      "category": "buscadores-generales",
-      "subcategory": "busquedas-especializadas",
-      "tags": ["escaneo", "certificados", "hosts", "infraestructura"],
-      "type": "web",
-      "indicators": ["D", "A"],
-      "region": "internacional",
-      "language": "en",
-      "rating": 4.5,
-      "usage_count": 8920,
-      "last_updated": "2025-06-19",
-      "status": "active",
-      "requires_registration": true,
-      "is_free": true,
-      "difficulty_level": "intermediate"
-    },
-    {
       "id": "zoomeye",
       "name": "ZoomEye",
       "description": "Motor de búsqueda chino para dispositivos conectados y servicios web.",
@@ -198,9 +209,17 @@
       "url": "https://www.zoomeye.org",
       "category": "buscadores-generales",
       "subcategory": "busquedas-especializadas",
-      "tags": ["dispositivos", "asia", "servicios", "escaneo"],
+      "tags": [
+        "dispositivos",
+        "asia",
+        "servicios",
+        "escaneo"
+      ],
       "type": "web",
-      "indicators": ["D", "A"],
+      "indicators": [
+        "D",
+        "A"
+      ],
       "region": "china",
       "language": "en",
       "rating": 4.3,
@@ -219,9 +238,16 @@
       "url": "https://www.exploit-db.com/google-hacking-database",
       "category": "buscadores-generales",
       "subcategory": "busquedas-especializadas",
-      "tags": ["google", "dorks", "operadores", "hacking"],
+      "tags": [
+        "google",
+        "dorks",
+        "operadores",
+        "hacking"
+      ],
       "type": "web",
-      "indicators": ["D"],
+      "indicators": [
+        "D"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.7,
@@ -240,9 +266,17 @@
       "url": "https://pipl.com",
       "category": "buscadores-generales",
       "subcategory": "busquedas-especializadas",
-      "tags": ["personas", "web profunda", "identidad", "búsqueda"],
+      "tags": [
+        "personas",
+        "web profunda",
+        "identidad",
+        "búsqueda"
+      ],
       "type": "web",
-      "indicators": ["P", "D"],
+      "indicators": [
+        "P",
+        "D"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.4,
@@ -261,9 +295,17 @@
       "url": "https://www.qwant.com",
       "category": "buscadores-generales",
       "subcategory": "motores-busqueda",
-      "tags": ["privacidad", "francia", "europa", "sin rastreo"],
+      "tags": [
+        "privacidad",
+        "francia",
+        "europa",
+        "sin rastreo"
+      ],
       "type": "web",
-      "indicators": ["D", "P"],
+      "indicators": [
+        "D",
+        "P"
+      ],
       "region": "europa",
       "language": "es",
       "rating": 4.2,
@@ -284,9 +326,16 @@
       "url": "https://www.naver.com",
       "category": "buscadores-generales",
       "subcategory": "motores-busqueda",
-      "tags": ["corea", "naver", "asia", "coreano"],
+      "tags": [
+        "corea",
+        "naver",
+        "asia",
+        "coreano"
+      ],
       "type": "web",
-      "indicators": ["D"],
+      "indicators": [
+        "D"
+      ],
       "region": "corea",
       "language": "ko",
       "rating": 4.3,
@@ -307,9 +356,16 @@
       "url": "https://www.sogou.com",
       "category": "buscadores-generales",
       "subcategory": "motores-busqueda",
-      "tags": ["china", "tencent", "chino", "asia"],
+      "tags": [
+        "china",
+        "tencent",
+        "chino",
+        "asia"
+      ],
       "type": "web",
-      "indicators": ["D"],
+      "indicators": [
+        "D"
+      ],
       "region": "china",
       "language": "zh",
       "rating": 4.1,
@@ -330,9 +386,17 @@
       "url": "https://scholar.google.com",
       "category": "buscadores-generales",
       "subcategory": "academicos",
-      "tags": ["académico", "investigación", "artículos", "citas"],
+      "tags": [
+        "académico",
+        "investigación",
+        "artículos",
+        "citas"
+      ],
       "type": "web",
-      "indicators": ["D", "R"],
+      "indicators": [
+        "D",
+        "R"
+      ],
       "region": "internacional",
       "language": "es",
       "rating": 4.7,
@@ -353,9 +417,17 @@
       "url": "https://www.base-search.net",
       "category": "buscadores-generales",
       "subcategory": "academicos",
-      "tags": ["académico", "acceso abierto", "pdf", "investigación"],
+      "tags": [
+        "académico",
+        "acceso abierto",
+        "pdf",
+        "investigación"
+      ],
       "type": "web",
-      "indicators": ["D", "F"],
+      "indicators": [
+        "D",
+        "F"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.4,
@@ -376,9 +448,17 @@
       "url": "https://core.ac.uk",
       "category": "buscadores-generales",
       "subcategory": "academicos",
-      "tags": ["acceso abierto", "académico", "pdf", "investigación"],
+      "tags": [
+        "acceso abierto",
+        "académico",
+        "pdf",
+        "investigación"
+      ],
       "type": "web",
-      "indicators": ["D", "F"],
+      "indicators": [
+        "D",
+        "F"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.5,
@@ -399,9 +479,17 @@
       "url": "https://www.semanticscholar.org",
       "category": "buscadores-generales",
       "subcategory": "academicos",
-      "tags": ["ia", "académico", "análisis", "resúmenes"],
+      "tags": [
+        "ia",
+        "académico",
+        "análisis",
+        "resúmenes"
+      ],
       "type": "web",
-      "indicators": ["D", "A"],
+      "indicators": [
+        "D",
+        "A"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.6,
@@ -422,9 +510,16 @@
       "url": "https://www.refseek.com",
       "category": "buscadores-generales",
       "subcategory": "academicos",
-      "tags": ["académico", "gratuito", "estudiantes", "investigación"],
+      "tags": [
+        "académico",
+        "gratuito",
+        "estudiantes",
+        "investigación"
+      ],
       "type": "web",
-      "indicators": ["D"],
+      "indicators": [
+        "D"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.2,
@@ -445,9 +540,17 @@
       "url": "https://arxiv.org",
       "category": "buscadores-generales",
       "subcategory": "academicos",
-      "tags": ["preprints", "física", "matemáticas", "ciencias"],
+      "tags": [
+        "preprints",
+        "física",
+        "matemáticas",
+        "ciencias"
+      ],
       "type": "web",
-      "indicators": ["D", "R"],
+      "indicators": [
+        "D",
+        "R"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.8,
@@ -468,9 +571,17 @@
       "url": "https://pubmed.ncbi.nlm.nih.gov",
       "category": "buscadores-generales",
       "subcategory": "academicos",
-      "tags": ["medicina", "biomédica", "salud", "investigación"],
+      "tags": [
+        "medicina",
+        "biomédica",
+        "salud",
+        "investigación"
+      ],
       "type": "web",
-      "indicators": ["D", "R"],
+      "indicators": [
+        "D",
+        "R"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.7,
@@ -491,9 +602,17 @@
       "url": "https://ieeexplore.ieee.org",
       "category": "buscadores-generales",
       "subcategory": "academicos",
-      "tags": ["ingeniería", "ieee", "técnico", "estándares"],
+      "tags": [
+        "ingeniería",
+        "ieee",
+        "técnico",
+        "estándares"
+      ],
       "type": "web",
-      "indicators": ["D", "R"],
+      "indicators": [
+        "D",
+        "R"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.6,
@@ -514,9 +633,17 @@
       "url": "https://www.researchgate.net",
       "category": "buscadores-generales",
       "subcategory": "academicos",
-      "tags": ["red social", "científicos", "colaboración", "publicaciones"],
+      "tags": [
+        "red social",
+        "científicos",
+        "colaboración",
+        "publicaciones"
+      ],
       "type": "web",
-      "indicators": ["D", "P"],
+      "indicators": [
+        "D",
+        "P"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.3,
@@ -537,9 +664,17 @@
       "url": "https://www.academia.edu",
       "category": "buscadores-generales",
       "subcategory": "academicos",
-      "tags": ["académicos", "papers", "networking", "investigación"],
+      "tags": [
+        "académicos",
+        "papers",
+        "networking",
+        "investigación"
+      ],
       "type": "web",
-      "indicators": ["D", "P"],
+      "indicators": [
+        "D",
+        "P"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.1,
@@ -560,9 +695,17 @@
       "url": "https://github.com/search/advanced",
       "category": "buscadores-generales",
       "subcategory": "codigo",
-      "tags": ["código", "github", "repositorios", "desarrollo"],
+      "tags": [
+        "código",
+        "github",
+        "repositorios",
+        "desarrollo"
+      ],
       "type": "web",
-      "indicators": ["D", "A"],
+      "indicators": [
+        "D",
+        "A"
+      ],
       "region": "internacional",
       "language": "es",
       "rating": 4.8,
@@ -583,9 +726,17 @@
       "url": "https://gitlab.com/search",
       "category": "buscadores-generales",
       "subcategory": "codigo",
-      "tags": ["código", "gitlab", "devops", "ci/cd"],
+      "tags": [
+        "código",
+        "gitlab",
+        "devops",
+        "ci/cd"
+      ],
       "type": "web",
-      "indicators": ["D", "A"],
+      "indicators": [
+        "D",
+        "A"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.5,
@@ -606,9 +757,16 @@
       "url": "https://sourceforge.net",
       "category": "buscadores-generales",
       "subcategory": "codigo",
-      "tags": ["open source", "software libre", "legacy", "proyectos"],
+      "tags": [
+        "open source",
+        "software libre",
+        "legacy",
+        "proyectos"
+      ],
       "type": "web",
-      "indicators": ["D"],
+      "indicators": [
+        "D"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.2,
@@ -629,9 +787,17 @@
       "url": "https://bitbucket.org/search",
       "category": "buscadores-generales",
       "subcategory": "codigo",
-      "tags": ["código", "bitbucket", "atlassian", "git"],
+      "tags": [
+        "código",
+        "bitbucket",
+        "atlassian",
+        "git"
+      ],
       "type": "web",
-      "indicators": ["D", "A"],
+      "indicators": [
+        "D",
+        "A"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.3,
@@ -652,9 +818,17 @@
       "url": "https://codeberg.org",
       "category": "buscadores-generales",
       "subcategory": "codigo",
-      "tags": ["código abierto", "privacidad", "europa", "gitea"],
+      "tags": [
+        "código abierto",
+        "privacidad",
+        "europa",
+        "gitea"
+      ],
       "type": "web",
-      "indicators": ["D", "P"],
+      "indicators": [
+        "D",
+        "P"
+      ],
       "region": "europa",
       "language": "en",
       "rating": 4.4,
@@ -675,9 +849,17 @@
       "url": "https://grep.app",
       "category": "buscadores-generales",
       "subcategory": "codigo",
-      "tags": ["código", "github", "vercel", "búsqueda rápida"],
+      "tags": [
+        "código",
+        "github",
+        "vercel",
+        "búsqueda rápida"
+      ],
       "type": "web",
-      "indicators": ["D", "A"],
+      "indicators": [
+        "D",
+        "A"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.6,
@@ -698,9 +880,17 @@
       "url": "https://archive.org",
       "category": "buscadores-generales",
       "subcategory": "archivos",
-      "tags": ["wayback machine", "histórico", "archivos", "biblioteca digital"],
+      "tags": [
+        "wayback machine",
+        "histórico",
+        "archivos",
+        "biblioteca digital"
+      ],
       "type": "web",
-      "indicators": ["D", "F"],
+      "indicators": [
+        "D",
+        "F"
+      ],
       "region": "internacional",
       "language": "es",
       "rating": 4.7,
@@ -721,9 +911,17 @@
       "url": "https://www.filechef.com",
       "category": "buscadores-generales",
       "subcategory": "archivos",
-      "tags": ["archivos", "ftp", "documentos", "servidores abiertos"],
+      "tags": [
+        "archivos",
+        "ftp",
+        "documentos",
+        "servidores abiertos"
+      ],
       "type": "web",
-      "indicators": ["D", "F"],
+      "indicators": [
+        "D",
+        "F"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.3,
@@ -744,9 +942,17 @@
       "url": "https://filepursuit.com",
       "category": "buscadores-generales",
       "subcategory": "archivos",
-      "tags": ["archivos", "ftp", "web", "documentos"],
+      "tags": [
+        "archivos",
+        "ftp",
+        "web",
+        "documentos"
+      ],
       "type": "web",
-      "indicators": ["D", "F"],
+      "indicators": [
+        "D",
+        "F"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.2,
@@ -767,9 +973,17 @@
       "url": "https://www.sourcely.net",
       "category": "buscadores-generales",
       "subcategory": "academicos",
-      "tags": ["ia", "académico", "papers", "citación"],
+      "tags": [
+        "ia",
+        "académico",
+        "papers",
+        "citación"
+      ],
       "type": "web",
-      "indicators": ["D", "A"],
+      "indicators": [
+        "D",
+        "A"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.5,
@@ -790,9 +1004,17 @@
       "url": "https://searqle.com",
       "category": "buscadores-generales",
       "subcategory": "busqueda-personas",
-      "tags": ["personas", "registros públicos", "contactos", "antecedentes"],
+      "tags": [
+        "personas",
+        "registros públicos",
+        "contactos",
+        "antecedentes"
+      ],
       "type": "web",
-      "indicators": ["P", "D"],
+      "indicators": [
+        "P",
+        "D"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.4,
@@ -813,9 +1035,17 @@
       "url": "https://www.truthfinder.com",
       "category": "buscadores-generales",
       "subcategory": "busqueda-personas",
-      "tags": ["antecedentes", "personas", "verificación", "registros"],
+      "tags": [
+        "antecedentes",
+        "personas",
+        "verificación",
+        "registros"
+      ],
       "type": "web",
-      "indicators": ["P", "D"],
+      "indicators": [
+        "P",
+        "D"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.3,
@@ -836,9 +1066,17 @@
       "url": "https://www.beenverified.com",
       "category": "buscadores-generales",
       "subcategory": "busqueda-personas",
-      "tags": ["personas", "verificación", "antecedentes", "contactos"],
+      "tags": [
+        "personas",
+        "verificación",
+        "antecedentes",
+        "contactos"
+      ],
       "type": "web",
-      "indicators": ["P", "D"],
+      "indicators": [
+        "P",
+        "D"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.2,
@@ -859,9 +1097,17 @@
       "url": "https://www.instantcheckmate.com",
       "category": "buscadores-generales",
       "subcategory": "busqueda-personas",
-      "tags": ["antecedentes", "personas", "registros públicos", "verificación"],
+      "tags": [
+        "antecedentes",
+        "personas",
+        "registros públicos",
+        "verificación"
+      ],
       "type": "web",
-      "indicators": ["P", "D"],
+      "indicators": [
+        "P",
+        "D"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.1,
@@ -882,9 +1128,17 @@
       "url": "https://www.intelius.com",
       "category": "buscadores-generales",
       "subcategory": "busqueda-personas",
-      "tags": ["personas", "contactos", "registros", "redes sociales"],
+      "tags": [
+        "personas",
+        "contactos",
+        "registros",
+        "redes sociales"
+      ],
       "type": "web",
-      "indicators": ["P", "D"],
+      "indicators": [
+        "P",
+        "D"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.3,
@@ -905,39 +1159,24 @@
       "url": "https://www.whitepages.com",
       "category": "buscadores-generales",
       "subcategory": "busqueda-personas",
-      "tags": ["directorio", "contactos", "teléfonos", "direcciones"],
+      "tags": [
+        "directorio",
+        "contactos",
+        "teléfonos",
+        "direcciones"
+      ],
       "type": "web",
-      "indicators": ["P", "D"],
+      "indicators": [
+        "P",
+        "D"
+      ],
       "region": "internacional",
       "language": "en",
-      "rating": 4.0,
+      "rating": 4,
       "usage_count": 12340,
       "last_updated": "2025-06-19",
       "status": "active",
       "requires_registration": false,
-      "is_free": true,
-      "difficulty_level": "beginner",
-      "verification_date": "2025-06-19",
-      "verified_by": "perplexity"
-    },
-    {
-      "id": "truecaller",
-      "name": "TrueCaller",
-      "description": "Servicio de identificación de números telefónicos y búsqueda de contactos.",
-      "utility": "Identifica llamadas desconocidas y proporciona información de contacto asociada. Útil para verificar números telefónicos.",
-      "url": "https://www.truecaller.com",
-      "category": "buscadores-generales",
-      "subcategory": "busqueda-personas",
-      "tags": ["teléfonos", "identificación", "contactos", "spam"],
-      "type": "web",
-      "indicators": ["P", "D"],
-      "region": "internacional",
-      "language": "es",
-      "rating": 4.2,
-      "usage_count": 15670,
-      "last_updated": "2025-06-19",
-      "status": "active",
-      "requires_registration": true,
       "is_free": true,
       "difficulty_level": "beginner",
       "verification_date": "2025-06-19",
@@ -951,9 +1190,17 @@
       "url": "https://www.fastpeoplesearch.com",
       "category": "buscadores-generales",
       "subcategory": "busqueda-personas",
-      "tags": ["personas", "rápido", "contactos", "básico"],
+      "tags": [
+        "personas",
+        "rápido",
+        "contactos",
+        "básico"
+      ],
       "type": "web",
-      "indicators": ["P", "D"],
+      "indicators": [
+        "P",
+        "D"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 3.8,
@@ -974,12 +1221,19 @@
       "url": "https://www.dogpile.com",
       "category": "buscadores-generales",
       "subcategory": "metabuscadores",
-      "tags": ["metabuscador", "agregador", "múltiples fuentes", "comprehensivo"],
+      "tags": [
+        "metabuscador",
+        "agregador",
+        "múltiples fuentes",
+        "comprehensivo"
+      ],
       "type": "web",
-      "indicators": ["D"],
+      "indicators": [
+        "D"
+      ],
       "region": "internacional",
       "language": "en",
-      "rating": 4.0,
+      "rating": 4,
       "usage_count": 2890,
       "last_updated": "2025-06-19",
       "status": "active",
@@ -997,9 +1251,16 @@
       "url": "https://www.metacrawler.com",
       "category": "buscadores-generales",
       "subcategory": "metabuscadores",
-      "tags": ["metabuscador", "múltiples fuentes", "agregador", "comprehensivo"],
+      "tags": [
+        "metabuscador",
+        "múltiples fuentes",
+        "agregador",
+        "comprehensivo"
+      ],
       "type": "web",
-      "indicators": ["D"],
+      "indicators": [
+        "D"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 3.9,
@@ -1020,9 +1281,17 @@
       "url": "https://search.brave.com",
       "category": "buscadores-generales",
       "subcategory": "motores-busqueda",
-      "tags": ["privacidad", "sin rastreo", "brave", "independiente"],
+      "tags": [
+        "privacidad",
+        "sin rastreo",
+        "brave",
+        "independiente"
+      ],
       "type": "web",
-      "indicators": ["D", "P"],
+      "indicators": [
+        "D",
+        "P"
+      ],
       "region": "internacional",
       "language": "es",
       "rating": 4.3,
@@ -1043,9 +1312,17 @@
       "url": "https://swisscows.com",
       "category": "buscadores-generales",
       "subcategory": "motores-busqueda",
-      "tags": ["privacidad", "familiar", "suiza", "seguro"],
+      "tags": [
+        "privacidad",
+        "familiar",
+        "suiza",
+        "seguro"
+      ],
       "type": "web",
-      "indicators": ["D", "P"],
+      "indicators": [
+        "D",
+        "P"
+      ],
       "region": "europa",
       "language": "es",
       "rating": 4.1,
@@ -1066,9 +1343,17 @@
       "url": "https://github.com/s0md3v/Photon",
       "category": "buscadores-generales",
       "subcategory": "herramientas-cli",
-      "tags": ["crawler", "reconocimiento", "extracción", "automatización"],
+      "tags": [
+        "crawler",
+        "reconocimiento",
+        "extracción",
+        "automatización"
+      ],
       "type": "tool",
-      "indicators": ["T", "D"],
+      "indicators": [
+        "T",
+        "D"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.5,
@@ -1087,9 +1372,17 @@
       "url": "https://intelx.io/",
       "category": "buscadores-generales",
       "subcategory": "motores-especializados",
-      "tags": ["inteligencia", "datos filtrados", "documentos", "búsqueda"],
+      "tags": [
+        "inteligencia",
+        "datos filtrados",
+        "documentos",
+        "búsqueda"
+      ],
       "type": "web",
-      "indicators": ["D", "A"],
+      "indicators": [
+        "D",
+        "A"
+      ],
       "region": "internacional",
       "language": "en",
       "rating": 4.7,

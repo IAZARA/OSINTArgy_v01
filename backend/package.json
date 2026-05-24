@@ -32,7 +32,7 @@
     "node-fetch": "^3.3.2",
     "pdfjs-dist": "^5.3.31",
     "sharp": "^0.34.2",
-    "winston": "^3.11.0"
+    "winston": "^3.19.0"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.23.6",

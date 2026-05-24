@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useMemo } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useParams, useNavigate } from 'react-router-dom'
+import DOMPurify from 'dompurify'
 import { 
   BookOpen, 
   ChevronLeft, 
@@ -1805,6 +1806,10 @@ const LessonViewer = () => {
   }
 
   const currentSlideData = currentLesson.slides[currentSlide]
+  const safeSlideContent = useMemo(
+    () => DOMPurify.sanitize(currentSlideData.content),
+    [currentSlideData.content]
+  )
 
   return (
     <div className="lesson-viewer">
@@ -1841,7 +1846,7 @@ const LessonViewer = () => {
             <div className="slide-content">
               <div 
                 className="slide-text"
-                dangerouslySetInnerHTML={{ __html: currentSlideData.content }}
+                dangerouslySetInnerHTML={{ __html: safeSlideContent }}
               />
               
               {/* Componente interactivo - solo elementos esenciales */}

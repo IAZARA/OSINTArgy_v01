@@ -1,9 +1,10 @@
 import jwt from 'jsonwebtoken'
 import User from '../models/User.js'
+import { getJwtSecret } from '../config/security.js'
 
 // Generar JWT
 const generateToken = (id) => {
-  return jwt.sign({ id }, process.env.JWT_SECRET || 'fallback_secret', {
+  return jwt.sign({ id }, getJwtSecret(), {
     expiresIn: process.env.JWT_EXPIRE || '30d',
   })
 }
@@ -300,10 +301,10 @@ export const changePassword = async (req, res) => {
     }
 
     // Validar nuevo password
-    if (newPassword.length < 6) {
+    if (newPassword.length < 8) {
       return res.status(400).json({
         success: false,
-        message: 'El nuevo password debe tener al menos 6 caracteres'
+        message: 'El nuevo password debe tener al menos 8 caracteres'
       })
     }
 
@@ -377,7 +378,7 @@ export const forgotPassword = async (req, res) => {
     // Generar token de reset
     const resetToken = jwt.sign(
       { id: user._id, purpose: 'password-reset' },
-      process.env.JWT_SECRET || 'fallback_secret',
+      getJwtSecret(),
       { expiresIn: '1h' }
     )
 
@@ -418,7 +419,7 @@ export const resetPassword = async (req, res) => {
     // Verificar token
     let decoded
     try {
-      decoded = jwt.verify(token, process.env.JWT_SECRET || 'fallback_secret')
+      decoded = jwt.verify(token, getJwtSecret())
     } catch (error) {
       return res.status(400).json({
         success: false,
@@ -448,10 +449,10 @@ export const resetPassword = async (req, res) => {
     }
 
     // Validar nuevo password
-    if (newPassword.length < 6) {
+    if (newPassword.length < 8) {
       return res.status(400).json({
         success: false,
-        message: 'El password debe tener al menos 6 caracteres'
+        message: 'El password debe tener al menos 8 caracteres'
       })
     }
 

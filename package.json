@@ -1,7 +1,7 @@
 {
   "name": "osintargy",
   "version": "1.0.0",
-  "description": "OSINTArgy - Framework OSINT mejorado en español argentino",
+  "description": "Plataforma OSINT open source para investigaciones éticas en Argentina y Latinoamérica",
   "main": "index.js",
   "scripts": {
     "start": "./start.sh",
@@ -18,10 +18,13 @@
   },
   "keywords": [
     "osint",
-    "intelligence",
+    "open-source-intelligence",
     "argentina",
+    "latam",
     "framework",
-    "tools"
+    "tools",
+    "react",
+    "nodejs"
   ],
   "author": "Ivan Agustin Zarate",
   "license": "MIT",
@@ -29,6 +32,6 @@
     "concurrently": "^8.2.2"
   },
   "dependencies": {
-    "playwright": "^1.53.1"
+    "playwright": "^1.60.0"
   }
 }

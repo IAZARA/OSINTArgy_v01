@@ -7,6 +7,7 @@ import mongoose from 'mongoose'
 import winston from 'winston'
 import { fileURLToPath } from 'url'
 import { dirname, join } from 'path'
+import { getAllowedOrigins, validateSecurityConfig } from './config/security.js'
 
 // Importar rutas
 import authRoutes from './routes/auth.js'
@@ -27,6 +28,9 @@ import { notFound } from './middleware/notFound.js'
 
 // Configurar variables de entorno
 dotenv.config()
+validateSecurityConfig()
+mongoose.set('sanitizeFilter', true)
+mongoose.set('strictQuery', true)
 
 // Obtener __dirname en ES modules
 const __filename = fileURLToPath(import.meta.url)
@@ -63,11 +67,17 @@ if (process.env.NODE_ENV !== 'production') {
 
 const app = express()
 const PORT = process.env.PORT || 5000
+const allowedOrigins = getAllowedOrigins()
+const jsonBodyLimit = process.env.JSON_BODY_LIMIT || '1mb'
+const rateLimitWindow = Number.parseInt(process.env.RATE_LIMIT_WINDOW, 10) || 15 * 60 * 1000
+const rateLimitMax = Number.parseInt(process.env.RATE_LIMIT_MAX, 10) || 100
 
 // Configurar rate limiting
 const limiter = rateLimit({
-  windowMs: 15 * 60 * 1000, // 15 minutos
-  max: 100, // máximo 100 requests por ventana de tiempo
+  windowMs: rateLimitWindow,
+  max: rateLimitMax,
+  standardHeaders: true,
+  legacyHeaders: false,
   message: {
     error: 'Demasiadas solicitudes desde esta IP, intenta de nuevo más tarde.'
   }
@@ -79,17 +89,19 @@ app.use(limiter)
 
 // Configurar CORS
 app.use(cors({
-  origin: [
-    'http://localhost:5173',
-    'http://localhost:5174',
-    process.env.FRONTEND_URL
-  ].filter(Boolean),
+  origin: (origin, callback) => {
+    if (!origin || allowedOrigins.includes(origin)) {
+      return callback(null, true)
+    }
+
+    return callback(new Error('Origen no permitido por CORS'))
+  },
   credentials: true
 }))
 
 // Middleware para parsing
-app.use(express.json({ limit: '10mb' }))
-app.use(express.urlencoded({ extended: true, limit: '10mb' }))
+app.use(express.json({ limit: jsonBodyLimit }))
+app.use(express.urlencoded({ extended: true, limit: jsonBodyLimit, parameterLimit: 100 }))
 
 // Middleware de logging
 app.use((req, res, next) => {

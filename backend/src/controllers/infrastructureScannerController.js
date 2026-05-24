@@ -1,8 +1,11 @@
 import axios from 'axios'
 import dns from 'dns'
-import { promisify } from 'util'
+import net from 'net'
 
 const dnsPromises = dns.promises
+const DOMAIN_PATTERN = /^(?=.{1,253}$)(?!.*\.\.)(?:[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\.)+[a-z]{2,63}$/
+const BLOCKED_SUFFIXES = ['.local', '.localhost', '.internal', '.lan', '.home']
+const MAX_RESPONSE_BYTES = 1024 * 1024
 
 class InfrastructureScannerController {
   constructor() {
@@ -14,15 +17,46 @@ class InfrastructureScannerController {
     };
   }
 
+  normalizeDomain(rawDomain) {
+    const value = String(rawDomain || '')
+      .trim()
+      .toLowerCase()
+      .replace(/^https?:\/\//, '')
+      .split('/')[0]
+      .split(':')[0]
+
+    if (!DOMAIN_PATTERN.test(value) || net.isIP(value) || BLOCKED_SUFFIXES.some(suffix => value.endsWith(suffix))) {
+      throw new Error('Dominio inválido')
+    }
+
+    return value
+  }
+
+  getHttpOptions(overrides = {}) {
+    return {
+      timeout: 10000,
+      maxRedirects: 0,
+      maxContentLength: MAX_RESPONSE_BYTES,
+      maxBodyLength: MAX_RESPONSE_BYTES,
+      validateStatus: () => true,
+      headers: {
+        'User-Agent': 'OSINTArgy-Scanner/1.0',
+        ...(overrides.headers || {})
+      },
+      ...overrides
+    }
+  }
+
   // Endpoint principal para escaneo completo
   async performFullScan(req, res) {
     try {
-      const { domain } = req.body;
-      
-      if (!domain) {
+      let domain
+      try {
+        domain = this.normalizeDomain(req.body?.domain)
+      } catch (error) {
         return res.status(400).json({
           success: false,
-          error: 'Dominio requerido'
+          error: 'Dominio inválido'
         });
       }
 
@@ -79,7 +113,7 @@ class InfrastructureScannerController {
       res.status(500).json({
         success: false,
         error: 'Error interno del servidor',
-        details: error.message
+        ...(process.env.NODE_ENV === 'development' && { details: error.message })
       });
     }
   }
@@ -219,12 +253,8 @@ class InfrastructureScannerController {
   // Certificate Transparency subdomain discovery
   async getCertificateSubdomains(domain) {
     try {
-      const response = await axios.get(`https://crt.sh/?q=%25.${domain}&output=json`, {
-        timeout: 10000,
-        headers: {
-          'User-Agent': 'OSINTArgy-Scanner/1.0'
-        }
-      });
+      const query = encodeURIComponent(`%.${domain}`);
+      const response = await axios.get(`https://crt.sh/?q=${query}&output=json`, this.getHttpOptions());
 
       const certificates = response.data || [];
       const subdomains = new Set();
@@ -325,9 +355,8 @@ class InfrastructureScannerController {
   // Obtener certificados SSL
   async getCertificates(domain) {
     try {
-      const response = await axios.get(`https://crt.sh/?q=${domain}&output=json`, {
-        timeout: 10000
-      });
+      const query = encodeURIComponent(domain);
+      const response = await axios.get(`https://crt.sh/?q=${query}&output=json`, this.getHttpOptions());
 
       return (response.data || []).slice(0, 10).map(cert => ({
         id: cert.id,
@@ -355,10 +384,7 @@ class InfrastructureScannerController {
 
     for (const provider of cloudProviders) {
       try {
-        const response = await axios.head(`https://${provider.pattern}`, {
-          timeout: 5000,
-          validateStatus: () => true
-        });
+        const response = await axios.head(`https://${provider.pattern}`, this.getHttpOptions({ timeout: 5000 }));
 
         if (response.status !== 404) {
           cloudAssets.push({
@@ -379,13 +405,7 @@ class InfrastructureScannerController {
   // Identificar tecnologías web
   async identifyTechnologies(domain) {
     try {
-      const response = await axios.get(`https://${domain}`, {
-        timeout: 10000,
-        headers: {
-          'User-Agent': 'OSINTArgy-Scanner/1.0'
-        },
-        validateStatus: () => true
-      });
+      const response = await axios.get(`https://${domain}`, this.getHttpOptions());
 
       const technologies = [];
       const headers = response.headers;
@@ -440,10 +460,7 @@ class InfrastructureScannerController {
   // Analizar headers de seguridad
   async analyzeSecurityHeaders(domain) {
     try {
-      const response = await axios.get(`https://${domain}`, {
-        timeout: 10000,
-        validateStatus: () => true
-      });
+      const response = await axios.get(`https://${domain}`, this.getHttpOptions());
 
       const headers = response.headers;
       const securityAnalysis = {
@@ -471,10 +488,7 @@ class InfrastructureScannerController {
   // Análisis SSL/TLS
   async analyzeSSL(domain) {
     try {
-      const response = await axios.get(`https://${domain}`, {
-        timeout: 10000,
-        validateStatus: () => true
-      });
+      const response = await axios.get(`https://${domain}`, this.getHttpOptions());
 
       return {
         ssl_enabled: response.request.protocol === 'https:',
@@ -512,10 +526,7 @@ class InfrastructureScannerController {
 
       for (const file of commonFiles) {
         try {
-          const response = await axios.get(`https://${domain}${file}`, {
-            timeout: 5000,
-            validateStatus: () => true
-          });
+          const response = await axios.get(`https://${domain}${file}`, this.getHttpOptions({ timeout: 5000 }));
 
           if (response.status === 200) {
             exposures.push({

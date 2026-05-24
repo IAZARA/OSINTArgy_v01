@@ -1,33 +1,51 @@
-import fs from 'fs/promises'
-import path from 'path'
-import { fileURLToPath } from 'url'
 import multer from 'multer'
 import sharp from 'sharp'
 import exifr from 'exifr'
 // import pdfParse from 'pdf-parse' // Removido por problemas de compatibilidad
 import mammoth from 'mammoth'
-import fetch from 'node-fetch'
 
-const __filename = fileURLToPath(import.meta.url)
-const __dirname = path.dirname(__filename)
+const MAX_FILE_SIZE = Number.parseInt(process.env.MAX_FILE_SIZE, 10) || 5 * 1024 * 1024
+const ALLOWED_TYPES = new Set([
+  'image/jpeg',
+  'image/jpg',
+  'image/png',
+  'application/pdf',
+  'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
+])
+
+const hasAllowedSignature = (buffer, mimetype) => {
+  if (!Buffer.isBuffer(buffer) || buffer.length < 4) {
+    return false
+  }
+
+  if (mimetype === 'image/jpeg' || mimetype === 'image/jpg') {
+    return buffer[0] === 0xff && buffer[1] === 0xd8 && buffer[2] === 0xff
+  }
+
+  if (mimetype === 'image/png') {
+    return buffer.subarray(0, 8).equals(Buffer.from([0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a]))
+  }
+
+  if (mimetype === 'application/pdf') {
+    return buffer.subarray(0, 4).toString() === '%PDF'
+  }
+
+  if (mimetype === 'application/vnd.openxmlformats-officedocument.wordprocessingml.document') {
+    return buffer.subarray(0, 4).toString('binary') === 'PK\u0003\u0004'
+  }
+
+  return false
+}
 
 // Configurar multer para subida de archivos
 const storage = multer.memoryStorage()
 const upload = multer({
   storage,
   limits: {
-    fileSize: 50 * 1024 * 1024, // 50MB límite
+    fileSize: MAX_FILE_SIZE,
   },
   fileFilter: (req, file, cb) => {
-    const allowedTypes = [
-      'image/jpeg',
-      'image/jpg', 
-      'image/png',
-      'application/pdf',
-      'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
-    ]
-    
-    if (allowedTypes.includes(file.mimetype)) {
+    if (ALLOWED_TYPES.has(file.mimetype)) {
       cb(null, true)
     } else {
       cb(new Error('Tipo de archivo no soportado'), false)
@@ -183,6 +201,13 @@ export class FileAnalysisController {
 
       const { buffer, originalname, mimetype, size } = req.file
       const fileType = mimetype.split('/')[0]
+
+      if (!hasAllowedSignature(buffer, mimetype)) {
+        return res.status(400).json({
+          success: false,
+          error: 'La firma del archivo no coincide con el tipo declarado'
+        })
+      }
       
       let analysisResult = {
         filename: originalname,
@@ -220,7 +245,7 @@ export class FileAnalysisController {
       res.status(500).json({
         success: false,
         error: 'Error interno del servidor',
-        message: error.message
+        ...(process.env.NODE_ENV === 'development' && { message: error.message })
       })
     }
   }
@@ -254,8 +279,8 @@ export class FileAnalysisController {
           ]
         },
         limits: {
-          max_file_size: '50MB',
-          max_file_size_bytes: 50 * 1024 * 1024
+          max_file_size: `${Math.round(MAX_FILE_SIZE / 1024 / 1024)}MB`,
+          max_file_size_bytes: MAX_FILE_SIZE
         }
       }
 

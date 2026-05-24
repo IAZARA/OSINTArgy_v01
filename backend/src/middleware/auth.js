@@ -1,5 +1,6 @@
 import jwt from 'jsonwebtoken'
 import User from '../models/User.js'
+import { getJwtSecret } from '../config/security.js'
 
 // Middleware para proteger rutas
 export const protect = async (req, res, next) => {
@@ -21,7 +22,7 @@ export const protect = async (req, res, next) => {
 
     try {
       // Verificar token
-      const decoded = jwt.verify(token, process.env.JWT_SECRET || 'fallback_secret')
+      const decoded = jwt.verify(token, getJwtSecret())
 
       // Obtener usuario del token
       const user = await User.findById(decoded.id).select('-password')
@@ -90,7 +91,7 @@ export const optionalAuth = async (req, res, next) => {
 
     if (token) {
       try {
-        const decoded = jwt.verify(token, process.env.JWT_SECRET || 'fallback_secret')
+        const decoded = jwt.verify(token, getJwtSecret())
         const user = await User.findById(decoded.id).select('-password')
         
         if (user && user.isActive) {

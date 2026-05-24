@@ -505,30 +505,47 @@ const ForceGraphView = ({ tools = [], categories = [], onCategorySelect, selecte
     if (!tooltipRef.current) return;
     
     const tooltip = tooltipRef.current;
-    let content = '';
+    tooltip.replaceChildren();
+
+    const appendLine = (text, tagName = null) => {
+      if (tooltip.childNodes.length > 0) {
+        tooltip.appendChild(document.createElement('br'));
+      }
+
+      if (tagName) {
+        const element = document.createElement(tagName);
+        element.textContent = text;
+        tooltip.appendChild(element);
+        return;
+      }
+
+      tooltip.appendChild(document.createTextNode(text));
+    };
     
     if (d.type === 'central') {
-      content = 'OSINTArgy - Haz click para ver/ocultar categorías';
+      appendLine('OSINTArgy - Haz click para ver/ocultar categorías');
     } else if (d.type === 'category') {
-      content = `${d.name}<br/>${d.description || ''}<br/>Haz click para ver herramientas`;
+      appendLine(d.name || 'Categoría');
+      if (d.description) appendLine(d.description);
+      appendLine('Haz click para ver herramientas');
     } else if (d.type === 'tool') {
-      content = `<strong>${d.name}</strong><br/>${d.description || 'Herramienta OSINT'}`;
+      appendLine(d.name || 'Herramienta OSINT', 'strong');
+      appendLine(d.description || 'Herramienta OSINT');
       
       // Agregar información de relaciones si existen
       if (d.toolData?.tags?.length > 0) {
-        content += `<br/><small>Tags: ${d.toolData.tags.slice(0, 3).join(', ')}</small>`;
+        appendLine(`Tags: ${d.toolData.tags.slice(0, 3).join(', ')}`, 'small');
       }
       if (d.toolData?.indicators?.length > 0) {
-        content += `<br/><small>Capacidades: ${d.toolData.indicators.join(', ')}</small>`;
+        appendLine(`Capacidades: ${d.toolData.indicators.join(', ')}`, 'small');
       }
       
-      content += '<br/>Haz click para abrir';
+      appendLine('Haz click para abrir');
       if (user) {
-        content += `<br/>${d.isFavorite ? '⭐ En favoritos' : '♥ Click para agregar a favoritos'}`;
+        appendLine(d.isFavorite ? '⭐ En favoritos' : '♥ Click para agregar a favoritos');
       }
     }
     
-    tooltip.innerHTML = content;
     tooltip.style.display = 'block';
     tooltip.style.left = (event.pageX + 10) + 'px';
     tooltip.style.top = (event.pageY - 10) + 'px';

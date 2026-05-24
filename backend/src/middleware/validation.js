@@ -21,10 +21,10 @@ const registerSchema = Joi.object({
       'any.required': 'Email es requerido'
     }),
   password: Joi.string()
-    .min(6)
+    .min(8)
     .required()
     .messages({
-      'string.min': 'Password debe tener al menos 6 caracteres',
+      'string.min': 'Password debe tener al menos 8 caracteres',
       'any.required': 'Password es requerido'
     }),
   firstName: Joi.string()

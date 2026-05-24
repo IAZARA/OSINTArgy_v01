@@ -1,4 +1,5 @@
 import dotenv from 'dotenv'
+import { DEFAULT_DEV_JWT_SECRET } from './security.js'
 
 // Cargar variables de entorno
 dotenv.config()
@@ -25,7 +26,7 @@ const config = {
 
   // Configuración de JWT
   jwt: {
-    secret: process.env.JWT_SECRET || 'osintargy_jwt_secret_key_2025',
+    secret: process.env.JWT_SECRET || DEFAULT_DEV_JWT_SECRET,
     expire: process.env.JWT_EXPIRE || '30d',
     refreshSecret: process.env.JWT_REFRESH_SECRET || 'osintargy_refresh_secret_key_2025',
     refreshExpire: process.env.JWT_REFRESH_EXPIRE || '7d'
@@ -104,7 +105,7 @@ const config = {
     version: '1.0.0',
     description: 'Framework OSINT mejorado en español argentino',
     author: 'Ivan Agustin Zarate',
-    homepage: process.env.APP_HOMEPAGE || 'https://osintargy.online',
+    homepage: process.env.APP_HOMEPAGE || '',
     supportEmail: process.env.SUPPORT_EMAIL || 'soporte@osintargy.online'
   },
 

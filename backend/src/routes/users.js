@@ -3,22 +3,31 @@ import User from '../models/User.js'
 import { protect, authorize } from '../middleware/auth.js'
 
 const router = express.Router()
+const escapeRegex = (value) => String(value).replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+const toPositiveInt = (value, fallback, max) => {
+  const parsed = Number.parseInt(value, 10)
+  if (!Number.isFinite(parsed) || parsed < 1) return fallback
+  return Math.min(parsed, max)
+}
 
 // @desc    Obtener todos los usuarios (Admin)
 // @route   GET /api/users
 // @access  Private/Admin
 router.get('/', protect, authorize('admin'), async (req, res) => {
   try {
-    const { page = 1, limit = 20, search } = req.query
+    const page = toPositiveInt(req.query.page, 1, 1000)
+    const limit = toPositiveInt(req.query.limit, 20, 100)
+    const search = typeof req.query.search === 'string' ? req.query.search.trim().slice(0, 100) : ''
     
     let query = {}
     if (search) {
+      const safeSearch = escapeRegex(search)
       query = {
         $or: [
-          { username: { $regex: search, $options: 'i' } },
-          { email: { $regex: search, $options: 'i' } },
-          { 'profile.firstName': { $regex: search, $options: 'i' } },
-          { 'profile.lastName': { $regex: search, $options: 'i' } }
+          { username: { $regex: safeSearch, $options: 'i' } },
+          { email: { $regex: safeSearch, $options: 'i' } },
+          { 'profile.firstName': { $regex: safeSearch, $options: 'i' } },
+          { 'profile.lastName': { $regex: safeSearch, $options: 'i' } }
         ]
       }
     }
@@ -26,7 +35,7 @@ router.get('/', protect, authorize('admin'), async (req, res) => {
     const users = await User.find(query)
       .select('-password -resetPasswordToken -resetPasswordExpires')
       .sort({ createdAt: -1 })
-      .limit(limit * 1)
+      .limit(limit)
       .skip((page - 1) * limit)
 
     const total = await User.countDocuments(query)
@@ -35,51 +44,14 @@ router.get('/', protect, authorize('admin'), async (req, res) => {
       success: true,
       data: users,
       pagination: {
-        page: parseInt(page),
-        limit: parseInt(limit),
+        page,
+        limit,
         total,
         pages: Math.ceil(total / limit)
       }
     })
   } catch (error) {
     console.error('Error obteniendo usuarios:', error)
-    res.status(500).json({
-      success: false,
-      message: 'Error interno del servidor'
-    })
-  }
-})
-
-// @desc    Obtener usuario por ID
-// @route   GET /api/users/:id
-// @access  Private
-router.get('/:id', protect, async (req, res) => {
-  try {
-    const { id } = req.params
-    
-    // Solo admins pueden ver otros usuarios, usuarios normales solo pueden verse a sí mismos
-    if (req.user.role !== 'admin' && req.user._id.toString() !== id) {
-      return res.status(403).json({
-        success: false,
-        message: 'No autorizado para ver este usuario'
-      })
-    }
-
-    const user = await User.findById(id).select('-password -resetPasswordToken -resetPasswordExpires')
-    
-    if (!user) {
-      return res.status(404).json({
-        success: false,
-        message: 'Usuario no encontrado'
-      })
-    }
-
-    res.json({
-      success: true,
-      data: user
-    })
-  } catch (error) {
-    console.error('Error obteniendo usuario:', error)
     res.status(500).json({
       success: false,
       message: 'Error interno del servidor'
@@ -287,7 +259,10 @@ router.delete('/notes/:noteId', protect, async (req, res) => {
 // @access  Private
 router.get('/notes', protect, async (req, res) => {
   try {
-    const { page = 1, limit = 20, search, tags } = req.query
+    const page = toPositiveInt(req.query.page, 1, 1000)
+    const limit = toPositiveInt(req.query.limit, 20, 100)
+    const search = typeof req.query.search === 'string' ? req.query.search.trim().slice(0, 100) : ''
+    const tags = typeof req.query.tags === 'string' ? req.query.tags.slice(0, 300) : ''
     
     let notes = req.user.notes || []
     
@@ -313,15 +288,15 @@ router.get('/notes', protect, async (req, res) => {
     
     // Paginación
     const startIndex = (page - 1) * limit
-    const endIndex = startIndex + parseInt(limit)
+    const endIndex = startIndex + limit
     const paginatedNotes = notes.slice(startIndex, endIndex)
     
     res.json({
       success: true,
       data: paginatedNotes,
       pagination: {
-        page: parseInt(page),
-        limit: parseInt(limit),
+        page,
+        limit,
         total: notes.length,
         pages: Math.ceil(notes.length / limit)
       }
@@ -437,6 +412,43 @@ router.put('/profile', protect, async (req, res) => {
     })
   } catch (error) {
     console.error('Error actualizando perfil:', error)
+    res.status(500).json({
+      success: false,
+      message: 'Error interno del servidor'
+    })
+  }
+})
+
+// @desc    Obtener usuario por ID
+// @route   GET /api/users/:id
+// @access  Private
+router.get('/:id', protect, async (req, res) => {
+  try {
+    const { id } = req.params
+
+    // Solo admins pueden ver otros usuarios, usuarios normales solo pueden verse a sí mismos
+    if (req.user.role !== 'admin' && req.user._id.toString() !== id) {
+      return res.status(403).json({
+        success: false,
+        message: 'No autorizado para ver este usuario'
+      })
+    }
+
+    const user = await User.findById(id).select('-password -resetPasswordToken -resetPasswordExpires')
+
+    if (!user) {
+      return res.status(404).json({
+        success: false,
+        message: 'Usuario no encontrado'
+      })
+    }
+
+    res.json({
+      success: true,
+      data: user
+    })
+  } catch (error) {
+    console.error('Error obteniendo usuario:', error)
     res.status(500).json({
       success: false,
       message: 'Error interno del servidor'

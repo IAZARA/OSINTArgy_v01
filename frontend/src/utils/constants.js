@@ -234,11 +234,11 @@ export const TOAST_DURATION = {
 
 // URLs útiles
 export const URLS = {
-  GITHUB: 'https://github.com/osintargy/osintargy',
-  TWITTER: 'https://twitter.com/osintargy',
-  DISCORD: 'https://discord.gg/osintargy',
-  DOCUMENTATION: 'https://docs.osintargy.online',
-  FEEDBACK: 'https://github.com/osintargy/osintargy/issues'
+  GITHUB: 'https://github.com/IAZARA/OSINTArgy_v01',
+  TWITTER: '',
+  DISCORD: '',
+  DOCUMENTATION: '',
+  FEEDBACK: 'https://github.com/IAZARA/OSINTArgy_v01/issues'
 }
 
 // Configuración de D3.js para vista árbol

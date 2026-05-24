@@ -1,5 +1,7 @@
 import mongoose from 'mongoose'
 
+const escapeRegex = (value) => String(value).replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+
 const toolSchema = new mongoose.Schema({
   id: {
     type: String,
@@ -192,7 +194,7 @@ toolSchema.statics.searchTools = function(query, filters = {}) {
   
   // Búsqueda de texto usando regex (temporal hasta resolver índice de texto)
   if (query) {
-    const regex = new RegExp(query, 'i')
+    const regex = new RegExp(escapeRegex(String(query).trim().slice(0, 100)), 'i')
     searchQuery.$or = [
       { name: regex },
       { description: regex },

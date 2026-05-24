@@ -1,5 +1,11 @@
 import Tool from '../models/Tool.js'
-import User from '../models/User.js'
+
+const escapeRegex = (value) => String(value).replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+const toPositiveInt = (value, fallback, max) => {
+  const parsed = Number.parseInt(value, 10)
+  if (!Number.isFinite(parsed) || parsed < 1) return fallback
+  return Math.min(parsed, max)
+}
 
 // @desc    Búsqueda avanzada de herramientas
 // @route   GET /api/search/tools
@@ -22,16 +28,21 @@ export const searchTools = async (req, res) => {
       limit = 20
     } = req.query
 
+    const safePage = toPositiveInt(page, 1, 1000)
+    const safeLimit = toPositiveInt(limit, 20, 100)
+    const searchTerm = typeof q === 'string' ? q.trim().slice(0, 100) : ''
+    const safeSearchTerm = escapeRegex(searchTerm)
+
     // Construir query de búsqueda
     let searchQuery = {}
 
     // Búsqueda por texto
-    if (q.trim()) {
+    if (searchTerm) {
       searchQuery.$or = [
-        { name: { $regex: q, $options: 'i' } },
-        { description: { $regex: q, $options: 'i' } },
-        { utility: { $regex: q, $options: 'i' } },
-        { tags: { $in: [new RegExp(q, 'i')] } }
+        { name: { $regex: safeSearchTerm, $options: 'i' } },
+        { description: { $regex: safeSearchTerm, $options: 'i' } },
+        { utility: { $regex: safeSearchTerm, $options: 'i' } },
+        { tags: { $in: [new RegExp(safeSearchTerm, 'i')] } }
       ]
     }
 
@@ -69,8 +80,12 @@ export const searchTools = async (req, res) => {
     }
 
     if (tags) {
-      const tagArray = tags.split(',').map(tag => tag.trim())
-      searchQuery.tags = { $in: tagArray.map(tag => new RegExp(tag, 'i')) }
+      const tagArray = String(tags)
+        .slice(0, 300)
+        .split(',')
+        .map(tag => tag.trim())
+        .filter(Boolean)
+      searchQuery.tags = { $in: tagArray.map(tag => new RegExp(escapeRegex(tag), 'i')) }
     }
 
     // Solo herramientas activas
@@ -94,8 +109,8 @@ export const searchTools = async (req, res) => {
       case 'relevance':
       default:
         // Para relevancia, usar score de texto si hay búsqueda, sino por rating
-        if (q.trim()) {
-          searchQuery.$text = { $search: q }
+        if (searchTerm) {
+          searchQuery.$text = { $search: searchTerm }
           sortOptions = { score: { $meta: 'textScore' }, rating: -1 }
         } else {
           sortOptions = { rating: -1, usage_count: -1 }
@@ -106,8 +121,8 @@ export const searchTools = async (req, res) => {
     // Ejecutar búsqueda
     const tools = await Tool.find(searchQuery)
       .sort(sortOptions)
-      .limit(limit * 1)
-      .skip((page - 1) * limit)
+      .limit(safeLimit)
+      .skip((safePage - 1) * safeLimit)
       .lean()
 
     // Contar total de resultados
@@ -138,13 +153,13 @@ export const searchTools = async (req, res) => {
       data: tools,
       stats: stats[0] || null,
       pagination: {
-        page: parseInt(page),
-        limit: parseInt(limit),
+        page: safePage,
+        limit: safeLimit,
         total,
-        pages: Math.ceil(total / limit)
+        pages: Math.ceil(total / safeLimit)
       },
       filters: {
-        q,
+        q: searchTerm,
         category,
         subcategory,
         region,
@@ -171,7 +186,7 @@ export const searchTools = async (req, res) => {
 // @access  Public
 export const getSearchSuggestions = async (req, res) => {
   try {
-    const { q } = req.query
+    const q = typeof req.query.q === 'string' ? req.query.q.trim().slice(0, 100) : ''
 
     if (!q || q.length < 2) {
       return res.json({
@@ -180,11 +195,13 @@ export const getSearchSuggestions = async (req, res) => {
       })
     }
 
+    const safeQ = escapeRegex(q)
+
     // Buscar herramientas que coincidan
     const toolSuggestions = await Tool.find({
       $or: [
-        { name: { $regex: q, $options: 'i' } },
-        { tags: { $in: [new RegExp(q, 'i')] } }
+        { name: { $regex: safeQ, $options: 'i' } },
+        { tags: { $in: [new RegExp(safeQ, 'i')] } }
       ],
       status: 'active'
     })
@@ -194,7 +211,7 @@ export const getSearchSuggestions = async (req, res) => {
 
     // Buscar categorías que coincidan
     const categorySuggestions = await Tool.distinct('category', {
-      category: { $regex: q, $options: 'i' },
+      category: { $regex: safeQ, $options: 'i' },
       status: 'active'
     })
 
@@ -202,7 +219,7 @@ export const getSearchSuggestions = async (req, res) => {
     const tagSuggestions = await Tool.aggregate([
       { $match: { status: 'active' } },
       { $unwind: '$tags' },
-      { $match: { tags: { $regex: q, $options: 'i' } } },
+      { $match: { tags: { $regex: safeQ, $options: 'i' } } },
       { $group: { _id: '$tags', count: { $sum: 1 } } },
       { $sort: { count: -1 } },
       { $limit: 5 }
@@ -366,10 +383,10 @@ export const saveSearchHistory = async (req, res) => {
 // @access  Private
 export const getSearchHistory = async (req, res) => {
   try {
-    const { limit = 20 } = req.query
+    const limit = toPositiveInt(req.query.limit, 20, 100)
 
     const searchHistory = req.user.searchHistory || []
-    const limitedHistory = searchHistory.slice(0, parseInt(limit))
+    const limitedHistory = searchHistory.slice(0, limit)
 
     res.json({
       success: true,

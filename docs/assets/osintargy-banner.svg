@@ -1,0 +1,60 @@
+<svg width="1280" height="420" viewBox="0 0 1280 420" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">OSINTArgy</title>
+  <desc id="desc">Banner del proyecto OSINTArgy, plataforma OSINT open source para Argentina y Latinoamérica.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1280" y2="420" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#07111F"/>
+      <stop offset="0.48" stop-color="#0A2237"/>
+      <stop offset="1" stop-color="#111827"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(326 214) rotate(17.5) scale(280 170)">
+      <stop stop-color="#38BDF8" stop-opacity="0.55"/>
+      <stop offset="0.6" stop-color="#38BDF8" stop-opacity="0.12"/>
+      <stop offset="1" stop-color="#38BDF8" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="brand" x1="462" y1="121" x2="874" y2="271" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F8FAFC"/>
+      <stop offset="0.52" stop-color="#E0F2FE"/>
+      <stop offset="1" stop-color="#38BDF8"/>
+    </linearGradient>
+    <filter id="softShadow" x="-40%" y="-40%" width="180%" height="180%" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="24" stdDeviation="28" flood-color="#020617" flood-opacity="0.45"/>
+    </filter>
+    <pattern id="grid" width="42" height="42" patternUnits="userSpaceOnUse">
+      <path d="M 42 0 L 0 0 0 42" stroke="#94A3B8" stroke-opacity="0.08" stroke-width="1"/>
+    </pattern>
+  </defs>
+
+  <rect width="1280" height="420" rx="0" fill="url(#bg)"/>
+  <rect width="1280" height="420" fill="url(#grid)"/>
+  <circle cx="326" cy="214" r="272" fill="url(#glow)"/>
+  <path d="M785 71C934 80 1043 139 1173 84" stroke="#38BDF8" stroke-opacity="0.22" stroke-width="2"/>
+  <path d="M801 322C937 283 1056 333 1196 264" stroke="#22C55E" stroke-opacity="0.18" stroke-width="2"/>
+
+  <g opacity="0.45">
+    <circle cx="1016" cy="112" r="3" fill="#E0F2FE"/>
+    <circle cx="1096" cy="148" r="2.5" fill="#BAE6FD"/>
+    <circle cx="1156" cy="97" r="2" fill="#CBD5E1"/>
+    <circle cx="944" cy="287" r="2.5" fill="#E0F2FE"/>
+    <circle cx="1082" cy="314" r="2" fill="#BAE6FD"/>
+    <circle cx="1192" cy="221" r="3" fill="#E0F2FE"/>
+  </g>
+
+  <g transform="translate(92 76)" filter="url(#softShadow)">
+    <circle cx="160" cy="134" r="116" fill="#081827" stroke="#1F9FD6" stroke-width="2"/>
+    <path d="M34 134C67 83 108 58 160 58C212 58 253 83 286 134C253 185 212 210 160 210C108 210 67 185 34 134Z" fill="#06111F" stroke="#E5F4FF" stroke-width="8" stroke-linejoin="round"/>
+    <path d="M66 134C93 101 124 84 160 84C196 84 227 101 254 134C227 167 196 184 160 184C124 184 93 167 66 134Z" fill="#08243A" stroke="#7DD3FC" stroke-opacity="0.75" stroke-width="3"/>
+    <circle cx="160" cy="134" r="54" fill="#38BDF8" stroke="#0EA5E9" stroke-width="5"/>
+    <path d="M106 134H214M160 80V188" stroke="#075985" stroke-width="5" stroke-linecap="round"/>
+    <path d="M124 101C146 90 174 90 196 101M124 167C146 178 174 178 196 167" stroke="#E0F2FE" stroke-opacity="0.72" stroke-width="4" stroke-linecap="round"/>
+    <path d="M151 86C139 108 136 126 143 142C150 158 146 177 158 196C166 179 175 166 170 149C165 134 181 125 174 109C169 98 162 92 151 86Z" fill="#F8FAFC" fill-opacity="0.88"/>
+  </g>
+
+  <g transform="translate(438 104)">
+    <text x="0" y="94" fill="url(#brand)" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="86" font-weight="800" letter-spacing="0">OSINTArgy</text>
+    <rect x="2" y="123" width="146" height="5" rx="2.5" fill="#38BDF8"/>
+    <rect x="160" y="123" width="70" height="5" rx="2.5" fill="#22C55E"/>
+    <text x="0" y="174" fill="#CBD5E1" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="30" font-weight="500" letter-spacing="0">Open Source Intelligence para Argentina y Latinoamérica</text>
+    <text x="0" y="222" fill="#93C5FD" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="23" font-weight="600" letter-spacing="0">Herramientas, dorks, automatizaciones y recursos OSINT en español</text>
+  </g>
+</svg>

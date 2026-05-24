@@ -162,8 +162,8 @@ const tools = [
 // Usuario administrador de ejemplo
 const adminUser = {
   username: "admin",
-  email: "admin@osintargy.online",
-  password: "admin123",
+  email: process.env.SEED_ADMIN_EMAIL || "admin@example.local",
+  password: process.env.SEED_ADMIN_PASSWORD,
   profile: {
     firstName: "Administrador",
     lastName: "OSINTArgy"
@@ -177,6 +177,10 @@ const adminUser = {
 const seedDatabase = async () => {
   try {
     console.log('🌱 Iniciando seeding de la base de datos...')
+
+    if (!process.env.SEED_ADMIN_PASSWORD || process.env.SEED_ADMIN_PASSWORD === 'change_me_before_seeding') {
+      throw new Error('Definí SEED_ADMIN_PASSWORD con un valor fuerte antes de ejecutar el seed.')
+    }
 
     // Conectar a MongoDB
     await mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/osintargy')

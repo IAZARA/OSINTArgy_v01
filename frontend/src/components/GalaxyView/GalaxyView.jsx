@@ -1,7 +1,191 @@
 import React, { useRef, useEffect, useState, useCallback } from 'react';
+import {
+  ArrowLeft,
+  Compass,
+  ExternalLink,
+  Home,
+  Sparkles,
+  X,
+  ZoomIn,
+  ZoomOut
+} from 'lucide-react';
 import { useAuth } from '@hooks/useAuth';
 import { useFavorites } from '@hooks/useTools';
 import './GalaxyView.css';
+
+const LABEL_FONT = "'Segoe UI', system-ui, sans-serif";
+
+const clamp = (value, min, max) => Math.min(Math.max(value, min), max);
+
+const drawRoundedRect = (ctx, x, y, width, height, radius) => {
+  const safeRadius = Math.min(radius, width / 2, height / 2);
+
+  ctx.beginPath();
+  ctx.moveTo(x + safeRadius, y);
+  ctx.lineTo(x + width - safeRadius, y);
+  ctx.quadraticCurveTo(x + width, y, x + width, y + safeRadius);
+  ctx.lineTo(x + width, y + height - safeRadius);
+  ctx.quadraticCurveTo(x + width, y + height, x + width - safeRadius, y + height);
+  ctx.lineTo(x + safeRadius, y + height);
+  ctx.quadraticCurveTo(x, y + height, x, y + height - safeRadius);
+  ctx.lineTo(x, y + safeRadius);
+  ctx.quadraticCurveTo(x, y, x + safeRadius, y);
+  ctx.closePath();
+};
+
+const fitLineWithEllipsis = (ctx, line, maxWidth) => {
+  if (ctx.measureText(line).width <= maxWidth) {
+    return line;
+  }
+
+  let trimmed = line;
+  while (trimmed.length > 1 && ctx.measureText(`${trimmed}...`).width > maxWidth) {
+    trimmed = trimmed.slice(0, -1).trim();
+  }
+
+  return `${trimmed}...`;
+};
+
+const wrapCanvasText = (ctx, text, maxWidth, maxLines = 3) => {
+  const words = text.split(/\s+/).filter(Boolean);
+  const lines = [];
+  let currentLine = '';
+
+  words.forEach((word) => {
+    const nextLine = currentLine ? `${currentLine} ${word}` : word;
+    if (!currentLine || ctx.measureText(nextLine).width <= maxWidth) {
+      currentLine = nextLine;
+      return;
+    }
+
+    lines.push(currentLine);
+    currentLine = word;
+  });
+
+  if (currentLine) {
+    lines.push(currentLine);
+  }
+
+  if (lines.length <= maxLines) {
+    return lines.map((line) => fitLineWithEllipsis(ctx, line, maxWidth));
+  }
+
+  const visibleLines = lines.slice(0, maxLines);
+  visibleLines[maxLines - 1] = fitLineWithEllipsis(
+    ctx,
+    lines.slice(maxLines - 1).join(' '),
+    maxWidth
+  );
+
+  return visibleLines;
+};
+
+const getOverlapArea = (boxA, boxB, margin = 10) => {
+  const xOverlap = Math.max(0, Math.min(boxA.right + margin, boxB.right) - Math.max(boxA.left - margin, boxB.left));
+  const yOverlap = Math.max(0, Math.min(boxA.bottom + margin, boxB.bottom) - Math.max(boxA.top - margin, boxB.top));
+
+  return xOverlap * yOverlap;
+};
+
+const drawConstellationLabel = ({
+  ctx,
+  name,
+  color,
+  x,
+  y,
+  fontSize,
+  canvasWidth,
+  canvasHeight,
+  zoom,
+  placedLabels,
+  isActive,
+  isFocused,
+  isMobile
+}) => {
+  const maxTextWidth = isMobile ? 160 : 230;
+  const lineHeight = Math.round(fontSize * 1.18);
+  const paddingX = isMobile ? 8 : 12;
+  const paddingY = isMobile ? 6 : 8;
+  const outwardX = x - canvasWidth / 2;
+  const outwardY = y - canvasHeight / 2;
+  const outwardLength = Math.max(1, Math.hypot(outwardX, outwardY));
+  const unitX = outwardX / outwardLength;
+  const unitY = outwardY / outwardLength;
+  const perpendicularX = -unitY;
+  const perpendicularY = unitX;
+  const distance = clamp(88 * zoom, 72, isMobile ? 108 : 132);
+
+  ctx.save();
+  ctx.font = `700 ${fontSize}px ${LABEL_FONT}`;
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'middle';
+
+  const lines = wrapCanvasText(ctx, name, maxTextWidth, isMobile ? 2 : 3);
+  const textWidth = Math.max(...lines.map((line) => ctx.measureText(line).width));
+  const labelWidth = textWidth + paddingX * 2;
+  const labelHeight = lines.length * lineHeight + paddingY * 2;
+
+  const candidateCenters = [
+    { x: x + unitX * distance, y: y + unitY * distance },
+    { x: x + unitX * distance + perpendicularX * 74, y: y + unitY * distance + perpendicularY * 74 },
+    { x: x + unitX * distance - perpendicularX * 74, y: y + unitY * distance - perpendicularY * 74 },
+    { x: x + unitX * distance + perpendicularX * 148, y: y + unitY * distance + perpendicularY * 148 },
+    { x: x + unitX * distance - perpendicularX * 148, y: y + unitY * distance - perpendicularY * 148 },
+    { x: x - unitX * distance * 0.6, y: y - unitY * distance * 0.6 },
+    { x: x + perpendicularX * 96, y: y + perpendicularY * 96 },
+    { x: x - perpendicularX * 96, y: y - perpendicularY * 96 },
+    { x: x - unitX * distance * 1.15 + perpendicularX * 72, y: y - unitY * distance * 1.15 + perpendicularY * 72 },
+    { x: x - unitX * distance * 1.15 - perpendicularX * 72, y: y - unitY * distance * 1.15 - perpendicularY * 72 }
+  ];
+
+  const edgeMargin = isMobile ? 10 : 18;
+  const makeBox = (center) => {
+    const centerX = clamp(center.x, edgeMargin + labelWidth / 2, canvasWidth - edgeMargin - labelWidth / 2);
+    const centerY = clamp(center.y, edgeMargin + labelHeight / 2, canvasHeight - edgeMargin - labelHeight / 2);
+
+    return {
+      centerX,
+      centerY,
+      left: centerX - labelWidth / 2,
+      right: centerX + labelWidth / 2,
+      top: centerY - labelHeight / 2,
+      bottom: centerY + labelHeight / 2
+    };
+  };
+
+  const scoredCandidates = candidateCenters
+    .map(makeBox)
+    .map((candidate) => ({
+      box: candidate,
+      score: placedLabels.reduce((score, labelBox) => score + getOverlapArea(candidate, labelBox), 0)
+    }));
+
+  const selectedBox = scoredCandidates.find((candidate) => candidate.score === 0)?.box ||
+    scoredCandidates.sort((candidateA, candidateB) => candidateA.score - candidateB.score)[0].box;
+
+  placedLabels.push(selectedBox);
+
+  const backgroundAlpha = isFocused ? 0.74 : isActive ? 0.68 : 0.54;
+  const borderAlpha = isFocused || isActive ? 0.76 : 0.42;
+
+  ctx.shadowColor = color;
+  ctx.shadowBlur = isFocused || isActive ? 18 : 8;
+  ctx.fillStyle = `rgba(0, 10, 22, ${backgroundAlpha})`;
+  ctx.strokeStyle = `${color}${Math.round(borderAlpha * 255).toString(16).padStart(2, '0')}`;
+  ctx.lineWidth = isFocused ? 1.8 : 1.2;
+  drawRoundedRect(ctx, selectedBox.left, selectedBox.top, labelWidth, labelHeight, 8);
+  ctx.fill();
+  ctx.stroke();
+
+  ctx.shadowBlur = 0;
+  ctx.fillStyle = color;
+  lines.forEach((line, lineIndex) => {
+    const lineY = selectedBox.centerY - ((lines.length - 1) * lineHeight) / 2 + lineIndex * lineHeight;
+    ctx.fillText(line, selectedBox.centerX, lineY);
+  });
+
+  ctx.restore();
+};
 
 const GalaxyView = ({ tools = [], categories = [], onCategorySelect, selectedCategory, searchQuery = '' }) => {
   const canvasRef = useRef();
@@ -55,11 +239,6 @@ const GalaxyView = ({ tools = [], categories = [], onCategorySelect, selectedCat
 
   // Configuración de la galaxia con optimizaciones móviles
   const GALAXY_CONFIG = {
-    centerX: 0,
-    centerY: 0,
-    maxRadius: 1000,
-    constellationRadius: 300,
-    starSize: { min: 2, max: 8 },
     colors: {
       primary: '#00D4FF',
       secondary: '#FFD700',
@@ -86,20 +265,29 @@ const GalaxyView = ({ tools = [], categories = [], onCategorySelect, selectedCat
     }
   };
 
+  const getGalaxyRadii = useCallback(() => {
+    const width = dimensions.width || window.innerWidth;
+    const height = dimensions.height || window.innerHeight;
+    const radiusX = clamp(width * (isMobile ? 0.32 : 0.34), isMobile ? 150 : 330, isMobile ? 250 : 540);
+    const radiusY = clamp(height * (isMobile ? 0.32 : 0.34), isMobile ? 150 : 230, isMobile ? 250 : 360);
+
+    return { radiusX, radiusY };
+  }, [dimensions.height, dimensions.width, isMobile]);
+
   // Generar posiciones de constelaciones en círculo
   const generateConstellations = useCallback(() => {
     const constellations = [];
     const angleStep = (2 * Math.PI) / categories.length;
+    const { radiusX, radiusY } = getGalaxyRadii();
     
     categories.forEach((category, index) => {
       const angle = index * angleStep;
-      const distance = GALAXY_CONFIG.constellationRadius;
       
       const constellation = {
         id: category.id,
         name: category.name,
-        x: Math.cos(angle) * distance,
-        y: Math.sin(angle) * distance,
+        x: Math.cos(angle) * radiusX,
+        y: Math.sin(angle) * radiusY,
         color: category.color || GALAXY_CONFIG.colors.primary,
         stars: [],
         angle: angle,
@@ -119,13 +307,17 @@ const GalaxyView = ({ tools = [], categories = [], onCategorySelect, selectedCat
           id: tool.id,
           name: tool.name,
           description: tool.description,
+          utility: tool.utility,
+          tags: tool.tags,
+          rating: tool.rating,
+          type: tool.type,
           url: tool.url,
           x: constellation.x + Math.cos(starAngle) * starDistance,
           y: constellation.y + Math.sin(starAngle) * starDistance,
           size: tool.rating ? (tool.rating / 5) * 4 + 2 : 4,
           brightness: isFavorite(tool.id) ? 1 : 0.7,
           isFavorite: user ? isFavorite(tool.id) : false,
-          twinkle: Math.random(),
+          twinkle: ((index + 1) * 37 + (toolIndex + 3) * 19) % 100 / 100,
           category: category.id
         });
       });
@@ -134,7 +326,7 @@ const GalaxyView = ({ tools = [], categories = [], onCategorySelect, selectedCat
     });
     
     return constellations;
-  }, [categories, tools, user, isFavorite]);
+  }, [categories, tools, user, isFavorite, getGalaxyRadii]);
 
   // Efecto para actualizar dimensiones y detectar móvil
   useEffect(() => {
@@ -205,6 +397,27 @@ const GalaxyView = ({ tools = [], categories = [], onCategorySelect, selectedCat
     const { width, height } = dimensions;
     const centerX = width / 2 + camera.x;
     const centerY = height / 2 + camera.y;
+    const { radiusX, radiusY } = getGalaxyRadii();
+    const placedLabels = isMobile ? [] : [
+      {
+        left: 0,
+        right: 96,
+        top: Math.max(0, height / 2 - 132),
+        bottom: Math.min(height, height / 2 + 132)
+      },
+      {
+        left: Math.max(0, width - 232),
+        right: width,
+        top: Math.max(0, height / 2 - 92),
+        bottom: Math.min(height, height / 2 + 92)
+      },
+      {
+        left: 0,
+        right: Math.min(width, 360),
+        top: Math.max(0, height - 132),
+        bottom: height
+      }
+    ];
     
     constellations.forEach((constellation, index) => {
       let animatedX, animatedY;
@@ -217,14 +430,13 @@ const GalaxyView = ({ tools = [], categories = [], onCategorySelect, selectedCat
       } else {
         // Animación de rotación normal para constelaciones no enfocadas (optimizada para móvil)
         const config = isMobile ? GALAXY_CONFIG.mobile : GALAXY_CONFIG.desktop;
-        const baseRotationSpeed = 0.00003 + (index * 0.000015);
-        const rotationSpeed = baseRotationSpeed * config.animationSpeed;
+        const rotationSpeed = 0.000018 * config.animationSpeed;
         const rotationAngle = constellation.angle + (time * rotationSpeed);
         
         // Posición animada de la constelación (también optimizada)
-        const distance = GALAXY_CONFIG.constellationRadius + Math.sin(time * 0.0003 * config.animationSpeed + index) * 20;
-        animatedX = Math.cos(rotationAngle) * distance;
-        animatedY = Math.sin(rotationAngle) * distance;
+        const orbitalDrift = Math.sin(time * 0.0003 * config.animationSpeed + index) * 12;
+        animatedX = Math.cos(rotationAngle) * (radiusX + orbitalDrift);
+        animatedY = Math.sin(rotationAngle) * (radiusY + orbitalDrift * 0.65);
       }
       
       const consX = centerX + animatedX * camera.zoom;
@@ -410,29 +622,25 @@ const GalaxyView = ({ tools = [], categories = [], onCategorySelect, selectedCat
       
       // Dibujar nombre de constelación con efectos mejorados
       if (camera.zoom < 3) {
-        const fontSize = Math.max(12, 16 * Math.min(camera.zoom, 1));
-        const textY = consY - 100 * camera.zoom;
-        
-        // Sombra del texto
-        ctx.fillStyle = 'rgba(0, 0, 0, 0.7)';
-        ctx.font = `bold ${fontSize}px 'Segoe UI', system-ui, sans-serif`;
-        ctx.textAlign = 'center';
-        ctx.fillText(constellation.name, consX + 2, textY + 2);
-        
-        // Texto principal con brillo
-        ctx.fillStyle = constellation.color;
-        ctx.fillText(constellation.name, consX, textY);
-        
-        // Efecto de brillo para constelaciones activas
-        if (isActive) {
-          ctx.shadowColor = constellation.color;
-          ctx.shadowBlur = 15;
-          ctx.fillText(constellation.name, consX, textY);
-          ctx.shadowBlur = 0;
-        }
+        const fontSize = Math.max(isMobile ? 11 : 12, Math.min(isMobile ? 13 : 16, 15 * Math.min(camera.zoom, 1)));
+        drawConstellationLabel({
+          ctx,
+          name: constellation.name,
+          color: constellation.color,
+          x: consX,
+          y: consY,
+          fontSize,
+          canvasWidth: width,
+          canvasHeight: height,
+          zoom: camera.zoom,
+          placedLabels,
+          isActive,
+          isFocused,
+          isMobile
+        });
       }
     });
-  }, [dimensions, camera, selectedCategory]);
+  }, [dimensions, camera, selectedCategory, focusedConstellation, isMobile, getGalaxyRadii]);
 
   // Interpolación suave de cámara
   const interpolateCamera = useCallback(() => {
@@ -521,6 +729,7 @@ const GalaxyView = ({ tools = [], categories = [], onCategorySelect, selectedCat
     
     const constellations = generateConstellations();
     const currentTime = Date.now();
+    const { radiusX, radiusY } = getGalaxyRadii();
     
     // Buscar estrella clickeada con posiciones animadas
     for (const [index, constellation] of constellations.entries()) {
@@ -533,11 +742,12 @@ const GalaxyView = ({ tools = [], categories = [], onCategorySelect, selectedCat
         animatedY = -150;
       } else {
         // Calcular posición animada actual de la constelación (misma velocidad que el renderizado)
-        const rotationSpeed = 0.00003 + (index * 0.000015);
+        const config = isMobile ? GALAXY_CONFIG.mobile : GALAXY_CONFIG.desktop;
+        const rotationSpeed = 0.000018 * config.animationSpeed;
         const rotationAngle = constellation.angle + (currentTime * rotationSpeed);
-        const distance = GALAXY_CONFIG.constellationRadius + Math.sin(currentTime * 0.0003 + index) * 20;
-        animatedX = Math.cos(rotationAngle) * distance;
-        animatedY = Math.sin(rotationAngle) * distance;
+        const orbitalDrift = Math.sin(currentTime * 0.0003 * config.animationSpeed + index) * 12;
+        animatedX = Math.cos(rotationAngle) * (radiusX + orbitalDrift);
+        animatedY = Math.sin(rotationAngle) * (radiusY + orbitalDrift * 0.65);
       }
       
       for (const star of constellation.stars) {
@@ -595,7 +805,7 @@ const GalaxyView = ({ tools = [], categories = [], onCategorySelect, selectedCat
         return;
       }
     }
-  }, [dimensions, camera, generateConstellations, categories, onCategorySelect, hasDragged, focusedConstellation]);
+  }, [dimensions, camera, generateConstellations, categories, onCategorySelect, hasDragged, focusedConstellation, isMobile, getGalaxyRadii]);
 
   // Manejar inicio de arrastre
   const handleMouseDown = useCallback((event) => {
@@ -828,6 +1038,9 @@ const GalaxyView = ({ tools = [], categories = [], onCategorySelect, selectedCat
     }
   }, [toolPreview]);
 
+  const focusedCategory = selectedCategory || categories.find(category => category.id === focusedConstellation);
+  const visibleToolsLabel = tools.length === 1 ? 'herramienta visible' : 'herramientas visibles';
+
   return (
     <div 
       ref={containerRef} 
@@ -841,6 +1054,17 @@ const GalaxyView = ({ tools = [], categories = [], onCategorySelect, selectedCat
         onWheel={handleWheel}
         className="galaxy-canvas"
       />
+
+      {(searchQuery || focusedCategory) && (
+        <div className="galaxy-context-panel" aria-live="polite">
+          <Sparkles size={16} aria-hidden="true" />
+          <span>
+            {focusedCategory ? focusedCategory.name : 'Catálogo completo'}
+            {searchQuery ? ` · "${searchQuery}"` : ''}
+          </span>
+          <strong>{tools.length}</strong>
+        </div>
+      )}
       
       {/* Controles de navegación */}
       <div className="galaxy-controls">
@@ -851,8 +1075,9 @@ const GalaxyView = ({ tools = [], categories = [], onCategorySelect, selectedCat
             setIsNavigating(true);
           }}
           title="Regresar al centro"
+          aria-label="Regresar al centro"
         >
-          🏠
+          <Home size={22} aria-hidden="true" />
         </button>
         <button 
           className="galaxy-btn"
@@ -862,8 +1087,9 @@ const GalaxyView = ({ tools = [], categories = [], onCategorySelect, selectedCat
             setIsNavigating(true);
           }}
           title="Acercar"
+          aria-label="Acercar"
         >
-          🔍+
+          <ZoomIn size={22} aria-hidden="true" />
         </button>
         <button 
           className="galaxy-btn"
@@ -873,8 +1099,9 @@ const GalaxyView = ({ tools = [], categories = [], onCategorySelect, selectedCat
             setIsNavigating(true);
           }}
           title="Alejar"
+          aria-label="Alejar"
         >
-          🔍-
+          <ZoomOut size={22} aria-hidden="true" />
         </button>
         <button 
           className="galaxy-btn"
@@ -890,12 +1117,13 @@ const GalaxyView = ({ tools = [], categories = [], onCategorySelect, selectedCat
             setIsNavigating(true);
           }}
           title="Explorar órbita"
+          aria-label="Explorar órbita"
         >
-          🌌
+          <Compass size={22} aria-hidden="true" />
         </button>
         {focusedConstellation && (
           <button 
-            className="galaxy-btn"
+            className="galaxy-btn galaxy-btn--danger"
             onClick={() => {
               setFocusedConstellation(null);
               setSelectedConstellation(null);
@@ -906,9 +1134,9 @@ const GalaxyView = ({ tools = [], categories = [], onCategorySelect, selectedCat
               setIsNavigating(true);
             }}
             title="Salir del enfoque"
-            style={{ backgroundColor: 'rgba(255, 100, 100, 0.3)' }}
+            aria-label="Salir del enfoque"
           >
-            ✕
+            <X size={22} aria-hidden="true" />
           </button>
         )}
       </div>
@@ -932,16 +1160,17 @@ const GalaxyView = ({ tools = [], categories = [], onCategorySelect, selectedCat
       </div>
       
       {/* Leyenda */}
-      <div className="galaxy-legend">
-        <h4>🌌 Galaxia OSINTArgy</h4>
-        <p>🌟 Click en estrellas para ver información de la herramienta</p>
-        <p>⭐ Click en constelaciones para enfocar y ver herramientas</p>
-        <p>🔍 Usa la rueda del mouse para zoom</p>
-        <p>👆 Arrastra para navegar por la galaxia</p>
+      <div className="galaxy-legend" aria-label="Resumen de galaxia">
+        <div className="galaxy-legend__title">
+          <Sparkles size={18} aria-hidden="true" />
+          <h4>Galaxia OSINTArgy</h4>
+        </div>
+        <div className="galaxy-legend__meta">
+          <span>{categories.length} constelaciones</span>
+          <span>{tools.length} {visibleToolsLabel}</span>
+        </div>
         {focusedConstellation && (
-          <p style={{ color: '#FFD700', fontWeight: 'bold' }}>
-            ✨ Constelación enfocada - Click nuevamente para desenfocar
-          </p>
+          <p className="galaxy-legend__focus">Constelación enfocada</p>
         )}
       </div>
 
@@ -962,20 +1191,20 @@ const GalaxyView = ({ tools = [], categories = [], onCategorySelect, selectedCat
             
             <div className="tool-preview-content">
               <div className="tool-description">
-                <h4>📋 Descripción</h4>
+                <h4>Descripción</h4>
                 <p>{toolPreview.description}</p>
               </div>
               
               {toolPreview.utility && (
                 <div className="tool-utility">
-                  <h4>⚡ Utilidad</h4>
+                  <h4>Utilidad</h4>
                   <p>{toolPreview.utility}</p>
                 </div>
               )}
               
               <div className="tool-details">
                 <div className="tool-tags">
-                  <h4>🏷️ Tags</h4>
+                  <h4>Tags</h4>
                   <div className="tags-container">
                     {toolPreview.tags?.map((tag, index) => (
                       <span key={index} className="tag">{tag}</span>
@@ -985,7 +1214,7 @@ const GalaxyView = ({ tools = [], categories = [], onCategorySelect, selectedCat
                 
                 {toolPreview.rating && (
                   <div className="tool-rating">
-                    <h4>⭐ Rating</h4>
+                    <h4>Rating</h4>
                     <div className="rating-display">
                       {Array.from({length: 5}, (_, i) => (
                         <span key={i} className={i < Math.floor(toolPreview.rating) ? 'star filled' : 'star'}>
@@ -1004,7 +1233,8 @@ const GalaxyView = ({ tools = [], categories = [], onCategorySelect, selectedCat
                 className="cancel-btn"
                 onClick={() => setToolPreview(null)}
               >
-                🔙 Cancelar
+                <ArrowLeft size={18} aria-hidden="true" />
+                Cancelar
               </button>
               <button 
                 className="open-tool-btn"
@@ -1015,7 +1245,8 @@ const GalaxyView = ({ tools = [], categories = [], onCategorySelect, selectedCat
                   setToolPreview(null);
                 }}
               >
-                🚀 Abrir Herramienta
+                <ExternalLink size={18} aria-hidden="true" />
+                Abrir herramienta
               </button>
             </div>
           </div>

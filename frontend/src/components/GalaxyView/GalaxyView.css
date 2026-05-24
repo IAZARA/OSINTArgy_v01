@@ -2,7 +2,9 @@
 .galaxy-view {
   position: relative;
   width: 100%;
-  height: 100vh;
+  height: calc(100vh - 82px);
+  height: calc(100dvh - 82px);
+  min-height: min(560px, calc(100dvh - 82px));
   overflow: hidden;
   background: 
     radial-gradient(ellipse at center, #001122 0%, #000011 50%, #000000 100%),
@@ -35,7 +37,7 @@
 .galaxy-controls {
   position: absolute;
   top: 50%;
-  left: 20px;
+  left: 24px;
   transform: translateY(-50%);
   display: flex;
   flex-direction: column;
@@ -44,16 +46,15 @@
 }
 
 .galaxy-btn {
-  width: 50px;
-  height: 50px;
+  width: 46px;
+  height: 46px;
   border: none;
   border-radius: 50%;
   background: 
-    linear-gradient(135deg, rgba(0, 212, 255, 0.2) 0%, rgba(0, 100, 150, 0.3) 100%);
+    linear-gradient(135deg, rgba(0, 212, 255, 0.18) 0%, rgba(0, 100, 150, 0.3) 100%);
   backdrop-filter: blur(20px);
-  border: 2px solid rgba(0, 212, 255, 0.3);
+  border: 1px solid rgba(0, 212, 255, 0.4);
   color: #00D4FF;
-  font-size: 18px;
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   display: flex;
@@ -74,11 +75,64 @@
     inset 0 1px 0 rgba(255, 255, 255, 0.2);
 }
 
+.galaxy-btn:focus-visible {
+  outline: 2px solid rgba(0, 212, 255, 0.85);
+  outline-offset: 3px;
+}
+
 .galaxy-btn:active {
   transform: scale(0.95);
   box-shadow: 
     0 4px 16px rgba(0, 212, 255, 0.2),
     inset 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.galaxy-btn--danger {
+  background: linear-gradient(135deg, rgba(255, 85, 85, 0.22) 0%, rgba(120, 24, 38, 0.44) 100%);
+  border-color: rgba(255, 100, 100, 0.5);
+  color: #ff8a8a;
+}
+
+.galaxy-btn--danger:hover {
+  background: linear-gradient(135deg, rgba(255, 85, 85, 0.38) 0%, rgba(150, 35, 48, 0.58) 100%);
+  border-color: rgba(255, 130, 130, 0.75);
+  box-shadow:
+    0 12px 40px rgba(255, 85, 85, 0.22),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.galaxy-context-panel {
+  position: absolute;
+  top: 18px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 100;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  max-width: min(620px, calc(100vw - 180px));
+  padding: 9px 13px;
+  color: rgba(255, 255, 255, 0.86);
+  background: linear-gradient(135deg, rgba(0, 10, 22, 0.72) 0%, rgba(0, 22, 45, 0.62) 100%);
+  border: 1px solid rgba(0, 212, 255, 0.28);
+  border-radius: 999px;
+  box-shadow:
+    0 12px 36px rgba(0, 0, 0, 0.42),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(18px);
+  font-size: 13px;
+  white-space: nowrap;
+}
+
+.galaxy-context-panel span {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.galaxy-context-panel strong {
+  color: #00D4FF;
+  font-family: 'Courier New', monospace;
 }
 
 /* Panel de información */
@@ -95,9 +149,9 @@
     linear-gradient(135deg, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 30, 0.9) 100%);
   backdrop-filter: blur(20px);
   border: 1px solid rgba(0, 212, 255, 0.3);
-  border-radius: 12px;
-  padding: 16px;
-  min-width: 200px;
+  border-radius: 8px;
+  padding: 14px;
+  min-width: 190px;
   box-shadow: 
     0 8px 32px rgba(0, 0, 0, 0.5),
     inset 0 1px 0 rgba(255, 255, 255, 0.1);
@@ -136,25 +190,48 @@
     linear-gradient(135deg, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 30, 0.9) 100%);
   backdrop-filter: blur(20px);
   border: 1px solid rgba(0, 212, 255, 0.3);
-  border-radius: 12px;
-  padding: 16px;
-  max-width: 300px;
+  border-radius: 8px;
+  padding: 14px 16px;
+  width: min(320px, calc(100vw - 40px));
   z-index: 100;
   box-shadow: 
     0 8px 32px rgba(0, 0, 0, 0.5),
     inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
-.galaxy-legend h4 {
-  margin: 0 0 12px 0;
+.galaxy-legend__title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
   color: #00D4FF;
-  font-size: 16px;
+}
+
+.galaxy-legend h4 {
+  margin: 0;
+  color: #00D4FF;
+  font-size: 15px;
   font-weight: bold;
   text-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
 }
 
+.galaxy-legend__meta {
+  display: grid;
+  gap: 5px;
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 12px;
+  line-height: 1.35;
+}
+
+.galaxy-legend__focus {
+  margin: 10px 0 0;
+  color: #FFD700;
+  font-size: 12px;
+  font-weight: 700;
+}
+
 .galaxy-legend p {
-  margin: 4px 0;
+  margin: 8px 0 0;
   color: rgba(255, 255, 255, 0.8);
   font-size: 12px;
   line-height: 1.4;
@@ -251,6 +328,12 @@
 
 /* Controles optimizados para touch */
 @media (max-width: 768px) {
+  .galaxy-view {
+    height: calc(100vh - 72px);
+    height: calc(100dvh - 72px);
+    min-height: min(540px, calc(100dvh - 72px));
+  }
+
   .galaxy-controls {
     top: 10px;
     left: 10px;
@@ -280,6 +363,13 @@
     transform: translateY(-50%);
     right: 10px;
   }
+
+  .galaxy-context-panel {
+    top: 12px;
+    max-width: calc(100vw - 92px);
+    padding: 8px 11px;
+    font-size: 12px;
+  }
   
   .galaxy-stats {
     padding: 12px;
@@ -293,7 +383,7 @@
   .galaxy-legend {
     bottom: 10px;
     left: 10px;
-    max-width: 250px;
+    width: min(260px, calc(100vw - 20px));
     padding: 12px;
   }
   
@@ -307,6 +397,12 @@
 }
 
 @media (max-width: 480px) {
+  .galaxy-view {
+    height: calc(100vh - 62px);
+    height: calc(100dvh - 62px);
+    min-height: min(500px, calc(100dvh - 62px));
+  }
+
   .galaxy-controls {
     flex-direction: row;
     bottom: 20px;
@@ -344,6 +440,15 @@
   
   .galaxy-info {
     display: none; /* Ocultar en móviles muy pequeños */
+  }
+
+  .galaxy-context-panel {
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    transform: none;
+    max-width: none;
+    justify-content: center;
   }
   
   .galaxy-legend {
@@ -533,7 +638,7 @@
 .tool-preview-modal {
   background: linear-gradient(135deg, rgba(0, 20, 40, 0.95) 0%, rgba(0, 50, 100, 0.9) 100%);
   border: 2px solid #00D4FF;
-  border-radius: 16px;
+  border-radius: 10px;
   max-width: 500px;
   width: 90%;
   max-height: 80vh;
@@ -574,6 +679,13 @@
   align-items: center;
   justify-content: center;
   transition: all 0.3s ease;
+}
+
+.close-preview-btn:focus-visible,
+.cancel-btn:focus-visible,
+.open-tool-btn:focus-visible {
+  outline: 2px solid rgba(0, 212, 255, 0.85);
+  outline-offset: 3px;
 }
 
 .close-preview-btn:hover {

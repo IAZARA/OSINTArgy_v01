@@ -1,4 +1,4 @@
-FROM node:20-alpine AS dependencies
+FROM node:26-alpine AS dependencies
 
 WORKDIR /app
 
@@ -21,7 +21,7 @@ EXPOSE 3000
 
 CMD ["npm", "run", "dev"]
 
-FROM node:20-alpine AS production
+FROM node:26-alpine AS production
 
 WORKDIR /app
 

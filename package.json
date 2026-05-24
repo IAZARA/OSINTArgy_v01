@@ -33,7 +33,7 @@
   "author": "Ivan Agustin Zarate",
   "license": "MIT",
   "devDependencies": {
-    "concurrently": "^8.2.2"
+    "concurrently": "^9.2.1"
   },
   "dependencies": {
     "playwright": "^1.60.0"

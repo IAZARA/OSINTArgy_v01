@@ -818,37 +818,6 @@
       "difficulty_level": "intermediate"
     },
     {
-      "id": "geospy-ai",
-      "name": "GeoSpy.AI",
-      "description": "Herramienta de geolocalización de imágenes impulsada por inteligencia artificial.",
-      "utility": "Determina la ubicación geográfica de fotografías analizando píxeles sin depender de metadatos. Entrenada con miles de millones de imágenes de todo el mundo para identificar arquitectura, vegetación y características geográficas.",
-      "url": "https://geospy.ai/",
-      "category": "geolocalizacion",
-      "subcategory": "analisis-geoespacial",
-      "tags": [
-        "ia",
-        "geolocalización",
-        "imágenes",
-        "análisis visual",
-        "osint"
-      ],
-      "type": "web",
-      "indicators": [
-        "D",
-        "A",
-        "F"
-      ],
-      "region": "internacional",
-      "language": "en",
-      "rating": 4.6,
-      "usage_count": 0,
-      "last_updated": "2025-06-24",
-      "status": "active",
-      "requires_registration": true,
-      "is_free": false,
-      "difficulty_level": "intermediate"
-    },
-    {
       "id": "overpass-turbo",
       "name": "Overpass Turbo",
       "description": "Interfaz web para consultar datos de OpenStreetMap con Overpass API.",

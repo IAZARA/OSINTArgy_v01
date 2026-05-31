@@ -473,13 +473,13 @@
     {
       "id": "semantic-scholar",
       "name": "Semantic Scholar",
-      "description": "Motor de búsqueda académica impulsado por IA.",
-      "utility": "Utiliza IA para analizar y comprender el contenido de los artículos. Ofrece resúmenes automáticos y análisis de impacto.",
+      "description": "Motor de búsqueda académica para literatura científica.",
+      "utility": "Ayuda a explorar artículos científicos, descubrir papers relacionados y revisar resúmenes, citas e impacto académico.",
       "url": "https://www.semanticscholar.org",
       "category": "buscadores-generales",
       "subcategory": "academicos",
       "tags": [
-        "ia",
+        "literatura científica",
         "académico",
         "análisis",
         "resúmenes"
@@ -967,13 +967,13 @@
     {
       "id": "sourcely",
       "name": "Sourcely",
-      "description": "Motor de búsqueda académica con IA y más de 200 millones de papers.",
-      "utility": "Ofrece filtros impulsados por IA, resúmenes automáticos y herramientas de citación. Ideal para investigación académica avanzada.",
+      "description": "Motor de búsqueda académica con más de 200 millones de papers.",
+      "utility": "Ofrece filtros avanzados, resúmenes y herramientas de citación para investigación académica avanzada.",
       "url": "https://www.sourcely.net",
       "category": "buscadores-generales",
       "subcategory": "academicos",
       "tags": [
-        "ia",
+        "búsqueda académica",
         "académico",
         "papers",
         "citación"
@@ -2016,13 +2016,13 @@
     {
       "id": "talkwalker",
       "name": "Talkwalker",
-      "description": "Solución OSINT impulsada por IA para monitoreo de redes sociales y web.",
+      "description": "Solución OSINT para monitoreo de redes sociales y web.",
       "utility": "Escanea millones de fuentes online, detecta amenazas, rastrea menciones de marca y analiza sentimientos en tiempo real.",
       "url": "https://www.talkwalker.com",
       "category": "redes-sociales",
       "subcategory": "herramientas-monitoreo",
       "tags": [
-        "ia",
+        "analítica",
         "monitoreo",
         "sentimientos",
         "amenazas"
@@ -5856,37 +5856,6 @@
       "difficulty_level": "intermediate"
     },
     {
-      "id": "geospy-ai",
-      "name": "GeoSpy.AI",
-      "description": "Herramienta de geolocalización de imágenes impulsada por inteligencia artificial.",
-      "utility": "Determina la ubicación geográfica de fotografías analizando píxeles sin depender de metadatos. Entrenada con miles de millones de imágenes de todo el mundo para identificar arquitectura, vegetación y características geográficas.",
-      "url": "https://geospy.ai/",
-      "category": "geolocalizacion",
-      "subcategory": "analisis-geoespacial",
-      "tags": [
-        "ia",
-        "geolocalización",
-        "imágenes",
-        "análisis visual",
-        "osint"
-      ],
-      "type": "web",
-      "indicators": [
-        "D",
-        "A",
-        "F"
-      ],
-      "region": "internacional",
-      "language": "en",
-      "rating": 4.6,
-      "usage_count": 0,
-      "last_updated": "2025-06-24",
-      "status": "active",
-      "requires_registration": true,
-      "is_free": false,
-      "difficulty_level": "intermediate"
-    },
-    {
       "id": "overpass-turbo",
       "name": "Overpass Turbo",
       "description": "Interfaz web para consultar datos de OpenStreetMap con Overpass API.",
@@ -6434,47 +6403,16 @@
       "difficulty_level": "beginner"
     },
     {
-      "id": "lenso-ai",
-      "name": "Lenso.ai",
-      "description": "Motor de búsqueda inversa de imágenes con IA avanzada.",
-      "utility": "Filtros avanzados para personas, duplicados, lugares e imágenes similares. Incluye filtrado por palabras clave y dominios.",
-      "url": "https://lenso.ai",
-      "category": "imagenes-videos",
-      "subcategory": "busqueda-inversa",
-      "tags": [
-        "ia",
-        "filtros avanzados",
-        "personas",
-        "lugares"
-      ],
-      "type": "web",
-      "indicators": [
-        "F",
-        "A"
-      ],
-      "region": "internacional",
-      "language": "en",
-      "rating": 4.5,
-      "usage_count": 5670,
-      "last_updated": "2025-06-19",
-      "status": "active",
-      "requires_registration": true,
-      "is_free": false,
-      "difficulty_level": "intermediate",
-      "verification_date": "2025-06-19",
-      "verified_by": "perplexity"
-    },
-    {
       "id": "google-lens",
       "name": "Google Lens",
-      "description": "Herramienta de búsqueda visual de Google con IA.",
+      "description": "Herramienta de búsqueda visual de Google.",
       "utility": "Explora imágenes similares, descubre productos y lugares. Permite refinar búsquedas seleccionando elementos específicos.",
       "url": "https://lens.google.com",
       "category": "imagenes-videos",
       "subcategory": "busqueda-inversa",
       "tags": [
         "google",
-        "ia",
+        "búsqueda visual",
         "productos",
         "lugares"
       ],
@@ -6517,36 +6455,6 @@
       "language": "en",
       "rating": 4.2,
       "usage_count": 4230,
-      "last_updated": "2025-06-19",
-      "status": "active",
-      "requires_registration": false,
-      "is_free": true,
-      "difficulty_level": "beginner",
-      "verification_date": "2025-06-19",
-      "verified_by": "perplexity"
-    },
-    {
-      "id": "reversely-ai",
-      "name": "Reversely.ai",
-      "description": "Herramienta de búsqueda inversa enfocada en encontrar fotos similares.",
-      "utility": "Se especializa en encontrar imágenes similares con opciones gratuitas y de pago.",
-      "url": "https://reversely.ai",
-      "category": "imagenes-videos",
-      "subcategory": "busqueda-inversa",
-      "tags": [
-        "similares",
-        "ia",
-        "gratuito",
-        "premium"
-      ],
-      "type": "web",
-      "indicators": [
-        "F"
-      ],
-      "region": "internacional",
-      "language": "en",
-      "rating": 4.1,
-      "usage_count": 3450,
       "last_updated": "2025-06-19",
       "status": "active",
       "requires_registration": false,
@@ -6707,68 +6615,6 @@
       "verified_by": "perplexity"
     },
     {
-      "id": "sensity-ai",
-      "name": "Sensity AI",
-      "description": "Herramienta de detección de deepfakes impulsada por IA.",
-      "utility": "Analiza contenido de video para identificar manipulaciones potenciales y deepfakes con alta precisión.",
-      "url": "https://sensity.ai",
-      "category": "imagenes-videos",
-      "subcategory": "deteccion-deepfakes",
-      "tags": [
-        "deepfakes",
-        "ia",
-        "manipulaciones",
-        "precisión"
-      ],
-      "type": "web",
-      "indicators": [
-        "F",
-        "A"
-      ],
-      "region": "internacional",
-      "language": "en",
-      "rating": 4.6,
-      "usage_count": 4230,
-      "last_updated": "2025-06-19",
-      "status": "active",
-      "requires_registration": true,
-      "is_free": false,
-      "difficulty_level": "advanced",
-      "verification_date": "2025-06-19",
-      "verified_by": "perplexity"
-    },
-    {
-      "id": "microsoft-video-authenticator",
-      "name": "Microsoft Video Authenticator",
-      "description": "Herramienta de Microsoft para detectar deepfakes en videos.",
-      "utility": "Utiliza IA para detectar deepfakes analizando metadatos de video y contenido con tecnología de Microsoft.",
-      "url": "https://www.microsoft.com/en-us/ai/responsible-ai",
-      "category": "imagenes-videos",
-      "subcategory": "deteccion-deepfakes",
-      "tags": [
-        "microsoft",
-        "deepfakes",
-        "metadatos",
-        "ia"
-      ],
-      "type": "web",
-      "indicators": [
-        "F",
-        "A"
-      ],
-      "region": "internacional",
-      "language": "en",
-      "rating": 4.5,
-      "usage_count": 3450,
-      "last_updated": "2025-06-19",
-      "status": "active",
-      "requires_registration": true,
-      "is_free": false,
-      "difficulty_level": "advanced",
-      "verification_date": "2025-06-19",
-      "verified_by": "perplexity"
-    },
-    {
       "id": "ffmpeg",
       "name": "FFmpeg",
       "description": "Framework multimedia potente para análisis y procesamiento de video.",
@@ -6919,37 +6765,6 @@
       "requires_registration": false,
       "is_free": true,
       "difficulty_level": "advanced",
-      "verification_date": "2025-06-19",
-      "verified_by": "perplexity"
-    },
-    {
-      "id": "whisper-ai",
-      "name": "Whisper AI",
-      "description": "Servicio de transcripción automática de OpenAI.",
-      "utility": "Convierte audio y video a texto buscable. Útil para análisis de contenido de video y audio en investigaciones OSINT.",
-      "url": "https://openai.com/research/whisper",
-      "category": "imagenes-videos",
-      "subcategory": "transcripcion",
-      "tags": [
-        "transcripción",
-        "openai",
-        "audio",
-        "texto"
-      ],
-      "type": "api",
-      "indicators": [
-        "F",
-        "A"
-      ],
-      "region": "internacional",
-      "language": "es",
-      "rating": 4.7,
-      "usage_count": 12340,
-      "last_updated": "2025-06-19",
-      "status": "active",
-      "requires_registration": true,
-      "is_free": false,
-      "difficulty_level": "intermediate",
       "verification_date": "2025-06-19",
       "verified_by": "perplexity"
     },
@@ -7211,35 +7026,6 @@
       "language": "en",
       "rating": 4.4,
       "usage_count": 2890,
-      "last_updated": "2025-06-19",
-      "status": "active",
-      "requires_registration": false,
-      "is_free": true,
-      "difficulty_level": "intermediate"
-    },
-    {
-      "id": "picarta",
-      "name": "Picarta",
-      "description": "Herramienta de búsqueda de imágenes impulsada por IA.",
-      "utility": "Búsqueda inteligente de imágenes usando inteligencia artificial para mejores resultados.",
-      "url": "https://picarta.ai/",
-      "category": "imagenes-videos",
-      "subcategory": "busqueda-inversa",
-      "tags": [
-        "ia",
-        "inteligente",
-        "mejores resultados",
-        "avanzado"
-      ],
-      "type": "web",
-      "indicators": [
-        "F",
-        "A"
-      ],
-      "region": "internacional",
-      "language": "en",
-      "rating": 4.3,
-      "usage_count": 3450,
       "last_updated": "2025-06-19",
       "status": "active",
       "requires_registration": false,
@@ -10680,15 +10466,15 @@
     {
       "id": "visual-genome",
       "name": "VisualGenome",
-      "description": "Base de datos de imágenes con anotaciones detalladas para investigación en IA.",
-      "utility": "Dataset con más de 100,000 imágenes anotadas con objetos, atributos y relaciones para investigación en IA.",
+      "description": "Base de datos de imágenes con anotaciones detalladas para investigación visual.",
+      "utility": "Dataset con más de 100,000 imágenes anotadas con objetos, atributos y relaciones para investigación visual.",
       "url": "http://visualgenome.org/",
       "category": "archivos",
       "subcategory": "datasets-investigacion",
       "tags": [
         "imágenes",
         "anotaciones",
-        "ia",
+        "relaciones visuales",
         "visión computacional"
       ],
       "type": "dataset",
@@ -12111,14 +11897,14 @@
       "id": "owasp-d4n155",
       "name": "OWASP D4N155 (T)",
       "description": "Herramienta OSINT inteligente para recopilar información de objetivos.",
-      "utility": "Framework OSINT que utiliza inteligencia artificial para recopilar y analizar información de objetivos.",
+      "utility": "Framework OSINT que automatiza la recopilación y el análisis de información pública sobre objetivos.",
       "url": "https://github.com/OWASP/D4N155",
       "category": "utilidades-varios",
       "subcategory": "herramientas-cli",
       "tags": [
         "owasp",
-        "ia",
-        "inteligencia artificial",
+        "automatización",
+        "reconocimiento",
         "análisis"
       ],
       "type": "tool",

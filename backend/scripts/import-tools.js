@@ -201,17 +201,6 @@ const importTools = async () => {
     console.log(`  - Herramientas actualizadas: ${updatedCount}`)
     console.log(`  - Errores: ${errorCount}`)
 
-    // Verificar que GeoSpy.AI se importó
-    const geospyTool = await Tool.findOne({ id: 'geospy-ai' })
-    if (geospyTool) {
-      console.log('\n🎯 ¡GeoSpy.AI se importó correctamente!')
-      console.log(`   - Nombre: ${geospyTool.name}`)
-      console.log(`   - Categoría: ${geospyTool.category}`)
-      console.log(`   - URL: ${geospyTool.url}`)
-    } else {
-      console.log('\n⚠️  GeoSpy.AI no se encontró en la base de datos')
-    }
-
   } catch (error) {
     console.error('❌ Error durante la importación:', error)
     process.exit(1)

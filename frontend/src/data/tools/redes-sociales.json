@@ -595,13 +595,13 @@
     {
       "id": "talkwalker",
       "name": "Talkwalker",
-      "description": "Solución OSINT impulsada por IA para monitoreo de redes sociales y web.",
+      "description": "Solución OSINT para monitoreo de redes sociales y web.",
       "utility": "Escanea millones de fuentes online, detecta amenazas, rastrea menciones de marca y analiza sentimientos en tiempo real.",
       "url": "https://www.talkwalker.com",
       "category": "redes-sociales",
       "subcategory": "herramientas-monitoreo",
       "tags": [
-        "ia",
+        "analítica",
         "monitoreo",
         "sentimientos",
         "amenazas"

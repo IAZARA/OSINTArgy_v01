@@ -401,47 +401,16 @@
       "difficulty_level": "beginner"
     },
     {
-      "id": "lenso-ai",
-      "name": "Lenso.ai",
-      "description": "Motor de búsqueda inversa de imágenes con IA avanzada.",
-      "utility": "Filtros avanzados para personas, duplicados, lugares e imágenes similares. Incluye filtrado por palabras clave y dominios.",
-      "url": "https://lenso.ai",
-      "category": "imagenes-videos",
-      "subcategory": "busqueda-inversa",
-      "tags": [
-        "ia",
-        "filtros avanzados",
-        "personas",
-        "lugares"
-      ],
-      "type": "web",
-      "indicators": [
-        "F",
-        "A"
-      ],
-      "region": "internacional",
-      "language": "en",
-      "rating": 4.5,
-      "usage_count": 5670,
-      "last_updated": "2025-06-19",
-      "status": "active",
-      "requires_registration": true,
-      "is_free": false,
-      "difficulty_level": "intermediate",
-      "verification_date": "2025-06-19",
-      "verified_by": "perplexity"
-    },
-    {
       "id": "google-lens",
       "name": "Google Lens",
-      "description": "Herramienta de búsqueda visual de Google con IA.",
+      "description": "Herramienta de búsqueda visual de Google.",
       "utility": "Explora imágenes similares, descubre productos y lugares. Permite refinar búsquedas seleccionando elementos específicos.",
       "url": "https://lens.google.com",
       "category": "imagenes-videos",
       "subcategory": "busqueda-inversa",
       "tags": [
         "google",
-        "ia",
+        "búsqueda visual",
         "productos",
         "lugares"
       ],
@@ -484,36 +453,6 @@
       "language": "en",
       "rating": 4.2,
       "usage_count": 4230,
-      "last_updated": "2025-06-19",
-      "status": "active",
-      "requires_registration": false,
-      "is_free": true,
-      "difficulty_level": "beginner",
-      "verification_date": "2025-06-19",
-      "verified_by": "perplexity"
-    },
-    {
-      "id": "reversely-ai",
-      "name": "Reversely.ai",
-      "description": "Herramienta de búsqueda inversa enfocada en encontrar fotos similares.",
-      "utility": "Se especializa en encontrar imágenes similares con opciones gratuitas y de pago.",
-      "url": "https://reversely.ai",
-      "category": "imagenes-videos",
-      "subcategory": "busqueda-inversa",
-      "tags": [
-        "similares",
-        "ia",
-        "gratuito",
-        "premium"
-      ],
-      "type": "web",
-      "indicators": [
-        "F"
-      ],
-      "region": "internacional",
-      "language": "en",
-      "rating": 4.1,
-      "usage_count": 3450,
       "last_updated": "2025-06-19",
       "status": "active",
       "requires_registration": false,
@@ -674,68 +613,6 @@
       "verified_by": "perplexity"
     },
     {
-      "id": "sensity-ai",
-      "name": "Sensity AI",
-      "description": "Herramienta de detección de deepfakes impulsada por IA.",
-      "utility": "Analiza contenido de video para identificar manipulaciones potenciales y deepfakes con alta precisión.",
-      "url": "https://sensity.ai",
-      "category": "imagenes-videos",
-      "subcategory": "deteccion-deepfakes",
-      "tags": [
-        "deepfakes",
-        "ia",
-        "manipulaciones",
-        "precisión"
-      ],
-      "type": "web",
-      "indicators": [
-        "F",
-        "A"
-      ],
-      "region": "internacional",
-      "language": "en",
-      "rating": 4.6,
-      "usage_count": 4230,
-      "last_updated": "2025-06-19",
-      "status": "active",
-      "requires_registration": true,
-      "is_free": false,
-      "difficulty_level": "advanced",
-      "verification_date": "2025-06-19",
-      "verified_by": "perplexity"
-    },
-    {
-      "id": "microsoft-video-authenticator",
-      "name": "Microsoft Video Authenticator",
-      "description": "Herramienta de Microsoft para detectar deepfakes en videos.",
-      "utility": "Utiliza IA para detectar deepfakes analizando metadatos de video y contenido con tecnología de Microsoft.",
-      "url": "https://www.microsoft.com/en-us/ai/responsible-ai",
-      "category": "imagenes-videos",
-      "subcategory": "deteccion-deepfakes",
-      "tags": [
-        "microsoft",
-        "deepfakes",
-        "metadatos",
-        "ia"
-      ],
-      "type": "web",
-      "indicators": [
-        "F",
-        "A"
-      ],
-      "region": "internacional",
-      "language": "en",
-      "rating": 4.5,
-      "usage_count": 3450,
-      "last_updated": "2025-06-19",
-      "status": "active",
-      "requires_registration": true,
-      "is_free": false,
-      "difficulty_level": "advanced",
-      "verification_date": "2025-06-19",
-      "verified_by": "perplexity"
-    },
-    {
       "id": "ffmpeg",
       "name": "FFmpeg",
       "description": "Framework multimedia potente para análisis y procesamiento de video.",
@@ -886,37 +763,6 @@
       "requires_registration": false,
       "is_free": true,
       "difficulty_level": "advanced",
-      "verification_date": "2025-06-19",
-      "verified_by": "perplexity"
-    },
-    {
-      "id": "whisper-ai",
-      "name": "Whisper AI",
-      "description": "Servicio de transcripción automática de OpenAI.",
-      "utility": "Convierte audio y video a texto buscable. Útil para análisis de contenido de video y audio en investigaciones OSINT.",
-      "url": "https://openai.com/research/whisper",
-      "category": "imagenes-videos",
-      "subcategory": "transcripcion",
-      "tags": [
-        "transcripción",
-        "openai",
-        "audio",
-        "texto"
-      ],
-      "type": "api",
-      "indicators": [
-        "F",
-        "A"
-      ],
-      "region": "internacional",
-      "language": "es",
-      "rating": 4.7,
-      "usage_count": 12340,
-      "last_updated": "2025-06-19",
-      "status": "active",
-      "requires_registration": true,
-      "is_free": false,
-      "difficulty_level": "intermediate",
       "verification_date": "2025-06-19",
       "verified_by": "perplexity"
     },
@@ -1178,35 +1024,6 @@
       "language": "en",
       "rating": 4.4,
       "usage_count": 2890,
-      "last_updated": "2025-06-19",
-      "status": "active",
-      "requires_registration": false,
-      "is_free": true,
-      "difficulty_level": "intermediate"
-    },
-    {
-      "id": "picarta",
-      "name": "Picarta",
-      "description": "Herramienta de búsqueda de imágenes impulsada por IA.",
-      "utility": "Búsqueda inteligente de imágenes usando inteligencia artificial para mejores resultados.",
-      "url": "https://picarta.ai/",
-      "category": "imagenes-videos",
-      "subcategory": "busqueda-inversa",
-      "tags": [
-        "ia",
-        "inteligente",
-        "mejores resultados",
-        "avanzado"
-      ],
-      "type": "web",
-      "indicators": [
-        "F",
-        "A"
-      ],
-      "region": "internacional",
-      "language": "en",
-      "rating": 4.3,
-      "usage_count": 3450,
       "last_updated": "2025-06-19",
       "status": "active",
       "requires_registration": false,

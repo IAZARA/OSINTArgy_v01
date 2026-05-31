@@ -474,13 +474,13 @@
     {
       "id": "semantic-scholar",
       "name": "Semantic Scholar",
-      "description": "Motor de búsqueda académica impulsado por IA.",
-      "utility": "Utiliza IA para analizar y comprender el contenido de los artículos. Ofrece resúmenes automáticos y análisis de impacto.",
+      "description": "Motor de búsqueda académica para literatura científica.",
+      "utility": "Ayuda a explorar artículos científicos, descubrir papers relacionados y revisar resúmenes, citas e impacto académico.",
       "url": "https://www.semanticscholar.org",
       "category": "buscadores-generales",
       "subcategory": "academicos",
       "tags": [
-        "ia",
+        "literatura científica",
         "académico",
         "análisis",
         "resúmenes"
@@ -968,13 +968,13 @@
     {
       "id": "sourcely",
       "name": "Sourcely",
-      "description": "Motor de búsqueda académica con IA y más de 200 millones de papers.",
-      "utility": "Ofrece filtros impulsados por IA, resúmenes automáticos y herramientas de citación. Ideal para investigación académica avanzada.",
+      "description": "Motor de búsqueda académica con más de 200 millones de papers.",
+      "utility": "Ofrece filtros avanzados, resúmenes y herramientas de citación para investigación académica avanzada.",
       "url": "https://www.sourcely.net",
       "category": "buscadores-generales",
       "subcategory": "academicos",
       "tags": [
-        "ia",
+        "búsqueda académica",
         "académico",
         "papers",
         "citación"

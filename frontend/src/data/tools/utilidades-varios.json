@@ -572,14 +572,14 @@
       "id": "owasp-d4n155",
       "name": "OWASP D4N155 (T)",
       "description": "Herramienta OSINT inteligente para recopilar información de objetivos.",
-      "utility": "Framework OSINT que utiliza inteligencia artificial para recopilar y analizar información de objetivos.",
+      "utility": "Framework OSINT que automatiza la recopilación y el análisis de información pública sobre objetivos.",
       "url": "https://github.com/OWASP/D4N155",
       "category": "utilidades-varios",
       "subcategory": "herramientas-cli",
       "tags": [
         "owasp",
-        "ia",
-        "inteligencia artificial",
+        "automatización",
+        "reconocimiento",
         "análisis"
       ],
       "type": "tool",

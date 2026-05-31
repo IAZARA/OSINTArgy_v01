@@ -1617,6 +1617,66 @@
       "requires_registration": false,
       "is_free": true,
       "difficulty_level": "advanced"
+    },
+    {
+      "id": "maigret",
+      "name": "Maigret",
+      "description": "Herramienta OSINT para buscar nombres de usuario en miles de sitios y redes.",
+      "utility": "Permite verificar presencia digital asociada a un username, generar reportes y pivotar entre perfiles públicos relacionados.",
+      "url": "https://github.com/soxoj/maigret",
+      "category": "redes-sociales",
+      "subcategory": "verificacion-perfiles",
+      "tags": [
+        "usernames",
+        "perfiles",
+        "redes sociales",
+        "open source"
+      ],
+      "type": "cli",
+      "indicators": [
+        "T",
+        "P",
+        "S"
+      ],
+      "region": "internacional",
+      "language": "en",
+      "rating": 4.8,
+      "usage_count": 12400,
+      "last_updated": "2026-05-31",
+      "status": "active",
+      "requires_registration": false,
+      "is_free": true,
+      "difficulty_level": "intermediate"
+    },
+    {
+      "id": "tgstat",
+      "name": "TGStat",
+      "description": "Catálogo y plataforma de analítica para canales y grupos públicos de Telegram.",
+      "utility": "Ayuda a descubrir canales, analizar crecimiento, actividad, menciones y métricas públicas en investigaciones sobre ecosistemas de Telegram.",
+      "url": "https://tgstat.com/en",
+      "category": "redes-sociales",
+      "subcategory": "herramientas-monitoreo",
+      "tags": [
+        "telegram",
+        "canales",
+        "analítica",
+        "monitoreo"
+      ],
+      "type": "web",
+      "indicators": [
+        "D",
+        "A",
+        "S"
+      ],
+      "region": "internacional",
+      "language": "multi",
+      "rating": 4.4,
+      "usage_count": 7600,
+      "last_updated": "2026-05-31",
+      "status": "active",
+      "requires_registration": false,
+      "is_free": true,
+      "difficulty_level": "beginner"
     }
   ]
 }

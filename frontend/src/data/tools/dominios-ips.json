@@ -1129,6 +1129,66 @@
       "requires_registration": true,
       "is_free": true,
       "difficulty_level": "intermediate"
+    },
+    {
+      "id": "fullhunt",
+      "name": "FullHunt",
+      "description": "Plataforma de inteligencia de superficie de ataque para dominios, hosts e infraestructura expuesta.",
+      "utility": "Enriquece investigaciones defensivas con subdominios, tecnologías, puertos, servicios y señales de exposición externa.",
+      "url": "https://fullhunt.io/",
+      "category": "dominios-ips",
+      "subcategory": "analisis-ips",
+      "tags": [
+        "attack surface",
+        "subdominios",
+        "infraestructura",
+        "api"
+      ],
+      "type": "api",
+      "indicators": [
+        "D",
+        "A",
+        "S"
+      ],
+      "region": "internacional",
+      "language": "en",
+      "rating": 4.5,
+      "usage_count": 5200,
+      "last_updated": "2026-05-31",
+      "status": "active",
+      "requires_registration": true,
+      "is_free": true,
+      "difficulty_level": "intermediate"
+    },
+    {
+      "id": "fofa",
+      "name": "FOFA",
+      "description": "Motor de búsqueda de activos expuestos en internet y mapeo global de infraestructura.",
+      "utility": "Complementa Shodan y Censys para descubrir servicios, banners, tecnologías y activos públicos asociados a dominios o IPs.",
+      "url": "https://en.fofa.info/",
+      "category": "dominios-ips",
+      "subcategory": "analisis-ips",
+      "tags": [
+        "banners",
+        "activos expuestos",
+        "infraestructura",
+        "fingerprints"
+      ],
+      "type": "web",
+      "indicators": [
+        "D",
+        "A",
+        "S"
+      ],
+      "region": "internacional",
+      "language": "en",
+      "rating": 4.4,
+      "usage_count": 8900,
+      "last_updated": "2026-05-31",
+      "status": "active",
+      "requires_registration": true,
+      "is_free": true,
+      "difficulty_level": "intermediate"
     }
   ]
 }

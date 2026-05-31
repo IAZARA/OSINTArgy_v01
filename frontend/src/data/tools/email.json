@@ -525,6 +525,27 @@
       "requires_registration": false,
       "is_free": true,
       "difficulty_level": "intermediate"
+    },
+    {
+      "id": "holehe",
+      "name": "Holehe",
+      "description": "Herramienta open source para verificar si un email aparece registrado en servicios públicos.",
+      "utility": "Permite orientar investigaciones defensivas sobre presencia de una dirección de email en plataformas conocidas, con foco en uso responsable y respeto de términos de servicio.",
+      "url": "https://github.com/megadose/holehe",
+      "category": "email",
+      "subcategory": "verificacion",
+      "tags": ["email", "registro", "presencia digital", "open source"],
+      "type": "cli",
+      "indicators": ["T", "P", "V"],
+      "region": "internacional",
+      "language": "en",
+      "rating": 4.5,
+      "usage_count": 9300,
+      "last_updated": "2026-05-31",
+      "status": "active",
+      "requires_registration": false,
+      "is_free": true,
+      "difficulty_level": "intermediate"
     }
   ]
 }

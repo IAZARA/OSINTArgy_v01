@@ -1392,6 +1392,36 @@
       "requires_registration": true,
       "is_free": false,
       "difficulty_level": "advanced"
+    },
+    {
+      "id": "opensanctions",
+      "name": "OpenSanctions",
+      "description": "Base de datos abierta y API para sanciones, PEPs, listas de vigilancia y entidades de riesgo.",
+      "utility": "Permite buscar personas, empresas y organizaciones en datasets de sanciones, personas políticamente expuestas y fuentes regulatorias.",
+      "url": "https://www.opensanctions.org/",
+      "category": "buscadores-generales",
+      "subcategory": "motores-especializados",
+      "tags": [
+        "sanciones",
+        "pep",
+        "empresas",
+        "api"
+      ],
+      "type": "api",
+      "indicators": [
+        "D",
+        "R",
+        "A"
+      ],
+      "region": "internacional",
+      "language": "en",
+      "rating": 4.8,
+      "usage_count": 9200,
+      "last_updated": "2026-05-31",
+      "status": "active",
+      "requires_registration": true,
+      "is_free": true,
+      "difficulty_level": "intermediate"
     }
   ]
 }

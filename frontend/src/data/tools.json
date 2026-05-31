@@ -1393,6 +1393,36 @@
       "difficulty_level": "advanced"
     },
     {
+      "id": "opensanctions",
+      "name": "OpenSanctions",
+      "description": "Base de datos abierta y API para sanciones, PEPs, listas de vigilancia y entidades de riesgo.",
+      "utility": "Permite buscar personas, empresas y organizaciones en datasets de sanciones, personas políticamente expuestas y fuentes regulatorias.",
+      "url": "https://www.opensanctions.org/",
+      "category": "buscadores-generales",
+      "subcategory": "motores-especializados",
+      "tags": [
+        "sanciones",
+        "pep",
+        "empresas",
+        "api"
+      ],
+      "type": "api",
+      "indicators": [
+        "D",
+        "R",
+        "A"
+      ],
+      "region": "internacional",
+      "language": "en",
+      "rating": 4.8,
+      "usage_count": 9200,
+      "last_updated": "2026-05-31",
+      "status": "active",
+      "requires_registration": true,
+      "is_free": true,
+      "difficulty_level": "intermediate"
+    },
+    {
       "id": "facebook-search",
       "name": "Facebook Graph Search",
       "description": "Herramienta de búsqueda avanzada dentro de Facebook.",
@@ -3010,6 +3040,66 @@
       "difficulty_level": "advanced"
     },
     {
+      "id": "maigret",
+      "name": "Maigret",
+      "description": "Herramienta OSINT para buscar nombres de usuario en miles de sitios y redes.",
+      "utility": "Permite verificar presencia digital asociada a un username, generar reportes y pivotar entre perfiles públicos relacionados.",
+      "url": "https://github.com/soxoj/maigret",
+      "category": "redes-sociales",
+      "subcategory": "verificacion-perfiles",
+      "tags": [
+        "usernames",
+        "perfiles",
+        "redes sociales",
+        "open source"
+      ],
+      "type": "cli",
+      "indicators": [
+        "T",
+        "P",
+        "S"
+      ],
+      "region": "internacional",
+      "language": "en",
+      "rating": 4.8,
+      "usage_count": 12400,
+      "last_updated": "2026-05-31",
+      "status": "active",
+      "requires_registration": false,
+      "is_free": true,
+      "difficulty_level": "intermediate"
+    },
+    {
+      "id": "tgstat",
+      "name": "TGStat",
+      "description": "Catálogo y plataforma de analítica para canales y grupos públicos de Telegram.",
+      "utility": "Ayuda a descubrir canales, analizar crecimiento, actividad, menciones y métricas públicas en investigaciones sobre ecosistemas de Telegram.",
+      "url": "https://tgstat.com/en",
+      "category": "redes-sociales",
+      "subcategory": "herramientas-monitoreo",
+      "tags": [
+        "telegram",
+        "canales",
+        "analítica",
+        "monitoreo"
+      ],
+      "type": "web",
+      "indicators": [
+        "D",
+        "A",
+        "S"
+      ],
+      "region": "internacional",
+      "language": "multi",
+      "rating": 4.4,
+      "usage_count": 7600,
+      "last_updated": "2026-05-31",
+      "status": "active",
+      "requires_registration": false,
+      "is_free": true,
+      "difficulty_level": "beginner"
+    },
+    {
       "id": "hunter-io",
       "name": "Hunter.io",
       "description": "Herramienta para encontrar y verificar direcciones de correo electrónico.",
@@ -3725,6 +3815,36 @@
       "rating": 4.1,
       "usage_count": 2890,
       "last_updated": "2025-06-19",
+      "status": "active",
+      "requires_registration": false,
+      "is_free": true,
+      "difficulty_level": "intermediate"
+    },
+    {
+      "id": "holehe",
+      "name": "Holehe",
+      "description": "Herramienta open source para verificar si un email aparece registrado en servicios públicos.",
+      "utility": "Permite orientar investigaciones defensivas sobre presencia de una dirección de email en plataformas conocidas, con foco en uso responsable y respeto de términos de servicio.",
+      "url": "https://github.com/megadose/holehe",
+      "category": "email",
+      "subcategory": "verificacion",
+      "tags": [
+        "email",
+        "registro",
+        "presencia digital",
+        "open source"
+      ],
+      "type": "cli",
+      "indicators": [
+        "T",
+        "P",
+        "V"
+      ],
+      "region": "internacional",
+      "language": "en",
+      "rating": 4.5,
+      "usage_count": 9300,
+      "last_updated": "2026-05-31",
       "status": "active",
       "requires_registration": false,
       "is_free": true,
@@ -4860,6 +4980,66 @@
       "difficulty_level": "intermediate"
     },
     {
+      "id": "fullhunt",
+      "name": "FullHunt",
+      "description": "Plataforma de inteligencia de superficie de ataque para dominios, hosts e infraestructura expuesta.",
+      "utility": "Enriquece investigaciones defensivas con subdominios, tecnologías, puertos, servicios y señales de exposición externa.",
+      "url": "https://fullhunt.io/",
+      "category": "dominios-ips",
+      "subcategory": "analisis-ips",
+      "tags": [
+        "attack surface",
+        "subdominios",
+        "infraestructura",
+        "api"
+      ],
+      "type": "api",
+      "indicators": [
+        "D",
+        "A",
+        "S"
+      ],
+      "region": "internacional",
+      "language": "en",
+      "rating": 4.5,
+      "usage_count": 5200,
+      "last_updated": "2026-05-31",
+      "status": "active",
+      "requires_registration": true,
+      "is_free": true,
+      "difficulty_level": "intermediate"
+    },
+    {
+      "id": "fofa",
+      "name": "FOFA",
+      "description": "Motor de búsqueda de activos expuestos en internet y mapeo global de infraestructura.",
+      "utility": "Complementa Shodan y Censys para descubrir servicios, banners, tecnologías y activos públicos asociados a dominios o IPs.",
+      "url": "https://en.fofa.info/",
+      "category": "dominios-ips",
+      "subcategory": "analisis-ips",
+      "tags": [
+        "banners",
+        "activos expuestos",
+        "infraestructura",
+        "fingerprints"
+      ],
+      "type": "web",
+      "indicators": [
+        "D",
+        "A",
+        "S"
+      ],
+      "region": "internacional",
+      "language": "en",
+      "rating": 4.4,
+      "usage_count": 8900,
+      "last_updated": "2026-05-31",
+      "status": "active",
+      "requires_registration": true,
+      "is_free": true,
+      "difficulty_level": "intermediate"
+    },
+    {
       "id": "google-earth",
       "name": "Google Earth",
       "description": "Explorador de imágenes satelitales y mapas 3D del mundo.",
@@ -5823,6 +6003,36 @@
       "requires_registration": false,
       "is_free": true,
       "difficulty_level": "intermediate"
+    },
+    {
+      "id": "mapillary",
+      "name": "Mapillary",
+      "description": "Plataforma de imágenes callejeras colaborativas y datos visuales georreferenciados.",
+      "utility": "Aporta contexto visual a nivel calle para verificar ubicaciones, infraestructura, cambios urbanos y elementos del entorno.",
+      "url": "https://www.mapillary.com/",
+      "category": "geolocalizacion",
+      "subcategory": "analisis-geoespacial",
+      "tags": [
+        "street view",
+        "geolocalización",
+        "imágenes callejeras",
+        "mapas"
+      ],
+      "type": "web",
+      "indicators": [
+        "G",
+        "D",
+        "A"
+      ],
+      "region": "internacional",
+      "language": "multi",
+      "rating": 4.5,
+      "usage_count": 8400,
+      "last_updated": "2026-05-31",
+      "status": "active",
+      "requires_registration": false,
+      "is_free": true,
+      "difficulty_level": "beginner"
     },
     {
       "id": "tineye",
@@ -10642,6 +10852,125 @@
       "difficulty_level": "intermediate"
     },
     {
+      "id": "archivebox",
+      "name": "ArchiveBox",
+      "description": "Sistema open source self-hosted para archivar páginas web y preservar evidencia digital.",
+      "utility": "Guarda páginas como HTML, PDF, WARC, capturas y otros formatos para conservar versiones verificables de fuentes abiertas.",
+      "url": "https://archivebox.io/",
+      "category": "archivos",
+      "subcategory": "archivos-web",
+      "tags": [
+        "archivo web",
+        "self-hosted",
+        "warc",
+        "preservación"
+      ],
+      "type": "app",
+      "indicators": [
+        "D",
+        "A",
+        "T"
+      ],
+      "region": "internacional",
+      "language": "en",
+      "rating": 4.8,
+      "usage_count": 11200,
+      "last_updated": "2026-05-31",
+      "status": "active",
+      "requires_registration": false,
+      "is_free": true,
+      "difficulty_level": "intermediate"
+    },
+    {
+      "id": "bellingcat-auto-archiver",
+      "name": "Bellingcat Auto Archiver",
+      "description": "Herramienta de Bellingcat para archivar automáticamente URLs y contenido de plataformas sociales.",
+      "utility": "Preserva publicaciones, videos, imágenes y páginas desde listas de URLs, útil para documentar evidencia cambiante en investigaciones OSINT.",
+      "url": "https://github.com/bellingcat/auto-archiver",
+      "category": "archivos",
+      "subcategory": "archivos-web",
+      "tags": [
+        "bellingcat",
+        "archivo",
+        "redes sociales",
+        "evidencia"
+      ],
+      "type": "cli",
+      "indicators": [
+        "T",
+        "A",
+        "D"
+      ],
+      "region": "internacional",
+      "language": "en",
+      "rating": 4.7,
+      "usage_count": 6800,
+      "last_updated": "2026-05-31",
+      "status": "active",
+      "requires_registration": false,
+      "is_free": true,
+      "difficulty_level": "intermediate"
+    },
+    {
+      "id": "gdelt-doc-api",
+      "name": "GDELT DOC API",
+      "description": "API del proyecto GDELT para buscar y analizar cobertura global de noticias y medios.",
+      "utility": "Permite monitorear menciones, narrativas, eventos y cobertura mediática internacional con salida JSON para análisis automatizado.",
+      "url": "https://blog.gdeltproject.org/gdelt-doc-2-0-api-debuts/",
+      "category": "archivos",
+      "subcategory": "datos-abiertos",
+      "tags": [
+        "noticias",
+        "medios",
+        "datos abiertos",
+        "api"
+      ],
+      "type": "api",
+      "indicators": [
+        "D",
+        "A"
+      ],
+      "region": "internacional",
+      "language": "multi",
+      "rating": 4.6,
+      "usage_count": 9800,
+      "last_updated": "2026-05-31",
+      "status": "active",
+      "requires_registration": false,
+      "is_free": true,
+      "difficulty_level": "intermediate"
+    },
+    {
+      "id": "hunchly",
+      "name": "Hunchly",
+      "description": "Herramienta profesional para captura, organización y reporte de investigaciones web.",
+      "utility": "Captura páginas visitadas, timestamps, hashes, notas y etiquetas para mantener trazabilidad de navegación y evidencia digital.",
+      "url": "https://hunch.ly/",
+      "category": "archivos",
+      "subcategory": "capturas-pantalla",
+      "tags": [
+        "captura web",
+        "evidencia",
+        "reportes",
+        "investigación"
+      ],
+      "type": "browser-extension",
+      "indicators": [
+        "D",
+        "A",
+        "R"
+      ],
+      "region": "internacional",
+      "language": "en",
+      "rating": 4.6,
+      "usage_count": 6400,
+      "last_updated": "2026-05-31",
+      "status": "active",
+      "requires_registration": true,
+      "is_free": false,
+      "difficulty_level": "beginner"
+    },
+    {
       "id": "oxt",
       "name": "OXT",
       "description": "Herramienta avanzada de análisis de transacciones Bitcoin con visualización de grafos.",
@@ -12042,6 +12371,36 @@
       "requires_registration": false,
       "is_free": true,
       "difficulty_level": "advanced"
+    },
+    {
+      "id": "occrp-aleph",
+      "name": "OCCRP Aleph",
+      "description": "Plataforma investigativa para buscar, organizar y analizar documentos, datasets y entidades.",
+      "utility": "Facilita explorar documentos, filtraciones, registros públicos, personas y compañías con búsqueda, timelines y análisis de relaciones.",
+      "url": "https://aleph.occrp.org/",
+      "category": "analisis-visualizacion",
+      "subcategory": "analisis-documentos",
+      "tags": [
+        "documentos",
+        "datasets",
+        "relaciones",
+        "periodismo"
+      ],
+      "type": "web",
+      "indicators": [
+        "D",
+        "A",
+        "R"
+      ],
+      "region": "internacional",
+      "language": "multi",
+      "rating": 4.8,
+      "usage_count": 8700,
+      "last_updated": "2026-05-31",
+      "status": "active",
+      "requires_registration": false,
+      "is_free": true,
+      "difficulty_level": "intermediate"
     },
     {
       "id": "osintargy-infrastructure-scanner",

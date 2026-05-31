@@ -965,6 +965,36 @@
       "requires_registration": false,
       "is_free": true,
       "difficulty_level": "intermediate"
+    },
+    {
+      "id": "mapillary",
+      "name": "Mapillary",
+      "description": "Plataforma de imágenes callejeras colaborativas y datos visuales georreferenciados.",
+      "utility": "Aporta contexto visual a nivel calle para verificar ubicaciones, infraestructura, cambios urbanos y elementos del entorno.",
+      "url": "https://www.mapillary.com/",
+      "category": "geolocalizacion",
+      "subcategory": "analisis-geoespacial",
+      "tags": [
+        "street view",
+        "geolocalización",
+        "imágenes callejeras",
+        "mapas"
+      ],
+      "type": "web",
+      "indicators": [
+        "G",
+        "D",
+        "A"
+      ],
+      "region": "internacional",
+      "language": "multi",
+      "rating": 4.5,
+      "usage_count": 8400,
+      "last_updated": "2026-05-31",
+      "status": "active",
+      "requires_registration": false,
+      "is_free": true,
+      "difficulty_level": "beginner"
     }
   ]
 }

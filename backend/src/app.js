@@ -43,6 +43,13 @@ if (!fs.existsSync(logsDir)) {
   fs.mkdirSync(logsDir, { recursive: true })
 }
 
+const loggerTransports = process.env.NODE_ENV === 'test'
+  ? [new winston.transports.Console({ silent: true })]
+  : [
+      new winston.transports.File({ filename: join(logsDir, 'error.log'), level: 'error' }),
+      new winston.transports.File({ filename: join(logsDir, 'combined.log') }),
+    ]
+
 // Configurar logger
 const logger = winston.createLogger({
   level: 'info',
@@ -52,14 +59,11 @@ const logger = winston.createLogger({
     winston.format.json()
   ),
   defaultMeta: { service: 'osintargy-backend' },
-  transports: [
-    new winston.transports.File({ filename: join(logsDir, 'error.log'), level: 'error' }),
-    new winston.transports.File({ filename: join(logsDir, 'combined.log') }),
-  ],
+  transports: loggerTransports,
 })
 
 // En desarrollo, también loggear a consola
-if (process.env.NODE_ENV !== 'production') {
+if (process.env.NODE_ENV !== 'production' && process.env.NODE_ENV !== 'test') {
   logger.add(new winston.transports.Console({
     format: winston.format.simple()
   }))

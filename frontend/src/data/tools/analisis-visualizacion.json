@@ -180,6 +180,36 @@
       "requires_registration": false,
       "is_free": true,
       "difficulty_level": "advanced"
+    },
+    {
+      "id": "occrp-aleph",
+      "name": "OCCRP Aleph",
+      "description": "Plataforma investigativa para buscar, organizar y analizar documentos, datasets y entidades.",
+      "utility": "Facilita explorar documentos, filtraciones, registros públicos, personas y compañías con búsqueda, timelines y análisis de relaciones.",
+      "url": "https://aleph.occrp.org/",
+      "category": "analisis-visualizacion",
+      "subcategory": "analisis-documentos",
+      "tags": [
+        "documentos",
+        "datasets",
+        "relaciones",
+        "periodismo"
+      ],
+      "type": "web",
+      "indicators": [
+        "D",
+        "A",
+        "R"
+      ],
+      "region": "internacional",
+      "language": "multi",
+      "rating": 4.8,
+      "usage_count": 8700,
+      "last_updated": "2026-05-31",
+      "status": "active",
+      "requires_registration": false,
+      "is_free": true,
+      "difficulty_level": "intermediate"
     }
   ]
 }

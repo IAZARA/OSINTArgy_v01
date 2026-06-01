@@ -325,3 +325,144 @@
 
 
 }
+
+/* Motion refresh */
+.audio-player-page {
+  background:
+    linear-gradient(rgba(0, 212, 255, 0.032) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 212, 255, 0.032) 1px, transparent 1px),
+    linear-gradient(180deg, rgba(0, 212, 255, 0.08), transparent 28%),
+    #0a0a0a;
+  background-size: 44px 44px, 44px 44px, 100% 100%, auto;
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.audio-player-page::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+  background: linear-gradient(120deg, transparent 0 42%, rgba(0, 212, 255, 0.08) 50%, transparent 58% 100%);
+  animation: audioSweep 15s linear infinite;
+}
+
+.audio-info,
+.audio-player,
+.audio-description {
+  animation: audioPanelIn 0.5s ease both;
+  position: relative;
+  overflow: hidden;
+}
+
+.audio-info::after,
+.audio-player::after,
+.audio-description::after {
+  content: '';
+  position: absolute;
+  left: var(--maltego-spacing-xl);
+  right: var(--maltego-spacing-xl);
+  bottom: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--maltego-primary), transparent);
+  box-shadow: var(--maltego-glow-primary);
+  opacity: 0.55;
+}
+
+.control-btn.primary {
+  animation: audioPulse 2.6s ease-in-out infinite;
+}
+
+.audio-player .progress-fill::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.44), transparent);
+  animation: audioProgressSweep 1.8s ease-in-out infinite;
+}
+
+.topics-covered li {
+  animation: audioItemIn 0.42s ease both;
+}
+
+.topics-covered li:nth-child(2) {
+  animation-delay: 0.06s;
+}
+
+.topics-covered li:nth-child(3) {
+  animation-delay: 0.12s;
+}
+
+.topics-covered li:nth-child(4) {
+  animation-delay: 0.18s;
+}
+
+.audio-player .back-button:focus-visible,
+.control-btn:focus-visible,
+.progress-bar:focus-visible {
+  outline: 2px solid var(--maltego-primary);
+  outline-offset: 4px;
+}
+
+@keyframes audioSweep {
+  from {
+    transform: translateX(-66%);
+  }
+  to {
+    transform: translateX(66%);
+  }
+}
+
+@keyframes audioPanelIn {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes audioItemIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes audioPulse {
+  0%, 100% {
+    box-shadow: var(--maltego-glow-primary);
+  }
+  50% {
+    box-shadow: var(--maltego-glow-primary-strong);
+  }
+}
+
+@keyframes audioProgressSweep {
+  0%, 100% {
+    transform: translateX(-100%);
+  }
+  50% {
+    transform: translateX(100%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .audio-player-page::before,
+  .audio-info,
+  .audio-player,
+  .audio-description,
+  .control-btn.primary,
+  .audio-player .progress-fill::after,
+  .topics-covered li {
+    animation: none;
+  }
+}

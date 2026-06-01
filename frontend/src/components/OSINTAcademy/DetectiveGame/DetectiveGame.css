@@ -433,3 +433,162 @@
     transform: translateY(0);
   }
 }
+
+/* Motion refresh */
+.detective-game {
+  background:
+    linear-gradient(rgba(0, 212, 255, 0.032) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 212, 255, 0.032) 1px, transparent 1px),
+    var(--maltego-bg);
+  background-size: 44px 44px, 44px 44px, auto;
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.detective-game::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+  background: linear-gradient(120deg, transparent 0 42%, rgba(0, 212, 255, 0.08) 50%, transparent 58% 100%);
+  animation: detectiveSweep 14s linear infinite;
+}
+
+.game-header,
+.game-menu,
+.game-area,
+.game-completed,
+.game-paused {
+  animation: detectivePanelIn 0.48s ease both;
+}
+
+.game-header,
+.game-menu,
+.game-area,
+.game-completed,
+.game-paused,
+.feature,
+.case-info {
+  position: relative;
+  overflow: hidden;
+}
+
+.game-header::after,
+.game-menu::after,
+.game-area::after,
+.game-completed::after,
+.game-paused::after {
+  content: '';
+  position: absolute;
+  left: var(--maltego-spacing-xl);
+  right: var(--maltego-spacing-xl);
+  bottom: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--maltego-primary), transparent);
+  box-shadow: var(--maltego-glow-primary);
+  opacity: 0.55;
+}
+
+.stat,
+.feature,
+.tool-button,
+.start-button {
+  transition:
+    transform var(--maltego-transition-medium),
+    border-color var(--maltego-transition-medium),
+    box-shadow var(--maltego-transition-medium),
+    background var(--maltego-transition-medium);
+}
+
+.stat:hover,
+.feature:hover,
+.tool-button:hover:not(:disabled) {
+  box-shadow: var(--maltego-glow-secondary);
+}
+
+.menu-features .feature:nth-child(1) {
+  animation: detectiveItemIn 0.42s ease 0.06s both;
+}
+
+.menu-features .feature:nth-child(2) {
+  animation: detectiveItemIn 0.42s ease 0.12s both;
+}
+
+.menu-features .feature:nth-child(3) {
+  animation: detectiveItemIn 0.42s ease 0.18s both;
+}
+
+.game-canvas {
+  transition: border-color var(--maltego-transition-medium), box-shadow var(--maltego-transition-medium);
+}
+
+.game-canvas:hover {
+  border-color: var(--maltego-primary);
+  box-shadow: var(--maltego-shadow-xl), var(--maltego-glow-secondary);
+}
+
+.start-button {
+  animation: detectiveButtonPulse 2.4s ease-in-out infinite;
+}
+
+.detective-game .nav-button:focus-visible,
+.detective-game .tool-button:focus-visible,
+.detective-game .start-button:focus-visible {
+  outline: 2px solid var(--maltego-primary);
+  outline-offset: 4px;
+}
+
+@keyframes detectiveSweep {
+  from {
+    transform: translateX(-64%);
+  }
+  to {
+    transform: translateX(64%);
+  }
+}
+
+@keyframes detectivePanelIn {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes detectiveItemIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes detectiveButtonPulse {
+  0%, 100% {
+    box-shadow: var(--maltego-shadow-lg);
+  }
+  50% {
+    box-shadow: var(--maltego-glow-primary);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .detective-game::before,
+  .game-header,
+  .game-menu,
+  .game-area,
+  .game-completed,
+  .game-paused,
+  .menu-features .feature,
+  .start-button {
+    animation: none;
+  }
+}

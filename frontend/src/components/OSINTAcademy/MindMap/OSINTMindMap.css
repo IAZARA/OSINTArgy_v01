@@ -378,3 +378,147 @@
     grid-template-columns: 1fr;
   }
 }
+
+/* Motion refresh */
+.osint-mindmap {
+  background:
+    linear-gradient(rgba(0, 212, 255, 0.032) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 212, 255, 0.032) 1px, transparent 1px),
+    linear-gradient(180deg, rgba(0, 212, 255, 0.08), transparent 28%),
+    #0a0a0a;
+  background-size: 44px 44px, 44px 44px, 100% 100%, auto;
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.osint-mindmap::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+  background: linear-gradient(120deg, transparent 0 42%, rgba(0, 212, 255, 0.08) 50%, transparent 58% 100%);
+  animation: mindmapSweep 15s linear infinite;
+}
+
+.mindmap-header,
+.mindmap-controls,
+.mindmap-container,
+.mindmap-legend,
+.node-details {
+  animation: mindmapPanelIn 0.5s ease both;
+}
+
+.mindmap-header,
+.mindmap-controls,
+.mindmap-container,
+.mindmap-legend {
+  position: relative;
+  overflow: hidden;
+}
+
+.mindmap-header::after,
+.mindmap-controls::after,
+.mindmap-legend::after {
+  content: '';
+  position: absolute;
+  left: var(--maltego-spacing-xl);
+  right: var(--maltego-spacing-xl);
+  bottom: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--maltego-primary), transparent);
+  box-shadow: var(--maltego-glow-primary);
+  opacity: 0.55;
+}
+
+.mindmap-svg {
+  background:
+    linear-gradient(180deg, rgba(0, 212, 255, 0.08), transparent 42%),
+    linear-gradient(rgba(0, 212, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 212, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(135deg, #0a1929 0%, #0a0a0a 100%);
+  background-size: 100% 100%, 36px 36px, 36px 36px, auto;
+}
+
+.node {
+  transition: filter 240ms ease, transform 240ms ease;
+}
+
+.node:hover {
+  filter: brightness(1.2) drop-shadow(0 0 10px rgba(0, 212, 255, 0.42));
+}
+
+.link {
+  transition: opacity 240ms ease, stroke-width 240ms ease;
+}
+
+.node-details {
+  animation: nodeDetailsIn 0.28s ease both;
+}
+
+.child-item,
+.legend-item,
+.reset-zoom,
+.close-details {
+  transition:
+    transform var(--maltego-transition-medium),
+    border-color var(--maltego-transition-medium),
+    box-shadow var(--maltego-transition-medium),
+    background var(--maltego-transition-medium);
+}
+
+.child-item:hover,
+.legend-item:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--maltego-glow-secondary);
+}
+
+.search-input:focus,
+.reset-zoom:focus-visible,
+.close-details:focus-visible {
+  outline: 2px solid var(--maltego-primary);
+  outline-offset: 4px;
+}
+
+@keyframes mindmapSweep {
+  from {
+    transform: translateX(-66%);
+  }
+  to {
+    transform: translateX(66%);
+  }
+}
+
+@keyframes mindmapPanelIn {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes nodeDetailsIn {
+  from {
+    opacity: 0;
+    transform: translateX(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .osint-mindmap::before,
+  .mindmap-header,
+  .mindmap-controls,
+  .mindmap-container,
+  .mindmap-legend,
+  .node-details {
+    animation: none;
+  }
+}

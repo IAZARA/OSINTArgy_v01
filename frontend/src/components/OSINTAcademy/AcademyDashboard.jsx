@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
+import { AnimatePresence, motion } from 'framer-motion'
 import { 
   BookOpen, 
   Target, 
@@ -8,13 +9,43 @@ import {
   Unlock,
   Play
 } from 'lucide-react'
-import { useNavigate, useLocation, Link } from 'react-router-dom'
+import { useNavigate, useLocation } from 'react-router-dom'
 import './AcademyDashboard.css'
+
+const panelVariants = {
+  hidden: { opacity: 0, y: 18, filter: 'blur(8px)' },
+  visible: {
+    opacity: 1,
+    y: 0,
+    filter: 'blur(0px)',
+    transition: {
+      duration: 0.45,
+      ease: [0.22, 1, 0.36, 1],
+      staggerChildren: 0.08
+    }
+  },
+  exit: {
+    opacity: 0,
+    y: -12,
+    filter: 'blur(6px)',
+    transition: { duration: 0.24, ease: 'easeInOut' }
+  }
+}
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 20, scale: 0.98 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: { duration: 0.42, ease: [0.22, 1, 0.36, 1] }
+  }
+}
 
 const AcademyDashboard = () => {
   const navigate = useNavigate()
   const location = useLocation()
-  const [completedModules, setCompletedModules] = useState([])
+  const [completedModules] = useState([])
   const [selectedAcademy, setSelectedAcademy] = useState(location.state?.selectedAcademy || null)
 
   // Academias disponibles
@@ -114,21 +145,34 @@ const AcademyDashboard = () => {
 
   return (
     <div className="academy-dashboard">
+      <AnimatePresence mode="wait">
       {!selectedAcademy ? (
         // Vista principal de academias
-        <>
-          <div className="academy-header">
+        <motion.section
+          key="academies"
+          className="academy-view"
+          variants={panelVariants}
+          initial="hidden"
+          animate="visible"
+          exit="exit"
+        >
+          <motion.div className="academy-header" variants={itemVariants}>
+            <div className="academy-header-aura" aria-hidden="true" />
             <h1>Academias</h1>
             <p>Elige una academia para comenzar tu formación especializada</p>
-          </div>
+          </motion.div>
 
-          <div className="modules-section">
+          <motion.div className="modules-section" variants={itemVariants}>
             <div className="academies-container">
               {academies.map((academy) => (
-                <div 
+                <motion.button
+                  type="button"
                   key={academy.id}
                   className="academy-banner"
                   onClick={() => handleAcademyClick(academy)}
+                  variants={itemVariants}
+                  whileHover={{ y: -6, scale: 1.01 }}
+                  whileTap={{ scale: 0.99 }}
                 >
                   <div className="banner-icon">
                     <academy.icon size={48} />
@@ -142,15 +186,23 @@ const AcademyDashboard = () => {
                   <div className="banner-arrow">
                     →
                   </div>
-                </div>
+                </motion.button>
               ))}
             </div>
-          </div>
-        </>
+          </motion.div>
+        </motion.section>
       ) : (
         // Vista de módulos de la academia seleccionada
-        <>
-          <div className="academy-header">
+        <motion.section
+          key="modules"
+          className="academy-view"
+          variants={panelVariants}
+          initial="hidden"
+          animate="visible"
+          exit="exit"
+        >
+          <motion.div className="academy-header" variants={itemVariants}>
+            <div className="academy-header-aura" aria-hidden="true" />
             <div className="academy-navigation">
               <button 
                 onClick={handleBackToAcademies}
@@ -161,16 +213,21 @@ const AcademyDashboard = () => {
             </div>
             <h1>Academia OSINT</h1>
             <p>Aprende las técnicas de inteligencia de fuentes abiertas de forma interactiva</p>
-          </div>
+          </motion.div>
 
-          <div className="modules-section">
+          <motion.div className="modules-section" variants={itemVariants}>
             <div className="modules-grid">
-              {osintModules.map((module) => (
-                <div 
+              {osintModules.map((module, index) => (
+                <motion.button
+                  type="button"
                   key={module.id}
                   className={`module-card ${isModuleCompleted(module.id) ? 'completed' : ''}`}
                   onClick={() => handleModuleClick(module)}
+                  variants={itemVariants}
+                  whileHover={{ y: -8, scale: 1.015 }}
+                  whileTap={{ scale: 0.985 }}
                 >
+                  <span className="module-index">{String(index + 1).padStart(2, '0')}</span>
                   <div className="module-header">
                     <div className="module-icon">
                       <module.icon size={32} />
@@ -182,6 +239,13 @@ const AcademyDashboard = () => {
                   
                   <h3>{module.title}</h3>
                   <p>{module.description}</p>
+
+                  <div className="module-meta">
+                    <span>
+                      <Clock size={16} />
+                      {module.duration}
+                    </span>
+                  </div>
                   
                   {isModuleCompleted(module.id) && (
                     <div className="completed-indicator">
@@ -189,12 +253,13 @@ const AcademyDashboard = () => {
                       <span>Completado</span>
                     </div>
                   )}
-                </div>
+                </motion.button>
               ))}
             </div>
-          </div>
-        </>
+          </motion.div>
+        </motion.section>
       )}
+      </AnimatePresence>
     </div>
   )
 }

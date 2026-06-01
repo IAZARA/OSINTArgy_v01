@@ -439,3 +439,282 @@
   --accent-green-bg: rgba(46, 204, 113, 0.1);
   --accent-red-bg: rgba(231, 76, 60, 0.1);
 }
+
+/* Academy motion refresh */
+.dork-simulator {
+  background:
+    linear-gradient(rgba(0, 212, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 212, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(180deg, rgba(0, 212, 255, 0.08), transparent 28%),
+    #0a0a0a;
+  background-size: 44px 44px, 44px 44px, 100% 100%, auto;
+  color: var(--maltego-text-primary);
+  font-family: var(--maltego-font-family);
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.dork-simulator::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+  background: linear-gradient(120deg, transparent 0 40%, rgba(0, 212, 255, 0.08) 50%, transparent 60% 100%);
+  animation: dorkScan 13s linear infinite;
+}
+
+.simulator-header,
+.dork-simulator .categories-section,
+.dork-simulator .challenge-section,
+.dork-simulator .reference-section,
+.dork-simulator .progress-section {
+  background: linear-gradient(145deg, rgba(19, 47, 76, 0.96), rgba(6, 23, 37, 0.96));
+  border: 1px solid var(--maltego-border);
+  border-radius: var(--maltego-border-radius-xl);
+  box-shadow: var(--maltego-shadow-lg);
+  backdrop-filter: blur(20px);
+  animation: academyPanelIn 0.55s ease both;
+}
+
+.simulator-header {
+  padding: var(--maltego-spacing-2xl);
+  overflow: hidden;
+}
+
+.simulator-header::after {
+  content: '';
+  position: absolute;
+  left: 14%;
+  right: 14%;
+  bottom: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--maltego-primary), transparent);
+  box-shadow: var(--maltego-glow-primary);
+}
+
+.simulator-header h1 {
+  background: var(--maltego-gradient-central);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: var(--maltego-glow-primary);
+}
+
+.simulator-header p,
+.dork-simulator .categories-section h3,
+.dork-simulator .challenge-header h3,
+.dork-simulator .reference-section h3,
+.dork-simulator .progress-section h3,
+.challenge-description {
+  color: var(--maltego-text-secondary);
+}
+
+.score-display {
+  background: rgba(255, 152, 0, 0.12);
+  border: 1px solid var(--maltego-accent-orange);
+  box-shadow: 0 0 18px rgba(255, 152, 0, 0.18);
+}
+
+.dork-simulator .categories-section,
+.dork-simulator .reference-section,
+.dork-simulator .progress-section {
+  padding: var(--maltego-spacing-xl);
+}
+
+.category-card {
+  color: var(--maltego-text-primary);
+  background: rgba(5, 20, 32, 0.78);
+  border: 1px solid var(--maltego-border);
+  box-shadow: var(--maltego-shadow-md);
+  overflow: hidden;
+}
+
+.category-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.08), transparent);
+  opacity: 0;
+  transform: translateX(-70%);
+  transition: opacity 220ms ease, transform 420ms ease;
+}
+
+.category-card:hover::before,
+.category-card.active::before {
+  opacity: 1;
+  transform: translateX(70%);
+}
+
+.category-card:hover {
+  border-color: var(--maltego-border-active);
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.34), var(--maltego-glow-secondary);
+}
+
+.category-card.active {
+  background: rgba(0, 212, 255, 0.12);
+  box-shadow: var(--maltego-glow-primary);
+}
+
+.category-card span {
+  position: relative;
+  z-index: 1;
+}
+
+.dork-simulator .completed-indicator {
+  color: var(--maltego-text-secondary);
+  background: rgba(0, 0, 0, 0.28);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  position: absolute;
+}
+
+.dork-simulator .challenge-section {
+  padding: var(--maltego-spacing-2xl);
+  overflow: hidden;
+}
+
+.challenge-points,
+.hint-button,
+.hint-box {
+  background: rgba(255, 107, 53, 0.12);
+  border: 1px solid var(--maltego-accent-orange);
+  color: var(--maltego-accent-orange);
+}
+
+.hint-button:hover {
+  background: rgba(255, 107, 53, 0.22);
+  color: var(--maltego-text-primary);
+  transform: translateY(-2px);
+  box-shadow: 0 0 18px rgba(255, 107, 53, 0.18);
+}
+
+.google-mockup {
+  background: rgba(3, 12, 20, 0.82);
+  border: 1px solid rgba(0, 212, 255, 0.24);
+  box-shadow: inset 0 0 30px rgba(0, 212, 255, 0.05), var(--maltego-shadow-lg);
+}
+
+.google-logo {
+  color: var(--maltego-primary);
+  text-shadow: var(--maltego-glow-primary);
+}
+
+.search-input-container {
+  background: rgba(0, 0, 0, 0.36);
+  border: 1px solid var(--maltego-border);
+}
+
+.search-input-container:focus-within {
+  border-color: var(--maltego-primary);
+  box-shadow: var(--maltego-glow-primary);
+}
+
+.dork-input {
+  background: transparent;
+  color: var(--maltego-text-primary);
+}
+
+.dork-input::placeholder {
+  color: var(--maltego-text-muted);
+}
+
+.search-button {
+  background: var(--maltego-gradient-button);
+  box-shadow: var(--maltego-shadow-md);
+}
+
+.search-button:hover {
+  background: var(--maltego-gradient-button-hover);
+  transform: translateY(-1px);
+  box-shadow: var(--maltego-glow-primary);
+}
+
+.feedback {
+  animation: feedbackPop 0.32s ease both;
+}
+
+.simulated-results,
+.operator-card,
+.progress-item,
+.result-item {
+  background: rgba(5, 20, 32, 0.78);
+  border: 1px solid var(--maltego-border);
+  box-shadow: var(--maltego-shadow-md);
+}
+
+.simulated-results h4,
+.operator-card span,
+.progress-header,
+.result-snippet {
+  color: var(--maltego-text-secondary);
+}
+
+.result-item h5,
+.operator-card code {
+  color: var(--maltego-primary);
+}
+
+.result-url {
+  color: var(--maltego-accent-green);
+}
+
+.example {
+  background: rgba(0, 0, 0, 0.42);
+  border: 1px solid rgba(0, 212, 255, 0.16);
+  color: var(--maltego-text-primary);
+}
+
+.dork-simulator .progress-bar,
+.dork-simulator .bar {
+  background: rgba(0, 0, 0, 0.38);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.dork-simulator .progress-fill {
+  box-shadow: 0 0 14px rgba(0, 212, 255, 0.25);
+}
+
+@keyframes dorkScan {
+  from {
+    transform: translateX(-62%);
+  }
+  to {
+    transform: translateX(62%);
+  }
+}
+
+@keyframes academyPanelIn {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes feedbackPop {
+  0% {
+    transform: scale(0.98);
+  }
+  70% {
+    transform: scale(1.01);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dork-simulator::before,
+  .simulator-header,
+  .dork-simulator .categories-section,
+  .dork-simulator .challenge-section,
+  .dork-simulator .reference-section,
+  .dork-simulator .progress-section,
+  .feedback {
+    animation: none;
+  }
+}

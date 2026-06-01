@@ -996,3 +996,204 @@
     font-size: var(--maltego-font-size-2xl);
   }
 }
+
+/* Motion refresh */
+.lesson-viewer {
+  background:
+    linear-gradient(rgba(0, 212, 255, 0.032) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 212, 255, 0.032) 1px, transparent 1px),
+    linear-gradient(180deg, rgba(0, 212, 255, 0.08), transparent 28%),
+    #0a0a0a;
+  background-size: 44px 44px, 44px 44px, 100% 100%, auto;
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.lesson-viewer::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+  background: linear-gradient(120deg, transparent 0 42%, rgba(0, 212, 255, 0.08) 50%, transparent 58% 100%);
+  animation: lessonScan 14s linear infinite;
+}
+
+.lesson-header,
+.lesson-content,
+.lesson-navigation {
+  animation: lessonPanelIn 0.48s ease both;
+}
+
+.lesson-content {
+  background:
+    linear-gradient(145deg, rgba(19, 47, 76, 0.97), rgba(6, 23, 37, 0.96));
+}
+
+.lesson-content::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.045), transparent),
+    repeating-linear-gradient(0deg, transparent 0 22px, rgba(0, 212, 255, 0.025) 22px 23px);
+  opacity: 0.45;
+}
+
+.slide {
+  position: relative;
+  z-index: 1;
+}
+
+.lesson-viewer .progress-fill {
+  transition: width 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+  position: relative;
+}
+
+.lesson-viewer .progress-fill::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.42), transparent);
+  animation: progressSweep 1.8s ease-in-out infinite;
+}
+
+.slide-text li,
+.highlight-box,
+.interactive-section,
+.icon-item,
+.stat-bar,
+.stat-item,
+.tip-item,
+.file-type,
+.analysis-tool,
+.principle-item,
+.workflow-step {
+  animation: lessonItemIn 0.44s ease both;
+}
+
+.slide-text li:nth-child(2),
+.icon-item:nth-child(2),
+.stat-bar:nth-child(2),
+.stat-item:nth-child(2),
+.tip-item:nth-child(2),
+.file-type:nth-child(2),
+.analysis-tool:nth-child(2),
+.principle-item:nth-child(2),
+.workflow-step:nth-child(2) {
+  animation-delay: 0.06s;
+}
+
+.slide-text li:nth-child(3),
+.icon-item:nth-child(3),
+.stat-bar:nth-child(3),
+.stat-item:nth-child(3),
+.tip-item:nth-child(3),
+.file-type:nth-child(3),
+.analysis-tool:nth-child(3),
+.principle-item:nth-child(3),
+.workflow-step:nth-child(3) {
+  animation-delay: 0.12s;
+}
+
+.slide-text li:nth-child(4),
+.icon-item:nth-child(4),
+.stat-bar:nth-child(4),
+.stat-item:nth-child(4),
+.tip-item:nth-child(4),
+.file-type:nth-child(4),
+.analysis-tool:nth-child(4),
+.principle-item:nth-child(4),
+.workflow-step:nth-child(4) {
+  animation-delay: 0.18s;
+}
+
+.interactive-section {
+  background: rgba(0, 212, 255, 0.085);
+  box-shadow: inset 0 0 28px rgba(0, 212, 255, 0.05), var(--maltego-glow-secondary);
+}
+
+.lesson-viewer .nav-button,
+.lesson-viewer .indicator,
+.lesson-viewer .back-button {
+  transition:
+    transform var(--maltego-transition-medium),
+    box-shadow var(--maltego-transition-medium),
+    border-color var(--maltego-transition-medium),
+    background var(--maltego-transition-medium);
+}
+
+.lesson-viewer .nav-button:hover:not(:disabled),
+.lesson-viewer .back-button:hover {
+  box-shadow: var(--maltego-glow-secondary);
+}
+
+.lesson-viewer .nav-button:focus-visible,
+.lesson-viewer .indicator:focus-visible,
+.lesson-viewer .back-button:focus-visible {
+  outline: 2px solid var(--maltego-primary);
+  outline-offset: 4px;
+}
+
+@keyframes lessonScan {
+  from {
+    transform: translateX(-64%);
+  }
+  to {
+    transform: translateX(64%);
+  }
+}
+
+@keyframes lessonPanelIn {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes lessonItemIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes progressSweep {
+  0%, 100% {
+    transform: translateX(-100%);
+  }
+  50% {
+    transform: translateX(100%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lesson-viewer::before,
+  .lesson-header,
+  .lesson-content,
+  .lesson-navigation,
+  .slide-text li,
+  .highlight-box,
+  .interactive-section,
+  .icon-item,
+  .stat-bar,
+  .stat-item,
+  .tip-item,
+  .file-type,
+  .analysis-tool,
+  .principle-item,
+  .workflow-step,
+  .lesson-viewer .progress-fill::after {
+    animation: none;
+  }
+}

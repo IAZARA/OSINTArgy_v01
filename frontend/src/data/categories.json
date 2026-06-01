@@ -405,16 +405,22 @@
           "order": 7
         },
         {
+          "id": "repos-populares-github",
+          "name": "Repos populares OSINT GitHub",
+          "description": "Repositorios OSINT destacados por popularidad en GitHub",
+          "order": 8
+        },
+        {
           "id": "sistemas-operativos",
           "name": "Sistemas Operativos",
           "description": "Herramientas de sistemas operativos",
-          "order": 8
+          "order": 9
         },
         {
           "id": "virtualizacion",
           "name": "Virtualizacion",
           "description": "Herramientas de virtualizacion",
-          "order": 9
+          "order": 10
         }
       ]
     },

@@ -11979,6 +11979,365 @@
       "difficulty_level": "beginner"
     },
     {
+      "id": "github-repo-sherlock",
+      "name": "GitHub: Sherlock",
+      "description": "Repositorio popular para buscar usernames en múltiples redes y sitios públicos.",
+      "utility": "Sirve como referencia técnica y herramienta CLI para verificar presencia pública de usernames en investigaciones OSINT.",
+      "url": "https://github.com/sherlock-project/sherlock",
+      "category": "utilidades-varios",
+      "subcategory": "repos-populares-github",
+      "tags": [
+        "github",
+        "username",
+        "repositorio",
+        "osint"
+      ],
+      "type": "tool",
+      "indicators": [
+        "T",
+        "P",
+        "S"
+      ],
+      "region": "internacional",
+      "language": "en",
+      "rating": 4.9,
+      "usage_count": 84298,
+      "last_updated": "2026-06-01",
+      "status": "active",
+      "requires_registration": false,
+      "is_free": true,
+      "difficulty_level": "intermediate"
+    },
+    {
+      "id": "github-repo-web-check",
+      "name": "GitHub: Web-Check",
+      "description": "Repositorio popular para análisis OSINT de sitios web desde una interfaz unificada.",
+      "utility": "Permite revisar cabeceras, DNS, certificados, tecnologías, enlaces y otros indicadores públicos de un dominio.",
+      "url": "https://github.com/lissy93/web-check",
+      "category": "utilidades-varios",
+      "subcategory": "repos-populares-github",
+      "tags": [
+        "github",
+        "sitios web",
+        "dominios",
+        "osint"
+      ],
+      "type": "tool",
+      "indicators": [
+        "T",
+        "D",
+        "A"
+      ],
+      "region": "internacional",
+      "language": "en",
+      "rating": 4.8,
+      "usage_count": 33268,
+      "last_updated": "2026-06-01",
+      "status": "active",
+      "requires_registration": false,
+      "is_free": true,
+      "difficulty_level": "beginner"
+    },
+    {
+      "id": "github-repo-maigret",
+      "name": "GitHub: Maigret",
+      "description": "Repositorio popular para construir reportes de presencia digital a partir de usernames.",
+      "utility": "Busca usernames en miles de plataformas y genera reportes útiles para pivoteo entre perfiles públicos.",
+      "url": "https://github.com/soxoj/maigret",
+      "category": "utilidades-varios",
+      "subcategory": "repos-populares-github",
+      "tags": [
+        "github",
+        "username",
+        "reportes",
+        "osint"
+      ],
+      "type": "tool",
+      "indicators": [
+        "T",
+        "P",
+        "S"
+      ],
+      "region": "internacional",
+      "language": "en",
+      "rating": 4.8,
+      "usage_count": 31156,
+      "last_updated": "2026-06-01",
+      "status": "active",
+      "requires_registration": false,
+      "is_free": true,
+      "difficulty_level": "intermediate"
+    },
+    {
+      "id": "github-repo-awesome-osint",
+      "name": "GitHub: Awesome OSINT",
+      "description": "Lista curada de herramientas, fuentes y recursos OSINT mantenida en GitHub.",
+      "utility": "Funciona como índice de referencia para descubrir técnicas, categorías y recursos de investigación en fuentes abiertas.",
+      "url": "https://github.com/jivoi/awesome-osint",
+      "category": "utilidades-varios",
+      "subcategory": "repos-populares-github",
+      "tags": [
+        "github",
+        "awesome list",
+        "recursos",
+        "osint"
+      ],
+      "type": "dataset",
+      "indicators": [
+        "D",
+        "A"
+      ],
+      "region": "internacional",
+      "language": "en",
+      "rating": 4.8,
+      "usage_count": 26566,
+      "last_updated": "2026-06-01",
+      "status": "active",
+      "requires_registration": false,
+      "is_free": true,
+      "difficulty_level": "beginner"
+    },
+    {
+      "id": "github-repo-social-analyzer",
+      "name": "GitHub: Social Analyzer",
+      "description": "Repositorio popular para analizar perfiles y buscar usuarios en redes sociales.",
+      "utility": "Ofrece modos API, CLI y web para correlacionar perfiles públicos asociados a personas o usernames.",
+      "url": "https://github.com/qeeqbox/social-analyzer",
+      "category": "utilidades-varios",
+      "subcategory": "repos-populares-github",
+      "tags": [
+        "github",
+        "redes sociales",
+        "perfiles",
+        "osint"
+      ],
+      "type": "tool",
+      "indicators": [
+        "T",
+        "P",
+        "A"
+      ],
+      "region": "internacional",
+      "language": "en",
+      "rating": 4.7,
+      "usage_count": 22916,
+      "last_updated": "2026-06-01",
+      "status": "active",
+      "requires_registration": false,
+      "is_free": true,
+      "difficulty_level": "intermediate"
+    },
+    {
+      "id": "github-repo-singlefile",
+      "name": "GitHub: SingleFile",
+      "description": "Repositorio popular para guardar páginas web completas en un único archivo HTML.",
+      "utility": "Ayuda a preservar páginas públicas como evidencia reproducible mediante extensión de navegador o CLI.",
+      "url": "https://github.com/gildas-lormeau/SingleFile",
+      "category": "utilidades-varios",
+      "subcategory": "repos-populares-github",
+      "tags": [
+        "github",
+        "archivo web",
+        "captura",
+        "evidencia"
+      ],
+      "type": "tool",
+      "indicators": [
+        "T",
+        "D",
+        "A"
+      ],
+      "region": "internacional",
+      "language": "en",
+      "rating": 4.7,
+      "usage_count": 21390,
+      "last_updated": "2026-06-01",
+      "status": "active",
+      "requires_registration": false,
+      "is_free": true,
+      "difficulty_level": "beginner"
+    },
+    {
+      "id": "github-repo-ghunt",
+      "name": "GitHub: GHunt",
+      "description": "Repositorio popular para investigación OSINT sobre cuentas y servicios públicos de Google.",
+      "utility": "Permite enriquecer investigaciones autorizadas con señales públicas asociadas a identidades y servicios de Google.",
+      "url": "https://github.com/mxrch/GHunt",
+      "category": "utilidades-varios",
+      "subcategory": "repos-populares-github",
+      "tags": [
+        "github",
+        "google",
+        "identidad",
+        "osint"
+      ],
+      "type": "tool",
+      "indicators": [
+        "T",
+        "P",
+        "A"
+      ],
+      "region": "internacional",
+      "language": "en",
+      "rating": 4.6,
+      "usage_count": 18997,
+      "last_updated": "2026-06-01",
+      "status": "active",
+      "requires_registration": false,
+      "is_free": true,
+      "difficulty_level": "advanced"
+    },
+    {
+      "id": "github-repo-spiderfoot",
+      "name": "GitHub: SpiderFoot",
+      "description": "Repositorio popular para automatización OSINT, threat intelligence y superficie de ataque.",
+      "utility": "Centraliza módulos de recolección y correlación para mapear dominios, IPs, emails, fugas y entidades relacionadas.",
+      "url": "https://github.com/smicallef/spiderfoot",
+      "category": "utilidades-varios",
+      "subcategory": "repos-populares-github",
+      "tags": [
+        "github",
+        "automatización",
+        "threat intelligence",
+        "osint"
+      ],
+      "type": "tool",
+      "indicators": [
+        "T",
+        "D",
+        "A"
+      ],
+      "region": "internacional",
+      "language": "en",
+      "rating": 4.7,
+      "usage_count": 18002,
+      "last_updated": "2026-06-01",
+      "status": "active",
+      "requires_registration": false,
+      "is_free": true,
+      "difficulty_level": "advanced"
+    },
+    {
+      "id": "github-repo-phoneinfoga",
+      "name": "GitHub: PhoneInfoga",
+      "description": "Repositorio popular para análisis OSINT de números telefónicos.",
+      "utility": "Permite revisar formato, región, carrier y fuentes públicas relacionadas con números en investigaciones autorizadas.",
+      "url": "https://github.com/sundowndev/phoneinfoga",
+      "category": "utilidades-varios",
+      "subcategory": "repos-populares-github",
+      "tags": [
+        "github",
+        "teléfonos",
+        "números",
+        "osint"
+      ],
+      "type": "tool",
+      "indicators": [
+        "T",
+        "P",
+        "A"
+      ],
+      "region": "internacional",
+      "language": "en",
+      "rating": 4.6,
+      "usage_count": 16528,
+      "last_updated": "2026-06-01",
+      "status": "active",
+      "requires_registration": false,
+      "is_free": true,
+      "difficulty_level": "intermediate"
+    },
+    {
+      "id": "github-repo-theharvester",
+      "name": "GitHub: theHarvester",
+      "description": "Repositorio popular para recolectar emails, subdominios y nombres desde fuentes públicas.",
+      "utility": "Útil para reconocimiento defensivo de organizaciones, inventario de superficie pública y validación de exposición.",
+      "url": "https://github.com/laramies/theHarvester",
+      "category": "utilidades-varios",
+      "subcategory": "repos-populares-github",
+      "tags": [
+        "github",
+        "emails",
+        "subdominios",
+        "reconocimiento"
+      ],
+      "type": "tool",
+      "indicators": [
+        "T",
+        "D",
+        "A"
+      ],
+      "region": "internacional",
+      "language": "en",
+      "rating": 4.6,
+      "usage_count": 16364,
+      "last_updated": "2026-06-01",
+      "status": "active",
+      "requires_registration": false,
+      "is_free": true,
+      "difficulty_level": "intermediate"
+    },
+    {
+      "id": "github-repo-amass",
+      "name": "GitHub: Amass",
+      "description": "Repositorio popular de OWASP para descubrimiento de activos y mapeo de superficie externa.",
+      "utility": "Ayuda a descubrir subdominios, relaciones DNS y activos expuestos en auditorías defensivas autorizadas.",
+      "url": "https://github.com/owasp-amass/amass",
+      "category": "utilidades-varios",
+      "subcategory": "repos-populares-github",
+      "tags": [
+        "github",
+        "owasp",
+        "subdominios",
+        "infraestructura"
+      ],
+      "type": "tool",
+      "indicators": [
+        "T",
+        "D",
+        "A"
+      ],
+      "region": "internacional",
+      "language": "en",
+      "rating": 4.6,
+      "usage_count": 14645,
+      "last_updated": "2026-06-01",
+      "status": "active",
+      "requires_registration": false,
+      "is_free": true,
+      "difficulty_level": "advanced"
+    },
+    {
+      "id": "github-repo-subfinder",
+      "name": "GitHub: subfinder",
+      "description": "Repositorio popular para enumeración pasiva y rápida de subdominios.",
+      "utility": "Permite enriquecer reconocimiento de dominios con fuentes pasivas, especialmente en flujos de auditoría web defensiva.",
+      "url": "https://github.com/projectdiscovery/subfinder",
+      "category": "utilidades-varios",
+      "subcategory": "repos-populares-github",
+      "tags": [
+        "github",
+        "subdominios",
+        "pasivo",
+        "reconocimiento"
+      ],
+      "type": "tool",
+      "indicators": [
+        "T",
+        "D",
+        "A"
+      ],
+      "region": "internacional",
+      "language": "en",
+      "rating": 4.5,
+      "usage_count": 13756,
+      "last_updated": "2026-06-01",
+      "status": "active",
+      "requires_registration": false,
+      "is_free": true,
+      "difficulty_level": "intermediate"
+    },
+    {
       "id": "maltego",
       "name": "Maltego",
       "description": "Plataforma de análisis de enlaces y visualización de datos para OSINT.",

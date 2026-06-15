@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect, useMemo, useRef } from 'react'
 import { 
   GitBranch, 
   Download, 
@@ -17,6 +17,125 @@ import { getFlowchartsInfo, getFlowchartById } from '@/data/flowcharts'
 import toast from 'react-hot-toast'
 import './OSINTFlowcharts.css'
 
+const NODE_WIDTH = 178
+const NODE_HEIGHT = 74
+const NODE_GAP_X = 86
+const NODE_GAP_Y = 34
+const NODE_MARGIN = 76
+
+const clamp = (value, min, max) => Math.min(Math.max(value, min), max)
+
+const wrapSvgLabel = (label, maxChars = 20) => {
+  const words = String(label || '').split(/\s+/).filter(Boolean)
+  const lines = []
+  let current = ''
+
+  for (const word of words) {
+    const next = current ? `${current} ${word}` : word
+    if (next.length <= maxChars) {
+      current = next
+    } else {
+      if (current) lines.push(current)
+      current = word
+    }
+  }
+
+  if (current) lines.push(current)
+
+  if (lines.length <= 2) return lines
+
+  const compact = [lines[0], lines.slice(1).join(' ')]
+  if (compact[1].length > maxChars) {
+    compact[1] = `${compact[1].slice(0, maxChars - 3).trim()}...`
+  }
+
+  return compact
+}
+
+const getFlowchartLayout = (flowchart) => {
+  if (!flowchart) {
+    return { width: 1200, height: 720, nodes: new Map() }
+  }
+
+  const nodeById = new Map(flowchart.nodes.map((node) => [node.id, node]))
+  const outgoing = new Map()
+  const incoming = new Map()
+
+  flowchart.nodes.forEach((node) => {
+    outgoing.set(node.id, [])
+    incoming.set(node.id, [])
+  })
+
+  flowchart.connections.forEach((connection) => {
+    if (!nodeById.has(connection.from) || !nodeById.has(connection.to)) return
+    outgoing.get(connection.from).push(connection.to)
+    incoming.get(connection.to).push(connection.from)
+  })
+
+  const roots = flowchart.nodes.filter((node) => node.type === 'start' || incoming.get(node.id).length === 0)
+  const queue = roots.length > 0 ? roots.map((node) => node.id) : [flowchart.nodes[0]?.id].filter(Boolean)
+  const depthById = new Map(queue.map((nodeId) => [nodeId, 0]))
+
+  while (queue.length > 0) {
+    const nodeId = queue.shift()
+    const currentDepth = depthById.get(nodeId) || 0
+
+    outgoing.get(nodeId).forEach((targetId) => {
+      const nextDepth = currentDepth + 1
+      if (!depthById.has(targetId) || nextDepth > depthById.get(targetId)) {
+        depthById.set(targetId, nextDepth)
+        if (nextDepth < flowchart.nodes.length) {
+          queue.push(targetId)
+        }
+      }
+    })
+  }
+
+  flowchart.nodes.forEach((node) => {
+    if (!depthById.has(node.id)) {
+      depthById.set(node.id, Math.max(0, Math.round((node.x || 0) / 240)))
+    }
+  })
+
+  const columns = new Map()
+  flowchart.nodes.forEach((node) => {
+    const depth = depthById.get(node.id)
+    if (!columns.has(depth)) columns.set(depth, [])
+    columns.get(depth).push(node)
+  })
+
+  const sortedDepths = [...columns.keys()].sort((a, b) => a - b)
+  const maxColumnHeight = Math.max(
+    ...sortedDepths.map((depth) => {
+      const nodesInColumn = columns.get(depth)
+      return nodesInColumn.length * NODE_HEIGHT + Math.max(0, nodesInColumn.length - 1) * NODE_GAP_Y
+    }),
+    0
+  )
+  const height = Math.max(720, maxColumnHeight + NODE_MARGIN * 2)
+  const maxDepth = sortedDepths.at(-1) || 0
+  const width = Math.max(980, NODE_MARGIN * 2 + (maxDepth + 1) * NODE_WIDTH + maxDepth * NODE_GAP_X)
+  const layoutNodes = new Map()
+
+  sortedDepths.forEach((depth) => {
+    const nodesInColumn = [...columns.get(depth)].sort((a, b) => (a.y || 0) - (b.y || 0))
+    const columnHeight = nodesInColumn.length * NODE_HEIGHT + Math.max(0, nodesInColumn.length - 1) * NODE_GAP_Y
+    const startY = Math.max(NODE_MARGIN, (height - columnHeight) / 2)
+    const x = NODE_MARGIN + depth * (NODE_WIDTH + NODE_GAP_X)
+
+    nodesInColumn.forEach((node, index) => {
+      layoutNodes.set(node.id, {
+        ...node,
+        x,
+        y: startY + index * (NODE_HEIGHT + NODE_GAP_Y),
+        depth
+      })
+    })
+  })
+
+  return { width, height, nodes: layoutNodes }
+}
+
 const OSINTFlowcharts = () => {
   const [selectedFlowchart, setSelectedFlowchart] = useState(null)
   const [completedSteps, setCompletedSteps] = useState(new Set())
@@ -30,6 +149,10 @@ const OSINTFlowcharts = () => {
   const containerRef = useRef(null)
   
   const flowchartsInfo = getFlowchartsInfo()
+  const flowchartLayout = useMemo(
+    () => getFlowchartLayout(selectedFlowchart),
+    [selectedFlowchart]
+  )
 
   // Cargar progreso guardado
   useEffect(() => {
@@ -100,7 +223,7 @@ const OSINTFlowcharts = () => {
   }
 
   const handleMouseDown = (e) => {
-    if (e.target === svgRef.current) {
+    if (e.target === svgRef.current || e.target.classList?.contains('flowchart__pan-surface')) {
       setIsPanning(true)
       setLastPanPoint({ x: e.clientX, y: e.clientY })
     }
@@ -268,121 +391,157 @@ const OSINTFlowcharts = () => {
           <svg
             ref={svgRef}
             className="flowchart__svg"
-            viewBox="0 0 1200 1200"
+            viewBox={`0 0 ${flowchartLayout.width} ${flowchartLayout.height}`}
             onMouseDown={handleMouseDown}
             onMouseMove={handleMouseMove}
             onMouseUp={handleMouseUp}
             onMouseLeave={handleMouseUp}
           >
             <defs>
+              <pattern id="flowchart-grid" width="32" height="32" patternUnits="userSpaceOnUse">
+                <path d="M 32 0 L 0 0 0 32" fill="none" stroke="rgba(255, 255, 255, 0.04)" strokeWidth="1" />
+              </pattern>
               <marker
                 id="arrowhead"
-                markerWidth="10"
-                markerHeight="7"
-                refX="9"
-                refY="3.5"
+                markerWidth="12"
+                markerHeight="9"
+                refX="10"
+                refY="4.5"
                 orient="auto"
               >
                 <polygon
-                  points="0 0, 10 3.5, 0 7"
-                  fill="#666"
+                  points="0 0, 12 4.5, 0 9"
+                  fill="#7da6c9"
                 />
               </marker>
               
               <linearGradient id="nodeGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-                <stop offset="0%" stopColor="rgba(255, 255, 255, 0.3)" />
-                <stop offset="100%" stopColor="rgba(255, 255, 255, 0.05)" />
+                <stop offset="0%" stopColor="rgba(255, 255, 255, 0.18)" />
+                <stop offset="100%" stopColor="rgba(255, 255, 255, 0.04)" />
               </linearGradient>
             </defs>
+
+            <rect
+              className="flowchart__pan-surface"
+              width={flowchartLayout.width}
+              height={flowchartLayout.height}
+              fill="url(#flowchart-grid)"
+            />
             
             <g transform={`translate(${panOffset.x}, ${panOffset.y}) scale(${zoomLevel})`}>
               {/* Conexiones */}
               {selectedFlowchart.connections.map((connection, index) => {
-                const fromNode = selectedFlowchart.nodes.find(n => n.id === connection.from)
-                const toNode = selectedFlowchart.nodes.find(n => n.id === connection.to)
+                const fromNode = flowchartLayout.nodes.get(connection.from)
+                const toNode = flowchartLayout.nodes.get(connection.to)
                 
                 if (!fromNode || !toNode) return null
 
+                const startX = fromNode.x + NODE_WIDTH
+                const startY = fromNode.y + NODE_HEIGHT / 2
+                const endX = toNode.x
+                const endY = toNode.y + NODE_HEIGHT / 2
+                const curve = clamp(Math.abs(endX - startX) * 0.46, 58, 190)
+                const path = `M ${startX} ${startY} C ${startX + curve} ${startY}, ${endX - curve} ${endY}, ${endX} ${endY}`
+                const isConnectionComplete = isStepCompleted(fromNode.id) && isStepCompleted(toNode.id)
+
                 return (
-                  <line
+                  <path
                     key={index}
-                    x1={fromNode.x + 75}
-                    y1={fromNode.y + 30}
-                    x2={toNode.x + 75}
-                    y2={toNode.y + 30}
-                    stroke="#666"
-                    strokeWidth="2"
+                    d={path}
+                    fill="none"
                     markerEnd="url(#arrowhead)"
-                    className="flowchart__connection"
+                    className={`flowchart__connection ${isConnectionComplete ? 'completed' : ''}`}
                   />
                 )
               })}
 
               {/* Nodos */}
-              {selectedFlowchart.nodes.map((node) => (
-                <g key={node.id} className="flowchart__node-group">
+              {selectedFlowchart.nodes.map((node) => {
+                const layoutNode = flowchartLayout.nodes.get(node.id) || node
+                const labelLines = wrapSvgLabel(node.label)
+                const completed = isStepCompleted(node.id)
+
+                return (
+                <g
+                  key={node.id}
+                  className={`flowchart__node-group ${selectedNode?.id === node.id ? 'selected' : ''} ${completed ? 'completed' : ''}`}
+                  transform={`translate(${layoutNode.x}, ${layoutNode.y})`}
+                  onClick={() => handleNodeClick(node)}
+                  style={{ cursor: 'pointer' }}
+                >
                   {/* Sombra del nodo */}
                   <rect
-                    x={node.x + 2}
-                    y={node.y + 2}
-                    width="150"
-                    height="60"
-                    rx="8"
-                    fill="rgba(0, 0, 0, 0.3)"
+                    x="4"
+                    y="5"
+                    width={NODE_WIDTH}
+                    height={NODE_HEIGHT}
+                    rx="10"
                     className="flowchart__node-shadow"
                   />
                   
                   {/* Nodo principal */}
                   <rect
-                    x={node.x}
-                    y={node.y}
-                    width="150"
-                    height="60"
-                    rx="8"
+                    x="0"
+                    y="0"
+                    width={NODE_WIDTH}
+                    height={NODE_HEIGHT}
+                    rx="10"
                     fill={getNodeColor(node)}
-                    stroke={selectedNode?.id === node.id ? '#FFD700' : 'rgba(255, 255, 255, 0.2)'}
-                    strokeWidth={selectedNode?.id === node.id ? '3' : '1'}
+                    stroke={selectedNode?.id === node.id ? '#FFD166' : 'rgba(255, 255, 255, 0.22)'}
+                    strokeWidth={selectedNode?.id === node.id ? '3' : '1.2'}
                     className="flowchart__node"
-                    onClick={() => handleNodeClick(node)}
-                    style={{ cursor: 'pointer' }}
                   />
                   
                   {/* Gradiente interno */}
                   <rect
-                    x={node.x}
-                    y={node.y}
-                    width="150"
-                    height="30"
-                    rx="8"
+                    x="0"
+                    y="0"
+                    width={NODE_WIDTH}
+                    height="34"
+                    rx="10"
                     fill="url(#nodeGradient)"
                     className="flowchart__node-highlight"
-                    onClick={() => handleNodeClick(node)}
-                    style={{ cursor: 'pointer', pointerEvents: 'none' }}
+                    style={{ pointerEvents: 'none' }}
+                  />
+
+                  <circle
+                    cx="20"
+                    cy="20"
+                    r="8"
+                    fill="rgba(255, 255, 255, 0.92)"
+                    className="flowchart__type-dot"
                   />
                   
                   <text
-                    x={node.x + 75}
-                    y={node.y + 35}
+                    x="38"
+                    y={labelLines.length === 1 ? 43 : 35}
                     textAnchor="middle"
                     dominantBaseline="middle"
                     fill="white"
-                    fontSize="11"
+                    fontSize="12"
                     fontWeight="600"
                     className="flowchart__node-text"
-                    onClick={() => handleNodeClick(node)}
-                    style={{ cursor: 'pointer', pointerEvents: 'none' }}
+                    style={{ pointerEvents: 'none' }}
                   >
-                    {node.label}
+                    {labelLines.map((line, lineIndex) => (
+                      <tspan
+                        key={line}
+                        x={NODE_WIDTH / 2 + 8}
+                        dy={lineIndex === 0 ? 0 : 15}
+                      >
+                        {line}
+                      </tspan>
+                    ))}
                   </text>
 
                   {/* Indicador de completado */}
                   <circle
-                    cx={node.x + 140}
-                    cy={node.y + 10}
-                    r="8"
-                    fill={isStepCompleted(node.id) ? '#27AE60' : '#95A5A6'}
+                    cx={NODE_WIDTH - 17}
+                    cy="16"
+                    r="9"
+                    fill={completed ? '#2ECC71' : 'rgba(255, 255, 255, 0.24)'}
                     stroke="white"
-                    strokeWidth="2"
+                    strokeWidth="1.6"
                     className="completion-indicator"
                     onClick={(e) => {
                       e.stopPropagation()
@@ -391,10 +550,10 @@ const OSINTFlowcharts = () => {
                     style={{ cursor: 'pointer' }}
                   />
                   
-                  {isStepCompleted(node.id) && (
+                  {completed && (
                     <text
-                      x={node.x + 140}
-                      y={node.y + 10}
+                      x={NODE_WIDTH - 17}
+                      y="16"
                       textAnchor="middle"
                       dominantBaseline="middle"
                       fill="white"
@@ -410,16 +569,16 @@ const OSINTFlowcharts = () => {
                   {node.internal_tool && (
                     <>
                       <circle
-                        cx={node.x + 10}
-                        cy={node.y + 10}
-                        r="8"
+                        cx={NODE_WIDTH - 17}
+                        cy={NODE_HEIGHT - 15}
+                        r="9"
                         fill="#E67E22"
                         stroke="white"
-                        strokeWidth="2"
+                        strokeWidth="1.6"
                       />
                       <text
-                        x={node.x + 10}
-                        y={node.y + 10}
+                        x={NODE_WIDTH - 17}
+                        y={NODE_HEIGHT - 15}
                         textAnchor="middle"
                         dominantBaseline="middle"
                         fill="white"
@@ -432,7 +591,8 @@ const OSINTFlowcharts = () => {
                     </>
                   )}
                 </g>
-              ))}
+                )
+              })}
             </g>
           </svg>
         </div>

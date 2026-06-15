@@ -1677,6 +1677,187 @@
       "requires_registration": false,
       "is_free": true,
       "difficulty_level": "beginner"
+    },
+    {
+      "id": "telegago",
+      "name": "Telegago",
+      "description": "Google Custom Search Engine orientado a contenido público de Telegram.",
+      "utility": "Permite buscar contenido público en dominios de Telegram con operadores de Google, sin requerir una cuenta de Telegram para la búsqueda inicial.",
+      "url": "https://cse.google.com/cse?cx=006368593537057042503:efxu7xprihg#gsc.tab=0",
+      "category": "redes-sociales",
+      "subcategory": "plataformas-emergentes",
+      "tags": [
+        "telegram",
+        "cse",
+        "busqueda",
+        "contenido publico"
+      ],
+      "type": "web",
+      "indicators": [
+        "P",
+        "D",
+        "S"
+      ],
+      "region": "internacional",
+      "language": "multi",
+      "rating": 4.3,
+      "usage_count": 6300,
+      "last_updated": "2026-06-15",
+      "status": "active",
+      "requires_registration": false,
+      "is_free": true,
+      "difficulty_level": "beginner"
+    },
+    {
+      "id": "bellingcat-tiktok-timestamp",
+      "name": "Bellingcat TikTok Timestamp",
+      "description": "Herramienta web para extraer timestamps de URLs de videos de TikTok.",
+      "utility": "Ayuda a obtener la fecha embebida en IDs de videos de TikTok, incluso cuando el video ya no está disponible públicamente.",
+      "url": "https://bellingcat.github.io/tiktok-timestamp/",
+      "category": "redes-sociales",
+      "subcategory": "plataformas-emergentes",
+      "tags": [
+        "tiktok",
+        "timestamp",
+        "verificacion",
+        "bellingcat"
+      ],
+      "type": "web",
+      "indicators": [
+        "M",
+        "T",
+        "V"
+      ],
+      "region": "internacional",
+      "language": "en",
+      "rating": 4.4,
+      "usage_count": 5200,
+      "last_updated": "2026-06-15",
+      "status": "active",
+      "requires_registration": false,
+      "is_free": true,
+      "difficulty_level": "beginner"
+    },
+    {
+      "id": "bellingcat-tiktok-hashtag-analysis",
+      "name": "Bellingcat TikTok Hashtag Analysis",
+      "description": "Toolset CLI para recolectar publicaciones y videos de TikTok por hashtags.",
+      "utility": "Crea datasets de publicaciones por hashtag durante un periodo de tiempo para análisis posterior de narrativas, actividad y coordinación.",
+      "url": "https://github.com/bellingcat/tiktok-hashtag-analysis",
+      "category": "redes-sociales",
+      "subcategory": "herramientas-analisis",
+      "tags": [
+        "tiktok",
+        "hashtags",
+        "scraping",
+        "analisis"
+      ],
+      "type": "cli",
+      "indicators": [
+        "M",
+        "A",
+        "D",
+        "T"
+      ],
+      "region": "internacional",
+      "language": "en",
+      "rating": 4.5,
+      "usage_count": 6100,
+      "last_updated": "2026-06-15",
+      "status": "active",
+      "requires_registration": false,
+      "is_free": true,
+      "difficulty_level": "advanced"
+    },
+    {
+      "id": "uniform-timezone",
+      "name": "Uniform Timezone",
+      "description": "Extensión de Bellingcat para normalizar fechas y horarios de publicaciones en redes sociales.",
+      "utility": "Convierte y copia tiempos de plataformas como X, TikTok, Discord, Instagram, Reddit, Wayback Machine y LinkedIn para comparar eventos en una misma zona horaria.",
+      "url": "https://github.com/bellingcat/uniform-timezone",
+      "category": "redes-sociales",
+      "subcategory": "herramientas-analisis",
+      "tags": [
+        "timestamps",
+        "redes sociales",
+        "cronologia",
+        "extension"
+      ],
+      "type": "browser-extension",
+      "indicators": [
+        "A",
+        "T",
+        "V"
+      ],
+      "region": "internacional",
+      "language": "en",
+      "rating": 4.4,
+      "usage_count": 4300,
+      "last_updated": "2026-06-15",
+      "status": "active",
+      "requires_registration": false,
+      "is_free": true,
+      "difficulty_level": "beginner"
+    },
+    {
+      "id": "enola",
+      "name": "Enola",
+      "description": "CLI moderna en Go para buscar cuentas sociales asociadas a un username.",
+      "utility": "Complementa Sherlock y Maigret con una alternativa liviana para verificar presencia de usernames en múltiples redes y sitios.",
+      "url": "https://github.com/theyahya/enola",
+      "category": "redes-sociales",
+      "subcategory": "verificacion-perfiles",
+      "tags": [
+        "username",
+        "perfiles",
+        "go",
+        "cli"
+      ],
+      "type": "cli",
+      "indicators": [
+        "P",
+        "T",
+        "S"
+      ],
+      "region": "internacional",
+      "language": "en",
+      "rating": 4.4,
+      "usage_count": 4200,
+      "last_updated": "2026-06-15",
+      "status": "active",
+      "requires_registration": false,
+      "is_free": true,
+      "difficulty_level": "intermediate"
+    },
+    {
+      "id": "snoop-project",
+      "name": "Snoop Project",
+      "description": "Herramienta OSINT para búsqueda de nicknames y procesamiento de datos públicos.",
+      "utility": "Busca usernames en una base amplia de sitios, genera reportes y aporta cobertura adicional en investigaciones de presencia digital.",
+      "url": "https://github.com/snooppr/snoop",
+      "category": "redes-sociales",
+      "subcategory": "verificacion-perfiles",
+      "tags": [
+        "username",
+        "nickname",
+        "perfiles",
+        "reportes"
+      ],
+      "type": "desktop",
+      "indicators": [
+        "P",
+        "T",
+        "S"
+      ],
+      "region": "internacional",
+      "language": "multi",
+      "rating": 4.3,
+      "usage_count": 5700,
+      "last_updated": "2026-06-15",
+      "status": "active",
+      "requires_registration": false,
+      "is_free": true,
+      "difficulty_level": "intermediate"
     }
   ]
 }

@@ -1011,6 +1011,39 @@
       "requires_registration": false,
       "is_free": true,
       "difficulty_level": "intermediate"
+    },
+    {
+      "id": "bbot",
+      "name": "BBOT",
+      "description": "Framework CLI modular para automatizar reconocimiento, ASM y bug bounty autorizados.",
+      "utility": "Ejecuta módulos de enumeración, enriquecimiento, descubrimiento de activos y visualización para mapear relaciones técnicas en investigaciones defensivas.",
+      "url": "https://github.com/blacklanternsecurity/bbot",
+      "category": "utilidades-varios",
+      "subcategory": "sistema-infraestructura",
+      "tags": [
+        "asm",
+        "reconocimiento",
+        "automatización",
+        "infraestructura",
+        "cli"
+      ],
+      "type": "cli",
+      "indicators": [
+        "T",
+        "D",
+        "A",
+        "S",
+        "I"
+      ],
+      "region": "internacional",
+      "language": "en",
+      "rating": 4.7,
+      "usage_count": 7400,
+      "last_updated": "2026-06-15",
+      "status": "active",
+      "requires_registration": false,
+      "is_free": true,
+      "difficulty_level": "advanced"
     }
   ]
 }

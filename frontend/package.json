@@ -4,10 +4,13 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
+    "predev": "node ../scripts/sync-tools-fallback.mjs",
     "dev": "vite",
+    "prebuild": "node ../scripts/sync-tools-fallback.mjs",
     "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
+    "pretest": "node ../scripts/sync-tools-fallback.mjs",
     "test": "node --test tests/*.test.mjs",
     "test:watch": "node --test --watch tests/*.test.mjs"
   },

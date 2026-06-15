@@ -1189,6 +1189,99 @@
       "requires_registration": true,
       "is_free": true,
       "difficulty_level": "intermediate"
+    },
+    {
+      "id": "subfinder",
+      "name": "Subfinder",
+      "description": "CLI rápida de ProjectDiscovery para enumeración pasiva de subdominios.",
+      "utility": "Descubre subdominios válidos desde fuentes pasivas, exporta resultados y se integra con pipelines defensivos de reconocimiento de superficie expuesta.",
+      "url": "https://github.com/projectdiscovery/subfinder",
+      "category": "dominios-ips",
+      "subcategory": "dns",
+      "tags": [
+        "subdominios",
+        "dns",
+        "reconocimiento pasivo",
+        "cli"
+      ],
+      "type": "cli",
+      "indicators": [
+        "D",
+        "S",
+        "I",
+        "T"
+      ],
+      "region": "internacional",
+      "language": "en",
+      "rating": 4.8,
+      "usage_count": 13800,
+      "last_updated": "2026-06-15",
+      "status": "active",
+      "requires_registration": false,
+      "is_free": true,
+      "difficulty_level": "intermediate"
+    },
+    {
+      "id": "projectdiscovery-httpx",
+      "name": "ProjectDiscovery httpx",
+      "description": "Toolkit CLI para sondear hosts, URLs y rangos CIDR con múltiples probes HTTP.",
+      "utility": "Valida objetivos vivos, recopila títulos, códigos HTTP, tecnologías, certificados y señales técnicas para priorizar análisis de infraestructura.",
+      "url": "https://github.com/projectdiscovery/httpx",
+      "category": "dominios-ips",
+      "subcategory": "analisis-ips",
+      "tags": [
+        "http",
+        "hosts",
+        "probes",
+        "infraestructura",
+        "cli"
+      ],
+      "type": "cli",
+      "indicators": [
+        "D",
+        "A",
+        "S",
+        "I"
+      ],
+      "region": "internacional",
+      "language": "en",
+      "rating": 4.7,
+      "usage_count": 12400,
+      "last_updated": "2026-06-15",
+      "status": "active",
+      "requires_registration": false,
+      "is_free": true,
+      "difficulty_level": "intermediate"
+    },
+    {
+      "id": "wayback-google-analytics",
+      "name": "Wayback Google Analytics",
+      "description": "Herramienta de Bellingcat para recolectar códigos Google Analytics históricos y actuales.",
+      "utility": "Ayuda a conectar sitios aparentemente separados cuando comparten identificadores UA, GA o GTM encontrados en capturas actuales e históricas.",
+      "url": "https://github.com/bellingcat/wayback-google-analytics",
+      "category": "dominios-ips",
+      "subcategory": "informacion-dominios",
+      "tags": [
+        "wayback",
+        "google analytics",
+        "relaciones",
+        "dominios"
+      ],
+      "type": "cli",
+      "indicators": [
+        "D",
+        "A",
+        "R"
+      ],
+      "region": "internacional",
+      "language": "en",
+      "rating": 4.6,
+      "usage_count": 6200,
+      "last_updated": "2026-06-15",
+      "status": "active",
+      "requires_registration": false,
+      "is_free": true,
+      "difficulty_level": "intermediate"
     }
   ]
 }

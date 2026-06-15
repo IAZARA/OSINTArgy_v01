@@ -546,6 +546,27 @@
       "requires_registration": false,
       "is_free": true,
       "difficulty_level": "intermediate"
+    },
+    {
+      "id": "h8mail",
+      "name": "h8mail",
+      "description": "Herramienta CLI para OSINT de emails y búsqueda de exposición en brechas.",
+      "utility": "Consulta servicios de brechas y fuentes locales para investigar emails relacionados, exposición histórica y señales de compromiso en evaluaciones defensivas.",
+      "url": "https://github.com/khast3x/h8mail",
+      "category": "email",
+      "subcategory": "busqueda-breaches",
+      "tags": ["email", "brechas", "credenciales", "cli", "open source"],
+      "type": "cli",
+      "indicators": ["D", "R", "T"],
+      "region": "internacional",
+      "language": "en",
+      "rating": 4.4,
+      "usage_count": 8300,
+      "last_updated": "2026-06-15",
+      "status": "active",
+      "requires_registration": false,
+      "is_free": true,
+      "difficulty_level": "intermediate"
     }
   ]
 }

@@ -1,67 +1,28 @@
-// Índice de herramientas OSINT organizadas por categoría
-// Fase 4: Contenido y Localización - OSINTArgy
-
-import buscadoresGenerales from './buscadores-generales.json';
-import redesSociales from './redes-sociales.json';
-import email from './email.json';
-import dominiosIps from './dominios-ips.json';
-import geolocalizacion from './geolocalizacion.json';
-import imagenesVideos from './imagenes-videos.json';
-import documentosMetadatos from './documentos-metadatos.json';
-import darkwebAmenazas from './darkweb-amenazas.json';
-import argentinaLatam from './argentina-latam.json';
-import telefonos from './telefonos.json';
-import archivos from './archivos.json';
-import criptomonedas from './criptomonedas.json';
-import utilidadesVarios from './utilidades-varios.json';
-import analisisVisualizacion from './analisis-visualizacion.json';
-import sistemaInfraestructura from './sistema-infraestructura.json';
+import fallbackTools from '../tools.json';
 
 /**
- * Combina todas las herramientas de diferentes categorías
- * @returns {Object} Objeto con todas las herramientas organizadas
+ * Índice sincronizado de herramientas OSINT.
+ * La fuente editable vive en ./tools/*.json y scripts/sync-tools-fallback.mjs
+ * genera ../tools.json para que el frontend no dependa de imports manuales.
  */
+const allTools = fallbackTools.tools || [];
+
+const groupToolsByCategory = (tools) => tools.reduce((groups, tool) => {
+  if (!groups[tool.category]) {
+    groups[tool.category] = [];
+  }
+
+  groups[tool.category].push(tool);
+  return groups;
+}, {});
+
 export const getAllTools = () => {
-  const allTools = [
-    ...buscadoresGenerales.tools,
-    ...redesSociales.tools,
-    ...email.tools,
-    ...dominiosIps.tools,
-    ...geolocalizacion.tools,
-    ...imagenesVideos.tools,
-    ...documentosMetadatos.tools,
-    ...darkwebAmenazas.tools,
-    ...argentinaLatam.tools,
-    ...telefonos.tools,
-    ...archivos.tools,
-    ...criptomonedas.tools,
-    ...utilidadesVarios.tools,
-    ...analisisVisualizacion.tools,
-    ...sistemaInfraestructura.tools
-  ];
+  const categories = groupToolsByCategory(allTools);
 
   return {
     tools: allTools,
     totalCount: allTools.length,
-    categories: {
-      'buscadores-generales': buscadoresGenerales.tools,
-      'redes-sociales': redesSociales.tools,
-      'email': email.tools,
-      'dominios-ips': dominiosIps.tools,
-      'geolocalizacion': geolocalizacion.tools,
-      'imagenes-videos': imagenesVideos.tools,
-      'documentos-metadatos': documentosMetadatos.tools,
-      'darkweb-amenazas': darkwebAmenazas.tools,
-      'argentina-latam': argentinaLatam.tools,
-      'telefonos': telefonos.tools,
-      'archivos': archivos.tools,
-      'criptomonedas': criptomonedas.tools,
-      'utilidades-varios': [
-        ...utilidadesVarios.tools,
-        ...sistemaInfraestructura.tools
-      ],
-      'analisis-visualizacion': analisisVisualizacion.tools
-    }
+    categories
   };
 };
 
@@ -196,7 +157,7 @@ export const getRecommendedTools = (limit = 10) => {
  * @returns {Array} Array de herramientas regionales
  */
 export const getArgentinaLatamTools = () => {
-  return argentinaLatam.tools;
+  return getToolsByCategory('argentina-latam');
 };
 
 export default {

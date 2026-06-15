@@ -43,7 +43,30 @@ test('newly researched tools render from the frontend dataset', () => {
   const fallbackTools = readJson(fallbackPath).tools
   const ids = new Set(fallbackTools.map(tool => tool.id))
 
-  for (const id of ['opencti', 'intelowl', 'qgis', 'dune', 'datos-gob-ar', 'social-analyzer', 'maigret', 'archivebox', 'opensanctions', 'github-repo-web-check']) {
+  for (const id of [
+    'opencti',
+    'intelowl',
+    'qgis',
+    'dune',
+    'datos-gob-ar',
+    'social-analyzer',
+    'maigret',
+    'archivebox',
+    'opensanctions',
+    'github-repo-web-check',
+    'h8mail',
+    'subfinder',
+    'projectdiscovery-httpx',
+    'wayback-google-analytics',
+    'bbot',
+    'telegram-phone-number-checker',
+    'telegago',
+    'bellingcat-tiktok-timestamp',
+    'bellingcat-tiktok-hashtag-analysis',
+    'uniform-timezone',
+    'enola',
+    'snoop-project'
+  ]) {
     assert.ok(ids.has(id), `${id} should be available in the frontend fallback catalog`)
   }
 })

@@ -546,6 +546,27 @@
       "requires_registration": false,
       "is_free": true,
       "difficulty_level": "intermediate"
+    },
+    {
+      "id": "telegram-phone-number-checker",
+      "name": "Telegram Phone Number Checker",
+      "description": "Herramienta de Bellingcat para verificar si números telefónicos están asociados a cuentas de Telegram.",
+      "utility": "Consulta números autorizados contra Telegram y recupera username, nombre e identificadores públicos cuando están disponibles.",
+      "url": "https://github.com/bellingcat/telegram-phone-number-checker",
+      "category": "telefonos",
+      "subcategory": "herramientas-cli",
+      "tags": ["telegram", "telefono", "bellingcat", "cli", "cuentas"],
+      "type": "cli",
+      "indicators": ["P", "T", "D"],
+      "region": "internacional",
+      "language": "en",
+      "rating": 4.5,
+      "usage_count": 5400,
+      "last_updated": "2026-06-15",
+      "status": "active",
+      "requires_registration": true,
+      "is_free": true,
+      "difficulty_level": "advanced"
     }
   ]
 }

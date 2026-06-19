@@ -16,7 +16,7 @@
   "dependencies": {
     "@pdf-lib/fontkit": "^1.1.1",
     "axios": "^1.10.0",
-    "bcryptjs": "^2.4.3",
+    "bcryptjs": "^3.0.3",
     "cors": "^2.8.5",
     "dotenv": "^16.3.1",
     "exifr": "^7.1.3",

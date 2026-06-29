@@ -1282,6 +1282,37 @@
       "requires_registration": false,
       "is_free": true,
       "difficulty_level": "intermediate"
+    },
+    {
+      "id": "leakix",
+      "name": "LeakIX",
+      "description": "Buscador de servicios expuestos, fugas de datos y configuraciones inseguras observables en internet.",
+      "utility": "Ayuda a detectar exposición pública de hosts, bases de datos y servicios para priorizar reportes responsables y remediación defensiva.",
+      "url": "https://leakix.net/",
+      "category": "dominios-ips",
+      "subcategory": "analisis-ips",
+      "tags": [
+        "servicios expuestos",
+        "fugas de datos",
+        "misconfiguraciones",
+        "internet"
+      ],
+      "type": "web",
+      "indicators": [
+        "D",
+        "I",
+        "S",
+        "A"
+      ],
+      "region": "internacional",
+      "language": "en",
+      "rating": 4.5,
+      "usage_count": 8100,
+      "last_updated": "2026-06-29",
+      "status": "active",
+      "requires_registration": true,
+      "is_free": true,
+      "difficulty_level": "intermediate"
     }
   ]
 }

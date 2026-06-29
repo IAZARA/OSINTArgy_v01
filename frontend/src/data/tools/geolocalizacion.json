@@ -964,6 +964,126 @@
       "requires_registration": false,
       "is_free": true,
       "difficulty_level": "beginner"
+    },
+    {
+      "id": "bellingcat-osm-search",
+      "name": "Bellingcat OpenStreetMap Search",
+      "description": "Herramienta de Bellingcat para consultas de proximidad sobre datos públicos de OpenStreetMap.",
+      "utility": "Facilita ubicar candidatos de geolocalización a partir de objetos, estructuras y relaciones espaciales observables en imágenes o videos.",
+      "url": "https://osm-search.bellingcat.com/",
+      "category": "geolocalizacion",
+      "subcategory": "analisis-geoespacial",
+      "tags": [
+        "openstreetmap",
+        "geolocalización",
+        "proximidad",
+        "bellingcat"
+      ],
+      "type": "web",
+      "indicators": [
+        "G",
+        "A",
+        "D"
+      ],
+      "region": "internacional",
+      "language": "en",
+      "rating": 4.7,
+      "usage_count": 7200,
+      "last_updated": "2026-06-29",
+      "status": "active",
+      "requires_registration": false,
+      "is_free": true,
+      "difficulty_level": "intermediate"
+    },
+    {
+      "id": "bellingcat-shadow-finder",
+      "name": "Bellingcat Shadow Finder",
+      "description": "Herramienta para estimar ubicaciones posibles a partir de longitud de sombra, altura, fecha y hora.",
+      "utility": "Reduce áreas de búsqueda en geolocalización cuando una imagen muestra sombras medibles y se conoce o estima la altura del objeto.",
+      "url": "https://github.com/bellingcat/ShadowFinder",
+      "category": "geolocalizacion",
+      "subcategory": "analisis-geoespacial",
+      "tags": [
+        "sombras",
+        "geolocalización",
+        "bellingcat",
+        "colab"
+      ],
+      "type": "tool",
+      "indicators": [
+        "G",
+        "A",
+        "T"
+      ],
+      "region": "internacional",
+      "language": "en",
+      "rating": 4.6,
+      "usage_count": 6400,
+      "last_updated": "2026-06-29",
+      "status": "active",
+      "requires_registration": false,
+      "is_free": true,
+      "difficulty_level": "advanced"
+    },
+    {
+      "id": "nasa-firms",
+      "name": "NASA FIRMS",
+      "description": "Sistema de NASA para visualizar y descargar detecciones satelitales de incendios activos y anomalías térmicas.",
+      "utility": "Aporta contexto casi en tiempo real sobre focos de calor, incendios y eventos visibles por satélite para verificación geoespacial.",
+      "url": "https://firms.modaps.eosdis.nasa.gov/map/",
+      "category": "geolocalizacion",
+      "subcategory": "mapas-satelitales",
+      "tags": [
+        "satélite",
+        "incendios",
+        "modis",
+        "viirs"
+      ],
+      "type": "web",
+      "indicators": [
+        "G",
+        "D",
+        "A"
+      ],
+      "region": "internacional",
+      "language": "en",
+      "rating": 4.8,
+      "usage_count": 9800,
+      "last_updated": "2026-06-29",
+      "status": "active",
+      "requires_registration": false,
+      "is_free": true,
+      "difficulty_level": "intermediate"
+    },
+    {
+      "id": "mapchecking",
+      "name": "MapChecking",
+      "description": "Herramienta web para estimar capacidad y tamaño máximo de multitudes en un área dibujada sobre un mapa.",
+      "utility": "Permite contrastar afirmaciones sobre asistencia a marchas, protestas o eventos ajustando superficie y densidad de personas por metro cuadrado.",
+      "url": "https://www.mapchecking.com/",
+      "category": "geolocalizacion",
+      "subcategory": "analisis-geoespacial",
+      "tags": [
+        "multitudes",
+        "mapas",
+        "fact-checking",
+        "protestas"
+      ],
+      "type": "web",
+      "indicators": [
+        "G",
+        "A",
+        "V"
+      ],
+      "region": "internacional",
+      "language": "en",
+      "rating": 4.4,
+      "usage_count": 5400,
+      "last_updated": "2026-06-29",
+      "status": "active",
+      "requires_registration": false,
+      "is_free": true,
+      "difficulty_level": "beginner"
     }
   ]
 }

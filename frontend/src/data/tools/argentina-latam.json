@@ -656,6 +656,186 @@
       "requires_registration": false,
       "is_free": true,
       "difficulty_level": "intermediate"
+    },
+    {
+      "id": "comprar",
+      "name": "COMPR.AR",
+      "description": "Portal oficial de compras y contrataciones de bienes y servicios de la Administración Pública Nacional.",
+      "utility": "Permite consultar procesos de contratación, pliegos, proveedores, normativa y datos abiertos vinculados a compras públicas argentinas.",
+      "url": "https://comprar.gob.ar/",
+      "category": "argentina-latam",
+      "subcategory": "bases-datos-gov",
+      "tags": [
+        "argentina",
+        "contrataciones",
+        "compras públicas",
+        "proveedores"
+      ],
+      "type": "web",
+      "indicators": [
+        "R",
+        "D",
+        "A"
+      ],
+      "region": "argentina",
+      "language": "es",
+      "rating": 4.6,
+      "usage_count": 7400,
+      "last_updated": "2026-06-29",
+      "status": "active",
+      "requires_registration": false,
+      "is_free": true,
+      "difficulty_level": "beginner"
+    },
+    {
+      "id": "contratar",
+      "name": "CONTRAT.AR",
+      "description": "Portal electrónico argentino para contrataciones de obra pública, concesiones y servicios públicos.",
+      "utility": "Ayuda a revisar procesos, próximas licitaciones y trazabilidad de contrataciones de obra pública del Sector Público Nacional.",
+      "url": "https://contratar.gob.ar/",
+      "category": "argentina-latam",
+      "subcategory": "bases-datos-gov",
+      "tags": [
+        "argentina",
+        "obra pública",
+        "licitaciones",
+        "contrataciones"
+      ],
+      "type": "web",
+      "indicators": [
+        "R",
+        "D",
+        "A"
+      ],
+      "region": "argentina",
+      "language": "es",
+      "rating": 4.5,
+      "usage_count": 6800,
+      "last_updated": "2026-06-29",
+      "status": "active",
+      "requires_registration": false,
+      "is_free": true,
+      "difficulty_level": "intermediate"
+    },
+    {
+      "id": "nic-argentina-whois",
+      "name": "NIC Argentina Whois",
+      "description": "Consulta oficial Whois para dominios de nivel superior .ar.",
+      "utility": "Permite verificar datos públicos asociados a dominios .ar, titulares, zonas y disponibilidad para análisis de infraestructura local.",
+      "url": "https://nic.ar/whois",
+      "category": "argentina-latam",
+      "subcategory": "registros-publicos-ar",
+      "tags": [
+        "argentina",
+        "dominios",
+        "whois",
+        "nic"
+      ],
+      "type": "web",
+      "indicators": [
+        "R",
+        "D",
+        "I"
+      ],
+      "region": "argentina",
+      "language": "es",
+      "rating": 4.7,
+      "usage_count": 8900,
+      "last_updated": "2026-06-29",
+      "status": "active",
+      "requires_registration": false,
+      "is_free": true,
+      "difficulty_level": "beginner"
+    },
+    {
+      "id": "mapa-del-estado",
+      "name": "Mapa del Estado",
+      "description": "Portal oficial con estructura organizativa de la Administración Pública Nacional argentina.",
+      "utility": "Sirve para ubicar organismos, ministerios, autoridades, organigramas, normativa, objetivos y responsabilidades de áreas del Estado.",
+      "url": "https://mapadelestado.dyte.gob.ar/",
+      "category": "argentina-latam",
+      "subcategory": "bases-datos-gov",
+      "tags": [
+        "argentina",
+        "estado",
+        "organigramas",
+        "autoridades"
+      ],
+      "type": "web",
+      "indicators": [
+        "R",
+        "A",
+        "D"
+      ],
+      "region": "argentina",
+      "language": "es",
+      "rating": 4.5,
+      "usage_count": 6100,
+      "last_updated": "2026-06-29",
+      "status": "active",
+      "requires_registration": false,
+      "is_free": true,
+      "difficulty_level": "beginner"
+    },
+    {
+      "id": "oa-declaraciones-juradas",
+      "name": "OA - Declaraciones Juradas",
+      "description": "Sistema oficial para consultar información pública de declaraciones juradas de funcionarios argentinos.",
+      "utility": "Apoya investigaciones de transparencia, conflicto de intereses y seguimiento patrimonial de funcionarios sujetos a publicación legal.",
+      "url": "https://www2.jus.gov.ar/consultaddjj/",
+      "category": "argentina-latam",
+      "subcategory": "bases-datos-gov",
+      "tags": [
+        "argentina",
+        "transparencia",
+        "funcionarios",
+        "declaraciones juradas"
+      ],
+      "type": "web",
+      "indicators": [
+        "P",
+        "R",
+        "D"
+      ],
+      "region": "argentina",
+      "language": "es",
+      "rating": 4.4,
+      "usage_count": 5900,
+      "last_updated": "2026-06-29",
+      "status": "active",
+      "requires_registration": false,
+      "is_free": true,
+      "difficulty_level": "intermediate"
+    },
+    {
+      "id": "openownership-map",
+      "name": "Open Ownership Map",
+      "description": "Mapa global de avances, compromisos y registros de beneficiarios finales.",
+      "utility": "Ayuda a identificar países con registros centrales de beneficiarios finales y a contextualizar investigaciones corporativas transnacionales.",
+      "url": "https://www.openownership.org/en/map/",
+      "category": "argentina-latam",
+      "subcategory": "herramientas-latam",
+      "tags": [
+        "beneficiarios finales",
+        "empresas",
+        "transparencia",
+        "corporativo"
+      ],
+      "type": "web",
+      "indicators": [
+        "R",
+        "A",
+        "D"
+      ],
+      "region": "internacional",
+      "language": "en",
+      "rating": 4.4,
+      "usage_count": 5200,
+      "last_updated": "2026-06-29",
+      "status": "active",
+      "requires_registration": false,
+      "is_free": true,
+      "difficulty_level": "intermediate"
     }
   ]
 }

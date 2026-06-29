@@ -210,6 +210,36 @@
       "requires_registration": false,
       "is_free": true,
       "difficulty_level": "intermediate"
+    },
+    {
+      "id": "littlesis",
+      "name": "LittleSis",
+      "description": "Base de datos abierta para investigar relaciones entre personas influyentes, organizaciones, empresas y gobierno.",
+      "utility": "Permite mapear redes de poder, vínculos corporativos, donaciones, cargos y conexiones públicas útiles para investigaciones de accountability.",
+      "url": "https://littlesis.org/database",
+      "category": "analisis-visualizacion",
+      "subcategory": "mapeo-relaciones",
+      "tags": [
+        "relaciones",
+        "empresas",
+        "gobierno",
+        "accountability"
+      ],
+      "type": "web",
+      "indicators": [
+        "R",
+        "A",
+        "P"
+      ],
+      "region": "internacional",
+      "language": "en",
+      "rating": 4.5,
+      "usage_count": 6300,
+      "last_updated": "2026-06-29",
+      "status": "active",
+      "requires_registration": false,
+      "is_free": true,
+      "difficulty_level": "intermediate"
     }
   ]
 }

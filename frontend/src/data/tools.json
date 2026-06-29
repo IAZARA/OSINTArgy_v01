@@ -1423,6 +1423,36 @@
       "difficulty_level": "intermediate"
     },
     {
+      "id": "publicwww",
+      "name": "PublicWWW",
+      "description": "Motor de búsqueda especializado en código fuente HTML, JavaScript y CSS de páginas web.",
+      "utility": "Permite encontrar sitios que comparten fragmentos de código, IDs de analítica, scripts, firmas técnicas o palabras clave invisibles para buscadores comunes.",
+      "url": "https://publicwww.com/",
+      "category": "buscadores-generales",
+      "subcategory": "busquedas-especializadas",
+      "tags": [
+        "código fuente",
+        "html",
+        "javascript",
+        "firmas técnicas"
+      ],
+      "type": "web",
+      "indicators": [
+        "D",
+        "A",
+        "I"
+      ],
+      "region": "internacional",
+      "language": "en",
+      "rating": 4.6,
+      "usage_count": 7600,
+      "last_updated": "2026-06-29",
+      "status": "active",
+      "requires_registration": false,
+      "is_free": true,
+      "difficulty_level": "intermediate"
+    },
+    {
       "id": "facebook-search",
       "name": "Facebook Graph Search",
       "description": "Herramienta de búsqueda avanzada dentro de Facebook.",
@@ -3275,6 +3305,36 @@
       "rating": 4.3,
       "usage_count": 5700,
       "last_updated": "2026-06-15",
+      "status": "active",
+      "requires_registration": false,
+      "is_free": true,
+      "difficulty_level": "intermediate"
+    },
+    {
+      "id": "blackbird",
+      "name": "Blackbird",
+      "description": "Herramienta CLI OSINT para buscar cuentas asociadas a usernames o emails en cientos de plataformas.",
+      "utility": "Complementa Sherlock, Maigret y WhatsMyName con búsquedas rápidas, filtros y exportes para mapear presencia digital pública.",
+      "url": "https://github.com/p1ngul1n0/blackbird",
+      "category": "redes-sociales",
+      "subcategory": "verificacion-perfiles",
+      "tags": [
+        "username",
+        "email",
+        "perfiles",
+        "cli"
+      ],
+      "type": "cli",
+      "indicators": [
+        "P",
+        "T",
+        "S"
+      ],
+      "region": "internacional",
+      "language": "en",
+      "rating": 4.5,
+      "usage_count": 6900,
+      "last_updated": "2026-06-29",
       "status": "active",
       "requires_registration": false,
       "is_free": true,
@@ -5345,6 +5405,37 @@
       "difficulty_level": "intermediate"
     },
     {
+      "id": "leakix",
+      "name": "LeakIX",
+      "description": "Buscador de servicios expuestos, fugas de datos y configuraciones inseguras observables en internet.",
+      "utility": "Ayuda a detectar exposición pública de hosts, bases de datos y servicios para priorizar reportes responsables y remediación defensiva.",
+      "url": "https://leakix.net/",
+      "category": "dominios-ips",
+      "subcategory": "analisis-ips",
+      "tags": [
+        "servicios expuestos",
+        "fugas de datos",
+        "misconfiguraciones",
+        "internet"
+      ],
+      "type": "web",
+      "indicators": [
+        "D",
+        "I",
+        "S",
+        "A"
+      ],
+      "region": "internacional",
+      "language": "en",
+      "rating": 4.5,
+      "usage_count": 8100,
+      "last_updated": "2026-06-29",
+      "status": "active",
+      "requires_registration": true,
+      "is_free": true,
+      "difficulty_level": "intermediate"
+    },
+    {
       "id": "google-earth",
       "name": "Google Earth",
       "description": "Explorador de imágenes satelitales y mapas 3D del mundo.",
@@ -6303,6 +6394,126 @@
       "rating": 4.5,
       "usage_count": 8400,
       "last_updated": "2026-05-31",
+      "status": "active",
+      "requires_registration": false,
+      "is_free": true,
+      "difficulty_level": "beginner"
+    },
+    {
+      "id": "bellingcat-osm-search",
+      "name": "Bellingcat OpenStreetMap Search",
+      "description": "Herramienta de Bellingcat para consultas de proximidad sobre datos públicos de OpenStreetMap.",
+      "utility": "Facilita ubicar candidatos de geolocalización a partir de objetos, estructuras y relaciones espaciales observables en imágenes o videos.",
+      "url": "https://osm-search.bellingcat.com/",
+      "category": "geolocalizacion",
+      "subcategory": "analisis-geoespacial",
+      "tags": [
+        "openstreetmap",
+        "geolocalización",
+        "proximidad",
+        "bellingcat"
+      ],
+      "type": "web",
+      "indicators": [
+        "G",
+        "A",
+        "D"
+      ],
+      "region": "internacional",
+      "language": "en",
+      "rating": 4.7,
+      "usage_count": 7200,
+      "last_updated": "2026-06-29",
+      "status": "active",
+      "requires_registration": false,
+      "is_free": true,
+      "difficulty_level": "intermediate"
+    },
+    {
+      "id": "bellingcat-shadow-finder",
+      "name": "Bellingcat Shadow Finder",
+      "description": "Herramienta para estimar ubicaciones posibles a partir de longitud de sombra, altura, fecha y hora.",
+      "utility": "Reduce áreas de búsqueda en geolocalización cuando una imagen muestra sombras medibles y se conoce o estima la altura del objeto.",
+      "url": "https://github.com/bellingcat/ShadowFinder",
+      "category": "geolocalizacion",
+      "subcategory": "analisis-geoespacial",
+      "tags": [
+        "sombras",
+        "geolocalización",
+        "bellingcat",
+        "colab"
+      ],
+      "type": "tool",
+      "indicators": [
+        "G",
+        "A",
+        "T"
+      ],
+      "region": "internacional",
+      "language": "en",
+      "rating": 4.6,
+      "usage_count": 6400,
+      "last_updated": "2026-06-29",
+      "status": "active",
+      "requires_registration": false,
+      "is_free": true,
+      "difficulty_level": "advanced"
+    },
+    {
+      "id": "nasa-firms",
+      "name": "NASA FIRMS",
+      "description": "Sistema de NASA para visualizar y descargar detecciones satelitales de incendios activos y anomalías térmicas.",
+      "utility": "Aporta contexto casi en tiempo real sobre focos de calor, incendios y eventos visibles por satélite para verificación geoespacial.",
+      "url": "https://firms.modaps.eosdis.nasa.gov/map/",
+      "category": "geolocalizacion",
+      "subcategory": "mapas-satelitales",
+      "tags": [
+        "satélite",
+        "incendios",
+        "modis",
+        "viirs"
+      ],
+      "type": "web",
+      "indicators": [
+        "G",
+        "D",
+        "A"
+      ],
+      "region": "internacional",
+      "language": "en",
+      "rating": 4.8,
+      "usage_count": 9800,
+      "last_updated": "2026-06-29",
+      "status": "active",
+      "requires_registration": false,
+      "is_free": true,
+      "difficulty_level": "intermediate"
+    },
+    {
+      "id": "mapchecking",
+      "name": "MapChecking",
+      "description": "Herramienta web para estimar capacidad y tamaño máximo de multitudes en un área dibujada sobre un mapa.",
+      "utility": "Permite contrastar afirmaciones sobre asistencia a marchas, protestas o eventos ajustando superficie y densidad de personas por metro cuadrado.",
+      "url": "https://www.mapchecking.com/",
+      "category": "geolocalizacion",
+      "subcategory": "analisis-geoespacial",
+      "tags": [
+        "multitudes",
+        "mapas",
+        "fact-checking",
+        "protestas"
+      ],
+      "type": "web",
+      "indicators": [
+        "G",
+        "A",
+        "V"
+      ],
+      "region": "internacional",
+      "language": "en",
+      "rating": 4.4,
+      "usage_count": 5400,
+      "last_updated": "2026-06-29",
       "status": "active",
       "requires_registration": false,
       "is_free": true,
@@ -9435,6 +9646,186 @@
       "rating": 4.6,
       "usage_count": 11200,
       "last_updated": "2026-05-24",
+      "status": "active",
+      "requires_registration": false,
+      "is_free": true,
+      "difficulty_level": "intermediate"
+    },
+    {
+      "id": "comprar",
+      "name": "COMPR.AR",
+      "description": "Portal oficial de compras y contrataciones de bienes y servicios de la Administración Pública Nacional.",
+      "utility": "Permite consultar procesos de contratación, pliegos, proveedores, normativa y datos abiertos vinculados a compras públicas argentinas.",
+      "url": "https://comprar.gob.ar/",
+      "category": "argentina-latam",
+      "subcategory": "bases-datos-gov",
+      "tags": [
+        "argentina",
+        "contrataciones",
+        "compras públicas",
+        "proveedores"
+      ],
+      "type": "web",
+      "indicators": [
+        "R",
+        "D",
+        "A"
+      ],
+      "region": "argentina",
+      "language": "es",
+      "rating": 4.6,
+      "usage_count": 7400,
+      "last_updated": "2026-06-29",
+      "status": "active",
+      "requires_registration": false,
+      "is_free": true,
+      "difficulty_level": "beginner"
+    },
+    {
+      "id": "contratar",
+      "name": "CONTRAT.AR",
+      "description": "Portal electrónico argentino para contrataciones de obra pública, concesiones y servicios públicos.",
+      "utility": "Ayuda a revisar procesos, próximas licitaciones y trazabilidad de contrataciones de obra pública del Sector Público Nacional.",
+      "url": "https://contratar.gob.ar/",
+      "category": "argentina-latam",
+      "subcategory": "bases-datos-gov",
+      "tags": [
+        "argentina",
+        "obra pública",
+        "licitaciones",
+        "contrataciones"
+      ],
+      "type": "web",
+      "indicators": [
+        "R",
+        "D",
+        "A"
+      ],
+      "region": "argentina",
+      "language": "es",
+      "rating": 4.5,
+      "usage_count": 6800,
+      "last_updated": "2026-06-29",
+      "status": "active",
+      "requires_registration": false,
+      "is_free": true,
+      "difficulty_level": "intermediate"
+    },
+    {
+      "id": "nic-argentina-whois",
+      "name": "NIC Argentina Whois",
+      "description": "Consulta oficial Whois para dominios de nivel superior .ar.",
+      "utility": "Permite verificar datos públicos asociados a dominios .ar, titulares, zonas y disponibilidad para análisis de infraestructura local.",
+      "url": "https://nic.ar/whois",
+      "category": "argentina-latam",
+      "subcategory": "registros-publicos-ar",
+      "tags": [
+        "argentina",
+        "dominios",
+        "whois",
+        "nic"
+      ],
+      "type": "web",
+      "indicators": [
+        "R",
+        "D",
+        "I"
+      ],
+      "region": "argentina",
+      "language": "es",
+      "rating": 4.7,
+      "usage_count": 8900,
+      "last_updated": "2026-06-29",
+      "status": "active",
+      "requires_registration": false,
+      "is_free": true,
+      "difficulty_level": "beginner"
+    },
+    {
+      "id": "mapa-del-estado",
+      "name": "Mapa del Estado",
+      "description": "Portal oficial con estructura organizativa de la Administración Pública Nacional argentina.",
+      "utility": "Sirve para ubicar organismos, ministerios, autoridades, organigramas, normativa, objetivos y responsabilidades de áreas del Estado.",
+      "url": "https://mapadelestado.dyte.gob.ar/",
+      "category": "argentina-latam",
+      "subcategory": "bases-datos-gov",
+      "tags": [
+        "argentina",
+        "estado",
+        "organigramas",
+        "autoridades"
+      ],
+      "type": "web",
+      "indicators": [
+        "R",
+        "A",
+        "D"
+      ],
+      "region": "argentina",
+      "language": "es",
+      "rating": 4.5,
+      "usage_count": 6100,
+      "last_updated": "2026-06-29",
+      "status": "active",
+      "requires_registration": false,
+      "is_free": true,
+      "difficulty_level": "beginner"
+    },
+    {
+      "id": "oa-declaraciones-juradas",
+      "name": "OA - Declaraciones Juradas",
+      "description": "Sistema oficial para consultar información pública de declaraciones juradas de funcionarios argentinos.",
+      "utility": "Apoya investigaciones de transparencia, conflicto de intereses y seguimiento patrimonial de funcionarios sujetos a publicación legal.",
+      "url": "https://www2.jus.gov.ar/consultaddjj/",
+      "category": "argentina-latam",
+      "subcategory": "bases-datos-gov",
+      "tags": [
+        "argentina",
+        "transparencia",
+        "funcionarios",
+        "declaraciones juradas"
+      ],
+      "type": "web",
+      "indicators": [
+        "P",
+        "R",
+        "D"
+      ],
+      "region": "argentina",
+      "language": "es",
+      "rating": 4.4,
+      "usage_count": 5900,
+      "last_updated": "2026-06-29",
+      "status": "active",
+      "requires_registration": false,
+      "is_free": true,
+      "difficulty_level": "intermediate"
+    },
+    {
+      "id": "openownership-map",
+      "name": "Open Ownership Map",
+      "description": "Mapa global de avances, compromisos y registros de beneficiarios finales.",
+      "utility": "Ayuda a identificar países con registros centrales de beneficiarios finales y a contextualizar investigaciones corporativas transnacionales.",
+      "url": "https://www.openownership.org/en/map/",
+      "category": "argentina-latam",
+      "subcategory": "herramientas-latam",
+      "tags": [
+        "beneficiarios finales",
+        "empresas",
+        "transparencia",
+        "corporativo"
+      ],
+      "type": "web",
+      "indicators": [
+        "R",
+        "A",
+        "D"
+      ],
+      "region": "internacional",
+      "language": "en",
+      "rating": 4.4,
+      "usage_count": 5200,
+      "last_updated": "2026-06-29",
       "status": "active",
       "requires_registration": false,
       "is_free": true,
@@ -12911,6 +13302,36 @@
       "rating": 4.8,
       "usage_count": 8700,
       "last_updated": "2026-05-31",
+      "status": "active",
+      "requires_registration": false,
+      "is_free": true,
+      "difficulty_level": "intermediate"
+    },
+    {
+      "id": "littlesis",
+      "name": "LittleSis",
+      "description": "Base de datos abierta para investigar relaciones entre personas influyentes, organizaciones, empresas y gobierno.",
+      "utility": "Permite mapear redes de poder, vínculos corporativos, donaciones, cargos y conexiones públicas útiles para investigaciones de accountability.",
+      "url": "https://littlesis.org/database",
+      "category": "analisis-visualizacion",
+      "subcategory": "mapeo-relaciones",
+      "tags": [
+        "relaciones",
+        "empresas",
+        "gobierno",
+        "accountability"
+      ],
+      "type": "web",
+      "indicators": [
+        "R",
+        "A",
+        "P"
+      ],
+      "region": "internacional",
+      "language": "en",
+      "rating": 4.5,
+      "usage_count": 6300,
+      "last_updated": "2026-06-29",
       "status": "active",
       "requires_registration": false,
       "is_free": true,

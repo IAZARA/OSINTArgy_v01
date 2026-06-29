@@ -2,20 +2,22 @@ import assert from 'node:assert/strict'
 import { readdirSync, readFileSync } from 'node:fs'
 import { join } from 'node:path'
 import test from 'node:test'
+import { fileURLToPath } from 'node:url'
 
 const repoRoot = new URL('../..', import.meta.url)
 const toolsDir = new URL('frontend/src/data/tools/', repoRoot)
+const toolsPath = fileURLToPath(toolsDir)
 const categoriesPath = new URL('frontend/src/data/categories.json', repoRoot)
 const fallbackPath = new URL('frontend/src/data/tools.json', repoRoot)
 
 const readJson = (fileUrl) => JSON.parse(readFileSync(fileUrl, 'utf8'))
 
 test('frontend catalog loads every category file into the fallback dataset', () => {
-  const categoryFiles = readdirSync(toolsDir)
+  const categoryFiles = readdirSync(toolsPath)
     .filter(file => file.endsWith('.json'))
     .sort()
 
-  const tools = categoryFiles.flatMap(file => readJson(join(toolsDir.pathname, file)).tools)
+  const tools = categoryFiles.flatMap(file => readJson(join(toolsPath, file)).tools)
   const fallbackTools = readJson(fallbackPath).tools
 
   assert.equal(categoryFiles.length, 15)
@@ -29,8 +31,8 @@ test('frontend catalog loads every category file into the fallback dataset', () 
 
 test('frontend catalog keeps ids unique and categories valid', () => {
   const categoryIds = new Set(readJson(categoriesPath).categories.map(category => category.id))
-  const categoryFiles = readdirSync(toolsDir).filter(file => file.endsWith('.json'))
-  const tools = categoryFiles.flatMap(file => readJson(join(toolsDir.pathname, file)).tools)
+  const categoryFiles = readdirSync(toolsPath).filter(file => file.endsWith('.json'))
+  const tools = categoryFiles.flatMap(file => readJson(join(toolsPath, file)).tools)
   const ids = tools.map(tool => tool.id)
 
   assert.equal(new Set(ids).size, ids.length)
@@ -65,7 +67,21 @@ test('newly researched tools render from the frontend dataset', () => {
     'bellingcat-tiktok-hashtag-analysis',
     'uniform-timezone',
     'enola',
-    'snoop-project'
+    'snoop-project',
+    'comprar',
+    'contratar',
+    'nic-argentina-whois',
+    'mapa-del-estado',
+    'oa-declaraciones-juradas',
+    'openownership-map',
+    'publicwww',
+    'leakix',
+    'bellingcat-osm-search',
+    'bellingcat-shadow-finder',
+    'nasa-firms',
+    'mapchecking',
+    'blackbird',
+    'littlesis'
   ]) {
     assert.ok(ids.has(id), `${id} should be available in the frontend fallback catalog`)
   }

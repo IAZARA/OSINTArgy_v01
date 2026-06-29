@@ -1858,6 +1858,36 @@
       "requires_registration": false,
       "is_free": true,
       "difficulty_level": "intermediate"
+    },
+    {
+      "id": "blackbird",
+      "name": "Blackbird",
+      "description": "Herramienta CLI OSINT para buscar cuentas asociadas a usernames o emails en cientos de plataformas.",
+      "utility": "Complementa Sherlock, Maigret y WhatsMyName con búsquedas rápidas, filtros y exportes para mapear presencia digital pública.",
+      "url": "https://github.com/p1ngul1n0/blackbird",
+      "category": "redes-sociales",
+      "subcategory": "verificacion-perfiles",
+      "tags": [
+        "username",
+        "email",
+        "perfiles",
+        "cli"
+      ],
+      "type": "cli",
+      "indicators": [
+        "P",
+        "T",
+        "S"
+      ],
+      "region": "internacional",
+      "language": "en",
+      "rating": 4.5,
+      "usage_count": 6900,
+      "last_updated": "2026-06-29",
+      "status": "active",
+      "requires_registration": false,
+      "is_free": true,
+      "difficulty_level": "intermediate"
     }
   ]
 }

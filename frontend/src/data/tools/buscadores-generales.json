@@ -1422,6 +1422,36 @@
       "requires_registration": true,
       "is_free": true,
       "difficulty_level": "intermediate"
+    },
+    {
+      "id": "publicwww",
+      "name": "PublicWWW",
+      "description": "Motor de búsqueda especializado en código fuente HTML, JavaScript y CSS de páginas web.",
+      "utility": "Permite encontrar sitios que comparten fragmentos de código, IDs de analítica, scripts, firmas técnicas o palabras clave invisibles para buscadores comunes.",
+      "url": "https://publicwww.com/",
+      "category": "buscadores-generales",
+      "subcategory": "busquedas-especializadas",
+      "tags": [
+        "código fuente",
+        "html",
+        "javascript",
+        "firmas técnicas"
+      ],
+      "type": "web",
+      "indicators": [
+        "D",
+        "A",
+        "I"
+      ],
+      "region": "internacional",
+      "language": "en",
+      "rating": 4.6,
+      "usage_count": 7600,
+      "last_updated": "2026-06-29",
+      "status": "active",
+      "requires_registration": false,
+      "is_free": true,
+      "difficulty_level": "intermediate"
     }
   ]
 }

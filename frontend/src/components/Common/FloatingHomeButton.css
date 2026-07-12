@@ -1,9 +1,9 @@
 .floating-home-button {
   position: fixed;
-  top: 30px;
-  left: 30px;
-  width: 60px;
-  height: 60px;
+  right: 24px;
+  bottom: 24px;
+  width: 54px;
+  height: 54px;
   border-radius: 50%;
   background-color: #ffffff;
   border: none;
@@ -56,7 +56,7 @@
   content: 'Ir a Inicio';
   position: absolute;
   top: 50%;
-  left: 80px;
+  right: 66px;
   transform: translateY(-50%);
   background-color: rgba(0, 0, 0, 0.8);
   color: white;
@@ -74,10 +74,10 @@
   content: '';
   position: absolute;
   top: 50%;
-  left: 72px;
+  right: 58px;
   transform: translateY(-50%);
   border: 6px solid transparent;
-  border-right-color: rgba(0, 0, 0, 0.8);
+  border-left-color: rgba(0, 0, 0, 0.8);
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.3s ease;
@@ -92,9 +92,7 @@
 /* Responsive */
 @media (max-width: 768px) {
   .floating-home-button {
-    top: auto;
     bottom: 20px;
-    left: auto;
     right: 20px;
     width: 55px;
     height: 55px;

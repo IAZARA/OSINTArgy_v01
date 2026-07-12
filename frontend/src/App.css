@@ -1,6 +1,6 @@
 /* Estilos principales de la aplicación */
 .app {
-  min-height: 100vh;
+  min-height: 100dvh;
   display: flex;
   flex-direction: column;
   background: #0a0a0a;
@@ -75,21 +75,21 @@
   flex: 1;
   display: flex;
   flex-direction: column;
-  min-height: calc(100vh - 80px); /* Altura del header */
+  min-height: calc(100dvh - 72px);
   position: relative;
 }
 
 .app-route-loading {
   display: grid;
   place-items: center;
-  min-height: calc(100vh - 80px);
+  min-height: calc(100dvh - 72px);
   background: var(--dark-bg);
 }
 
 /* Responsive */
 @media (max-width: 768px) {
   .app-content {
-    min-height: calc(100vh - 70px); /* Altura del header en móvil */
+    min-height: calc(100dvh - 64px);
   }
   
   .app-loading p {

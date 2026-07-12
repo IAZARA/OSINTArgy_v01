@@ -76,8 +76,11 @@ const Header = ({
     }
     
     // Realizar búsqueda si cumple criterios
-    if (value.length >= SEARCH.MIN_QUERY_LENGTH) {
+    if (value.trim().length >= SEARCH.MIN_QUERY_LENGTH) {
       debouncedSearch(value)
+    } else {
+      debouncedSearch.cancel?.()
+      onSearch?.('')
     }
   }
 
@@ -191,6 +194,11 @@ const Header = ({
   useEffect(() => {
     setSearchValue(searchQuery || '')
   }, [searchQuery])
+
+  useEffect(() => () => {
+    debouncedGenerateSuggestions.cancel?.()
+    debouncedSearch.cancel?.()
+  }, [debouncedGenerateSuggestions, debouncedSearch])
 
   return (
     <header className="header">
@@ -333,6 +341,8 @@ const Header = ({
               className="system-menu__trigger"
               onClick={() => setIsSystemMenuOpen(!isSystemMenuOpen)}
               aria-label="Herramientas del Sistema"
+              aria-expanded={isSystemMenuOpen}
+              aria-haspopup="menu"
             >
               <Wrench size={20} />
               <span className="system-menu__text">Herramientas del Sistema</span>
@@ -428,7 +438,8 @@ const Header = ({
         <button
           className="header__mobile-menu"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
-          aria-label="Menú"
+          aria-label={isMenuOpen ? 'Cerrar menú' : 'Abrir menú'}
+          aria-expanded={isMenuOpen}
         >
           {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
         </button>

@@ -346,6 +346,36 @@
       "requires_registration": false,
       "is_free": true,
       "difficulty_level": "intermediate"
+    },
+    {
+      "id": "google-pinpoint",
+      "name": "Google Pinpoint",
+      "description": "Plataforma de investigación para buscar y analizar grandes colecciones de documentos, imágenes, audio y video.",
+      "utility": "Permite localizar personas, organizaciones y lugares, transcribir contenido audiovisual y convertir tablas repetitivas en datos estructurados.",
+      "url": "https://journaliststudio.google.com/pinpoint/about/",
+      "category": "documentos-metadatos",
+      "subcategory": "busqueda-documentos",
+      "tags": [
+        "documentos",
+        "investigación",
+        "transcripción",
+        "periodismo"
+      ],
+      "type": "web",
+      "indicators": [
+        "M",
+        "F",
+        "A"
+      ],
+      "region": "internacional",
+      "language": "multi",
+      "rating": 0,
+      "usage_count": 0,
+      "last_updated": "2026-07-12",
+      "status": "active",
+      "requires_registration": true,
+      "is_free": true,
+      "difficulty_level": "beginner"
     }
   ]
 }

@@ -836,6 +836,36 @@
       "requires_registration": false,
       "is_free": true,
       "difficulty_level": "intermediate"
+    },
+    {
+      "id": "icij-offshore-leaks",
+      "name": "ICIJ Offshore Leaks Database",
+      "description": "Base pública de entidades offshore, personas, intermediarios y jurisdicciones reunida por ICIJ.",
+      "utility": "Ayuda a explorar vínculos societarios de investigaciones como Panama Papers, Pandora Papers y Paradise Papers, con cobertura útil para casos LATAM.",
+      "url": "https://offshoreleaks.icij.org/",
+      "category": "argentina-latam",
+      "subcategory": "herramientas-latam",
+      "tags": [
+        "sociedades offshore",
+        "beneficiarios",
+        "icij",
+        "latam"
+      ],
+      "type": "dataset",
+      "indicators": [
+        "P",
+        "R",
+        "A"
+      ],
+      "region": "internacional",
+      "language": "en",
+      "rating": 0,
+      "usage_count": 0,
+      "last_updated": "2026-07-12",
+      "status": "active",
+      "requires_registration": false,
+      "is_free": true,
+      "difficulty_level": "intermediate"
     }
   ]
 }

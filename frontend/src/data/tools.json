@@ -8234,6 +8234,36 @@
       "difficulty_level": "intermediate"
     },
     {
+      "id": "google-pinpoint",
+      "name": "Google Pinpoint",
+      "description": "Plataforma de investigación para buscar y analizar grandes colecciones de documentos, imágenes, audio y video.",
+      "utility": "Permite localizar personas, organizaciones y lugares, transcribir contenido audiovisual y convertir tablas repetitivas en datos estructurados.",
+      "url": "https://journaliststudio.google.com/pinpoint/about/",
+      "category": "documentos-metadatos",
+      "subcategory": "busqueda-documentos",
+      "tags": [
+        "documentos",
+        "investigación",
+        "transcripción",
+        "periodismo"
+      ],
+      "type": "web",
+      "indicators": [
+        "M",
+        "F",
+        "A"
+      ],
+      "region": "internacional",
+      "language": "multi",
+      "rating": 0,
+      "usage_count": 0,
+      "last_updated": "2026-07-12",
+      "status": "active",
+      "requires_registration": true,
+      "is_free": true,
+      "difficulty_level": "beginner"
+    },
+    {
       "id": "ahmia",
       "name": "Ahmia",
       "description": "Motor de búsqueda para servicios ocultos de Tor (.onion).",
@@ -9826,6 +9856,36 @@
       "rating": 4.4,
       "usage_count": 5200,
       "last_updated": "2026-06-29",
+      "status": "active",
+      "requires_registration": false,
+      "is_free": true,
+      "difficulty_level": "intermediate"
+    },
+    {
+      "id": "icij-offshore-leaks",
+      "name": "ICIJ Offshore Leaks Database",
+      "description": "Base pública de entidades offshore, personas, intermediarios y jurisdicciones reunida por ICIJ.",
+      "utility": "Ayuda a explorar vínculos societarios de investigaciones como Panama Papers, Pandora Papers y Paradise Papers, con cobertura útil para casos LATAM.",
+      "url": "https://offshoreleaks.icij.org/",
+      "category": "argentina-latam",
+      "subcategory": "herramientas-latam",
+      "tags": [
+        "sociedades offshore",
+        "beneficiarios",
+        "icij",
+        "latam"
+      ],
+      "type": "dataset",
+      "indicators": [
+        "P",
+        "R",
+        "A"
+      ],
+      "region": "internacional",
+      "language": "en",
+      "rating": 0,
+      "usage_count": 0,
+      "last_updated": "2026-07-12",
       "status": "active",
       "requires_registration": false,
       "is_free": true,

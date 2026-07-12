@@ -42,7 +42,7 @@ export const flowchartsData = {
         x: 600,
         y: 200,
         description: 'Buscar versiones guardadas del sitio web',
-        tools: ['Wayback Machine', 'Google Cache', 'Archive.today']
+        tools: ['Wayback Machine', 'Archive.today', 'Memento Time Travel']
       },
       {
         id: 'site_search',
@@ -96,6 +96,7 @@ export const flowchartsData = {
         x: 500,
         y: 700,
         description: 'Documentos encontrados en el dominio',
+        tools: ['Google Pinpoint', 'DocumentCloud'],
         internal_tool: '/file-analysis'
       },
       {
@@ -478,7 +479,7 @@ export const flowchartsData = {
         x: 400,
         y: 50,
         description: 'Buscar perfiles de Twitter',
-        tools: ['Twitter Search', 'Twitter Advanced Search']
+        tools: ['X / Twitter', 'Twitter Advanced Search']
       },
       {
         id: 'facebook',
@@ -487,7 +488,7 @@ export const flowchartsData = {
         x: 400,
         y: 120,
         description: 'Buscar perfiles de Facebook',
-        tools: ['Facebook Search', 'Facebook Graph Search']
+        tools: ['Facebook Search']
       },
       {
         id: 'people_search',
@@ -505,7 +506,7 @@ export const flowchartsData = {
         x: 400,
         y: 200,
         description: 'Búsqueda general en motores',
-        tools: ['Google', 'Bing', 'Yandex']
+        tools: ['Google', 'Bing', 'Yandex', 'ICIJ Offshore Leaks Database']
       },
       {
         id: 'facebook_profile',
@@ -927,7 +928,7 @@ export const flowchartsData = {
         x: 600,
         y: 400,
         description: 'Búsqueda manual en plataformas',
-        tools: ['Twitter', 'Instagram', 'Google+', 'Facebook', 'YouTube']
+        tools: ['X / Twitter', 'Instagram', 'Facebook', 'YouTube']
       },
       {
         id: 'email_address',

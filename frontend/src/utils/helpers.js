@@ -125,10 +125,12 @@ export const validatePassword = (password) => {
  */
 export const debounce = (func, delay) => {
   let timeoutId
-  return (...args) => {
+  const debounced = (...args) => {
     clearTimeout(timeoutId)
     timeoutId = setTimeout(() => func.apply(null, args), delay)
   }
+  debounced.cancel = () => clearTimeout(timeoutId)
+  return debounced
 }
 
 /**

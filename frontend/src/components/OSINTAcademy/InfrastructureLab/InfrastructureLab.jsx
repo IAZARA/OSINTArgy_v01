@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import {
   AlertTriangle,
@@ -16,6 +16,7 @@ import {
   XCircle
 } from 'lucide-react'
 import { useNavigate } from 'react-router-dom'
+import { markAcademyModuleCompleted } from '@/utils/academyProgress'
 import './InfrastructureLab.css'
 
 const severityLabels = {
@@ -131,6 +132,12 @@ const InfrastructureLab = () => {
   )
   const maxScore = findings.reduce((score, finding) => score + finding.points, 0)
   const isComplete = completedCount === findings.length
+
+  useEffect(() => {
+    if (isComplete) {
+      markAcademyModuleCompleted('infra-lab')
+    }
+  }, [isComplete])
 
   const handleSeveritySelect = (severity) => {
     const isCorrect = severity === activeFinding.correctSeverity

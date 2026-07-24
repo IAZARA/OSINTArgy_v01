@@ -2,6 +2,8 @@ import React, { useState, useEffect, useMemo } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useParams, useNavigate } from 'react-router-dom'
 import DOMPurify from 'dompurify'
+import { corporateLessons } from '../data/corporateAcademy'
+import { markAcademyModuleCompleted } from '@/utils/academyProgress'
 import { 
   BookOpen, 
   ChevronLeft, 
@@ -33,6 +35,7 @@ const LessonViewer = () => {
 
   // Contenido de los módulos OSINT - Nueva estructura de 5 módulos
   const lessons = {
+    ...corporateLessons,
     modulo1: {
       title: "Módulo 1: Introducción a OSINT",
       description: "Fundamentos de la inteligencia de fuentes abiertas",
@@ -2446,6 +2449,7 @@ const LessonViewer = () => {
       setCurrentSlide(currentSlide + 1)
     } else {
       // Finalizar módulo y volver a la academia correspondiente
+      markAcademyModuleCompleted(lessonId)
       setIsCompleted(true)
       navigate('/academy', { state: { selectedAcademy: currentLesson.academyId || 'osint' } })
     }

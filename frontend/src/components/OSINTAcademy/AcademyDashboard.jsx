@@ -16,6 +16,11 @@ import {
   Activity
 } from 'lucide-react'
 import { useNavigate, useLocation } from 'react-router-dom'
+import {
+  corporateAcademy,
+  corporateModules
+} from './data/corporateAcademy'
+import { getCompletedAcademyModules } from '@/utils/academyProgress'
 import './AcademyDashboard.css'
 
 const panelVariants = {
@@ -51,7 +56,7 @@ const itemVariants = {
 const AcademyDashboard = () => {
   const navigate = useNavigate()
   const location = useLocation()
-  const [completedModules] = useState([])
+  const [completedModules] = useState(() => getCompletedAcademyModules())
   const [selectedAcademy, setSelectedAcademy] = useState(location.state?.selectedAcademy || null)
 
   // Academias disponibles
@@ -61,7 +66,7 @@ const AcademyDashboard = () => {
       title: 'Academia OSINT',
       description: 'Aprende las técnicas de inteligencia de fuentes abiertas de forma interactiva',
       icon: Search,
-      modules: 5,
+      modules: 6,
       duration: '2.5 horas',
       difficulty: 'principiante',
       color: 'primary'
@@ -75,7 +80,8 @@ const AcademyDashboard = () => {
       duration: '2 horas',
       difficulty: 'intermedio',
       color: 'secondary'
-    }
+    },
+    corporateAcademy
   ]
 
   // Módulos OSINT
@@ -195,7 +201,8 @@ const AcademyDashboard = () => {
 
   const modulesByAcademy = {
     osint: osintModules,
-    infrastructure: infrastructureModules
+    infrastructure: infrastructureModules,
+    corporate: corporateModules
   }
 
   const selectedAcademyData = academies.find((academy) => academy.id === selectedAcademy)
@@ -208,6 +215,8 @@ const AcademyDashboard = () => {
   const handleModuleClick = (module) => {
     if (module.type === 'audio') {
       navigate('/academy/audio')
+    } else if (module.type === 'corporate-lab') {
+      navigate('/academy/corporate-lab')
     } else if (module.type === 'lab') {
       navigate('/academy/infrastructure-lab')
     } else {

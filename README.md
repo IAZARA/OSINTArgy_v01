@@ -38,6 +38,7 @@ La descripción corta del proyecto es: **Plataforma OSINT open source para inves
 - Generador de dorks para Google, Yandex, Bing y DuckDuckGo.
 - Búsqueda de usernames en múltiples plataformas.
 - Módulos para OSINT de emails, análisis de archivos y reconocimiento de infraestructura.
+- Academias interactivas de fundamentos OSINT, infraestructura defensiva e investigación corporativa con fuentes públicas.
 - API REST con Express, MongoDB, autenticación JWT, rate limiting, CORS y logging estructurado.
 - Frontend React + Vite con rutas SPA, servicios API y componentes modulares.
 
@@ -162,7 +163,7 @@ No se versionan builds, logs, bases locales, `.env`, carpetas MCP ni configuraci
 | Username OSINT | Búsqueda de presencia de usuarios en plataformas públicas. |
 | File Analysis | Extracción de metadatos y análisis de archivos. |
 | Infrastructure Scanner | Reconocimiento defensivo de dominios, IPs y servicios. |
-| OSINT Academy | Material educativo, lecciones, audio y simuladores. |
+| OSINT Academy | Formación interactiva en fundamentos, infraestructura defensiva e investigación corporativa, con lecciones, audio y laboratorios. |
 
 ## API
 

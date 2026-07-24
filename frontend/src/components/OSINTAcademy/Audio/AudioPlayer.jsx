@@ -8,6 +8,7 @@ import {
   Download,
   Clock
 } from 'lucide-react'
+import { markAcademyModuleCompleted } from '@/utils/academyProgress'
 import './AudioPlayer.css'
 
 const AudioPlayer = () => {
@@ -35,6 +36,7 @@ const AudioPlayer = () => {
     const handleAudioEnd = () => {
       setIsPlaying(false)
       setCurrentTime(0)
+      markAcademyModuleCompleted('audio-resumen')
     }
 
     const handleLoadStart = () => setIsLoading(true)

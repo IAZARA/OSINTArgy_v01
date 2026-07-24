@@ -1,5 +1,5 @@
 import React from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate } from '@/lib/router'
 import osintEyeLogo from '../../assets/osint-eye-logo.svg'
 import './FloatingHomeButton.css'
 

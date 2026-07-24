@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { useParams, useNavigate } from 'react-router-dom'
+import { useParams, useNavigate } from '@/lib/router'
 import DOMPurify from 'dompurify'
 import { corporateLessons } from '../data/corporateAcademy'
 import { markAcademyModuleCompleted } from '@/utils/academyProgress'

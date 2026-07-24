@@ -15,16 +15,18 @@
     "test:watch": "node --test --watch tests/*.test.mjs"
   },
   "dependencies": {
-    "axios": "^1.6.2",
+    "axios": "^1.18.1",
     "d3": "^7.8.5",
-    "dompurify": "^3.4.5",
+    "dompurify": "^3.4.12",
     "framer-motion": "^12.19.2",
     "lucide-react": "^0.294.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hot-toast": "^2.4.1",
-    "react-router-dom": "^6.20.1",
     "zustand": "^4.4.7"
+  },
+  "overrides": {
+    "form-data": "4.0.6"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^5.16.5",

@@ -22,7 +22,7 @@ import {
   Wrench,
   X
 } from 'lucide-react'
-import { Link } from 'react-router-dom'
+import { Link } from '@/lib/router'
 import toast from 'react-hot-toast'
 import { getFlowchartsInfo, getFlowchartById } from '@/data/flowcharts'
 import { getAllTools } from '@/data/tools/index.js'

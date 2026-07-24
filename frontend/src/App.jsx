@@ -1,5 +1,5 @@
 import React, { Suspense, lazy, useState } from 'react'
-import { Routes, Route, useLocation } from 'react-router-dom'
+import { Routes, Route, useLocation } from '@/lib/router'
 import { Toaster } from 'react-hot-toast'
 
 // Componentes

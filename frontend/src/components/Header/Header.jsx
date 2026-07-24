@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from '@/lib/router'
 import { Search, Menu, X, Target, Wrench, ChevronDown, Mail, Upload, User, Shield, Clock, TrendingUp, Info, GraduationCap, GitBranch } from 'lucide-react'
 import { debounce } from '@utils/helpers'
 import { SEARCH } from '@utils/constants'

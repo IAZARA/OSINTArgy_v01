@@ -1,5 +1,5 @@
 import { useState, useEffect, useContext, createContext } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate } from '@/lib/router'
 import { authService } from '@services/authService'
 import { storage } from '@utils/helpers'
 import { STORAGE_KEYS, SUCCESS_MESSAGES, ERROR_MESSAGES } from '@utils/constants'

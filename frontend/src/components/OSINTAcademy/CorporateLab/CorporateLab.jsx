@@ -17,7 +17,7 @@ import {
   Scale,
   ShieldCheck
 } from 'lucide-react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate } from '@/lib/router'
 import { markAcademyModuleCompleted } from '@/utils/academyProgress'
 import {
   calculateCorporateLabScore,

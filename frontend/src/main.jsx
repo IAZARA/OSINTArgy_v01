@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import { BrowserRouter } from 'react-router-dom'
+import { BrowserRouter } from '@/lib/router'
 import { AuthProvider } from '@hooks/useAuth'
 import App from './App.jsx'
 import './styles/variables.css'

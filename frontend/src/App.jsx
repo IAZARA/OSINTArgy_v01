@@ -28,6 +28,7 @@ const AcademyDashboard = lazy(() => import('@components/OSINTAcademy/AcademyDash
 const DetectiveGame = lazy(() => import('@components/OSINTAcademy/DetectiveGame/DetectiveGame'))
 const OSINTMindMap = lazy(() => import('@components/OSINTAcademy/MindMap/OSINTMindMap'))
 const DorkSimulator = lazy(() => import('@components/OSINTAcademy/Simulator/DorkSimulator'))
+const InfrastructureLab = lazy(() => import('@components/OSINTAcademy/InfrastructureLab/InfrastructureLab'))
 const LessonViewer = lazy(() => import('@components/OSINTAcademy/Lessons/LessonViewer'))
 const AudioPlayer = lazy(() => import('@components/OSINTAcademy/Audio/AudioPlayer'))
 
@@ -162,6 +163,7 @@ function App() {
             <Route path="/academy/detective-game" element={<DetectiveGame />} />
             <Route path="/academy/mindmap" element={<OSINTMindMap />} />
             <Route path="/academy/dork-simulator" element={<DorkSimulator />} />
+            <Route path="/academy/infrastructure-lab" element={<InfrastructureLab />} />
             <Route path="/academy/lesson/:lessonId" element={<LessonViewer />} />
             <Route path="/academy/audio" element={<AudioPlayer />} />
           </Routes>

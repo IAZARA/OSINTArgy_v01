@@ -13,7 +13,12 @@ import {
   Shield,
   User,
   Eye,
-  Target
+  Target,
+  Mail,
+  Server,
+  Lock,
+  Database,
+  AlertTriangle
 } from 'lucide-react'
 import './LessonViewer.css'
 
@@ -1739,6 +1744,679 @@ const LessonViewer = () => {
           }
         }
       ]
+    },
+    infra1: {
+      academyId: "infrastructure",
+      title: "Módulo 1: Huella Digital Pública",
+      description: "Alcance, ética y mapa inicial de exposición pública",
+      totalSlides: 5,
+      slides: [
+        {
+          id: 1,
+          title: "Qué es una huella digital pública",
+          content: `
+            <h2>La superficie visible desde afuera</h2>
+            <p>La huella digital pública es el conjunto de señales que una organización deja en internet sin requerir acceso privado: dominios, subdominios, certificados, registros DNS, correos, documentos, tecnologías y menciones.</p>
+            <p>En una investigación defensiva, el objetivo no es explotar nada. El objetivo es <strong>ver lo que otros podrían ver</strong>, ordenar evidencias y proponer mejoras.</p>
+            <div class="highlight-box">
+              <p>🎯 <strong>Idea clave:</strong> una buena auditoría OSINT empieza por alcance, permisos y documentación.</p>
+            </div>
+          `,
+          interactive: {
+            type: 'icons',
+            items: [
+              { icon: Globe, label: 'Dominios' },
+              { icon: Mail, label: 'Email' },
+              { icon: Server, label: 'Infraestructura' },
+              { icon: Shield, label: 'Riesgo' }
+            ]
+          }
+        },
+        {
+          id: 2,
+          title: "Categorías de exposición",
+          content: `
+            <h2>Qué conviene mirar primero</h2>
+            <p>La exposición pública se vuelve manejable cuando se agrupa por familias. Esto evita perseguir datos sueltos y ayuda a priorizar hallazgos.</p>
+            <ul>
+              <li><strong>🌐 Identidad técnica:</strong> dominios, DNS, certificados y proveedores.</li>
+              <li><strong>📧 Identidad de correo:</strong> MX, SPF, DKIM, DMARC y dominios parecidos.</li>
+              <li><strong>🧩 Assets públicos:</strong> subdominios, paneles, entornos de prueba y documentación.</li>
+              <li><strong>📄 Información publicada:</strong> PDFs, metadatos, repositorios y menciones.</li>
+            </ul>
+          `,
+          interactive: {
+            type: 'progress_bar',
+            items: [
+              { label: 'Dominios y DNS', percentage: 30 },
+              { label: 'Email y reputación', percentage: 25 },
+              { label: 'Subdominios y servicios', percentage: 25 },
+              { label: 'Documentos y menciones', percentage: 20 }
+            ]
+          }
+        },
+        {
+          id: 3,
+          title: "Alcance responsable",
+          content: `
+            <h2>Antes de investigar</h2>
+            <p>Un alcance claro define qué dominios se pueden revisar, qué fuentes están permitidas, qué acciones quedan fuera y cómo se reportarán los hallazgos.</p>
+            <div class="ethics-rules">
+              <div class="rule-item good">
+                <h3>✅ Permitido</h3>
+                <ul>
+                  <li>Consultar fuentes públicas.</li>
+                  <li>Documentar URLs, fechas y evidencias.</li>
+                  <li>Usar datos agregados para priorizar riesgos.</li>
+                  <li>Reportar recomendaciones defensivas.</li>
+                </ul>
+              </div>
+              <div class="rule-item bad">
+                <h3>❌ Fuera de alcance</h3>
+                <ul>
+                  <li>Intentar autenticación en sistemas reales.</li>
+                  <li>Probar credenciales filtradas.</li>
+                  <li>Forzar formularios o endpoints.</li>
+                  <li>Publicar datos sensibles de terceros.</li>
+                </ul>
+              </div>
+            </div>
+          `,
+          interactive: {
+            type: 'icons',
+            items: [
+              { icon: BookOpen, label: 'Alcance' },
+              { icon: Shield, label: 'Permiso' },
+              { icon: Eye, label: 'Evidencia' },
+              { icon: Target, label: 'Prioridad' }
+            ]
+          }
+        },
+        {
+          id: 4,
+          title: "Triage inicial",
+          content: `
+            <h2>Convertir señales en prioridades</h2>
+            <p>No todos los hallazgos tienen el mismo peso. La tarea del analista es estimar impacto, probabilidad y facilidad de remediación.</p>
+            <div class="methodology-steps">
+              <div class="step">
+                <span class="step-number">1</span>
+                <div>
+                  <h3>Inventariar</h3>
+                  <p>Listar dominios, subdominios y servicios observables.</p>
+                </div>
+              </div>
+              <div class="step">
+                <span class="step-number">2</span>
+                <div>
+                  <h3>Verificar</h3>
+                  <p>Confirmar evidencia con más de una fuente cuando sea posible.</p>
+                </div>
+              </div>
+              <div class="step">
+                <span class="step-number">3</span>
+                <div>
+                  <h3>Priorizar</h3>
+                  <p>Separar información útil, hardening pendiente y riesgos altos.</p>
+                </div>
+              </div>
+            </div>
+          `,
+          interactive: {
+            type: 'progress_bar',
+            items: [
+              { label: 'Inventario', percentage: 35 },
+              { label: 'Verificación', percentage: 30 },
+              { label: 'Priorización', percentage: 25 },
+              { label: 'Reporte', percentage: 10 }
+            ]
+          }
+        },
+        {
+          id: 5,
+          title: "Autoevaluación - Huella Digital",
+          content: `
+            <h2>🎯 Evalúa tu criterio inicial</h2>
+            <p>Responde estas preguntas antes de avanzar a dominios y DNS.</p>
+          `,
+          interactive: {
+            type: 'quiz',
+            questions: [
+              {
+                question: "¿Cuál es el objetivo de una auditoría OSINT defensiva?",
+                options: ["Explotar servicios públicos", "Ver y reducir exposición pública", "Evitar documentar fuentes"],
+                correct: 1,
+                explanation: "La auditoría defensiva busca entender exposición pública y proponer mejoras sin intrusión."
+              },
+              {
+                question: "¿Qué debería definirse antes de investigar?",
+                options: ["Alcance y permisos", "Un exploit", "Una cuenta falsa"],
+                correct: 0,
+                explanation: "El alcance evita abusos, ruido operativo y conclusiones fuera de contexto."
+              },
+              {
+                question: "¿Qué convierte una señal pública en hallazgo útil?",
+                options: ["Que sea llamativa", "Que tenga evidencia, impacto y recomendación", "Que aparezca en una sola búsqueda"],
+                correct: 1,
+                explanation: "Un hallazgo necesita evidencia verificable, impacto razonado y acción sugerida."
+              }
+            ]
+          }
+        }
+      ]
+    },
+    infra2: {
+      academyId: "infrastructure",
+      title: "Módulo 2: Dominios, WHOIS y DNS",
+      description: "Lectura de registros públicos y configuración de correo",
+      totalSlides: 5,
+      slides: [
+        {
+          id: 1,
+          title: "El dominio como punto de partida",
+          content: `
+            <h2>Identidad técnica principal</h2>
+            <p>Un dominio concentra muchas señales: registrador, nameservers, hosting, correo, subdominios y proveedores externos.</p>
+            <p>El análisis empieza con preguntas simples: quién resuelve DNS, qué servicios se anuncian y qué registros ayudan o debilitan la postura defensiva.</p>
+            <div class="highlight-box">
+              <p>🔎 <strong>Clave:</strong> DNS no solo dice dónde está algo; también revela cómo está organizada una parte del ecosistema técnico.</p>
+            </div>
+          `,
+          interactive: {
+            type: 'icons',
+            items: [
+              { icon: Globe, label: 'Dominio' },
+              { icon: Database, label: 'DNS' },
+              { icon: Mail, label: 'MX' },
+              { icon: Shield, label: 'Políticas' }
+            ]
+          }
+        },
+        {
+          id: 2,
+          title: "Registros que importan",
+          content: `
+            <h2>Leer DNS con intención</h2>
+            <p>Cada registro responde una pregunta distinta. No hace falta memorizar todo; sí entender qué evidencia aporta cada tipo.</p>
+            <div class="tools-showcase">
+              <div class="tool-item"><strong>A / AAAA</strong><p>Direcciones IPv4 o IPv6 asociadas a un host.</p></div>
+              <div class="tool-item"><strong>CNAME</strong><p>Alias hacia otro nombre, útil para detectar proveedores.</p></div>
+              <div class="tool-item"><strong>MX</strong><p>Servidores responsables del correo del dominio.</p></div>
+              <div class="tool-item"><strong>TXT</strong><p>Políticas, verificaciones y señales como SPF o DMARC.</p></div>
+            </div>
+          `,
+          interactive: {
+            type: 'progress_bar',
+            items: [
+              { label: 'Resolución web', percentage: 30 },
+              { label: 'Correo', percentage: 30 },
+              { label: 'Proveedores', percentage: 25 },
+              { label: 'Verificaciones', percentage: 15 }
+            ]
+          }
+        },
+        {
+          id: 3,
+          title: "SPF, DKIM y DMARC",
+          content: `
+            <h2>Autenticación de correo</h2>
+            <p>Los registros de correo ayudan a reducir suplantación. Una configuración incompleta puede facilitar phishing con apariencia legítima.</p>
+            <ul>
+              <li><strong>SPF:</strong> indica qué servidores pueden enviar correo por el dominio.</li>
+              <li><strong>DKIM:</strong> firma mensajes para validar integridad y origen.</li>
+              <li><strong>DMARC:</strong> define qué hacer si SPF o DKIM fallan y entrega reportes.</li>
+            </ul>
+            <div class="highlight-box">
+              <p>📧 <strong>Priorización:</strong> DMARC ausente o demasiado permisivo suele ser más sensible que un TXT informativo.</p>
+            </div>
+          `,
+          interactive: {
+            type: 'icons',
+            items: [
+              { icon: Mail, label: 'SPF' },
+              { icon: Lock, label: 'DKIM' },
+              { icon: Shield, label: 'DMARC' },
+              { icon: AlertTriangle, label: 'Spoofing' }
+            ]
+          }
+        },
+        {
+          id: 4,
+          title: "Interpretar sin sobreactuar",
+          content: `
+            <h2>Contexto antes de severidad</h2>
+            <p>Un registro extraño no siempre es una vulnerabilidad. Puede ser legado, proveedor, migración o configuración temporal.</p>
+            <div class="applications-grid">
+              <div class="app-card">
+                <h3>Señales útiles</h3>
+                <p>Nameservers externos, múltiples proveedores de correo, TXT antiguos, dominios estacionados y CNAMEs a SaaS.</p>
+              </div>
+              <div class="app-card">
+                <h3>Preguntas de control</h3>
+                <p>¿Está en uso? ¿Pertenece a la organización? ¿Tiene impacto real? ¿Hay evidencia repetida?</p>
+              </div>
+            </div>
+          `,
+          interactive: {
+            type: 'progress_bar',
+            items: [
+              { label: 'Evidencia', percentage: 40 },
+              { label: 'Contexto', percentage: 30 },
+              { label: 'Impacto', percentage: 20 },
+              { label: 'Recomendación', percentage: 10 }
+            ]
+          }
+        },
+        {
+          id: 5,
+          title: "Autoevaluación - DNS",
+          content: `
+            <h2>🎯 Revisa lo aprendido</h2>
+            <p>Comprueba si puedes leer registros públicos con criterio defensivo.</p>
+          `,
+          interactive: {
+            type: 'quiz',
+            questions: [
+              {
+                question: "¿Qué registro indica servidores de correo?",
+                options: ["MX", "AAAA", "CNAME"],
+                correct: 0,
+                explanation: "MX define los servidores responsables de recibir correo del dominio."
+              },
+              {
+                question: "¿Qué política ayuda a decidir qué hacer cuando falla la autenticación de correo?",
+                options: ["CNAME", "DMARC", "NS"],
+                correct: 1,
+                explanation: "DMARC define políticas y reportes para fallos de SPF o DKIM."
+              },
+              {
+                question: "¿Cuál es una buena práctica al interpretar DNS?",
+                options: ["Reportar todo como crítico", "Validar contexto e impacto", "Ignorar registros TXT"],
+                correct: 1,
+                explanation: "DNS requiere contexto; no toda señal implica riesgo alto."
+              }
+            ]
+          }
+        }
+      ]
+    },
+    infra3: {
+      academyId: "infrastructure",
+      title: "Módulo 3: Subdominios y Certificados",
+      description: "Descubrimiento de assets públicos y lectura de Certificate Transparency",
+      totalSlides: 5,
+      slides: [
+        {
+          id: 1,
+          title: "Subdominios como inventario vivo",
+          content: `
+            <h2>Assets que aparecen y quedan</h2>
+            <p>Los subdominios revelan aplicaciones, proveedores, entornos de prueba, regiones, APIs y convenciones internas.</p>
+            <p>El valor defensivo está en detectar lo que sigue visible, lo que ya no debería existir y lo que no tiene propietario claro.</p>
+          `,
+          interactive: {
+            type: 'icons',
+            items: [
+              { icon: Server, label: 'Apps' },
+              { icon: Globe, label: 'APIs' },
+              { icon: Lock, label: 'Certificados' },
+              { icon: Target, label: 'Dueño' }
+            ]
+          }
+        },
+        {
+          id: 2,
+          title: "Certificate Transparency",
+          content: `
+            <h2>Certificados como fuente OSINT</h2>
+            <p>Los logs de Certificate Transparency permiten observar certificados emitidos para un dominio. Esto puede revelar subdominios aunque no estén enlazados desde la web principal.</p>
+            <div class="highlight-box">
+              <p>📜 <strong>Importante:</strong> un certificado histórico no confirma que el servicio siga activo. Siempre hay que verificar estado actual.</p>
+            </div>
+          `,
+          interactive: {
+            type: 'progress_bar',
+            items: [
+              { label: 'Certificados activos', percentage: 35 },
+              { label: 'Certificados históricos', percentage: 30 },
+              { label: 'Wildcards', percentage: 20 },
+              { label: 'Falsos positivos', percentage: 15 }
+            ]
+          }
+        },
+        {
+          id: 3,
+          title: "Patrones de nombres",
+          content: `
+            <h2>Lo que dice el naming</h2>
+            <p>Los nombres de subdominios pueden exponer propósito, entorno o proveedor: <strong>vpn</strong>, <strong>dev</strong>, <strong>staging</strong>, <strong>jira</strong>, <strong>api</strong>, <strong>sso</strong>.</p>
+            <div class="dorks-examples">
+              <div class="dork-example"><code>staging.empresa.com</code><p>Posible entorno de prueba.</p></div>
+              <div class="dork-example"><code>vpn.empresa.com</code><p>Acceso remoto o portal corporativo.</p></div>
+              <div class="dork-example"><code>old-api.empresa.com</code><p>Servicio legado o transición.</p></div>
+            </div>
+          `,
+          interactive: {
+            type: 'icons',
+            items: [
+              { icon: AlertTriangle, label: 'Staging' },
+              { icon: Lock, label: 'VPN' },
+              { icon: Server, label: 'API' },
+              { icon: Database, label: 'Legado' }
+            ]
+          }
+        },
+        {
+          id: 4,
+          title: "Priorizar hallazgos",
+          content: `
+            <h2>No todos los subdominios pesan igual</h2>
+            <p>La prioridad sube cuando un asset está activo, expone autenticación, parece no estar mantenido o pertenece a un entorno no productivo.</p>
+            <div class="methodology-steps">
+              <div class="step"><span class="step-number">1</span><div><h3>Activo</h3><p>Resuelve y responde actualmente.</p></div></div>
+              <div class="step"><span class="step-number">2</span><div><h3>Sensible</h3><p>Indica login, admin, VPN, SSO, API o staging.</p></div></div>
+              <div class="step"><span class="step-number">3</span><div><h3>Remediable</h3><p>Tiene dueño, proveedor o camino claro de corrección.</p></div></div>
+            </div>
+          `,
+          interactive: {
+            type: 'progress_bar',
+            items: [
+              { label: 'Activo', percentage: 35 },
+              { label: 'Sensible', percentage: 35 },
+              { label: 'Expuesto', percentage: 20 },
+              { label: 'Sin dueño', percentage: 10 }
+            ]
+          }
+        },
+        {
+          id: 5,
+          title: "Autoevaluación - Subdominios",
+          content: `
+            <h2>🎯 Evalúa tu análisis de assets</h2>
+            <p>Clasifica señales típicas de subdominios y certificados.</p>
+          `,
+          interactive: {
+            type: 'quiz',
+            questions: [
+              {
+                question: "¿Qué permite descubrir Certificate Transparency?",
+                options: ["Contraseñas", "Certificados emitidos y posibles subdominios", "Mensajes privados"],
+                correct: 1,
+                explanation: "Los logs CT muestran certificados emitidos, que pueden revelar nombres de host."
+              },
+              {
+                question: "¿Qué subdominio suele requerir revisión prioritaria?",
+                options: ["www", "staging", "cdn"],
+                correct: 1,
+                explanation: "staging puede indicar un entorno de prueba expuesto públicamente."
+              },
+              {
+                question: "¿Un certificado histórico confirma que el servicio sigue activo?",
+                options: ["Sí, siempre", "No, hay que verificar estado actual", "Solo si es wildcard"],
+                correct: 1,
+                explanation: "Los certificados históricos son pistas, no confirmación de exposición actual."
+              }
+            ]
+          }
+        }
+      ]
+    },
+    infra4: {
+      academyId: "infrastructure",
+      title: "Módulo 4: Email y Phishing Defensivo",
+      description: "Señales públicas para evaluar suplantación, brechas y reputación",
+      totalSlides: 5,
+      slides: [
+        {
+          id: 1,
+          title: "Correo como vector de abuso",
+          content: `
+            <h2>Identidad, confianza y fraude</h2>
+            <p>El email combina identidad técnica y percepción humana. Un dominio mal protegido o un dominio parecido puede ser suficiente para engañar a usuarios o clientes.</p>
+            <div class="highlight-box">
+              <p>📧 <strong>Objetivo defensivo:</strong> reducir la facilidad de suplantación y detectar señales tempranas de abuso.</p>
+            </div>
+          `,
+          interactive: {
+            type: 'icons',
+            items: [
+              { icon: Mail, label: 'Remitente' },
+              { icon: Globe, label: 'Dominio' },
+              { icon: Shield, label: 'Política' },
+              { icon: AlertTriangle, label: 'Phishing' }
+            ]
+          }
+        },
+        {
+          id: 2,
+          title: "Dominios parecidos",
+          content: `
+            <h2>Typosquatting y confusión visual</h2>
+            <p>Los dominios similares aprovechan errores de tipeo, caracteres parecidos o palabras agregadas para parecer legítimos.</p>
+            <div class="dorks-examples">
+              <div class="dork-example"><code>empresa-seguridad.com</code><p>Agrega una palabra confiable.</p></div>
+              <div class="dork-example"><code>ernpresa.com</code><p>Cambia letras visualmente similares.</p></div>
+              <div class="dork-example"><code>empresa.co</code><p>Usa otro TLD para confundir.</p></div>
+            </div>
+          `,
+          interactive: {
+            type: 'progress_bar',
+            items: [
+              { label: 'TLD alternativo', percentage: 30 },
+              { label: 'Palabra agregada', percentage: 30 },
+              { label: 'Letra parecida', percentage: 25 },
+              { label: 'Guiones', percentage: 15 }
+            ]
+          }
+        },
+        {
+          id: 3,
+          title: "Brechas y exposición de cuentas",
+          content: `
+            <h2>Qué aporta una búsqueda de brechas</h2>
+            <p>Encontrar un correo en una brecha no significa que la cuenta actual esté comprometida. Sí indica que puede existir riesgo de reutilización de contraseñas, spam dirigido o intentos de acceso.</p>
+            <div class="applications-grid">
+              <div class="app-card">
+                <h3>Señal útil</h3>
+                <p>Fecha de brecha, tipo de datos comprometidos y volumen afectado.</p>
+              </div>
+              <div class="app-card">
+                <h3>Acción defensiva</h3>
+                <p>Revisión de MFA, rotación de credenciales y concientización puntual.</p>
+              </div>
+            </div>
+          `,
+          interactive: {
+            type: 'icons',
+            items: [
+              { icon: Database, label: 'Brecha' },
+              { icon: Mail, label: 'Cuenta' },
+              { icon: Lock, label: 'MFA' },
+              { icon: Shield, label: 'Rotación' }
+            ]
+          }
+        },
+        {
+          id: 4,
+          title: "Headers y reputación",
+          content: `
+            <h2>Leer señales sin invadir</h2>
+            <p>El análisis de headers permite revisar rutas de entrega, autenticación y alineación de dominios en mensajes disponibles para el analista.</p>
+            <ul>
+              <li><strong>Received:</strong> ruta declarada por servidores.</li>
+              <li><strong>Authentication-Results:</strong> resultado de SPF, DKIM y DMARC.</li>
+              <li><strong>Return-Path:</strong> dominio de rebote y alineación.</li>
+              <li><strong>Reply-To:</strong> desvíos sospechosos de respuesta.</li>
+            </ul>
+          `,
+          interactive: {
+            type: 'progress_bar',
+            items: [
+              { label: 'Autenticación', percentage: 40 },
+              { label: 'Alineación', percentage: 25 },
+              { label: 'Ruta', percentage: 20 },
+              { label: 'Contenido', percentage: 15 }
+            ]
+          }
+        },
+        {
+          id: 5,
+          title: "Autoevaluación - Email",
+          content: `
+            <h2>🎯 Evalúa señales de phishing</h2>
+            <p>Demuestra criterio para priorizar hallazgos de correo.</p>
+          `,
+          interactive: {
+            type: 'quiz',
+            questions: [
+              {
+                question: "¿Qué significa encontrar un email en una brecha?",
+                options: ["Compromiso actual confirmado", "Señal de riesgo que requiere contexto", "Nada útil"],
+                correct: 1,
+                explanation: "Una brecha es señal de riesgo, pero debe interpretarse con fecha, tipo de datos y controles actuales."
+              },
+              {
+                question: "¿Qué control reduce suplantación de dominio por correo?",
+                options: ["DMARC", "robots.txt", "CNAME"],
+                correct: 0,
+                explanation: "DMARC ayuda a indicar qué hacer ante mensajes que fallan autenticación."
+              },
+              {
+                question: "¿Qué dominio parece más sospechoso para una marca llamada empresa.com?",
+                options: ["blog.empresa.com", "empresa-seguridad.com", "cdn.empresa.com"],
+                correct: 1,
+                explanation: "empresa-seguridad.com es un dominio parecido pero independiente, típico de suplantación."
+              }
+            ]
+          }
+        }
+      ]
+    },
+    infra5: {
+      academyId: "infrastructure",
+      title: "Módulo 5: SSL, Headers y Tecnologías",
+      description: "Hardening visible, fingerprinting tecnológico y reporte ejecutivo",
+      totalSlides: 5,
+      slides: [
+        {
+          id: 1,
+          title: "Configuración visible",
+          content: `
+            <h2>Lo que una web revela al responder</h2>
+            <p>Sin autenticarse ni interactuar de forma invasiva, una respuesta web puede revelar TLS, headers de seguridad, tecnologías, redirecciones y patrones operativos.</p>
+            <div class="highlight-box">
+              <p>🛡️ <strong>Foco:</strong> observar configuración pública, estimar riesgo y recomendar hardening.</p>
+            </div>
+          `,
+          interactive: {
+            type: 'icons',
+            items: [
+              { icon: Lock, label: 'TLS' },
+              { icon: Shield, label: 'Headers' },
+              { icon: Server, label: 'Stack' },
+              { icon: Target, label: 'Prioridad' }
+            ]
+          }
+        },
+        {
+          id: 2,
+          title: "TLS y HSTS",
+          content: `
+            <h2>Transporte seguro</h2>
+            <p>Un certificado válido no es toda la historia. También importan versiones TLS, redirecciones HTTPS y políticas como HSTS.</p>
+            <ul>
+              <li><strong>Certificado válido:</strong> identidad y vigencia del sitio.</li>
+              <li><strong>TLS moderno:</strong> evita protocolos obsoletos.</li>
+              <li><strong>HSTS:</strong> ayuda a forzar navegación HTTPS.</li>
+            </ul>
+          `,
+          interactive: {
+            type: 'progress_bar',
+            items: [
+              { label: 'Certificado válido', percentage: 35 },
+              { label: 'TLS moderno', percentage: 30 },
+              { label: 'Redirección HTTPS', percentage: 20 },
+              { label: 'HSTS', percentage: 15 }
+            ]
+          }
+        },
+        {
+          id: 3,
+          title: "Headers de seguridad",
+          content: `
+            <h2>Pequeñas políticas, gran efecto</h2>
+            <p>Los headers no reemplazan una arquitectura segura, pero reducen clases comunes de abuso del navegador.</p>
+            <div class="tools-showcase">
+              <div class="tool-item"><strong>Content-Security-Policy</strong><p>Limita orígenes permitidos para scripts y recursos.</p></div>
+              <div class="tool-item"><strong>X-Frame-Options</strong><p>Reduce riesgo de clickjacking.</p></div>
+              <div class="tool-item"><strong>Referrer-Policy</strong><p>Controla cuánto contexto viaja en enlaces.</p></div>
+              <div class="tool-item"><strong>Permissions-Policy</strong><p>Restringe APIs del navegador.</p></div>
+            </div>
+          `,
+          interactive: {
+            type: 'icons',
+            items: [
+              { icon: Shield, label: 'CSP' },
+              { icon: Eye, label: 'Frame' },
+              { icon: Globe, label: 'Referrer' },
+              { icon: Lock, label: 'Permisos' }
+            ]
+          }
+        },
+        {
+          id: 4,
+          title: "Tecnologías y reporte",
+          content: `
+            <h2>De fingerprinting a remediación</h2>
+            <p>Detectar tecnologías sirve para orientar revisión, no para exagerar riesgo. Versiones, frameworks y proveedores deben conectarse con impacto real.</p>
+            <div class="methodology-steps">
+              <div class="step"><span class="step-number">1</span><div><h3>Hallazgo</h3><p>Qué se observó y dónde.</p></div></div>
+              <div class="step"><span class="step-number">2</span><div><h3>Impacto</h3><p>Por qué importa para la organización.</p></div></div>
+              <div class="step"><span class="step-number">3</span><div><h3>Acción</h3><p>Qué cambio defensivo se recomienda.</p></div></div>
+            </div>
+          `,
+          interactive: {
+            type: 'progress_bar',
+            items: [
+              { label: 'Evidencia', percentage: 35 },
+              { label: 'Impacto', percentage: 30 },
+              { label: 'Recomendación', percentage: 25 },
+              { label: 'Dueño', percentage: 10 }
+            ]
+          }
+        },
+        {
+          id: 5,
+          title: "Autoevaluación - Hardening",
+          content: `
+            <h2>🎯 Cierre del curso</h2>
+            <p>Valida tu criterio antes de pasar al laboratorio simulado.</p>
+          `,
+          interactive: {
+            type: 'quiz',
+            questions: [
+              {
+                question: "¿Qué indica HSTS?",
+                options: ["Política para forzar HTTPS", "Servidor de correo", "Alias DNS"],
+                correct: 0,
+                explanation: "HSTS ayuda a que el navegador use HTTPS de forma estricta para el dominio."
+              },
+              {
+                question: "¿Qué debería tener un buen hallazgo?",
+                options: ["Solo una captura", "Evidencia, impacto y recomendación", "Una opinión fuerte"],
+                correct: 1,
+                explanation: "Un reporte útil conecta evidencia verificable con impacto y acción."
+              },
+              {
+                question: "¿Detectar una tecnología siempre implica vulnerabilidad?",
+                options: ["Sí", "No, requiere versión, contexto e impacto", "Solo si es JavaScript"],
+                correct: 1,
+                explanation: "El fingerprinting orienta revisión, pero no prueba riesgo por sí solo."
+              }
+            ]
+          }
+        }
+      ]
     }
   }
 
@@ -1750,6 +2428,14 @@ const LessonViewer = () => {
   )
 
   useEffect(() => {
+    setCurrentSlide(0)
+    setIsCompleted(false)
+    setProgress(0)
+    setQuizResults({})
+    setShowQuizResults(false)
+  }, [lessonId])
+
+  useEffect(() => {
     if (currentLesson) {
       setProgress((currentSlide + 1) / currentLesson.totalSlides * 100)
     }
@@ -1759,9 +2445,9 @@ const LessonViewer = () => {
     if (currentSlide < currentLesson.totalSlides - 1) {
       setCurrentSlide(currentSlide + 1)
     } else {
-      // Finalizar módulo y volver a la lista de módulos OSINT
+      // Finalizar módulo y volver a la academia correspondiente
       setIsCompleted(true)
-      navigate('/academy', { state: { selectedAcademy: 'osint' } })
+      navigate('/academy', { state: { selectedAcademy: currentLesson.academyId || 'osint' } })
     }
   }
 
@@ -1797,7 +2483,7 @@ const LessonViewer = () => {
   }
 
   const handleBackToAcademy = () => {
-    navigate('/academy')
+    navigate('/academy', { state: { selectedAcademy: currentLesson?.academyId || 'osint' } })
   }
 
   if (!currentLesson) {

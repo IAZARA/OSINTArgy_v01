@@ -7,7 +7,13 @@ import {
   Search, 
   Clock,
   Unlock,
-  Play
+  Play,
+  Shield,
+  Globe,
+  Server,
+  Mail,
+  Lock,
+  Activity
 } from 'lucide-react'
 import { useNavigate, useLocation } from 'react-router-dom'
 import './AcademyDashboard.css'
@@ -59,8 +65,17 @@ const AcademyDashboard = () => {
       duration: '2.5 horas',
       difficulty: 'principiante',
       color: 'primary'
+    },
+    {
+      id: 'infrastructure',
+      title: 'Huella Digital e Infraestructura Defensiva',
+      description: 'Aprende a mapear dominios, emails, DNS, certificados y riesgos públicos con foco defensivo',
+      icon: Shield,
+      modules: 6,
+      duration: '2 horas',
+      difficulty: 'intermedio',
+      color: 'secondary'
     }
-    // Aquí puedes agregar más academias en el futuro
   ]
 
   // Módulos OSINT
@@ -121,15 +136,80 @@ const AcademyDashboard = () => {
     }
   ]
 
-  const handleAcademyClick = (academy) => {
-    if (academy.id === 'osint') {
-      setSelectedAcademy('osint')
+  const infrastructureModules = [
+    {
+      id: 'infra1',
+      title: 'Módulo 1: Huella Digital Pública',
+      description: 'Entiende qué expone una organización en fuentes abiertas y cómo definir un alcance responsable',
+      icon: Shield,
+      duration: '18 min',
+      difficulty: 'principiante',
+      type: 'lesson'
+    },
+    {
+      id: 'infra2',
+      title: 'Módulo 2: Dominios, WHOIS y DNS',
+      description: 'Interpreta registros DNS, servidores de correo, SPF, DKIM, DMARC y señales de configuración',
+      icon: Globe,
+      duration: '22 min',
+      difficulty: 'intermedio',
+      type: 'lesson'
+    },
+    {
+      id: 'infra3',
+      title: 'Módulo 3: Subdominios y Certificados',
+      description: 'Descubre assets públicos con Certificate Transparency y analiza patrones de exposición',
+      icon: Server,
+      duration: '24 min',
+      difficulty: 'intermedio',
+      type: 'lesson'
+    },
+    {
+      id: 'infra4',
+      title: 'Módulo 4: Email y Phishing Defensivo',
+      description: 'Evalúa correos, dominios parecidos, brechas y señales visibles de suplantación',
+      icon: Mail,
+      duration: '24 min',
+      difficulty: 'intermedio',
+      type: 'lesson'
+    },
+    {
+      id: 'infra5',
+      title: 'Módulo 5: SSL, Headers y Tecnologías',
+      description: 'Lee configuraciones web públicas, prioriza riesgos y convierte hallazgos en recomendaciones',
+      icon: Lock,
+      duration: '26 min',
+      difficulty: 'avanzado',
+      type: 'lesson'
+    },
+    {
+      id: 'infra-lab',
+      title: 'Laboratorio: Auditoría Simulada',
+      description: 'Clasifica hallazgos de un dominio ficticio, usa pistas y arma un reporte defensivo',
+      icon: Activity,
+      duration: '20 min',
+      difficulty: 'intermedio',
+      type: 'lab'
     }
+  ]
+
+  const modulesByAcademy = {
+    osint: osintModules,
+    infrastructure: infrastructureModules
+  }
+
+  const selectedAcademyData = academies.find((academy) => academy.id === selectedAcademy)
+  const selectedModules = modulesByAcademy[selectedAcademy] || []
+
+  const handleAcademyClick = (academy) => {
+    setSelectedAcademy(academy.id)
   }
 
   const handleModuleClick = (module) => {
     if (module.type === 'audio') {
       navigate('/academy/audio')
+    } else if (module.type === 'lab') {
+      navigate('/academy/infrastructure-lab')
     } else {
       navigate(`/academy/lesson/${module.id}`)
     }
@@ -211,13 +291,13 @@ const AcademyDashboard = () => {
                 ← Volver a Academias
               </button>
             </div>
-            <h1>Academia OSINT</h1>
-            <p>Aprende las técnicas de inteligencia de fuentes abiertas de forma interactiva</p>
+            <h1>{selectedAcademyData?.title}</h1>
+            <p>{selectedAcademyData?.description}</p>
           </motion.div>
 
           <motion.div className="modules-section" variants={itemVariants}>
             <div className="modules-grid">
-              {osintModules.map((module, index) => (
+              {selectedModules.map((module, index) => (
                 <motion.button
                   type="button"
                   key={module.id}

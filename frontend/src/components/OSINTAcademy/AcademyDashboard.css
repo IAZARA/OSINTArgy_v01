@@ -188,7 +188,7 @@
 .academy-track-hero h1 {
   max-width: 900px;
   margin: 1rem 0 1.1rem;
-  font-size: clamp(2.75rem, 6.3vw, 6rem);
+  font-size: clamp(2.75rem, 5.2vw, 5.15rem);
   line-height: 0.94;
   letter-spacing: -0.06em;
 }
@@ -197,8 +197,16 @@
   font-size: clamp(2.35rem, 5vw, 4.8rem);
 }
 
+.academy-hero h1 > span,
 .academy-hero h1 em {
   display: block;
+}
+
+.academy-hero h1 > span {
+  white-space: nowrap;
+}
+
+.academy-hero h1 em {
   color: #69c9fb;
   font-style: normal;
 }
@@ -630,6 +638,10 @@
   .academy-hero h1,
   .academy-track-hero h1 {
     font-size: clamp(2.5rem, 12vw, 4rem);
+  }
+
+  .academy-hero h1 > span {
+    white-space: normal;
   }
 
   .academy-journey-card,

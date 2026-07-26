@@ -9,7 +9,6 @@ import {
   FolderKanban,
   GitBranch,
   GraduationCap,
-  Library,
   Plus,
   Search,
   Sparkles
@@ -19,7 +18,7 @@ import { useCases } from '@/context/CaseContext'
 import { useFavorites, useToolHistory } from '@hooks/useTools'
 import { OBJECTIVE_TYPES, searchInvestigation } from '@utils/investigationProject'
 import CaseWizard from '@components/Cases/CaseWizard'
-import BrandSignature from '@components/Common/BrandSignature'
+import SectionNavbar from '@components/Common/SectionNavbar'
 import './ResearchCenter.css'
 
 const formatRelativeDate = (value) => {
@@ -119,17 +118,7 @@ export default function ResearchCenter({ tools = [] }) {
 
   return (
     <div className="research-center">
-      <header className="research-center__header">
-        <div className="research-center__brand">
-          <BrandSignature context="Centro de investigación" compact />
-        </div>
-        <nav aria-label="Navegación principal">
-          <Link to="/investigations"><Library size={17} /> Casos</Link>
-          <Link to="/explore"><Compass size={17} /> Galaxia</Link>
-          <Link to="/osint-flowcharts"><GitBranch size={17} /> Flujos</Link>
-          <Link to="/academy"><GraduationCap size={17} /> Academia</Link>
-        </nav>
-      </header>
+      <SectionNavbar context="Centro de investigación" />
 
       <main className="research-center__main">
         {storageMode === 'localstorage' && (

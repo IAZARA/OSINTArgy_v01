@@ -7,7 +7,6 @@
   --flow-muted: #93a8b7;
   --flow-accent: #5d9ed8;
   min-height: 100dvh;
-  padding: clamp(1rem, 2.5vw, 2.25rem);
   color: var(--flow-text);
   background:
     radial-gradient(circle at 18% -8%, rgba(61, 111, 150, 0.22), transparent 32rem),
@@ -17,6 +16,7 @@
 .flowcharts__container {
   width: min(100%, 1480px);
   margin: 0 auto;
+  padding: clamp(1rem, 2.5vw, 2.25rem);
 }
 
 .flowcharts__landing {
@@ -26,7 +26,7 @@
 
 .flowcharts__hero {
   display: grid;
-  grid-template-columns: minmax(150px, auto) minmax(0, 1fr) auto;
+  grid-template-columns: minmax(0, 1fr) auto;
   align-items: center;
   gap: 1.25rem;
   min-height: 170px;
@@ -45,25 +45,6 @@
   border: 1px solid rgba(124, 177, 219, 0.26);
   color: #8fc2e9;
   background: rgba(63, 116, 158, 0.16);
-}
-
-.flowcharts__brand {
-  display: inline-flex;
-  align-self: start;
-  width: max-content;
-  padding: 0.7rem 0.85rem;
-  border: 1px solid var(--flow-border);
-  border-radius: 14px;
-  background: rgba(5, 13, 19, 0.42);
-}
-
-.flowcharts__brand:hover {
-  border-color: rgba(124, 177, 219, 0.34);
-  text-decoration: none;
-}
-
-.flowcharts__brand img {
-  height: 48px;
 }
 
 .flowcharts__kicker {
@@ -708,13 +689,11 @@
 
 @media (max-width: 1100px) {
   .flowcharts__hero {
-    grid-template-columns: auto minmax(0, 1fr);
+    grid-template-columns: minmax(0, 1fr) auto;
   }
 
   .flowcharts__hero-stats {
-    grid-column: 2;
-    padding: 0;
-    border: 0;
+    padding-left: 1rem;
   }
 
   .flowcharts__grid {
@@ -743,7 +722,7 @@
 }
 
 @media (max-width: 820px) {
-  .osint-flowcharts {
+  .flowcharts__container {
     padding: 0.8rem;
   }
 
@@ -806,10 +785,6 @@
 }
 
 @media (max-width: 560px) {
-  .flowcharts__brand img {
-    height: 38px;
-  }
-
   .flowcharts__hero-stats {
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 0.35rem;

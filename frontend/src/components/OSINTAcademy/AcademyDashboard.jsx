@@ -17,7 +17,6 @@ import {
   Activity,
   CheckCircle2,
   Layers3,
-  Sparkles,
   Trophy
 } from 'lucide-react'
 import { useNavigate, useLocation } from '@/lib/router'
@@ -273,8 +272,8 @@ const AcademyDashboard = () => {
         >
           <motion.section className="academy-hero" variants={itemVariants}>
             <div className="academy-hero__copy">
-              <span className="academy-eyebrow"><Sparkles size={15} /> Aprendizaje práctico y defensivo</span>
-              <h1>Convertí curiosidad en <em>criterio analítico.</em></h1>
+              <span className="academy-eyebrow">Aprendizaje práctico y defensivo</span>
+              <h1><span>Convertí curiosidad en</span><em>criterio analítico.</em></h1>
               <p>
                 Elegí una ruta, avanzá a tu ritmo y practicá cómo documentar evidencia
                 pública de forma ética, trazable y reproducible.

@@ -8,7 +8,6 @@ import {
   Download,
   ExternalLink,
   FilePlus2,
-  GitBranch,
   Globe2,
   LocateFixed,
   Mail,
@@ -30,7 +29,7 @@ import { getFlowchartsInfo, getFlowchartById } from '@/data/flowcharts'
 import { getAllTools } from '@/data/tools/index.js'
 import { useCases } from '@/context/CaseContext'
 import { createChecklistForObjective } from '@utils/investigationProject'
-import BrandSignature from '@components/Common/BrandSignature'
+import SectionNavbar from '@components/Common/SectionNavbar'
 import './OSINTFlowcharts.css'
 
 const NODE_WIDTH = 188
@@ -391,22 +390,20 @@ const OSINTFlowcharts = () => {
   if (!selectedFlowchart) {
     return (
       <div className="osint-flowcharts">
+        <SectionNavbar context="Flujos OSINT" active="flows" />
         <main className="flowcharts__container flowcharts__landing">
-            <header className="flowcharts__hero">
-              <Link to="/" className="flowcharts__brand" aria-label="Ir a la Galaxia de OSINT Argy">
-                <BrandSignature context="Flujos" />
-              </Link>
-              <div>
-                <p className="flowcharts__kicker">Guías de investigación</p>
-                <h1>Flujos OSINT</h1>
+          <header className="flowcharts__hero">
+            <div>
+              <p className="flowcharts__kicker">Guías de investigación</p>
+              <h1>Flujos OSINT</h1>
               <p>Elegí un punto de partida, documentá cada hallazgo y abrí las herramientas necesarias sin perder el contexto.</p>
             </div>
             <div className="flowcharts__hero-stats" aria-label="Resumen de los flujos">
               <span><strong>{flowchartsInfo.length}</strong> recorridos</span>
               <span><strong>{flowchartsInfo.reduce((sum, flow) => sum + getTrackableNodes(getFlowchartById(flow.id)).length, 0)}</strong> pasos</span>
               <span><strong>{toolCatalog.length}</strong> herramientas</span>
-              </div>
-            </header>
+            </div>
+          </header>
 
             <div className="flowcharts__section-heading">
               <div>
@@ -471,6 +468,7 @@ const OSINTFlowcharts = () => {
 
   return (
     <div className="osint-flowcharts">
+      <SectionNavbar context="Flujos OSINT" active="flows" />
       <main className="flowcharts__container flowchart-workspace">
         <header className="flowchart-toolbar">
           <button onClick={handleBackToSelection} className="flowchart-toolbar__back">

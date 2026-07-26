@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react'
 import { Link, useNavigate } from '@/lib/router'
-import { Search, Menu, X, Target, Wrench, ChevronDown, Mail, Upload, User, Shield, Clock, TrendingUp, Info, GraduationCap, GitBranch } from 'lucide-react'
+import { Search, Menu, X, Target, Wrench, ChevronDown, Mail, Upload, User, Shield, Clock, TrendingUp, Info, GraduationCap, GitBranch, Network } from 'lucide-react'
 import { debounce } from '@utils/helpers'
 import { SEARCH } from '@utils/constants'
 import { useTools } from '@hooks/useTools'
@@ -358,6 +358,18 @@ const Header = ({
 
                 <div className="system-menu__section">
                   <Link
+                    to="/investigation-board"
+                    className="system-menu__item"
+                    onClick={() => setIsSystemMenuOpen(false)}
+                  >
+                    <Network size={16} />
+                    <div className="system-menu__item-content">
+                      <span className="system-menu__item-title">Tablero de Investigación</span>
+                      <span className="system-menu__item-description">Conecta entidades, relaciones y ubicaciones en un caso local</span>
+                    </div>
+                  </Link>
+
+                  <Link
                     to="/osint-flowcharts"
                     className="system-menu__item"
                     onClick={() => setIsSystemMenuOpen(false)}
@@ -500,6 +512,18 @@ const Header = ({
                   <span className="mobile-system-action-description">Información sobre OSINT Argy</span>
                 </div>
               </Link>
+              <Link
+                to="/investigation-board"
+                className="mobile-system-action"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                <Network size={16} />
+                <div className="mobile-system-action-content">
+                  <span className="mobile-system-action-title">Tablero de Investigación</span>
+                  <span className="mobile-system-action-description">Organiza entidades, vínculos y lugares</span>
+                </div>
+              </Link>
+
               <Link
                 to="/osint-flowcharts"
                 className="mobile-system-action"

@@ -18,6 +18,7 @@ import './styles/maltego-theme.css'
 
 const GalaxyView = lazy(() => import('@components/GalaxyView/GalaxyView'))
 const OSINTFlowcharts = lazy(() => import('@components/OSINTFlowcharts/OSINTFlowcharts'))
+const InvestigationBoard = lazy(() => import('@components/InvestigationBoard/InvestigationBoard'))
 const DorkGenerator = lazy(() => import('@components/DorkGenerator/DorkGenerator'))
 const EmailOSINT = lazy(() => import('@components/EmailOSINT/EmailOSINT'))
 const FileAnalysis = lazy(() => import('@components/FileAnalysis/FileAnalysis'))
@@ -52,10 +53,11 @@ function App() {
     declineDisclaimer 
   } = useDisclaimer()
 
-  // Determinar si estamos en una ruta de Academy o OSINT Flowcharts
+  // Determinar qué herramientas usan una experiencia de pantalla completa
   const isAcademyRoute = location.pathname.startsWith('/academy')
   const isFlowchartsRoute = location.pathname.startsWith('/osint-flowcharts')
-  const shouldHideNavbar = isAcademyRoute || isFlowchartsRoute
+  const isInvestigationRoute = location.pathname.startsWith('/investigation-board')
+  const shouldHideNavbar = isAcademyRoute || isFlowchartsRoute || isInvestigationRoute
 
   // Manejar búsqueda
   const handleSearch = (query) => {
@@ -154,6 +156,7 @@ function App() {
             />
 
             <Route path="/osint-flowcharts" element={<OSINTFlowcharts />} />
+            <Route path="/investigation-board" element={<InvestigationBoard />} />
             <Route path="/dorks" element={<DorkGenerator />} />
             <Route path="/email-osint" element={<EmailOSINT />} />
             <Route path="/file-analysis" element={<FileAnalysis />} />
@@ -172,8 +175,8 @@ function App() {
         </Suspense>
       </main>
 
-      {/* Botón flotante para volver al inicio - Solo mostrar en Academy y Flowcharts */}
-      {shouldHideNavbar && <FloatingHomeButton />}
+      {/* El tablero ya incorpora su propio control de regreso */}
+      {(isAcademyRoute || isFlowchartsRoute) && <FloatingHomeButton />}
 
       {/* Notificaciones toast */}
       <Toaster

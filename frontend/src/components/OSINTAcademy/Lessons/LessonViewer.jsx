@@ -2510,11 +2510,20 @@ const LessonViewer = () => {
           <h1>{currentLesson.title}</h1>
           <p>{currentLesson.description}</p>
         </div>
-        <div className="lesson-progress">
-          <span>{currentSlide + 1} / {currentLesson.totalSlides}</span>
-          <div className="progress-bar">
-            <div 
-              className="progress-fill"
+        <div className="lesson-progress" aria-label={`Progreso de la lección: ${Math.round(progress)}%`}>
+          <div className="lesson-progress__meta">
+            <span>Diapositiva {currentSlide + 1} de {currentLesson.totalSlides}</span>
+            <strong>{Math.round(progress)}%</strong>
+          </div>
+          <div
+            className="lesson-progress__track"
+            role="progressbar"
+            aria-valuemin="0"
+            aria-valuemax="100"
+            aria-valuenow={Math.round(progress)}
+          >
+            <i
+              className="lesson-progress__fill"
               style={{ width: `${progress}%` }}
             />
           </div>
@@ -2564,6 +2573,9 @@ const LessonViewer = () => {
               key={index}
               className={`indicator ${index === currentSlide ? 'active' : ''} ${index < currentSlide ? 'completed' : ''}`}
               onClick={() => setCurrentSlide(index)}
+              aria-label={`Ir a la diapositiva ${index + 1}`}
+              aria-current={index === currentSlide ? 'step' : undefined}
+              title={`Diapositiva ${index + 1}`}
             />
           ))}
         </div>

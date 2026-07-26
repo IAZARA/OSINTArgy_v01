@@ -255,7 +255,14 @@ const AcademyDashboard = () => {
         <BrandSignature context="Academia" compact className="academy-topbar__brand" />
         <div className="academy-topbar__progress" aria-label={`${overallProgress}% de progreso total`}>
           <span>{completedCount}/{totalModules} módulos</span>
-          <div><i style={{ width: `${overallProgress}%` }} /></div>
+          <div
+            role="progressbar"
+            aria-valuemin="0"
+            aria-valuemax="100"
+            aria-valuenow={overallProgress}
+          >
+            <i style={{ width: `${overallProgress}%` }} />
+          </div>
           <strong>{overallProgress}%</strong>
         </div>
       </header>
@@ -287,7 +294,16 @@ const AcademyDashboard = () => {
             <aside className="academy-journey-card">
               <span>Tu recorrido</span>
               <strong>{overallProgress}%</strong>
-              <div className="academy-journey-card__track"><i style={{ width: `${overallProgress}%` }} /></div>
+              <div
+                className="academy-journey-card__track"
+                role="progressbar"
+                aria-label="Progreso total"
+                aria-valuemin="0"
+                aria-valuemax="100"
+                aria-valuenow={overallProgress}
+              >
+                <i style={{ width: `${overallProgress}%` }} />
+              </div>
               <p>
                 {completedCount
                   ? `Completaste ${completedCount} de ${totalModules} módulos.`
@@ -367,7 +383,16 @@ const AcademyDashboard = () => {
                 <strong>{selectedProgress}%</strong>
                 <small>{selectedCompletedCount}/{selectedModules.length} completados</small>
               </div>
-              <div className="academy-track-progress__bar"><i style={{ width: `${selectedProgress}%` }} /></div>
+              <div
+                className="academy-track-progress__bar"
+                role="progressbar"
+                aria-label={`Progreso de ${selectedAcademyData?.title}`}
+                aria-valuemin="0"
+                aria-valuemax="100"
+                aria-valuenow={selectedProgress}
+              >
+                <i style={{ width: `${selectedProgress}%` }} />
+              </div>
               {nextModule ? (
                 <button type="button" onClick={() => handleModuleClick(nextModule)}>
                   {selectedCompletedCount ? 'Continuar recorrido' : 'Comenzar recorrido'}

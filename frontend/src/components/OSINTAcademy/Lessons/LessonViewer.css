@@ -1,11 +1,21 @@
 .lesson-viewer {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: var(--maltego-spacing-xl);
-  min-height: calc(100vh - 80px);
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: clamp(1rem, 2.5vw, 2.5rem);
+  min-height: 100vh;
+  min-height: 100dvh;
   background: #0a0a0a;
   color: var(--maltego-text-primary);
   font-family: var(--maltego-font-family);
+}
+
+.lesson-header,
+.lesson-content,
+.lesson-navigation {
+  width: min(1280px, 100%);
+  margin-right: auto;
+  margin-left: auto;
 }
 
 .lesson-header {
@@ -65,35 +75,57 @@
 }
 
 .lesson-progress {
+  display: grid;
+  gap: 0.65rem;
+  width: clamp(190px, 16vw, 250px);
+  flex: 0 0 auto;
+}
+
+.lesson-progress__meta {
   display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 0.5rem;
-  min-width: 120px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
 }
 
-.lesson-progress span {
-  font-size: var(--maltego-font-size-sm);
-  font-weight: var(--maltego-font-weight-semibold);
+.lesson-progress__meta span {
   color: var(--maltego-text-secondary);
+  font-size: 0.72rem;
+  font-weight: var(--maltego-font-weight-semibold);
+  letter-spacing: 0.025em;
 }
 
-.progress-bar {
-  width: 120px;
-  height: 12px;
-  background: var(--maltego-surface);
-  border: 1px solid var(--maltego-border);
-  border-radius: var(--maltego-border-radius-full);
+.lesson-progress__meta strong {
+  min-width: 2.6rem;
+  color: #dff7ff;
+  font-size: 0.78rem;
+  text-align: right;
+}
+
+.lesson-progress__track {
+  width: 100%;
+  height: 9px;
   overflow: hidden;
-  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
+  padding: 1px;
+  border: 1px solid rgba(86, 194, 240, 0.28);
+  border-radius: 999px;
+  background: rgba(1, 10, 17, 0.72);
+  box-shadow:
+    inset 0 2px 5px rgba(0, 0, 0, 0.38),
+    0 0 0 1px rgba(255, 255, 255, 0.015);
 }
 
-.progress-fill {
+.lesson-progress__fill {
+  position: relative;
+  display: block;
   height: 100%;
-  background: var(--maltego-gradient-central);
-  transition: width 0.3s ease;
-  box-shadow: var(--maltego-glow-primary);
-  border-radius: var(--maltego-border-radius-full);
+  min-width: 5px;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #10bce9 0%, #48d8ff 58%, #6fe6c0 100%);
+  box-shadow:
+    0 0 12px rgba(22, 198, 239, 0.48),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4);
+  transition: width 0.45s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 /* Contenido de la lección */
@@ -565,37 +597,46 @@
 
 .slide-indicators {
   display: flex;
-  gap: 0.5rem;
   align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  width: clamp(210px, 32vw, 390px);
 }
 
 .indicator {
-  width: 16px;
-  height: 8px;
-  border-radius: var(--maltego-border-radius-sm);
-  border: 1px solid var(--maltego-border);
-  background: var(--maltego-card);
-  cursor: pointer;
-  transition: var(--maltego-transition-medium);
   position: relative;
+  flex: 1 1 24px;
+  min-width: 14px;
+  max-width: 54px;
+  height: 7px;
+  padding: 0;
+  border: 1px solid rgba(105, 185, 224, 0.24);
+  border-radius: 999px;
+  background: rgba(2, 15, 24, 0.72);
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.36);
+  cursor: pointer;
+  transition:
+    background 180ms ease,
+    border-color 180ms ease,
+    box-shadow 180ms ease,
+    transform 180ms ease;
 }
 
 .indicator.active {
-  background: var(--maltego-primary);
-  border-color: var(--maltego-primary);
-  box-shadow: var(--maltego-glow-primary);
-  transform: scale(1.2);
+  border-color: #4ad8ff;
+  background: linear-gradient(90deg, #14bce9, #50dcff);
+  box-shadow: 0 0 14px rgba(32, 200, 242, 0.38);
 }
 
 .indicator.completed {
-  background: var(--maltego-accent-green);
-  border-color: var(--maltego-accent-green);
-  box-shadow: var(--maltego-glow-verified);
+  border-color: rgba(90, 216, 164, 0.72);
+  background: linear-gradient(90deg, #3bbf88, #64dba8);
+  box-shadow: 0 0 10px rgba(76, 204, 148, 0.22);
 }
 
 .indicator:hover {
-  transform: scale(1.1);
-  border-color: var(--maltego-border-active);
+  border-color: #74ddff;
+  transform: translateY(-1px);
 }
 
 .lesson-error {
@@ -949,6 +990,10 @@
     text-align: center;
   }
 
+  .lesson-progress {
+    width: min(100%, 360px);
+  }
+
   .lesson-info {
     margin: 0;
   }
@@ -972,6 +1017,11 @@
   .lesson-navigation {
     flex-direction: column;
     gap: 1rem;
+  }
+
+  .slide-indicators {
+    order: -1;
+    width: min(100%, 390px);
   }
 
   .nav-button {
@@ -1045,19 +1095,6 @@
 .slide {
   position: relative;
   z-index: 1;
-}
-
-.lesson-viewer .progress-fill {
-  transition: width 0.45s cubic-bezier(0.22, 1, 0.36, 1);
-  position: relative;
-}
-
-.lesson-viewer .progress-fill::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.42), transparent);
-  animation: progressSweep 1.8s ease-in-out infinite;
 }
 
 .slide-text li,
@@ -1168,15 +1205,6 @@
   }
 }
 
-@keyframes progressSweep {
-  0%, 100% {
-    transform: translateX(-100%);
-  }
-  50% {
-    transform: translateX(100%);
-  }
-}
-
 @media (prefers-reduced-motion: reduce) {
   .lesson-viewer::before,
   .lesson-header,
@@ -1192,8 +1220,7 @@
   .file-type,
   .analysis-tool,
   .principle-item,
-  .workflow-step,
-  .lesson-viewer .progress-fill::after {
+  .workflow-step {
     animation: none;
   }
 }

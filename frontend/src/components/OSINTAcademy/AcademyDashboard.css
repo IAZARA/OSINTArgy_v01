@@ -87,9 +87,9 @@
 
 .academy-topbar__progress {
   display: grid;
-  grid-template-columns: auto minmax(80px, 140px) auto;
+  grid-template-columns: auto minmax(110px, 180px) auto;
   align-items: center;
-  gap: 0.65rem;
+  gap: 0.75rem;
   justify-self: end;
   color: var(--academy-muted);
   font-size: 0.72rem;
@@ -98,10 +98,15 @@
 .academy-topbar__progress > div,
 .academy-journey-card__track,
 .academy-track-progress__bar {
-  height: 6px;
+  height: 10px;
   overflow: hidden;
+  padding: 1px;
+  border: 1px solid rgba(94, 183, 226, 0.2);
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(2, 12, 19, 0.66);
+  box-shadow:
+    inset 0 2px 5px rgba(0, 0, 0, 0.38),
+    0 0 0 1px rgba(255, 255, 255, 0.015);
 }
 
 .academy-topbar__progress i,
@@ -110,14 +115,22 @@
   display: block;
   height: 100%;
   border-radius: inherit;
-  background: linear-gradient(90deg, #56b9f4, #57d19b);
-  box-shadow: 0 0 18px rgba(86, 185, 244, 0.28);
+  background: linear-gradient(90deg, #27b9ed 0%, #5bcdf7 52%, #62d6a2 100%);
+  box-shadow:
+    0 0 14px rgba(74, 194, 242, 0.34),
+    inset 0 1px 0 rgba(255, 255, 255, 0.34);
+  transition: width 420ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .academy-topbar__progress strong {
-  min-width: 2.4rem;
-  color: #dff3ff;
+  min-width: 3rem;
+  padding: 0.28rem 0.45rem;
+  border: 1px solid rgba(97, 192, 236, 0.18);
+  border-radius: 7px;
+  color: #dff6ff;
+  background: rgba(46, 153, 201, 0.09);
   font-size: 0.78rem;
+  text-align: center;
 }
 
 .academy-view {

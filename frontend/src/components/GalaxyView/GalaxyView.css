@@ -774,6 +774,7 @@
 }
 
 .cancel-btn,
+.add-case-btn,
 .open-tool-btn {
   flex: 1;
   padding: 12px 20px;
@@ -787,6 +788,17 @@
   align-items: center;
   justify-content: center;
   gap: 8px;
+}
+
+.add-case-btn {
+  background: rgba(125, 92, 255, 0.18);
+  border-color: rgba(154, 126, 255, 0.75);
+  color: #cbbcff;
+}
+
+.add-case-btn:hover {
+  background: rgba(125, 92, 255, 0.32);
+  transform: translateY(-2px);
 }
 
 .cancel-btn {
@@ -859,6 +871,7 @@
   }
   
   .cancel-btn,
+  .add-case-btn,
   .open-tool-btn {
     padding: 14px 20px;
   }

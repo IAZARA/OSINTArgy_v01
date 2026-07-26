@@ -17,6 +17,8 @@ import './App.css'
 import './styles/maltego-theme.css'
 
 const GalaxyView = lazy(() => import('@components/GalaxyView/GalaxyView'))
+const ResearchCenter = lazy(() => import('@components/ResearchCenter/ResearchCenter'))
+const CaseLibrary = lazy(() => import('@components/Cases/CaseLibrary'))
 const OSINTFlowcharts = lazy(() => import('@components/OSINTFlowcharts/OSINTFlowcharts'))
 const InvestigationBoard = lazy(() => import('@components/InvestigationBoard/InvestigationBoard'))
 const DorkGenerator = lazy(() => import('@components/DorkGenerator/DorkGenerator'))
@@ -57,7 +59,15 @@ function App() {
   const isAcademyRoute = location.pathname.startsWith('/academy')
   const isFlowchartsRoute = location.pathname.startsWith('/osint-flowcharts')
   const isInvestigationRoute = location.pathname.startsWith('/investigation-board')
-  const shouldHideNavbar = isAcademyRoute || isFlowchartsRoute || isInvestigationRoute
+  const isCaseLibraryRoute = location.pathname.startsWith('/investigations')
+  const isResearchCenterRoute = location.pathname === '/'
+  const shouldHideNavbar = (
+    isAcademyRoute
+    || isFlowchartsRoute
+    || isInvestigationRoute
+    || isCaseLibraryRoute
+    || isResearchCenterRoute
+  )
 
   // Manejar búsqueda
   const handleSearch = (query) => {
@@ -142,6 +152,11 @@ function App() {
           <Routes>
             <Route
               path="/"
+              element={<ResearchCenter tools={tools} />}
+            />
+
+            <Route
+              path="/explore"
               element={
                 <div className="app-content">
                   <GalaxyView
@@ -154,9 +169,10 @@ function App() {
                 </div>
               }
             />
-
+            <Route path="/investigations" element={<CaseLibrary />} />
             <Route path="/osint-flowcharts" element={<OSINTFlowcharts />} />
-            <Route path="/investigation-board" element={<InvestigationBoard />} />
+            <Route path="/investigation-board/:caseId" element={<InvestigationBoard />} />
+            <Route path="/investigation-board" element={<CaseLibrary />} />
             <Route path="/dorks" element={<DorkGenerator />} />
             <Route path="/email-osint" element={<EmailOSINT />} />
             <Route path="/file-analysis" element={<FileAnalysis />} />

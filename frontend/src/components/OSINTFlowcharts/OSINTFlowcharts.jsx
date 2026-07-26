@@ -6,6 +6,7 @@ import {
   Circle,
   Download,
   ExternalLink,
+  FilePlus2,
   GitBranch,
   Globe2,
   LocateFixed,
@@ -26,6 +27,8 @@ import { Link } from '@/lib/router'
 import toast from 'react-hot-toast'
 import { getFlowchartsInfo, getFlowchartById } from '@/data/flowcharts'
 import { getAllTools } from '@/data/tools/index.js'
+import { useCases } from '@/context/CaseContext'
+import { createChecklistForObjective } from '@utils/investigationProject'
 import './OSINTFlowcharts.css'
 
 const NODE_WIDTH = 188
@@ -169,6 +172,8 @@ const countFlowTools = (flowchart) => new Set(
   flowchart.nodes.flatMap((node) => node.tools || [])
 ).size
 
+const getTrackableNodes = (flowchart) => flowchart.nodes.filter((node) => node.type !== 'start')
+
 const ToolLink = ({ toolName, tool }) => {
   if (!tool) return <span className="node-tool node-tool--unlinked">{toolName}</span>
 
@@ -191,6 +196,7 @@ const ToolLink = ({ toolName, tool }) => {
 }
 
 const OSINTFlowcharts = () => {
+  const { activeCase, saveCase } = useCases()
   const [selectedFlowchart, setSelectedFlowchart] = useState(null)
   const [completedSteps, setCompletedSteps] = useState(() => {
     try {
@@ -249,9 +255,16 @@ const OSINTFlowcharts = () => {
     }) || null
   }
 
-  const isStepCompleted = (flowchartId, nodeId) => completedSteps.has(`${flowchartId}-${nodeId}`)
+  const isStepCompleted = (flowchartId, nodeId) => {
+    if (activeCase?.objectiveType === flowchartId) {
+      return activeCase.checklist.some(
+        (item) => item.sourceStepId === nodeId && item.status === 'completed'
+      )
+    }
+    return completedSteps.has(`${flowchartId}-${nodeId}`)
+  }
 
-  const getCompletedCount = (flowchart) => flowchart.nodes.filter((node) => (
+  const getCompletedCount = (flowchart) => getTrackableNodes(flowchart).filter((node) => (
     isStepCompleted(flowchart.id, node.id)
   )).length
 
@@ -272,8 +285,26 @@ const OSINTFlowcharts = () => {
     setSelectedNode(null)
   }
 
-  const toggleStepCompletion = (nodeId) => {
+  const toggleStepCompletion = async (nodeId) => {
     if (!selectedFlowchart) return
+    if (selectedFlowchart.nodes.find((node) => node.id === nodeId)?.type === 'start') return
+    if (activeCase?.objectiveType === selectedFlowchart.id) {
+      const currentItem = activeCase.checklist.find((item) => item.sourceStepId === nodeId)
+      if (currentItem) {
+        const wasCompleted = currentItem.status === 'completed'
+        await saveCase({
+          ...activeCase,
+          checklist: activeCase.checklist.map((item) => (
+            item.id === currentItem.id
+              ? { ...item, status: wasCompleted ? 'pending' : 'completed' }
+              : item
+          ))
+        }, { activate: true, touch: false })
+        toast.success(wasCompleted ? 'Paso del caso marcado como pendiente' : 'Paso del caso completado')
+        return
+      }
+    }
+
     const stepKey = `${selectedFlowchart.id}-${nodeId}`
     const wasCompleted = completedSteps.has(stepKey)
     setCompletedSteps((current) => {
@@ -286,6 +317,17 @@ const OSINTFlowcharts = () => {
       return next
     })
     toast.success(wasCompleted ? 'Paso marcado como pendiente' : 'Paso completado')
+  }
+
+  const attachFlowToActiveCase = async () => {
+    if (!activeCase || !selectedFlowchart) return
+    const checklist = createChecklistForObjective(selectedFlowchart.id)
+    await saveCase({
+      ...activeCase,
+      objectiveType: selectedFlowchart.id,
+      checklist
+    }, { activate: true, touch: false })
+    toast.success(`Flujo ${selectedFlowchart.title} vinculado a ${activeCase.name}`)
   }
 
   const changeZoom = (delta) => {
@@ -357,7 +399,7 @@ const OSINTFlowcharts = () => {
             </div>
             <div className="flowcharts__hero-stats" aria-label="Resumen de los flujos">
               <span><strong>{flowchartsInfo.length}</strong> recorridos</span>
-              <span><strong>{flowchartsInfo.reduce((sum, flow) => sum + getFlowchartById(flow.id).nodes.length, 0)}</strong> pasos</span>
+              <span><strong>{flowchartsInfo.reduce((sum, flow) => sum + getTrackableNodes(getFlowchartById(flow.id)).length, 0)}</strong> pasos</span>
               <span><strong>{toolCatalog.length}</strong> herramientas</span>
             </div>
           </header>
@@ -380,7 +422,7 @@ const OSINTFlowcharts = () => {
                     <span className="flowchart-card__description">{flowchart.description}</span>
                   </span>
                   <span className="flowchart-card__meta">
-                    <span>{fullFlowchart.nodes.length} pasos</span>
+                    <span>{getTrackableNodes(fullFlowchart).length} pasos</span>
                     <span>{countFlowTools(fullFlowchart)} recursos</span>
                     {completed > 0 && <span className="flowchart-card__progress">{completed} completados</span>}
                   </span>
@@ -409,7 +451,10 @@ const OSINTFlowcharts = () => {
   }
 
   const completedCount = getCompletedCount(selectedFlowchart)
-  const completionPercentage = Math.round((completedCount / selectedFlowchart.nodes.length) * 100)
+  const trackableCount = getTrackableNodes(selectedFlowchart).length
+  const completionPercentage = trackableCount
+    ? Math.round((completedCount / trackableCount) * 100)
+    : 0
   const SelectedFlowIcon = FLOW_ICONS[selectedFlowchart.id] || LocateFixed
 
   return (
@@ -425,11 +470,23 @@ const OSINTFlowcharts = () => {
             <div>
               <h1>{selectedFlowchart.title}</h1>
               <p>{selectedFlowchart.description}</p>
+              {activeCase && (
+                <div className="flowchart-toolbar__case">
+                  <span>Caso: {activeCase.name}</span>
+                  {activeCase.objectiveType === selectedFlowchart.id ? (
+                    <strong>Progreso guardado en este caso</strong>
+                  ) : (
+                    <button type="button" onClick={attachFlowToActiveCase}>
+                      Usar este checklist
+                    </button>
+                  )}
+                </div>
+              )}
             </div>
           </div>
 
           <div className="flowchart-toolbar__status" aria-label={`${completionPercentage}% completado`}>
-            <strong>{completedCount}/{selectedFlowchart.nodes.length}</strong>
+            <strong>{completedCount}/{trackableCount}</strong>
             <span>pasos completados</span>
           </div>
 
@@ -532,18 +589,20 @@ const OSINTFlowcharts = () => {
                           <tspan key={`${line}-${lineIndex}`} x={NODE_WIDTH / 2} dy={lineIndex === 0 ? 0 : 16}>{line}</tspan>
                         ))}
                       </text>
-                      <g
-                        className="flowchart__completion"
-                        onClick={(event) => {
-                          event.stopPropagation()
-                          toggleStepCompletion(node.id)
-                        }}
-                        role="button"
-                        aria-label={completed ? 'Marcar como pendiente' : 'Marcar como completado'}
-                      >
-                        <circle cx={NODE_WIDTH - 17} cy="17" r="10" fill={completed ? '#236f50' : 'rgba(13, 28, 40, 0.38)'} stroke="rgba(255,255,255,.82)" strokeWidth="1.4" />
-                        {completed && <path d={`M ${NODE_WIDTH - 21} 17 l3 3 6 -7`} fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />}
-                      </g>
+                      {node.type !== 'start' && (
+                        <g
+                          className="flowchart__completion"
+                          onClick={(event) => {
+                            event.stopPropagation()
+                            toggleStepCompletion(node.id)
+                          }}
+                          role="button"
+                          aria-label={completed ? 'Marcar como pendiente' : 'Marcar como completado'}
+                        >
+                          <circle cx={NODE_WIDTH - 17} cy="17" r="10" fill={completed ? '#236f50' : 'rgba(13, 28, 40, 0.38)'} stroke="rgba(255,255,255,.82)" strokeWidth="1.4" />
+                          {completed && <path d={`M ${NODE_WIDTH - 21} 17 l3 3 6 -7`} fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />}
+                        </g>
+                      )}
                       {node.internal_tool && <Wrench x={NODE_WIDTH - 27} y={NODE_HEIGHT - 27} width="16" height="16" color="white" aria-hidden="true" />}
                     </g>
                   )
@@ -589,13 +648,25 @@ const OSINTFlowcharts = () => {
                   </Link>
                 )}
 
-                <button
-                  onClick={() => toggleStepCompletion(selectedNode.id)}
-                  className={`node-panel__completion ${isStepCompleted(selectedFlowchart.id, selectedNode.id) ? 'is-complete' : ''}`}
-                >
-                  {isStepCompleted(selectedFlowchart.id, selectedNode.id) ? <CheckCircle size={18} /> : <Circle size={18} />}
-                  {isStepCompleted(selectedFlowchart.id, selectedNode.id) ? 'Paso completado' : 'Marcar como completado'}
-                </button>
+                {activeCase && (
+                  <Link
+                    to={`/investigation-board/${activeCase.id}?view=findings`}
+                    className="node-panel__case-action"
+                  >
+                    <FilePlus2 size={17} />
+                    Registrar hallazgo en {activeCase.name}
+                  </Link>
+                )}
+
+                {selectedNode.type !== 'start' && (
+                  <button
+                    onClick={() => toggleStepCompletion(selectedNode.id)}
+                    className={`node-panel__completion ${isStepCompleted(selectedFlowchart.id, selectedNode.id) ? 'is-complete' : ''}`}
+                  >
+                    {isStepCompleted(selectedFlowchart.id, selectedNode.id) ? <CheckCircle size={18} /> : <Circle size={18} />}
+                    {isStepCompleted(selectedFlowchart.id, selectedNode.id) ? 'Paso completado' : 'Marcar como completado'}
+                  </button>
+                )}
               </div>
             </aside>
           )}

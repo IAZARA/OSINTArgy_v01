@@ -320,6 +320,29 @@
   white-space: nowrap;
 }
 
+.flowchart-toolbar__case {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.45rem;
+  color: var(--flow-muted);
+  font-size: 0.72rem;
+}
+
+.flowchart-toolbar__case strong {
+  color: #7ad6a5;
+}
+
+.flowchart-toolbar__case button {
+  border: 1px solid rgba(105, 166, 211, 0.42);
+  border-radius: 999px;
+  background: rgba(83, 143, 187, 0.14);
+  color: #dcecf6;
+  padding: 0.28rem 0.6rem;
+  cursor: pointer;
+}
+
 .flowchart-toolbar__status {
   display: grid;
   padding: 0 1rem;
@@ -600,6 +623,7 @@
 }
 
 .node-panel__primary-action,
+.node-panel__case-action,
 .node-panel__completion {
   display: flex;
   align-items: center;
@@ -609,6 +633,18 @@
   border-radius: 10px;
   font-size: 0.8rem;
   font-weight: 700;
+}
+
+.node-panel__case-action {
+  border: 1px solid rgba(105, 166, 211, 0.42);
+  color: #dcecf6;
+  background: rgba(83, 143, 187, 0.12);
+}
+
+.node-panel__case-action:hover {
+  color: #fff;
+  background: rgba(83, 143, 187, 0.2);
+  text-decoration: none;
 }
 
 .node-panel__primary-action {

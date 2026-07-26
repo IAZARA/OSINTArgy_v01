@@ -1,6 +1,7 @@
 import React, { useRef, useEffect, useState, useCallback } from 'react';
 import {
   ArrowLeft,
+  Briefcase,
   Compass,
   ExternalLink,
   Home,
@@ -10,7 +11,10 @@ import {
   ZoomOut
 } from 'lucide-react';
 import { useAuth } from '@hooks/useAuth';
-import { useFavorites } from '@hooks/useTools';
+import { useFavorites, useToolHistory } from '@hooks/useTools';
+import { useCases } from '@/context/CaseContext';
+import { useNavigate } from '@/lib/router';
+import toast from 'react-hot-toast';
 import './GalaxyView.css';
 
 const LABEL_FONT = "'Segoe UI', system-ui, sans-serif";
@@ -214,6 +218,45 @@ const GalaxyView = ({ tools = [], categories = [], onCategorySelect, selectedCat
   
   const { user } = useAuth();
   const { toggleFavorite, isFavorite } = useFavorites();
+  const { addToHistory } = useToolHistory();
+  const { activeCase, addFindingFromTool } = useCases();
+  const navigate = useNavigate();
+
+  const addToolToActiveCase = useCallback(async (tool, { openSource = false } = {}) => {
+    if (!activeCase) {
+      toast('Creá o seleccioná un caso para registrar esta herramienta.');
+      navigate('/investigations');
+      return;
+    }
+
+    if (openSource && tool.url) {
+      window.open(tool.url, '_blank', 'noopener,noreferrer');
+      addToHistory(tool);
+      const params = new URLSearchParams({
+        view: 'findings',
+        new: '1',
+        toolId: tool.id || '',
+        toolName: tool.name || '',
+        sourceUrl: tool.url || ''
+      });
+      toast.success('Formulario de hallazgo preparado.');
+      setToolPreview(null);
+      navigate(`/investigation-board/${activeCase.id}?${params.toString()}`);
+      return;
+    }
+
+    try {
+      await addFindingFromTool(tool, {
+        title: openSource ? `Hallazgo por verificar con ${tool.name}` : `Revisar con ${tool.name}`,
+        notes: openSource
+          ? `Fuente abierta desde OSINTArgy. Registrá acá lo observado y vinculalo con entidades o ubicaciones.`
+          : `Herramienta agregada desde la galaxia para evaluar durante la investigación.`
+      });
+      toast.success(`Agregada a ${activeCase.name}.`);
+    } catch (error) {
+      toast.error(error.message);
+    }
+  }, [activeCase, addFindingFromTool, addToHistory, navigate]);
 
   // Funciones utilitarias para touch
   const getDistanceBetweenTouches = useCallback((touch1, touch2) => {
@@ -1237,16 +1280,19 @@ const GalaxyView = ({ tools = [], categories = [], onCategorySelect, selectedCat
                 Cancelar
               </button>
               <button 
+                className="add-case-btn"
+                onClick={() => addToolToActiveCase(toolPreview)}
+                title={activeCase ? `Agregar a ${activeCase.name}` : 'Seleccionar un caso'}
+              >
+                <Briefcase size={18} aria-hidden="true" />
+                {activeCase ? 'Agregar al caso' : 'Elegir caso'}
+              </button>
+              <button
                 className="open-tool-btn"
-                onClick={() => {
-                  if (toolPreview.url) {
-                    window.open(toolPreview.url, '_blank', 'noopener,noreferrer');
-                  }
-                  setToolPreview(null);
-                }}
+                onClick={() => addToolToActiveCase(toolPreview, { openSource: true })}
               >
                 <ExternalLink size={18} aria-hidden="true" />
-                Abrir herramienta
+                Abrir y registrar
               </button>
             </div>
           </div>

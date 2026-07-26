@@ -1,10 +1,11 @@
 import React, { useState, useRef, useEffect } from 'react'
 import { Link, useNavigate } from '@/lib/router'
-import { Search, Menu, X, Target, Wrench, ChevronDown, Mail, Upload, User, Shield, Clock, TrendingUp, Info, GraduationCap, GitBranch, Network } from 'lucide-react'
+import { Search, Menu, X, Target, Wrench, ChevronDown, Mail, Upload, User, Shield, Clock, TrendingUp, Info, GraduationCap, GitBranch, Network, Briefcase } from 'lucide-react'
 import { debounce } from '@utils/helpers'
 import { SEARCH } from '@utils/constants'
 import { useTools } from '@hooks/useTools'
 import { useSearchSuggestions } from '@hooks/useSearchSuggestions'
+import { useCases } from '@/context/CaseContext'
 import logoImage from '@/assets/images/OSINTA2.png'
 import './Header.css'
 
@@ -28,6 +29,7 @@ const Header = ({
   const systemMenuRef = useRef(null)
   const suggestionsRef = useRef(null)
   const navigate = useNavigate()
+  const { activeCase, activeCases, setActiveCaseId } = useCases()
 
   // Hooks para datos y sugerencias
   const { tools, categories } = useTools()
@@ -96,6 +98,7 @@ const Header = ({
       if (onSearch) {
         onSearch(trimmedValue)
       }
+      navigate('/explore')
       setShowSuggestions(false)
       setActiveSuggestionIndex(-1)
       
@@ -112,6 +115,7 @@ const Header = ({
     if (onSearch) {
       onSearch(suggestion)
     }
+    navigate('/explore')
     setShowSuggestions(false)
     setActiveSuggestionIndex(-1)
     searchInputRef.current?.blur()
@@ -324,6 +328,24 @@ const Header = ({
 
         {/* Menú de Herramientas del Sistema y Acerca de */}
         <div className="header__system">
+          <div className="header-case-switcher">
+            <Briefcase size={18} />
+            <select
+              aria-label="Caso activo"
+              value={activeCase?.id || ''}
+              onChange={(event) => {
+                const caseId = event.target.value
+                setActiveCaseId(caseId)
+                if (caseId) navigate(`/investigation-board/${caseId}`)
+              }}
+            >
+              <option value="">Sin caso activo</option>
+              {activeCases.map((project) => (
+                <option key={project.id} value={project.id}>{project.name}</option>
+              ))}
+            </select>
+          </div>
+
           {/* Botón Academia */}
           <Link to="/academy" className="academy-button" aria-label="Academia OSINT">
             <GraduationCap size={20} />
@@ -358,7 +380,7 @@ const Header = ({
 
                 <div className="system-menu__section">
                   <Link
-                    to="/investigation-board"
+                    to={activeCase ? `/investigation-board/${activeCase.id}` : '/investigations'}
                     className="system-menu__item"
                     onClick={() => setIsSystemMenuOpen(false)}
                   >
@@ -513,14 +535,16 @@ const Header = ({
                 </div>
               </Link>
               <Link
-                to="/investigation-board"
+                to={activeCase ? `/investigation-board/${activeCase.id}` : '/investigations'}
                 className="mobile-system-action"
                 onClick={() => setIsMenuOpen(false)}
               >
                 <Network size={16} />
                 <div className="mobile-system-action-content">
                   <span className="mobile-system-action-title">Tablero de Investigación</span>
-                  <span className="mobile-system-action-description">Organiza entidades, vínculos y lugares</span>
+                  <span className="mobile-system-action-description">
+                    {activeCase ? `Continuar ${activeCase.name}` : 'Organiza entidades, vínculos y lugares'}
+                  </span>
                 </div>
               </Link>
 

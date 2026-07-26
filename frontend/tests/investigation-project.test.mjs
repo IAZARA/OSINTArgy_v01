@@ -31,7 +31,32 @@ test('investigation projects round-trip through the local format', () => {
   assert.equal(restored.entities.length, 4)
   assert.equal(restored.relationships.length, 3)
   assert.equal(restored.locations.length, 1)
+  assert.equal(restored.findings.length, 1)
+  assert.ok(restored.checklist.length > 0)
   assert.deepEqual(restored.locations[0].linkedEntityIds, ['demo-alias'])
+})
+
+test('imports v1 and v2 files into schema v2', () => {
+  const legacy = parseInvestigationProject(JSON.stringify({
+    schemaVersion: 1,
+    name: 'Legado',
+    objectiveType: 'email',
+    entities: [],
+    relationships: [],
+    locations: []
+  }))
+  const current = parseInvestigationProject(serializeInvestigationProject(
+    createDemoInvestigationProject()
+  ))
+
+  assert.equal(legacy.schemaVersion, 2)
+  assert.ok(legacy.checklist.length > 0)
+  assert.equal(current.schemaVersion, 2)
+})
+
+test('rejects invalid imports', () => {
+  assert.throws(() => parseInvestigationProject('{invalid'), /no se pudo leer/i)
+  assert.throws(() => parseInvestigationProject('[]'), /proyecto válido/i)
 })
 
 test('normalization removes dangling relationships and invalid linked entities', () => {

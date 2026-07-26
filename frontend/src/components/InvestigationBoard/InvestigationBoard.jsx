@@ -2,11 +2,16 @@ import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import {
   ArrowLeft,
   Check,
+  CalendarDays,
   Download,
+  FileDown,
+  FileText,
   FilePlus2,
   GitFork,
   HelpCircle,
   Link2,
+  ListChecks,
+  LayoutDashboard,
   Map,
   MapPin,
   Network,
@@ -22,21 +27,27 @@ import {
 } from 'lucide-react'
 import { CircleMarker, MapContainer, Popup, TileLayer, useMap, useMapEvents } from 'react-leaflet'
 import toast from 'react-hot-toast'
-import { Link } from '@/lib/router'
+import { Link, useLocation, useNavigate, useParams } from '@/lib/router'
+import { useCases } from '@/context/CaseContext'
 import {
   ENTITY_TYPES,
   buildSafeFilename,
   createDemoInvestigationProject,
   createEmptyInvestigationProject,
   createInvestigationId,
+  generateInvestigationMarkdown,
   getEntityType,
-  loadInvestigationProject,
-  parseInvestigationProject,
-  saveInvestigationProject,
   serializeInvestigationProject
 } from '@utils/investigationProject'
+import {
+  CaseOverview,
+  ChecklistView,
+  FindingsView,
+  TimelineView
+} from './WorkspaceViews'
 import 'leaflet/dist/leaflet.css'
 import './InvestigationBoard.css'
+import './WorkspaceViews.css'
 
 const CONFIDENCE_OPTIONS = [
   { id: 'low', label: 'Baja' },
@@ -83,6 +94,7 @@ function MapFocus({ location }) {
 }
 
 function WorkspaceMap({ locations, selectedLocationId, onSelectLocation, onPickCoordinates }) {
+  const [tilesUnavailable, setTilesUnavailable] = useState(false)
   const selectedLocation = locations.find((location) => location.id === selectedLocationId)
   const center = selectedLocation
     ? [selectedLocation.latitude, selectedLocation.longitude]
@@ -91,38 +103,49 @@ function WorkspaceMap({ locations, selectedLocationId, onSelectLocation, onPickC
       : [-34.6037, -58.3816]
 
   return (
-    <MapContainer
-      center={center}
-      zoom={locations.length ? 12 : 11}
-      className="investigation-map"
-      scrollWheelZoom
-    >
-      <TileLayer
-        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-      />
-      <MapClickCapture onPick={onPickCoordinates} />
-      <MapFocus location={selectedLocation} />
-      {locations.map((location) => (
-        <CircleMarker
-          key={location.id}
-          center={[location.latitude, location.longitude]}
-          radius={location.id === selectedLocationId ? 11 : 8}
-          pathOptions={{
-            color: location.id === selectedLocationId ? '#f8fafc' : '#0f172a',
-            fillColor: location.id === selectedLocationId ? '#38bdf8' : '#f59e0b',
-            fillOpacity: 0.92,
-            weight: 2
+    <>
+      {tilesUnavailable && (
+        <div className="investigation-map-warning" role="status">
+          El mapa base no respondió. La lista, las coordenadas y la edición siguen disponibles.
+        </div>
+      )}
+      <MapContainer
+        center={center}
+        zoom={locations.length ? 12 : 11}
+        className="investigation-map"
+        scrollWheelZoom
+      >
+        <TileLayer
+          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          eventHandlers={{
+            tileload: () => setTilesUnavailable(false),
+            tileerror: () => setTilesUnavailable(true)
           }}
-          eventHandlers={{ click: () => onSelectLocation(location.id) }}
-        >
-          <Popup>
-            <strong>{location.name}</strong>
-            {location.address && <><br />{location.address}</>}
-          </Popup>
-        </CircleMarker>
-      ))}
-    </MapContainer>
+        />
+        <MapClickCapture onPick={onPickCoordinates} />
+        <MapFocus location={selectedLocation} />
+        {locations.map((location) => (
+          <CircleMarker
+            key={location.id}
+            center={[location.latitude, location.longitude]}
+            radius={location.id === selectedLocationId ? 11 : 8}
+            pathOptions={{
+              color: location.id === selectedLocationId ? '#f8fafc' : '#0f172a',
+              fillColor: location.id === selectedLocationId ? '#38bdf8' : '#f59e0b',
+              fillOpacity: 0.92,
+              weight: 2
+            }}
+            eventHandlers={{ click: () => onSelectLocation(location.id) }}
+          >
+            <Popup>
+              <strong>{location.name}</strong>
+              {location.address && <><br />{location.address}</>}
+            </Popup>
+          </CircleMarker>
+        ))}
+      </MapContainer>
+    </>
   )
 }
 
@@ -134,12 +157,42 @@ const Stat = ({ label, value }) => (
 )
 
 function InvestigationBoard() {
+  const { caseId } = useParams()
+  const location = useLocation()
+  const navigate = useNavigate()
+  const {
+    cases,
+    isLoading: casesLoading,
+    storageMode,
+    saveCase,
+    importCase,
+    createDemoCase,
+    setActiveCaseId
+  } = useCases()
+  const storedProject = cases.find((item) => item.id === caseId)
+  const requestedParams = new URLSearchParams(location.search)
+  const requestedView = requestedParams.get('view')
+  const requestedSelection = requestedParams.get('select')
+  const requestedNewFinding = requestedParams.get('new') === '1'
+  const requestedFindingDraft = {
+    toolId: requestedParams.get('toolId') || '',
+    toolName: requestedParams.get('toolName') || '',
+    sourceName: requestedParams.get('toolName') || '',
+    url: requestedParams.get('sourceUrl') || '',
+    title: requestedParams.get('toolName')
+      ? `Hallazgo con ${requestedParams.get('toolName')}`
+      : ''
+  }
   const [history, setHistory] = useState(() => ({
     past: [],
-    present: loadInvestigationProject() || createEmptyInvestigationProject(),
+    present: storedProject || createEmptyInvestigationProject('Cargando investigación…'),
     future: []
   }))
-  const [activeTab, setActiveTab] = useState('network')
+  const [activeTab, setActiveTab] = useState(
+    ['summary', 'checklist', 'network', 'locations', 'findings', 'timeline'].includes(requestedView)
+      ? requestedView
+      : 'summary'
+  )
   const [selectedEntityId, setSelectedEntityId] = useState(null)
   const [selectedLocationId, setSelectedLocationId] = useState(null)
   const [isEntityFormOpen, setIsEntityFormOpen] = useState(false)
@@ -166,6 +219,22 @@ function InvestigationBoard() {
   const dragRef = useRef(null)
   const project = history.present
 
+  useEffect(() => {
+    if (!storedProject || history.present.id === storedProject.id) return
+    setHistory({ past: [], present: storedProject, future: [] })
+    setActiveCaseId(storedProject.id)
+  }, [history.present.id, setActiveCaseId, storedProject])
+
+  useEffect(() => {
+    if (storedProject) setActiveCaseId(storedProject.id)
+  }, [setActiveCaseId, storedProject])
+
+  useEffect(() => {
+    if (!requestedSelection) return
+    if (requestedView === 'network') setSelectedEntityId(requestedSelection)
+    if (requestedView === 'locations') setSelectedLocationId(requestedSelection)
+  }, [requestedSelection, requestedView])
+
   const commitProject = useCallback((updater) => {
     setHistory((current) => {
       const candidate = typeof updater === 'function' ? updater(current.present) : updater
@@ -182,13 +251,19 @@ function InvestigationBoard() {
   }, [])
 
   useEffect(() => {
+    if (casesLoading || project.id !== caseId) return undefined
     setSaveState('saving')
-    const timeoutId = window.setTimeout(() => {
-      setSaveState(saveInvestigationProject(project) ? 'saved' : 'error')
+    const timeoutId = window.setTimeout(async () => {
+      try {
+        await saveCase(project, { activate: true, touch: false })
+        setSaveState('saved')
+      } catch {
+        setSaveState('error')
+      }
     }, 350)
 
     return () => window.clearTimeout(timeoutId)
-  }, [project])
+  }, [caseId, casesLoading, project, saveCase])
 
   useEffect(() => {
     if (selectedEntityId && !project.entities.some((entity) => entity.id === selectedEntityId)) {
@@ -201,13 +276,6 @@ function InvestigationBoard() {
 
   const selectedEntity = project.entities.find((entity) => entity.id === selectedEntityId)
   const selectedLocation = project.locations.find((location) => location.id === selectedLocationId)
-
-  const replaceProject = (nextProject) => {
-    commitProject(nextProject)
-    setSelectedEntityId(null)
-    setSelectedLocationId(null)
-    setDragPreview({})
-  }
 
   const undo = () => {
     setHistory((current) => {
@@ -232,6 +300,30 @@ function InvestigationBoard() {
       }
     })
   }
+
+  useEffect(() => {
+    const handleShortcuts = (event) => {
+      const editing = ['INPUT', 'TEXTAREA', 'SELECT'].includes(document.activeElement?.tagName)
+      if (event.key === 'Escape') {
+        setIsHelpOpen(false)
+        setIsEntityFormOpen(false)
+        setIsLocationFormOpen(false)
+        return
+      }
+      if (editing) return
+      if (event.key === '?') {
+        event.preventDefault()
+        setIsHelpOpen(true)
+      }
+      if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === 'z') {
+        event.preventDefault()
+        if (event.shiftKey) redo()
+        else undo()
+      }
+    }
+    window.addEventListener('keydown', handleShortcuts)
+    return () => window.removeEventListener('keydown', handleShortcuts)
+  })
 
   const addEntity = (event) => {
     event.preventDefault()
@@ -422,30 +514,62 @@ function InvestigationBoard() {
     toast.success('Proyecto exportado.')
   }
 
+  const downloadReport = () => {
+    const blob = new Blob([generateInvestigationMarkdown(project)], { type: 'text/markdown;charset=utf-8' })
+    const url = URL.createObjectURL(blob)
+    const anchor = document.createElement('a')
+    anchor.href = url
+    anchor.download = buildSafeFilename(project.name).replace('.osintargy.json', '-informe.md')
+    anchor.click()
+    URL.revokeObjectURL(url)
+    toast.success('Informe Markdown generado.')
+  }
+
   const importProject = async (event) => {
     const [file] = event.target.files || []
     event.target.value = ''
     if (!file) return
 
     try {
-      const imported = parseInvestigationProject(await file.text())
-      replaceProject(imported)
-      toast.success('Proyecto importado y validado.')
+      const imported = await importCase(await file.text())
+      toast.success('Proyecto importado y validado como un caso nuevo.')
+      navigate(`/investigation-board/${imported.id}`)
     } catch (error) {
       toast.error(error.message)
     }
   }
 
-  const loadDemo = () => {
-    replaceProject(createDemoInvestigationProject())
-    setActiveTab('network')
-    toast.success('Caso de ejemplo cargado.')
+  const loadDemo = async () => {
+    const demo = await createDemoCase(createDemoInvestigationProject)
+    toast.success('Caso de ejemplo creado.')
+    navigate(`/investigation-board/${demo.id}`)
   }
 
   const resetProject = () => {
-    if (!window.confirm('¿Crear una investigación vacía? Podés exportar la actual antes de continuar.')) return
-    replaceProject(createEmptyInvestigationProject())
-    toast.success('Nuevo proyecto listo.')
+    navigate('/investigations')
+  }
+
+  const updateChecklist = (checklist) => commitProject((current) => ({ ...current, checklist }))
+
+  const addFinding = (finding) => {
+    commitProject((current) => ({ ...current, findings: [...current.findings, finding] }))
+    toast.success('Hallazgo guardado.')
+  }
+
+  const updateFinding = (findingId, patch) => {
+    commitProject((current) => ({
+      ...current,
+      findings: current.findings.map((finding) => (
+        finding.id === findingId ? { ...finding, ...patch } : finding
+      ))
+    }))
+  }
+
+  const deleteFinding = (findingId) => {
+    commitProject((current) => ({
+      ...current,
+      findings: current.findings.filter((finding) => finding.id !== findingId)
+    }))
   }
 
   const graphCoordinates = (event) => {
@@ -503,6 +627,17 @@ function InvestigationBoard() {
       ? 'No se pudo guardar'
       : 'Guardado local'
 
+  if (!casesLoading && !storedProject && project.id !== caseId) {
+    return (
+      <div className="investigation-not-found">
+        <FileText size={36} />
+        <h1>No encontramos esta investigación</h1>
+        <p>Puede haber sido archivada, eliminada o pertenecer a otro navegador.</p>
+        <Link to="/investigations">Volver a la biblioteca</Link>
+      </div>
+    )
+  }
+
   return (
     <div className="investigation-board">
       <header className="investigation-toolbar">
@@ -522,7 +657,7 @@ function InvestigationBoard() {
 
         <div className={`investigation-save-state investigation-save-state--${saveState}`}>
           {saveState === 'saved' ? <Check size={15} /> : <Save size={15} />}
-          <span>{saveLabel}</span>
+          <span>{storageMode === 'localstorage' ? `${saveLabel} · modo limitado` : saveLabel}</span>
         </div>
 
         <div className="investigation-toolbar__actions">
@@ -539,6 +674,10 @@ function InvestigationBoard() {
           <button onClick={downloadProject} title="Exportar JSON">
             <Download size={18} />
             <span>Exportar</span>
+          </button>
+          <button onClick={downloadReport} title="Generar informe Markdown">
+            <FileDown size={18} />
+            <span>Informe</span>
           </button>
           <button onClick={resetProject} title="Nueva investigación">
             <FilePlus2 size={18} />
@@ -557,9 +696,29 @@ function InvestigationBoard() {
         />
       </header>
 
-      <main className="investigation-layout">
+      <main className={`investigation-layout ${
+        ['summary', 'checklist', 'findings', 'timeline'].includes(activeTab)
+          ? 'investigation-layout--focus'
+          : ''
+      }`}>
         <aside className="investigation-sidebar">
           <div className="investigation-tabs" role="tablist" aria-label="Vistas de investigación">
+            <button
+              role="tab"
+              aria-selected={activeTab === 'summary'}
+              className={activeTab === 'summary' ? 'is-active' : ''}
+              onClick={() => setActiveTab('summary')}
+            >
+              <LayoutDashboard size={17} /> Resumen
+            </button>
+            <button
+              role="tab"
+              aria-selected={activeTab === 'checklist'}
+              className={activeTab === 'checklist' ? 'is-active' : ''}
+              onClick={() => setActiveTab('checklist')}
+            >
+              <ListChecks size={17} /> Checklist
+            </button>
             <button
               role="tab"
               aria-selected={activeTab === 'network'}
@@ -575,6 +734,22 @@ function InvestigationBoard() {
               onClick={() => setActiveTab('locations')}
             >
               <Map size={17} /> Mapa
+            </button>
+            <button
+              role="tab"
+              aria-selected={activeTab === 'findings'}
+              className={activeTab === 'findings' ? 'is-active' : ''}
+              onClick={() => setActiveTab('findings')}
+            >
+              <FileText size={17} /> Hallazgos
+            </button>
+            <button
+              role="tab"
+              aria-selected={activeTab === 'timeline'}
+              className={activeTab === 'timeline' ? 'is-active' : ''}
+              onClick={() => setActiveTab('timeline')}
+            >
+              <CalendarDays size={17} /> Timeline
             </button>
           </div>
 
@@ -707,7 +882,7 @@ function InvestigationBoard() {
                 </form>
               )}
             </>
-          ) : (
+          ) : activeTab === 'locations' ? (
             <>
               <div className="investigation-section-heading">
                 <div>
@@ -815,11 +990,47 @@ function InvestigationBoard() {
                 )}
               </div>
             </>
+          ) : (
+            <div className="investigation-sidebar-guide">
+              <span>Flujo del caso</span>
+              <h2>
+                {activeTab === 'summary' && 'Vista general'}
+                {activeTab === 'checklist' && 'Metodología'}
+                {activeTab === 'findings' && 'Evidencia'}
+                {activeTab === 'timeline' && 'Secuencia'}
+              </h2>
+              <p>
+                {activeTab === 'summary' && 'Revisá el estado del caso y elegí el próximo paso.'}
+                {activeTab === 'checklist' && 'Adaptá el recorrido y marcá el progreso.'}
+                {activeTab === 'findings' && 'Documentá fuentes y estados de verificación.'}
+                {activeTab === 'timeline' && 'Observá hallazgos y ubicaciones por fecha.'}
+              </p>
+              <nav>
+                <button onClick={() => setActiveTab('network')}><Network size={16} /> Entidades</button>
+                <button onClick={() => setActiveTab('locations')}><MapPin size={16} /> Ubicaciones</button>
+                <button onClick={() => setActiveTab('findings')}><FileText size={16} /> Hallazgos</button>
+              </nav>
+            </div>
           )}
         </aside>
 
         <section className="investigation-stage">
-          {activeTab === 'network' ? (
+          {activeTab === 'summary' ? (
+            <CaseOverview project={project} onNavigate={setActiveTab} />
+          ) : activeTab === 'checklist' ? (
+            <ChecklistView checklist={project.checklist} onChange={updateChecklist} />
+          ) : activeTab === 'findings' ? (
+            <FindingsView
+              project={project}
+              onAdd={addFinding}
+              onUpdate={updateFinding}
+              onDelete={deleteFinding}
+              initialOpen={requestedNewFinding}
+              initialDraft={requestedFindingDraft}
+            />
+          ) : activeTab === 'timeline' ? (
+            <TimelineView project={project} />
+          ) : activeTab === 'network' ? (
             <div className="investigation-graph-shell">
               <div className="investigation-stage__caption">
                 <div>
@@ -1139,6 +1350,12 @@ function InvestigationBoard() {
                 <li><strong>Ubicá observaciones.</strong> Hacé clic en el mapa y vinculá el lugar con una o más entidades.</li>
                 <li><strong>Conservá el caso.</strong> El autoguardado es local; exportá JSON para respaldo o intercambio.</li>
               </ol>
+              <div className="investigation-shortcuts" aria-label="Atajos de teclado">
+                <span><kbd>?</kbd> Abrir ayuda</span>
+                <span><kbd>Ctrl Z</kbd> Deshacer</span>
+                <span><kbd>Ctrl Shift Z</kbd> Rehacer</span>
+                <span><kbd>Esc</kbd> Cerrar paneles</span>
+              </div>
               <p>
                 No cargues datos sensibles sin base legal. Documentá fuentes y diferenciá siempre hechos,
                 hipótesis e inferencias.

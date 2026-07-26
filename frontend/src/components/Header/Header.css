@@ -287,6 +287,38 @@
   gap: var(--spacing-3);
 }
 
+.header-case-switcher {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  max-width: 210px;
+  min-height: 40px;
+  padding: 0 0.55rem;
+  border: 1px solid var(--gray-300);
+  border-radius: var(--border-radius);
+  color: var(--primary-blue);
+  background: var(--white);
+}
+
+.header-case-switcher select {
+  min-width: 0;
+  max-width: 160px;
+  padding: 0;
+  overflow: hidden;
+  border: 0;
+  color: var(--gray-700);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  text-overflow: ellipsis;
+  background: transparent;
+  box-shadow: none;
+}
+
+.header-case-switcher select:focus {
+  border: 0;
+  box-shadow: none;
+}
+
 /* Botones Academia y Acerca de */
 .academy-button,
 .about-button {
@@ -790,6 +822,10 @@
 
 /* Responsive */
 @media (max-width: 1024px) {
+  .header-case-switcher {
+    display: none;
+  }
+
   .header__container {
     height: 64px;
     padding: 0 var(--spacing-3);

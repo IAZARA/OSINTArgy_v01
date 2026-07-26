@@ -136,6 +136,14 @@
   min-height: calc(100dvh - 72px);
 }
 
+.investigation-layout--focus {
+  grid-template-columns: 260px minmax(0, 1fr);
+}
+
+.investigation-layout--focus .investigation-inspector {
+  display: none;
+}
+
 .investigation-sidebar,
 .investigation-inspector {
   min-width: 0;
@@ -160,6 +168,92 @@
   border: 1px solid var(--case-border);
   border-radius: 11px;
   background: rgba(0, 0, 0, 0.16);
+}
+
+.investigation-sidebar-guide {
+  display: grid;
+  align-content: start;
+  gap: 0.55rem;
+  padding: 0.8rem;
+  border: 1px solid var(--case-border);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.022);
+}
+
+.investigation-sidebar-guide > span {
+  color: #70c5ea;
+  font-size: 0.64rem;
+  font-weight: 750;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.investigation-sidebar-guide h2 {
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+.investigation-sidebar-guide > p {
+  margin: 0;
+  color: var(--case-muted);
+  font-size: 0.7rem;
+}
+
+.investigation-sidebar-guide nav {
+  display: grid;
+  gap: 0.35rem;
+  margin-top: 0.35rem;
+  padding-top: 0.65rem;
+  border-top: 1px solid var(--case-border);
+}
+
+.investigation-sidebar-guide nav button {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  min-height: 37px;
+  padding: 0 0.55rem;
+  border-radius: 7px;
+  color: #a8beca;
+  font-size: 0.68rem;
+  text-align: left;
+}
+
+.investigation-sidebar-guide nav button:hover {
+  color: #edf8fd;
+  background: rgba(56, 189, 248, 0.07);
+}
+
+.investigation-not-found {
+  display: grid;
+  justify-items: center;
+  min-height: 100dvh;
+  place-content: center;
+  padding: 2rem;
+  color: #688495;
+  text-align: center;
+  background: #081018;
+}
+
+.investigation-not-found h1 {
+  margin: 0.9rem 0 0.4rem;
+  color: #dceaf1;
+  font-size: 1.4rem;
+}
+
+.investigation-not-found p {
+  margin: 0 0 1rem;
+  color: #8ea5b3;
+  font-size: 0.78rem;
+}
+
+.investigation-not-found a {
+  padding: 0.65rem 0.9rem;
+  border-radius: 8px;
+  color: #06141d;
+  font-size: 0.72rem;
+  font-weight: 750;
+  background: #7dd3fc;
 }
 
 .investigation-tabs button {
@@ -666,11 +760,27 @@
   background: #0c1821;
 }
 
-.investigation-map {
-  width: 100%;
-  height: 100%;
-  background: #15232c;
-}
+  .investigation-map {
+    width: 100%;
+    height: 100%;
+    background: #15232c;
+  }
+
+  .investigation-map-warning {
+    position: absolute;
+    z-index: 700;
+    top: 78px;
+    left: 50%;
+    width: min(520px, calc(100% - 2rem));
+    transform: translateX(-50%);
+    border: 1px solid rgba(251, 191, 36, 0.42);
+    border-radius: 9px;
+    background: rgba(35, 27, 10, 0.94);
+    color: #fde68a;
+    padding: 0.65rem 0.85rem;
+    font-size: 0.76rem;
+    text-align: center;
+  }
 
 .investigation-map-shell .leaflet-control-container {
   font-family: var(--font-family);
@@ -900,7 +1010,7 @@
   box-shadow: 0 28px 80px rgba(0, 0, 0, 0.42);
 }
 
-.investigation-help-modal__body {
+  .investigation-help-modal__body {
   display: grid;
   gap: 1rem;
   padding: 1.1rem;
@@ -940,6 +1050,31 @@
     grid-template-columns: 280px minmax(400px, 1fr) 285px;
   }
 
+  .investigation-shortcuts {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.55rem;
+  }
+
+  .investigation-shortcuts span {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--case-muted);
+    font-size: 0.76rem;
+  }
+
+  .investigation-shortcuts kbd {
+    border: 1px solid var(--case-border);
+    border-bottom-width: 2px;
+    border-radius: 6px;
+    background: rgba(148, 163, 184, 0.08);
+    color: var(--case-text);
+    padding: 0.2rem 0.38rem;
+    font: inherit;
+    font-weight: 700;
+  }
+
   .investigation-toolbar__actions button span {
     display: none;
   }
@@ -963,10 +1098,18 @@
     grid-template-columns: 270px minmax(0, 1fr);
   }
 
+  .investigation-layout--focus {
+    grid-template-columns: 240px minmax(0, 1fr);
+  }
+
   .investigation-inspector {
     grid-column: 1 / -1;
     border-top: 1px solid var(--case-border);
     border-left: 0;
+  }
+
+  .investigation-layout--focus .investigation-inspector {
+    display: none;
   }
 
   .investigation-inspector-empty {
@@ -1017,6 +1160,10 @@
     display: flex;
     flex-direction: column;
     min-height: 0;
+  }
+
+  .investigation-layout--focus {
+    display: flex;
   }
 
   .investigation-sidebar {

@@ -5,6 +5,7 @@ import {
   Compass,
   ExternalLink,
   Home,
+  LayoutList,
   Sparkles,
   X,
   ZoomIn,
@@ -15,6 +16,7 @@ import { useFavorites, useToolHistory } from '@hooks/useTools';
 import { useCases } from '@/context/CaseContext';
 import { useNavigate } from '@/lib/router';
 import toast from 'react-hot-toast';
+import ToolCatalogList from './ToolCatalogList';
 import './GalaxyView.css';
 
 const LABEL_FONT = "'Segoe UI', system-ui, sans-serif";
@@ -207,6 +209,7 @@ const GalaxyView = ({ tools = [], categories = [], onCategorySelect, selectedCat
   const [lastPanPosition, setLastPanPosition] = useState({ x: 0, y: 0 });
   const [hasDragged, setHasDragged] = useState(false);
   const [toolPreview, setToolPreview] = useState(null);
+  const [viewMode, setViewMode] = useState('galaxy');
   
   // Estados para soporte móvil
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
@@ -1082,12 +1085,17 @@ const GalaxyView = ({ tools = [], categories = [], onCategorySelect, selectedCat
   }, [toolPreview]);
 
   const focusedCategory = selectedCategory || categories.find(category => category.id === focusedConstellation);
-  const visibleToolsLabel = tools.length === 1 ? 'herramienta visible' : 'herramientas visibles';
+  const config = isMobile ? GALAXY_CONFIG.mobile : GALAXY_CONFIG.desktop;
+  const renderedToolCount = categories.reduce((total, category) => {
+    const categoryToolCount = tools.filter(tool => tool.category === category.id).length;
+    return total + Math.min(categoryToolCount, config.maxStarsPerConstellation);
+  }, 0);
+  const renderedStarsLabel = renderedToolCount === 1 ? 'estrella representada' : 'estrellas representadas';
 
   return (
     <div 
       ref={containerRef} 
-      className={`galaxy-view ${isNavigating ? 'navigating' : ''} ${isDragging ? 'dragging' : ''} ${isMobile ? 'mobile' : ''} ${hasInteracted ? 'interacted' : ''} ${isPinchZooming ? 'pinch-zooming' : ''} ${touches.length > 0 ? 'touch-active' : ''}`}
+      className={`galaxy-view galaxy-view--${viewMode} ${isNavigating ? 'navigating' : ''} ${isDragging ? 'dragging' : ''} ${isMobile ? 'mobile' : ''} ${hasInteracted ? 'interacted' : ''} ${isPinchZooming ? 'pinch-zooming' : ''} ${touches.length > 0 ? 'touch-active' : ''}`}
     >
       <canvas
         ref={canvasRef}
@@ -1098,124 +1106,164 @@ const GalaxyView = ({ tools = [], categories = [], onCategorySelect, selectedCat
         className="galaxy-canvas"
       />
 
-      {(searchQuery || focusedCategory) && (
-        <div className="galaxy-context-panel" aria-live="polite">
-          <Sparkles size={16} aria-hidden="true" />
-          <span>
-            {focusedCategory ? focusedCategory.name : 'Catálogo completo'}
-            {searchQuery ? ` · "${searchQuery}"` : ''}
-          </span>
-          <strong>{tools.length}</strong>
-        </div>
+      <div className="catalog-view-switcher" role="group" aria-label="Vista del catálogo">
+        <button
+          type="button"
+          className={viewMode === 'galaxy' ? 'is-active' : ''}
+          onClick={() => setViewMode('galaxy')}
+          aria-pressed={viewMode === 'galaxy'}
+        >
+          <Sparkles size={17} aria-hidden="true" />
+          Galaxia
+        </button>
+        <button
+          type="button"
+          className={viewMode === 'list' ? 'is-active' : ''}
+          onClick={() => setViewMode('list')}
+          aria-pressed={viewMode === 'list'}
+        >
+          <LayoutList size={17} aria-hidden="true" />
+          Lista
+        </button>
+      </div>
+
+      {viewMode === 'galaxy' ? (
+        <>
+          {(searchQuery || focusedCategory) && (
+            <div className="galaxy-context-panel" aria-live="polite">
+              <Sparkles size={16} aria-hidden="true" />
+              <span className="galaxy-context-panel__copy">
+                <b>
+                  {focusedCategory ? focusedCategory.name : 'Catálogo completo'}
+                  {searchQuery ? ` · "${searchQuery}"` : ''}
+                </b>
+                <small>{renderedToolCount} de {tools.length} representadas en la galaxia</small>
+              </span>
+              <strong>{tools.length}</strong>
+            </div>
+          )}
+
+          {/* Controles de navegación */}
+          <div className="galaxy-controls">
+            <button
+              className="galaxy-btn"
+              onClick={() => {
+                setTargetCamera({ x: 0, y: 0, zoom: 1 });
+                setIsNavigating(true);
+              }}
+              title="Regresar al centro"
+              aria-label="Regresar al centro"
+            >
+              <Home size={22} aria-hidden="true" />
+            </button>
+            <button
+              className="galaxy-btn"
+              onClick={() => {
+                const newZoom = Math.min(camera.zoom * 1.2, 5);
+                setTargetCamera(prev => ({ ...prev, zoom: newZoom }));
+                setIsNavigating(true);
+              }}
+              title="Acercar"
+              aria-label="Acercar"
+            >
+              <ZoomIn size={22} aria-hidden="true" />
+            </button>
+            <button
+              className="galaxy-btn"
+              onClick={() => {
+                const newZoom = Math.max(camera.zoom * 0.8, 0.1);
+                setTargetCamera(prev => ({ ...prev, zoom: newZoom }));
+                setIsNavigating(true);
+              }}
+              title="Alejar"
+              aria-label="Alejar"
+            >
+              <ZoomOut size={22} aria-hidden="true" />
+            </button>
+            <button
+              className="galaxy-btn"
+              onClick={() => {
+                const orbitRadius = 200;
+                const angle = Math.random() * Math.PI * 2;
+                setTargetCamera({
+                  x: Math.cos(angle) * orbitRadius,
+                  y: Math.sin(angle) * orbitRadius,
+                  zoom: 1.5
+                });
+                setIsNavigating(true);
+              }}
+              title="Explorar órbita"
+              aria-label="Explorar órbita"
+            >
+              <Compass size={22} aria-hidden="true" />
+            </button>
+            {focusedConstellation && (
+              <button
+                className="galaxy-btn galaxy-btn--danger"
+                onClick={() => {
+                  setFocusedConstellation(null);
+                  setSelectedConstellation(null);
+                  if (onCategorySelect) {
+                    onCategorySelect(null);
+                  }
+                  setTargetCamera({ x: 0, y: 0, zoom: 1 });
+                  setIsNavigating(true);
+                }}
+                title="Salir del enfoque"
+                aria-label="Salir del enfoque"
+              >
+                <X size={22} aria-hidden="true" />
+              </button>
+            )}
+          </div>
+
+          {/* Información de navegación */}
+          <div className="galaxy-info">
+            <div className="galaxy-stats">
+              <div className="stat">
+                <span className="stat-label">Constelaciones:</span>
+                <span className="stat-value">{categories.length}</span>
+              </div>
+              <div className="stat">
+                <span className="stat-label">Estrellas:</span>
+                <span className="stat-value">{renderedToolCount}</span>
+              </div>
+              <div className="stat">
+                <span className="stat-label">Catálogo:</span>
+                <span className="stat-value">{tools.length}</span>
+              </div>
+              <div className="stat">
+                <span className="stat-label">Zoom:</span>
+                <span className="stat-value">{camera.zoom.toFixed(1)}x</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Leyenda */}
+          <div className="galaxy-legend" aria-label="Resumen de galaxia">
+            <div className="galaxy-legend__title">
+              <Sparkles size={18} aria-hidden="true" />
+              <h4>Galaxia OSINTArgy</h4>
+            </div>
+            <div className="galaxy-legend__meta">
+              <span>{categories.length} constelaciones</span>
+              <span>{renderedToolCount} {renderedStarsLabel}</span>
+              <span>{tools.length} herramientas en el catálogo</span>
+            </div>
+            <p>Cambiá a Lista para verlas todas.</p>
+            {focusedConstellation && (
+              <p className="galaxy-legend__focus">Constelación enfocada</p>
+            )}
+          </div>
+        </>
+      ) : (
+        <ToolCatalogList
+          tools={tools}
+          categories={categories}
+          focusedCategory={focusedCategory}
+          onToolSelect={setToolPreview}
+        />
       )}
-      
-      {/* Controles de navegación */}
-      <div className="galaxy-controls">
-        <button 
-          className="galaxy-btn"
-          onClick={() => {
-            setTargetCamera({ x: 0, y: 0, zoom: 1 });
-            setIsNavigating(true);
-          }}
-          title="Regresar al centro"
-          aria-label="Regresar al centro"
-        >
-          <Home size={22} aria-hidden="true" />
-        </button>
-        <button 
-          className="galaxy-btn"
-          onClick={() => {
-            const newZoom = Math.min(camera.zoom * 1.2, 5);
-            setTargetCamera(prev => ({ ...prev, zoom: newZoom }));
-            setIsNavigating(true);
-          }}
-          title="Acercar"
-          aria-label="Acercar"
-        >
-          <ZoomIn size={22} aria-hidden="true" />
-        </button>
-        <button 
-          className="galaxy-btn"
-          onClick={() => {
-            const newZoom = Math.max(camera.zoom * 0.8, 0.1);
-            setTargetCamera(prev => ({ ...prev, zoom: newZoom }));
-            setIsNavigating(true);
-          }}
-          title="Alejar"
-          aria-label="Alejar"
-        >
-          <ZoomOut size={22} aria-hidden="true" />
-        </button>
-        <button 
-          className="galaxy-btn"
-          onClick={() => {
-            // Navegación orbital alrededor del centro
-            const orbitRadius = 200;
-            const angle = Math.random() * Math.PI * 2;
-            setTargetCamera({
-              x: Math.cos(angle) * orbitRadius,
-              y: Math.sin(angle) * orbitRadius,
-              zoom: 1.5
-            });
-            setIsNavigating(true);
-          }}
-          title="Explorar órbita"
-          aria-label="Explorar órbita"
-        >
-          <Compass size={22} aria-hidden="true" />
-        </button>
-        {focusedConstellation && (
-          <button 
-            className="galaxy-btn galaxy-btn--danger"
-            onClick={() => {
-              setFocusedConstellation(null);
-              setSelectedConstellation(null);
-              if (onCategorySelect) {
-                onCategorySelect(null);
-              }
-              setTargetCamera({ x: 0, y: 0, zoom: 1 });
-              setIsNavigating(true);
-            }}
-            title="Salir del enfoque"
-            aria-label="Salir del enfoque"
-          >
-            <X size={22} aria-hidden="true" />
-          </button>
-        )}
-      </div>
-      
-      {/* Información de navegación */}
-      <div className="galaxy-info">
-        <div className="galaxy-stats">
-          <div className="stat">
-            <span className="stat-label">Constelaciones:</span>
-            <span className="stat-value">{categories.length}</span>
-          </div>
-          <div className="stat">
-            <span className="stat-label">Estrellas:</span>
-            <span className="stat-value">{tools.length}</span>
-          </div>
-          <div className="stat">
-            <span className="stat-label">Zoom:</span>
-            <span className="stat-value">{camera.zoom.toFixed(1)}x</span>
-          </div>
-        </div>
-      </div>
-      
-      {/* Leyenda */}
-      <div className="galaxy-legend" aria-label="Resumen de galaxia">
-        <div className="galaxy-legend__title">
-          <Sparkles size={18} aria-hidden="true" />
-          <h4>Galaxia OSINTArgy</h4>
-        </div>
-        <div className="galaxy-legend__meta">
-          <span>{categories.length} constelaciones</span>
-          <span>{tools.length} {visibleToolsLabel}</span>
-        </div>
-        {focusedConstellation && (
-          <p className="galaxy-legend__focus">Constelación enfocada</p>
-        )}
-      </div>
 
       {/* Modal de preview de herramienta */}
       {toolPreview && (

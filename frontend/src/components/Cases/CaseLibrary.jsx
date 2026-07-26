@@ -22,6 +22,7 @@ import {
   serializeInvestigationProject
 } from '@utils/investigationProject'
 import CaseWizard from './CaseWizard'
+import BrandSignature from '@components/Common/BrandSignature'
 import './Cases.css'
 
 const downloadCase = (project) => {
@@ -132,6 +133,7 @@ export default function CaseLibrary() {
           <ArrowLeft size={19} />
         </Link>
         <div>
+          <BrandSignature context="Investigaciones" compact className="case-page-header__brand" />
           <span>Espacio local</span>
           <h1>Biblioteca de investigaciones</h1>
           <p>Retomá, respaldá y organizá casos sin enviar datos fuera del navegador.</p>

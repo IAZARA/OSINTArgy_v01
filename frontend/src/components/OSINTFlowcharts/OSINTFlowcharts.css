@@ -26,7 +26,7 @@
 
 .flowcharts__hero {
   display: grid;
-  grid-template-columns: auto minmax(0, 1fr) auto;
+  grid-template-columns: minmax(150px, auto) minmax(0, 1fr) auto;
   align-items: center;
   gap: 1.25rem;
   min-height: 170px;
@@ -37,7 +37,6 @@
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.045), 0 24px 70px rgba(2, 8, 12, 0.28);
 }
 
-.flowcharts__hero-mark,
 .flowchart-toolbar__icon,
 .flowchart-card__icon {
   display: grid;
@@ -48,10 +47,23 @@
   background: rgba(63, 116, 158, 0.16);
 }
 
-.flowcharts__hero-mark {
-  width: 54px;
-  height: 54px;
+.flowcharts__brand {
+  display: inline-flex;
+  align-self: start;
+  width: max-content;
+  padding: 0.7rem 0.85rem;
+  border: 1px solid var(--flow-border);
   border-radius: 14px;
+  background: rgba(5, 13, 19, 0.42);
+}
+
+.flowcharts__brand:hover {
+  border-color: rgba(124, 177, 219, 0.34);
+  text-decoration: none;
+}
+
+.flowcharts__brand img {
+  height: 48px;
 }
 
 .flowcharts__kicker {
@@ -101,16 +113,16 @@
 
 .flowcharts__grid {
   display: grid;
-  grid-template-columns: repeat(12, minmax(0, 1fr));
-  gap: 1rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(1rem, 2vw, 1.35rem);
 }
 
 .flowchart-card {
-  grid-column: span 4;
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
+  grid-template-rows: auto 1fr auto;
   gap: 1rem;
-  min-height: 205px;
+  min-height: 225px;
   padding: 1.35rem;
   overflow: hidden;
   border: 1px solid var(--flow-border);
@@ -120,16 +132,6 @@
   background: linear-gradient(145deg, rgba(21, 33, 43, 0.96), rgba(13, 23, 31, 0.96));
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.035);
   transition: transform 180ms ease, border-color 180ms ease, background-color 180ms ease;
-}
-
-.flowchart-card:nth-child(1),
-.flowchart-card:nth-child(6) {
-  grid-column: span 5;
-}
-
-.flowchart-card:nth-child(2),
-.flowchart-card:nth-child(5) {
-  grid-column: span 7;
 }
 
 .flowchart-card:hover,
@@ -208,12 +210,42 @@
 }
 
 .flowchart-card__action svg {
-  transform: rotate(180deg);
   transition: transform 180ms ease;
 }
 
 .flowchart-card:hover .flowchart-card__action svg {
-  transform: rotate(180deg) translateX(-3px);
+  transform: translateX(3px);
+}
+
+.flowcharts__section-heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.flowcharts__section-heading span {
+  color: #82bee8;
+  font-size: 0.7rem;
+  font-weight: 750;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+}
+
+.flowcharts__section-heading h2 {
+  margin: 0.3rem 0 0;
+  font-size: clamp(1.55rem, 2.5vw, 2.35rem);
+  line-height: 1.1;
+  letter-spacing: -0.035em;
+}
+
+.flowcharts__section-heading p {
+  max-width: 510px;
+  margin: 0;
+  color: var(--flow-muted);
+  font-size: 0.84rem;
+  line-height: 1.55;
+  text-align: right;
 }
 
 .flowcharts__method {
@@ -685,6 +717,10 @@
     border: 0;
   }
 
+  .flowcharts__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .flowcharts__method {
     grid-template-columns: auto minmax(0, 1fr);
   }
@@ -721,11 +757,6 @@
     width: 100%;
     padding-top: 1rem;
     border-top: 1px solid var(--flow-border);
-  }
-
-  .flowchart-card,
-  .flowchart-card:nth-child(n) {
-    grid-column: span 6;
   }
 
   .flowcharts__method {
@@ -775,22 +806,41 @@
 }
 
 @media (max-width: 560px) {
-  .flowcharts__hero-mark {
-    width: 46px;
-    height: 46px;
+  .flowcharts__brand img {
+    height: 38px;
   }
 
   .flowcharts__hero-stats {
-    gap: 0.8rem;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.35rem;
+  }
+
+  .flowcharts__hero-stats span {
+    justify-items: center;
+    white-space: normal;
+    text-align: center;
   }
 
   .flowcharts__hero-stats strong {
     font-size: 1.15rem;
   }
 
-  .flowchart-card,
-  .flowchart-card:nth-child(n) {
-    grid-column: 1 / -1;
+  .flowcharts__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .flowcharts__section-heading {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0.65rem;
+  }
+
+  .flowcharts__section-heading p {
+    max-width: 560px;
+    text-align: left;
+  }
+
+  .flowchart-card {
     min-height: 185px;
   }
 

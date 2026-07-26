@@ -1,0 +1,42 @@
+.brand-signature {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  min-width: 0;
+}
+
+.brand-signature img {
+  display: block;
+  width: auto;
+  height: 46px;
+  object-fit: contain;
+}
+
+.brand-signature small {
+  padding-left: 0.7rem;
+  border-left: 1px solid rgba(147, 181, 204, 0.22);
+  color: #94afbf;
+  font-size: 0.68rem;
+  font-weight: 750;
+  letter-spacing: 0.1em;
+  line-height: 1.25;
+  text-transform: uppercase;
+}
+
+.brand-signature--compact img {
+  height: 34px;
+}
+
+.brand-signature--compact small {
+  font-size: 0.62rem;
+}
+
+@media (max-width: 480px) {
+  .brand-signature img {
+    height: 36px;
+  }
+
+  .brand-signature small {
+    display: none;
+  }
+}

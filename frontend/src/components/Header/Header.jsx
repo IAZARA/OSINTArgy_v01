@@ -1,11 +1,12 @@
 import React, { useState, useRef, useEffect } from 'react'
 import { Link, useNavigate } from '@/lib/router'
-import { Search, Menu, X, Target, Wrench, ChevronDown, Mail, Upload, User, Shield, Clock, TrendingUp, Info, GraduationCap, GitBranch, Network, Briefcase } from 'lucide-react'
+import { Search, Menu, X, Target, Wrench, ChevronDown, Mail, Upload, User, Shield, Clock, TrendingUp, Info, GraduationCap, GitBranch, Network, Briefcase, FolderKanban, Plus } from 'lucide-react'
 import { debounce } from '@utils/helpers'
 import { SEARCH } from '@utils/constants'
 import { useTools } from '@hooks/useTools'
 import { useSearchSuggestions } from '@hooks/useSearchSuggestions'
 import { useCases } from '@/context/CaseContext'
+import CaseWizard from '@components/Cases/CaseWizard'
 import logoImage from '@/assets/images/OSINTA2.png'
 import './Header.css'
 
@@ -24,12 +25,13 @@ const Header = ({
   const [searchValue, setSearchValue] = useState(searchQuery || '')
   const [showSuggestions, setShowSuggestions] = useState(false)
   const [activeSuggestionIndex, setActiveSuggestionIndex] = useState(-1)
+  const [isCaseWizardOpen, setIsCaseWizardOpen] = useState(false)
 
   const searchInputRef = useRef(null)
   const systemMenuRef = useRef(null)
   const suggestionsRef = useRef(null)
   const navigate = useNavigate()
-  const { activeCase, activeCases, setActiveCaseId } = useCases()
+  const { activeCase, activeCases, setActiveCaseId, createCase } = useCases()
 
   // Hooks para datos y sugerencias
   const { tools, categories } = useTools()
@@ -204,6 +206,12 @@ const Header = ({
     debouncedSearch.cancel?.()
   }, [debouncedGenerateSuggestions, debouncedSearch])
 
+  const handleCreateCase = async (values) => {
+    const project = await createCase(values)
+    setIsCaseWizardOpen(false)
+    navigate(`/investigation-board/${project.id}`)
+  }
+
   return (
     <header className="header">
       <div className="header__container">
@@ -328,6 +336,16 @@ const Header = ({
 
         {/* Menú de Herramientas del Sistema y Acerca de */}
         <div className="header__system">
+          <button
+            type="button"
+            className="header-new-case"
+            onClick={() => setIsCaseWizardOpen(true)}
+            aria-label="Crear nueva investigación"
+          >
+            <Plus size={18} />
+            <span>Nueva investigación</span>
+          </button>
+
           <div className="header-case-switcher">
             <Briefcase size={18} />
             <select
@@ -379,6 +397,18 @@ const Header = ({
                 </div>
 
                 <div className="system-menu__section">
+                  <Link
+                    to="/research"
+                    className="system-menu__item"
+                    onClick={() => setIsSystemMenuOpen(false)}
+                  >
+                    <FolderKanban size={16} />
+                    <div className="system-menu__item-content">
+                      <span className="system-menu__item-title">Centro de investigación</span>
+                      <span className="system-menu__item-description">Casos recientes, hallazgos, favoritos y accesos rápidos</span>
+                    </div>
+                  </Link>
+
                   <Link
                     to={activeCase ? `/investigation-board/${activeCase.id}` : '/investigations'}
                     className="system-menu__item"
@@ -512,6 +542,31 @@ const Header = ({
               <span>Herramientas del Sistema</span>
             </div>
             <div className="mobile-system-actions">
+              <button
+                type="button"
+                className="mobile-system-action mobile-system-action--primary"
+                onClick={() => {
+                  setIsMenuOpen(false)
+                  setIsCaseWizardOpen(true)
+                }}
+              >
+                <Plus size={16} />
+                <div className="mobile-system-action-content">
+                  <span className="mobile-system-action-title">Nueva investigación</span>
+                  <span className="mobile-system-action-description">Crear un caso guiado</span>
+                </div>
+              </button>
+              <Link
+                to="/research"
+                className="mobile-system-action"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                <FolderKanban size={16} />
+                <div className="mobile-system-action-content">
+                  <span className="mobile-system-action-title">Centro de investigación</span>
+                  <span className="mobile-system-action-description">Retomá casos y hallazgos recientes</span>
+                </div>
+              </Link>
               <Link
                 to="/academy"
                 className="mobile-system-action"
@@ -622,6 +677,12 @@ const Header = ({
             </div>
           </div>
         </div>
+      )}
+      {isCaseWizardOpen && (
+        <CaseWizard
+          onClose={() => setIsCaseWizardOpen(false)}
+          onCreate={handleCreateCase}
+        />
       )}
     </header>
   )

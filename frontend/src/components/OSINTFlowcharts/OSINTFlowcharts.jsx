@@ -1,6 +1,7 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react'
 import {
   ArrowLeft,
+  ArrowRight,
   AtSign,
   CheckCircle,
   Circle,
@@ -29,6 +30,7 @@ import { getFlowchartsInfo, getFlowchartById } from '@/data/flowcharts'
 import { getAllTools } from '@/data/tools/index.js'
 import { useCases } from '@/context/CaseContext'
 import { createChecklistForObjective } from '@utils/investigationProject'
+import BrandSignature from '@components/Common/BrandSignature'
 import './OSINTFlowcharts.css'
 
 const NODE_WIDTH = 188
@@ -390,21 +392,31 @@ const OSINTFlowcharts = () => {
     return (
       <div className="osint-flowcharts">
         <main className="flowcharts__container flowcharts__landing">
-          <header className="flowcharts__hero">
-            <div className="flowcharts__hero-mark" aria-hidden="true"><GitBranch size={26} /></div>
-            <div>
-              <p className="flowcharts__kicker">Guías de investigación</p>
-              <h1>Flujos OSINT</h1>
+            <header className="flowcharts__hero">
+              <Link to="/" className="flowcharts__brand" aria-label="Ir a la Galaxia de OSINT Argy">
+                <BrandSignature context="Flujos" />
+              </Link>
+              <div>
+                <p className="flowcharts__kicker">Guías de investigación</p>
+                <h1>Flujos OSINT</h1>
               <p>Elegí un punto de partida, documentá cada hallazgo y abrí las herramientas necesarias sin perder el contexto.</p>
             </div>
             <div className="flowcharts__hero-stats" aria-label="Resumen de los flujos">
               <span><strong>{flowchartsInfo.length}</strong> recorridos</span>
               <span><strong>{flowchartsInfo.reduce((sum, flow) => sum + getTrackableNodes(getFlowchartById(flow.id)).length, 0)}</strong> pasos</span>
               <span><strong>{toolCatalog.length}</strong> herramientas</span>
-            </div>
-          </header>
+              </div>
+            </header>
 
-          <section className="flowcharts__grid" aria-label="Flujos disponibles">
+            <div className="flowcharts__section-heading">
+              <div>
+                <span>6 metodologías</span>
+                <h2>Elegí tu punto de partida</h2>
+              </div>
+              <p>Todos los recorridos tienen la misma jerarquía visual para que puedas comparar y decidir más rápido.</p>
+            </div>
+
+            <section className="flowcharts__grid" aria-label="Flujos disponibles">
             {flowchartsInfo.map((flowchart) => {
               const fullFlowchart = getFlowchartById(flowchart.id)
               const completed = getCompletedCount(fullFlowchart)
@@ -426,7 +438,7 @@ const OSINTFlowcharts = () => {
                     <span>{countFlowTools(fullFlowchart)} recursos</span>
                     {completed > 0 && <span className="flowchart-card__progress">{completed} completados</span>}
                   </span>
-                  <span className="flowchart-card__action">Abrir flujo <ArrowLeft size={15} /></span>
+                    <span className="flowchart-card__action">Abrir flujo <ArrowRight size={15} /></span>
                 </button>
               )
             })}

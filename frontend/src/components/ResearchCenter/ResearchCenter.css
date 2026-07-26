@@ -37,22 +37,6 @@
   gap: 0.7rem;
 }
 
-.research-center__brand-mark {
-  display: grid;
-  place-items: center;
-  width: 42px;
-  height: 42px;
-  border: 1px solid rgba(114, 206, 245, 0.28);
-  border-radius: 11px;
-  color: #82d7f8;
-  background: rgba(114, 206, 245, 0.09);
-}
-
-.research-center__brand > div:last-child {
-  display: grid;
-}
-
-.research-center__brand span,
 .research-kicker,
 .research-panel header span {
   color: #72c8ee;
@@ -62,8 +46,8 @@
   text-transform: uppercase;
 }
 
-.research-center__brand strong {
-  font-size: 0.9rem;
+.research-center__brand img {
+  height: 40px;
 }
 
 .research-center__header nav {

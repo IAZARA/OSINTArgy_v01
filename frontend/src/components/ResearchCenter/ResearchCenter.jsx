@@ -12,7 +12,6 @@ import {
   Library,
   Plus,
   Search,
-  ShieldCheck,
   Sparkles
 } from 'lucide-react'
 import { Link, useNavigate } from '@/lib/router'
@@ -20,6 +19,7 @@ import { useCases } from '@/context/CaseContext'
 import { useFavorites, useToolHistory } from '@hooks/useTools'
 import { OBJECTIVE_TYPES, searchInvestigation } from '@utils/investigationProject'
 import CaseWizard from '@components/Cases/CaseWizard'
+import BrandSignature from '@components/Common/BrandSignature'
 import './ResearchCenter.css'
 
 const formatRelativeDate = (value) => {
@@ -121,11 +121,7 @@ export default function ResearchCenter({ tools = [] }) {
     <div className="research-center">
       <header className="research-center__header">
         <div className="research-center__brand">
-          <div className="research-center__brand-mark"><ShieldCheck size={24} /></div>
-          <div>
-            <span>OSINTArgy</span>
-            <strong>Centro de Investigación</strong>
-          </div>
+          <BrandSignature context="Centro de investigación" compact />
         </div>
         <nav aria-label="Navegación principal">
           <Link to="/investigations"><Library size={17} /> Casos</Link>

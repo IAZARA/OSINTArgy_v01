@@ -58,6 +58,18 @@
   text-transform: uppercase;
 }
 
+.case-page-header__brand {
+  margin-bottom: 0.75rem;
+}
+
+.case-page-header__brand img {
+  height: 36px;
+}
+
+.case-page-header__brand small {
+  color: #83cdee;
+}
+
 .case-page-header h1 {
   margin: 0.15rem 0 0.25rem;
   font-size: clamp(1.7rem, 3vw, 2.75rem);

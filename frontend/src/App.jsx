@@ -60,7 +60,7 @@ function App() {
   const isFlowchartsRoute = location.pathname.startsWith('/osint-flowcharts')
   const isInvestigationRoute = location.pathname.startsWith('/investigation-board')
   const isCaseLibraryRoute = location.pathname.startsWith('/investigations')
-  const isResearchCenterRoute = location.pathname === '/'
+  const isResearchCenterRoute = location.pathname === '/research'
   const shouldHideNavbar = (
     isAcademyRoute
     || isFlowchartsRoute
@@ -152,9 +152,18 @@ function App() {
           <Routes>
             <Route
               path="/"
-              element={<ResearchCenter tools={tools} />}
+              element={
+                <div className="app-content">
+                  <GalaxyView
+                    tools={filteredTools}
+                    categories={categories}
+                    onCategorySelect={handleCategorySelect}
+                    selectedCategory={selectedCategory}
+                    searchQuery={searchQuery}
+                  />
+                </div>
+              }
             />
-
             <Route
               path="/explore"
               element={
@@ -169,6 +178,7 @@ function App() {
                 </div>
               }
             />
+            <Route path="/research" element={<ResearchCenter tools={tools} />} />
             <Route path="/investigations" element={<CaseLibrary />} />
             <Route path="/osint-flowcharts" element={<OSINTFlowcharts />} />
             <Route path="/investigation-board/:caseId" element={<InvestigationBoard />} />
@@ -192,7 +202,7 @@ function App() {
       </main>
 
       {/* El tablero ya incorpora su propio control de regreso */}
-      {(isAcademyRoute || isFlowchartsRoute) && <FloatingHomeButton />}
+      {isAcademyRoute && location.pathname !== '/academy' && <FloatingHomeButton />}
 
       {/* Notificaciones toast */}
       <Toaster

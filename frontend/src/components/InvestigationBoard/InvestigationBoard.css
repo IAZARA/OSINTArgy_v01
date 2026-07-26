@@ -62,6 +62,20 @@
   padding: 0 1rem;
 }
 
+.investigation-toolbar__brandline {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.investigation-toolbar__brandline .brand-signature img {
+  height: 27px;
+}
+
+.investigation-toolbar__brandline .brand-signature small {
+  display: none;
+}
+
 .investigation-toolbar__eyebrow,
 .investigation-section-heading span,
 .investigation-stage__caption > div > span,

@@ -1,19 +1,24 @@
 import React, { useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { 
+  ArrowLeft,
+  ArrowRight,
   BookOpen, 
   Target, 
   Brain, 
   Search, 
   Clock,
-  Unlock,
   Play,
   Shield,
   Globe,
   Server,
   Mail,
   Lock,
-  Activity
+  Activity,
+  CheckCircle2,
+  Layers3,
+  Sparkles,
+  Trophy
 } from 'lucide-react'
 import { useNavigate, useLocation } from '@/lib/router'
 import {
@@ -21,6 +26,7 @@ import {
   corporateModules
 } from './data/corporateAcademy'
 import { getCompletedAcademyModules } from '@/utils/academyProgress'
+import BrandSignature from '@components/Common/BrandSignature'
 import './AcademyDashboard.css'
 
 const panelVariants = {
@@ -64,7 +70,7 @@ const AcademyDashboard = () => {
     {
       id: 'osint',
       title: 'Academia OSINT',
-      description: 'Aprende las técnicas de inteligencia de fuentes abiertas de forma interactiva',
+      description: 'Aprendé técnicas de inteligencia de fuentes abiertas con ejercicios y recursos interactivos.',
       icon: Search,
       modules: 6,
       duration: '2.5 horas',
@@ -74,7 +80,7 @@ const AcademyDashboard = () => {
     {
       id: 'infrastructure',
       title: 'Huella Digital e Infraestructura Defensiva',
-      description: 'Aprende a mapear dominios, emails, DNS, certificados y riesgos públicos con foco defensivo',
+      description: 'Mapeá dominios, emails, DNS, certificados y riesgos públicos con un enfoque defensivo.',
       icon: Shield,
       modules: 6,
       duration: '2 horas',
@@ -207,6 +213,15 @@ const AcademyDashboard = () => {
 
   const selectedAcademyData = academies.find((academy) => academy.id === selectedAcademy)
   const selectedModules = modulesByAcademy[selectedAcademy] || []
+  const allModuleIds = Object.values(modulesByAcademy).flat().map((module) => module.id)
+  const completedCount = completedModules.filter((moduleId) => allModuleIds.includes(moduleId)).length
+  const totalModules = allModuleIds.length
+  const overallProgress = totalModules ? Math.round((completedCount / totalModules) * 100) : 0
+  const selectedCompletedCount = selectedModules.filter((module) => completedModules.includes(module.id)).length
+  const selectedProgress = selectedModules.length
+    ? Math.round((selectedCompletedCount / selectedModules.length) * 100)
+    : 0
+  const nextModule = selectedModules.find((module) => !completedModules.includes(module.id))
 
   const handleAcademyClick = (academy) => {
     setSelectedAcademy(academy.id)
@@ -234,77 +249,145 @@ const AcademyDashboard = () => {
 
   return (
     <div className="academy-dashboard">
+      <header className="academy-topbar">
+        <button type="button" className="academy-topbar__back" onClick={() => navigate('/')}>
+          <ArrowLeft size={18} /> Volver a la galaxia
+        </button>
+        <BrandSignature context="Academia" compact className="academy-topbar__brand" />
+        <div className="academy-topbar__progress" aria-label={`${overallProgress}% de progreso total`}>
+          <span>{completedCount}/{totalModules} módulos</span>
+          <div><i style={{ width: `${overallProgress}%` }} /></div>
+          <strong>{overallProgress}%</strong>
+        </div>
+      </header>
+
       <AnimatePresence mode="wait">
       {!selectedAcademy ? (
-        // Vista principal de academias
         <motion.section
           key="academies"
-          className="academy-view"
+          className="academy-view academy-view--catalog"
           variants={panelVariants}
           initial="hidden"
           animate="visible"
           exit="exit"
         >
-          <motion.div className="academy-header" variants={itemVariants}>
-            <div className="academy-header-aura" aria-hidden="true" />
-            <h1>Academias</h1>
-            <p>Elige una academia para comenzar tu formación especializada</p>
-          </motion.div>
+          <motion.section className="academy-hero" variants={itemVariants}>
+            <div className="academy-hero__copy">
+              <span className="academy-eyebrow"><Sparkles size={15} /> Aprendizaje práctico y defensivo</span>
+              <h1>Convertí curiosidad en <em>criterio analítico.</em></h1>
+              <p>
+                Elegí una ruta, avanzá a tu ritmo y practicá cómo documentar evidencia
+                pública de forma ética, trazable y reproducible.
+              </p>
+              <div className="academy-hero__benefits">
+                <span><CheckCircle2 size={16} /> Progreso local</span>
+                <span><Layers3 size={16} /> 3 rutas especializadas</span>
+                <span><Trophy size={16} /> Laboratorios aplicados</span>
+              </div>
+            </div>
+            <aside className="academy-journey-card">
+              <span>Tu recorrido</span>
+              <strong>{overallProgress}%</strong>
+              <div className="academy-journey-card__track"><i style={{ width: `${overallProgress}%` }} /></div>
+              <p>
+                {completedCount
+                  ? `Completaste ${completedCount} de ${totalModules} módulos.`
+                  : 'Empezá por la ruta que mejor responda a tu objetivo.'}
+              </p>
+              <small>Todo queda guardado en este navegador.</small>
+            </aside>
+          </motion.section>
 
-          <motion.div className="modules-section" variants={itemVariants}>
+          <motion.section className="academy-catalog" variants={itemVariants}>
+            <header className="academy-section-heading">
+              <div>
+                <span>Rutas de aprendizaje</span>
+                <h2>¿Qué querés aprender hoy?</h2>
+              </div>
+              <p>Cada academia combina conceptos, práctica y un cierre aplicable a investigaciones reales.</p>
+            </header>
             <div className="academies-container">
               {academies.map((academy) => (
                 <motion.button
                   type="button"
                   key={academy.id}
-                  className="academy-banner"
+                  className={`academy-banner academy-banner--${academy.color}`}
                   onClick={() => handleAcademyClick(academy)}
                   variants={itemVariants}
-                  whileHover={{ y: -6, scale: 1.01 }}
+                  whileHover={{ y: -7, scale: 1.012 }}
                   whileTap={{ scale: 0.99 }}
                 >
-                  <div className="banner-icon">
-                    <academy.icon size={48} />
+                  <div className="academy-banner__topline">
+                    <div className="banner-icon">
+                      <academy.icon size={30} />
+                    </div>
+                    <span>{academy.difficulty}</span>
                   </div>
-                  
                   <div className="banner-content">
                     <h3>{academy.title}</h3>
                     <p>{academy.description}</p>
                   </div>
-                  
-                  <div className="banner-arrow">
-                    →
+                  <div className="academy-banner__meta">
+                    <span><BookOpen size={15} /> {academy.modules} módulos</span>
+                    <span><Clock size={15} /> {academy.duration}</span>
+                  </div>
+                  <div className="academy-banner__action">
+                    Explorar academia <ArrowRight size={17} />
                   </div>
                 </motion.button>
               ))}
             </div>
-          </motion.div>
+          </motion.section>
         </motion.section>
       ) : (
-        // Vista de módulos de la academia seleccionada
         <motion.section
           key="modules"
-          className="academy-view"
+          className="academy-view academy-view--modules"
           variants={panelVariants}
           initial="hidden"
           animate="visible"
           exit="exit"
         >
-          <motion.div className="academy-header" variants={itemVariants}>
-            <div className="academy-header-aura" aria-hidden="true" />
-            <div className="academy-navigation">
-              <button 
-                onClick={handleBackToAcademies}
-                className="back-button"
-              >
-                ← Volver a Academias
+          <motion.section className="academy-track-hero" variants={itemVariants}>
+            <div className="academy-track-hero__copy">
+              <button onClick={handleBackToAcademies} className="back-button">
+                <ArrowLeft size={17} /> Todas las academias
               </button>
+              <span className="academy-eyebrow">Ruta especializada</span>
+              <h1>{selectedAcademyData?.title}</h1>
+              <p>{selectedAcademyData?.description}</p>
+              <div className="academy-track-hero__meta">
+                <span><BookOpen size={16} /> {selectedModules.length} módulos</span>
+                <span><Clock size={16} /> {selectedAcademyData?.duration}</span>
+                <span><Target size={16} /> {selectedAcademyData?.difficulty}</span>
+              </div>
             </div>
-            <h1>{selectedAcademyData?.title}</h1>
-            <p>{selectedAcademyData?.description}</p>
-          </motion.div>
+            <aside className="academy-track-progress">
+              <span>Progreso de la ruta</span>
+              <div className="academy-track-progress__value">
+                <strong>{selectedProgress}%</strong>
+                <small>{selectedCompletedCount}/{selectedModules.length} completados</small>
+              </div>
+              <div className="academy-track-progress__bar"><i style={{ width: `${selectedProgress}%` }} /></div>
+              {nextModule ? (
+                <button type="button" onClick={() => handleModuleClick(nextModule)}>
+                  {selectedCompletedCount ? 'Continuar recorrido' : 'Comenzar recorrido'}
+                  <ArrowRight size={17} />
+                </button>
+              ) : (
+                <div className="academy-track-progress__complete"><Trophy size={18} /> Ruta completada</div>
+              )}
+            </aside>
+          </motion.section>
 
-          <motion.div className="modules-section" variants={itemVariants}>
+          <motion.section className="modules-section" variants={itemVariants}>
+            <header className="academy-section-heading">
+              <div>
+                <span>Plan de estudio</span>
+                <h2>Avanzá paso a paso</h2>
+              </div>
+              <p>Podés abrir cualquier módulo; la numeración es una guía, no un bloqueo.</p>
+            </header>
             <div className="modules-grid">
               {selectedModules.map((module, index) => (
                 <motion.button
@@ -325,27 +408,25 @@ const AcademyDashboard = () => {
                       {module.difficulty}
                     </div>
                   </div>
-                  
                   <h3>{module.title}</h3>
                   <p>{module.description}</p>
-
-                  <div className="module-meta">
-                    <span>
-                      <Clock size={16} />
-                      {module.duration}
-                    </span>
+                  <div className="module-footer">
+                    <span><Clock size={15} /> {module.duration}</span>
+                    <strong>
+                      {isModuleCompleted(module.id) ? 'Revisar' : 'Abrir módulo'}
+                      <ArrowRight size={16} />
+                    </strong>
                   </div>
-                  
                   {isModuleCompleted(module.id) && (
                     <div className="completed-indicator">
-                      <Unlock size={16} />
+                      <CheckCircle2 size={16} />
                       <span>Completado</span>
                     </div>
                   )}
                 </motion.button>
               ))}
             </div>
-          </motion.div>
+          </motion.section>
         </motion.section>
       )}
       </AnimatePresence>

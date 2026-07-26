@@ -45,6 +45,7 @@ import {
   FindingsView,
   TimelineView
 } from './WorkspaceViews'
+import BrandSignature from '@components/Common/BrandSignature'
 import 'leaflet/dist/leaflet.css'
 import './InvestigationBoard.css'
 import './WorkspaceViews.css'
@@ -645,9 +646,12 @@ function InvestigationBoard() {
           <ArrowLeft size={18} />
         </Link>
 
-        <div className="investigation-toolbar__identity">
-          <span className="investigation-toolbar__eyebrow">Espacio de trabajo local</span>
-          <input
+          <div className="investigation-toolbar__identity">
+            <div className="investigation-toolbar__brandline">
+              <BrandSignature context="Investigación" compact />
+              <span className="investigation-toolbar__eyebrow">Espacio de trabajo local</span>
+            </div>
+            <input
             aria-label="Nombre de la investigación"
             value={project.name}
             maxLength={100}

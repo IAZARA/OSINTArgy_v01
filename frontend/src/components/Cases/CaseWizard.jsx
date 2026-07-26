@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
+import { createPortal } from 'react-dom'
 import { ArrowRight, Briefcase, Check, X } from 'lucide-react'
 import { OBJECTIVE_TYPES } from '@utils/investigationProject'
 import './Cases.css'
@@ -6,6 +7,7 @@ import './Cases.css'
 export default function CaseWizard({ onClose, onCreate }) {
   const [step, setStep] = useState(1)
   const [isSubmitting, setIsSubmitting] = useState(false)
+  const closeButtonRef = useRef(null)
   const [values, setValues] = useState({
     objectiveType: 'username',
     name: '',
@@ -14,6 +16,22 @@ export default function CaseWizard({ onClose, onCreate }) {
   })
 
   const selectedObjective = OBJECTIVE_TYPES.find((objective) => objective.id === values.objectiveType)
+
+  useEffect(() => {
+    const previousOverflow = document.body.style.overflow
+    const handleKeyDown = (event) => {
+      if (event.key === 'Escape') onClose()
+    }
+
+    document.body.style.overflow = 'hidden'
+    document.addEventListener('keydown', handleKeyDown)
+    closeButtonRef.current?.focus()
+
+    return () => {
+      document.body.style.overflow = previousOverflow
+      document.removeEventListener('keydown', handleKeyDown)
+    }
+  }, [onClose])
 
   const handleSubmit = async (event) => {
     event.preventDefault()
@@ -31,7 +49,7 @@ export default function CaseWizard({ onClose, onCreate }) {
     }
   }
 
-  return (
+  return createPortal(
     <div className="case-modal-backdrop" role="presentation" onMouseDown={onClose}>
       <section
         className="case-wizard"
@@ -46,7 +64,7 @@ export default function CaseWizard({ onClose, onCreate }) {
             <span>Paso {step} de 2</span>
             <h2 id="case-wizard-title">Nueva investigación</h2>
           </div>
-          <button onClick={onClose} aria-label="Cerrar asistente"><X size={19} /></button>
+          <button ref={closeButtonRef} onClick={onClose} aria-label="Cerrar asistente"><X size={19} /></button>
         </header>
 
         <form onSubmit={handleSubmit}>
@@ -134,6 +152,7 @@ export default function CaseWizard({ onClose, onCreate }) {
           </footer>
         </form>
       </section>
-    </div>
+    </div>,
+    document.body
   )
 }

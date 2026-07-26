@@ -58,8 +58,20 @@
   text-transform: uppercase;
 }
 
-.case-page-header__brand {
+.case-page-header__content {
+  min-width: 0;
+}
+
+.case-page-header__identity {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  min-height: 36px;
   margin-bottom: 0.75rem;
+}
+
+.case-page-header__brand {
+  flex: 0 1 auto;
 }
 
 .case-page-header__brand img {
@@ -68,6 +80,15 @@
 
 .case-page-header__brand small {
   color: #83cdee;
+}
+
+.case-page-header__storage {
+  display: inline-flex;
+  align-items: center;
+  min-height: 22px;
+  padding-left: 0.85rem;
+  border-left: 1px solid rgba(147, 181, 204, 0.22);
+  white-space: nowrap;
 }
 
 .case-page-header h1 {

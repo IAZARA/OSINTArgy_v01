@@ -336,16 +336,6 @@ const Header = ({
 
         {/* Menú de Herramientas del Sistema y Acerca de */}
         <div className="header__system">
-          <button
-            type="button"
-            className="header-new-case"
-            onClick={() => setIsCaseWizardOpen(true)}
-            aria-label="Crear nueva investigación"
-          >
-            <Plus size={18} />
-            <span>Nueva investigación</span>
-          </button>
-
           <div className="header-case-switcher">
             <Briefcase size={18} />
             <select
@@ -353,11 +343,16 @@ const Header = ({
               value={activeCase?.id || ''}
               onChange={(event) => {
                 const caseId = event.target.value
+                if (caseId === '__new__') {
+                  setIsCaseWizardOpen(true)
+                  return
+                }
                 setActiveCaseId(caseId)
                 if (caseId) navigate(`/investigation-board/${caseId}`)
               }}
             >
               <option value="">Sin caso activo</option>
+              <option value="__new__">＋ Nueva investigación</option>
               {activeCases.map((project) => (
                 <option key={project.id} value={project.id}>{project.name}</option>
               ))}

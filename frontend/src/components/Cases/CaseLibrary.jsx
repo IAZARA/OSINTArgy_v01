@@ -132,9 +132,11 @@ export default function CaseLibrary() {
         <Link to="/" className="case-page-header__back" aria-label="Volver al centro">
           <ArrowLeft size={19} />
         </Link>
-        <div>
-          <BrandSignature context="Investigaciones" compact className="case-page-header__brand" />
-          <span>Espacio local</span>
+        <div className="case-page-header__content">
+          <div className="case-page-header__identity">
+            <BrandSignature context="Investigaciones" compact className="case-page-header__brand" />
+            <span className="case-page-header__storage">Espacio local</span>
+          </div>
           <h1>Biblioteca de investigaciones</h1>
           <p>Retomá, respaldá y organizá casos sin enviar datos fuera del navegador.</p>
         </div>

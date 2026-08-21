@@ -203,6 +203,35 @@
       "difficulty_level": "intermediate"
     },
     {
+      "id": "metadata-remover-viewer",
+      "name": "Metadata Remover - Metadata Viewer",
+      "description": "Visor web gratuito de metadatos de imágenes que procesa archivos localmente en el navegador.",
+      "utility": "Inspecciona campos EXIF, IPTC, XMP y GPS sin subir la imagen; los metadatos deben corroborarse con otras evidencias.",
+      "url": "https://metadataremover.ai/metadata-viewer",
+      "category": "imagenes-videos",
+      "subcategory": "analisis-metadatos",
+      "tags": [
+        "exif",
+        "iptc",
+        "xmp",
+        "gps",
+        "privacidad"
+      ],
+      "type": "web",
+      "indicators": [
+        "F"
+      ],
+      "region": "internacional",
+      "language": "en",
+      "rating": 0,
+      "usage_count": 0,
+      "last_updated": "2026-08-21",
+      "status": "active",
+      "requires_registration": false,
+      "is_free": true,
+      "difficulty_level": "beginner"
+    },
+    {
       "id": "jeffrey-exif-viewer",
       "name": "Jeffrey's Exif Viewer",
       "description": "Visor online de metadatos EXIF de imágenes.",

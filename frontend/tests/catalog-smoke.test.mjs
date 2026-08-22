@@ -81,8 +81,30 @@ test('newly researched tools render from the frontend dataset', () => {
     'nasa-firms',
     'mapchecking',
     'blackbird',
-    'littlesis'
+    'littlesis',
+    'ooni-explorer',
+    'nuclei',
+    'criminal-ip'
   ]) {
     assert.ok(ids.has(id), `${id} should be available in the frontend fallback catalog`)
+  }
+})
+
+test('retired and unsafe catalog destinations are no longer exposed', () => {
+  const fallbackTools = readJson(fallbackPath).tools
+  const ids = new Set(fallbackTools.map(tool => tool.id))
+
+  for (const id of [
+    'blocktrail',
+    'infoga',
+    'camera-trace',
+    'osrframework',
+    'autosint',
+    'buscador-os',
+    'microsoft-edge-vms',
+    'meta-osint',
+    'jeffrey-exif-viewer'
+  ]) {
+    assert.ok(!ids.has(id), `${id} should not be exposed after the catalog audit`)
   }
 })

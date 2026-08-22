@@ -1454,10 +1454,10 @@
     },
     {
       "id": "facebook-search",
-      "name": "Facebook Graph Search",
-      "description": "Herramienta de búsqueda avanzada dentro de Facebook.",
-      "utility": "Busca personas, publicaciones, fotos y conexiones en Facebook usando operadores específicos de la plataforma.",
-      "url": "https://www.facebook.com/search",
+      "name": "Facebook Search",
+      "description": "Búsqueda nativa de personas, páginas, grupos y publicaciones visibles dentro de Facebook.",
+      "utility": "Permite usar palabras clave y filtros disponibles según sesión, región y configuración de privacidad; los resultados deben contrastarse antes de atribuir identidad.",
+      "url": "https://www.facebook.com/",
       "category": "redes-sociales",
       "subcategory": "plataformas-principales",
       "tags": [
@@ -1474,7 +1474,7 @@
       "language": "es",
       "rating": 4.2,
       "usage_count": 9870,
-      "last_updated": "2025-06-17",
+      "last_updated": "2026-08-22",
       "status": "active",
       "requires_registration": true,
       "is_free": true,
@@ -2411,13 +2411,13 @@
       "language": "es",
       "rating": 4.4,
       "usage_count": 9870,
-      "last_updated": "2025-06-19",
+      "last_updated": "2026-08-22",
       "status": "active",
       "requires_registration": true,
       "is_free": false,
       "difficulty_level": "intermediate",
-      "verification_date": "2025-06-19",
-      "verified_by": "perplexity"
+      "verification_date": "2026-08-22",
+      "verified_by": "official-source"
     },
     {
       "id": "osint-industries-social",
@@ -3662,9 +3662,9 @@
     {
       "id": "emailrep",
       "name": "EmailRep",
-      "description": "Servicio de reputación de direcciones de correo electrónico.",
-      "utility": "Evalúa la reputación de emails basándose en actividad maliciosa y spam.",
-      "url": "https://emailrep.io",
+      "description": "API de reputación de direcciones de correo mantenida por Sublime Security.",
+      "utility": "Enriquece análisis defensivos con señales públicas de reputación, actividad maliciosa, spam y características del dominio.",
+      "url": "https://github.com/sublime-security/emailrep.io",
       "category": "email",
       "subcategory": "verificacion",
       "tags": [
@@ -3673,7 +3673,7 @@
         "malicioso",
         "evaluación"
       ],
-      "type": "web",
+      "type": "api",
       "indicators": [
         "R",
         "A"
@@ -3682,7 +3682,7 @@
       "language": "en",
       "rating": 4.3,
       "usage_count": 2890,
-      "last_updated": "2025-06-19",
+      "last_updated": "2026-08-22",
       "status": "active",
       "requires_registration": false,
       "is_free": true,
@@ -3827,35 +3827,6 @@
       "language": "en",
       "rating": 4.7,
       "usage_count": 9870,
-      "last_updated": "2025-06-19",
-      "status": "active",
-      "requires_registration": false,
-      "is_free": true,
-      "difficulty_level": "intermediate"
-    },
-    {
-      "id": "infoga",
-      "name": "Infoga",
-      "description": "Herramienta de terminal para recopilar información de direcciones de email.",
-      "utility": "Recopila información de emails usando múltiples fuentes como motores de búsqueda y redes sociales.",
-      "url": "https://github.com/m4ll0k/infoga",
-      "category": "email",
-      "subcategory": "verificacion",
-      "tags": [
-        "terminal",
-        "recopilación",
-        "múltiples fuentes",
-        "información"
-      ],
-      "type": "cli",
-      "indicators": [
-        "R",
-        "P"
-      ],
-      "region": "internacional",
-      "language": "en",
-      "rating": 4.2,
-      "usage_count": 3450,
       "last_updated": "2025-06-19",
       "status": "active",
       "requires_registration": false,
@@ -5436,6 +5407,37 @@
       "difficulty_level": "intermediate"
     },
     {
+      "id": "criminal-ip",
+      "name": "Criminal IP",
+      "description": "Motor de búsqueda de inteligencia de amenazas para IPs, dominios, puertos y servicios expuestos.",
+      "utility": "Enriquece investigaciones defensivas con reputación, banners, historial, vulnerabilidades y relaciones técnicas observadas públicamente.",
+      "url": "https://search.criminalip.io/",
+      "category": "dominios-ips",
+      "subcategory": "analisis-ips",
+      "tags": [
+        "threat intelligence",
+        "ips",
+        "dominios",
+        "servicios expuestos"
+      ],
+      "type": "web",
+      "indicators": [
+        "D",
+        "I",
+        "S",
+        "A"
+      ],
+      "region": "internacional",
+      "language": "en",
+      "rating": 4.6,
+      "usage_count": 0,
+      "last_updated": "2026-08-22",
+      "status": "active",
+      "requires_registration": true,
+      "is_free": true,
+      "difficulty_level": "intermediate"
+    },
+    {
       "id": "google-earth",
       "name": "Google Earth",
       "description": "Explorador de imágenes satelitales y mapas 3D del mundo.",
@@ -6721,34 +6723,6 @@
       "difficulty_level": "intermediate"
     },
     {
-      "id": "jeffrey-exif-viewer",
-      "name": "Jeffrey's Exif Viewer",
-      "description": "Visor online de metadatos EXIF de imágenes.",
-      "utility": "Analiza metadatos EXIF de imágenes de forma online sin instalar software.",
-      "url": "http://exif.regex.info/exif.cgi",
-      "category": "imagenes-videos",
-      "subcategory": "analisis-metadatos",
-      "tags": [
-        "exif",
-        "online",
-        "metadatos",
-        "web"
-      ],
-      "type": "web",
-      "indicators": [
-        "F"
-      ],
-      "region": "internacional",
-      "language": "en",
-      "rating": 4.4,
-      "usage_count": 6540,
-      "last_updated": "2025-06-19",
-      "status": "active",
-      "requires_registration": false,
-      "is_free": true,
-      "difficulty_level": "beginner"
-    },
-    {
       "id": "fotoforensics",
       "name": "FotoForensics",
       "description": "Análisis forense de imágenes digitales.",
@@ -6782,7 +6756,7 @@
       "name": "InVID WeVerify",
       "description": "Plugin para verificación de videos e imágenes.",
       "utility": "Herramientas de verificación para periodistas: análisis de metadatos, búsqueda inversa y detección de manipulaciones.",
-      "url": "https://www.invid-project.eu/tools-and-services/invid-verification-plugin",
+      "url": "https://github.com/AFP-Medialab/verification-plugin",
       "category": "imagenes-videos",
       "subcategory": "analisis-metadatos",
       "tags": [
@@ -6800,7 +6774,7 @@
       "language": "en",
       "rating": 4.6,
       "usage_count": 4320,
-      "last_updated": "2025-06-19",
+      "last_updated": "2026-08-22",
       "status": "active",
       "requires_registration": false,
       "is_free": true,
@@ -7660,35 +7634,6 @@
       "requires_registration": false,
       "is_free": true,
       "difficulty_level": "beginner"
-    },
-    {
-      "id": "camera-trace",
-      "name": "Camera Trace",
-      "description": "Herramienta para rastrear el origen de fotografías por modelo de cámara.",
-      "utility": "Identifica el modelo de cámara usado para tomar una foto analizando patrones únicos.",
-      "url": "http://www.cameratrace.com/trace",
-      "category": "imagenes-videos",
-      "subcategory": "analisis-metadatos",
-      "tags": [
-        "cámara",
-        "modelo",
-        "patrones",
-        "origen"
-      ],
-      "type": "web",
-      "indicators": [
-        "F",
-        "A"
-      ],
-      "region": "internacional",
-      "language": "en",
-      "rating": 4,
-      "usage_count": 2340,
-      "last_updated": "2025-06-19",
-      "status": "active",
-      "requires_registration": false,
-      "is_free": true,
-      "difficulty_level": "intermediate"
     },
     {
       "id": "online-ocr",
@@ -9400,7 +9345,7 @@
       "name": "Registro Público de Comercio",
       "description": "Registro de sociedades comerciales de Argentina.",
       "utility": "Consulta de sociedades comerciales, contratos sociales y modificaciones societarias.",
-      "url": "https://www.argentina.gob.ar/justicia/registro-publico-comercio",
+      "url": "https://www.argentina.gob.ar/justicia/registro-nacional-sociedades/registros-locales",
       "category": "argentina-latam",
       "subcategory": "registros-publicos-ar",
       "tags": [
@@ -9417,7 +9362,7 @@
       "language": "es",
       "rating": 4.1,
       "usage_count": 2890,
-      "last_updated": "2025-06-19",
+      "last_updated": "2026-08-22",
       "status": "active",
       "requires_registration": true,
       "is_free": true,
@@ -11573,34 +11518,6 @@
       "difficulty_level": "advanced"
     },
     {
-      "id": "blocktrail",
-      "name": "Blocktrail",
-      "description": "Explorador de blockchain Bitcoin con API y herramientas para desarrolladores.",
-      "utility": "Exploración de transacciones Bitcoin, direcciones y bloques con funciones avanzadas de búsqueda.",
-      "url": "https://www.blocktrail.com/BTC",
-      "category": "criptomonedas",
-      "subcategory": "exploradores-bitcoin",
-      "tags": [
-        "bitcoin",
-        "blockchain",
-        "explorador",
-        "api"
-      ],
-      "type": "web",
-      "indicators": [
-        "D"
-      ],
-      "region": "internacional",
-      "language": "en",
-      "rating": 4.4,
-      "usage_count": 6780,
-      "last_updated": "2025-06-19",
-      "status": "active",
-      "requires_registration": false,
-      "is_free": true,
-      "difficulty_level": "intermediate"
-    },
-    {
       "id": "blockchain-info",
       "name": "Blockchain.info",
       "description": "Uno de los exploradores de blockchain Bitcoin más populares y establecidos.",
@@ -12147,7 +12064,7 @@
       "name": "SpiderFoot (T)",
       "description": "Herramienta de reconocimiento automatizado para recopilar inteligencia sobre objetivos.",
       "utility": "Automatiza la recopilación de información OSINT con más de 200 módulos para diferentes fuentes de datos.",
-      "url": "http://www.spiderfoot.net/",
+      "url": "https://www.spiderfoot.net/",
       "category": "utilidades-varios",
       "subcategory": "herramientas-cli",
       "tags": [
@@ -12165,7 +12082,7 @@
       "language": "en",
       "rating": 4.6,
       "usage_count": 5670,
-      "last_updated": "2025-06-19",
+      "last_updated": "2026-08-22",
       "status": "active",
       "requires_registration": false,
       "is_free": true,
@@ -12228,35 +12145,6 @@
       "difficulty_level": "intermediate"
     },
     {
-      "id": "osrframework",
-      "name": "OSRFramework (T)",
-      "description": "Framework Python para investigaciones OSINT con múltiples herramientas integradas.",
-      "utility": "Suite de herramientas Python para búsqueda de usuarios, verificación de emails, análisis de dominios y más.",
-      "url": "https://github.com/i3visio/osrframework",
-      "category": "utilidades-varios",
-      "subcategory": "herramientas-cli",
-      "tags": [
-        "python",
-        "framework",
-        "usuarios",
-        "emails"
-      ],
-      "type": "tool",
-      "indicators": [
-        "T",
-        "D"
-      ],
-      "region": "internacional",
-      "language": "en",
-      "rating": 4.5,
-      "usage_count": 4560,
-      "last_updated": "2025-06-19",
-      "status": "active",
-      "requires_registration": false,
-      "is_free": true,
-      "difficulty_level": "advanced"
-    },
-    {
       "id": "inquisitor",
       "name": "Inquisitor (T)",
       "description": "Herramienta de reconocimiento para recopilar información de objetivos específicos.",
@@ -12279,35 +12167,6 @@
       "language": "en",
       "rating": 4.1,
       "usage_count": 2340,
-      "last_updated": "2025-06-19",
-      "status": "active",
-      "requires_registration": false,
-      "is_free": true,
-      "difficulty_level": "intermediate"
-    },
-    {
-      "id": "autosint",
-      "name": "AutoOSINT (T)",
-      "description": "Herramienta automatizada para recopilación de inteligencia de fuentes abiertas.",
-      "utility": "Automatiza la recopilación de información OSINT de múltiples fuentes con reportes estructurados.",
-      "url": "https://github.com/bharshbarger/AutOSINT",
-      "category": "utilidades-varios",
-      "subcategory": "herramientas-cli",
-      "tags": [
-        "automatización",
-        "inteligencia",
-        "reportes",
-        "fuentes abiertas"
-      ],
-      "type": "tool",
-      "indicators": [
-        "T",
-        "D"
-      ],
-      "region": "internacional",
-      "language": "en",
-      "rating": 4,
-      "usage_count": 1890,
       "last_updated": "2025-06-19",
       "status": "active",
       "requires_registration": false,
@@ -12430,10 +12289,10 @@
     },
     {
       "id": "vmware-workstation",
-      "name": "VMware Workstation Player (T)",
-      "description": "Software de virtualización para ejecutar múltiples sistemas operativos.",
-      "utility": "Permite ejecutar sistemas operativos especializados en OSINT de forma segura y aislada.",
-      "url": "http://www.vmware.com/products/player/playerpro-evaluation.html",
+      "name": "VMware Workstation Pro (T)",
+      "description": "Hipervisor de escritorio para ejecutar sistemas operativos y laboratorios aislados.",
+      "utility": "Permite separar identidades y entornos de análisis, usar snapshots y ejecutar sistemas especializados en OSINT de forma controlada.",
+      "url": "https://www.vmware.com/products/desktop-hypervisor/workstation-and-fusion",
       "category": "utilidades-varios",
       "subcategory": "virtualizacion",
       "tags": [
@@ -12450,10 +12309,10 @@
       "language": "es",
       "rating": 4.6,
       "usage_count": 8920,
-      "last_updated": "2025-06-19",
+      "last_updated": "2026-08-22",
       "status": "active",
       "requires_registration": true,
-      "is_free": false,
+      "is_free": true,
       "difficulty_level": "intermediate"
     },
     {
@@ -12483,34 +12342,6 @@
       "requires_registration": false,
       "is_free": true,
       "difficulty_level": "beginner"
-    },
-    {
-      "id": "buscador-os",
-      "name": "Buscador OS (T)",
-      "description": "Sistema operativo Linux especializado en investigaciones OSINT.",
-      "utility": "Distribución Linux preconfigurada con herramientas OSINT para investigaciones profesionales.",
-      "url": "https://inteltechniques.com/buscador/index.html",
-      "category": "utilidades-varios",
-      "subcategory": "sistemas-operativos",
-      "tags": [
-        "linux",
-        "osint",
-        "preconfigurado",
-        "investigaciones"
-      ],
-      "type": "desktop",
-      "indicators": [
-        "T"
-      ],
-      "region": "internacional",
-      "language": "en",
-      "rating": 4.7,
-      "usage_count": 5670,
-      "last_updated": "2025-06-19",
-      "status": "active",
-      "requires_registration": false,
-      "is_free": true,
-      "difficulty_level": "intermediate"
     },
     {
       "id": "kali-linux",
@@ -12567,34 +12398,6 @@
       "requires_registration": false,
       "is_free": true,
       "difficulty_level": "advanced"
-    },
-    {
-      "id": "microsoft-edge-vms",
-      "name": "Microsoft Edge Development OS VMs (T)",
-      "description": "Máquinas virtuales preconfiguradas para desarrollo y testing web.",
-      "utility": "VMs gratuitas con diferentes versiones de Windows y navegadores para testing de aplicaciones web.",
-      "url": "https://developer.microsoft.com/en-us/microsoft-edge/tools/vms/",
-      "category": "utilidades-varios",
-      "subcategory": "virtualizacion",
-      "tags": [
-        "microsoft",
-        "vms",
-        "desarrollo",
-        "testing"
-      ],
-      "type": "desktop",
-      "indicators": [
-        "T"
-      ],
-      "region": "internacional",
-      "language": "es",
-      "rating": 4.2,
-      "usage_count": 3450,
-      "last_updated": "2025-06-19",
-      "status": "active",
-      "requires_registration": false,
-      "is_free": true,
-      "difficulty_level": "intermediate"
     },
     {
       "id": "subgraph-os",
@@ -12732,34 +12535,6 @@
       "rating": 4.1,
       "usage_count": 3450,
       "last_updated": "2025-06-19",
-      "status": "active",
-      "requires_registration": false,
-      "is_free": true,
-      "difficulty_level": "beginner"
-    },
-    {
-      "id": "meta-osint",
-      "name": "Meta-OSINT",
-      "description": "Recurso metodológico para seleccionar herramientas OSINT según objetivos de investigación.",
-      "utility": "Sirve como guía para elegir técnicas, fuentes y herramientas de forma trazable antes de iniciar una investigación.",
-      "url": "https://meta-osint.github.io/",
-      "category": "utilidades-varios",
-      "subcategory": "recursos-educativos",
-      "tags": [
-        "metodología",
-        "recursos",
-        "selección de herramientas",
-        "osint"
-      ],
-      "type": "web",
-      "indicators": [
-        "D"
-      ],
-      "region": "internacional",
-      "language": "en",
-      "rating": 4.2,
-      "usage_count": 2700,
-      "last_updated": "2026-05-24",
       "status": "active",
       "requires_registration": false,
       "is_free": true,
@@ -13152,6 +12927,67 @@
       "rating": 4.7,
       "usage_count": 7400,
       "last_updated": "2026-06-15",
+      "status": "active",
+      "requires_registration": false,
+      "is_free": true,
+      "difficulty_level": "advanced"
+    },
+    {
+      "id": "ooni-explorer",
+      "name": "OONI Explorer",
+      "description": "Explorador global de mediciones abiertas sobre censura, bloqueo y rendimiento de internet.",
+      "utility": "Permite comparar evidencia de interferencia de red por país, proveedor, sitio y período sin ejecutar pruebas sobre infraestructura ajena.",
+      "url": "https://explorer.ooni.org/",
+      "category": "utilidades-varios",
+      "subcategory": "sistema-infraestructura",
+      "tags": [
+        "censura",
+        "mediciones de red",
+        "internet",
+        "datos abiertos"
+      ],
+      "type": "web",
+      "indicators": [
+        "D",
+        "I",
+        "A"
+      ],
+      "region": "internacional",
+      "language": "multi",
+      "rating": 4.8,
+      "usage_count": 0,
+      "last_updated": "2026-08-22",
+      "status": "active",
+      "requires_registration": false,
+      "is_free": true,
+      "difficulty_level": "beginner"
+    },
+    {
+      "id": "nuclei",
+      "name": "Nuclei",
+      "description": "Escáner basado en plantillas para validar exposiciones y configuraciones de seguridad en activos autorizados.",
+      "utility": "Automatiza comprobaciones reproducibles sobre dominios, servicios y aplicaciones dentro de un alcance propio o expresamente permitido.",
+      "url": "https://github.com/projectdiscovery/nuclei",
+      "category": "utilidades-varios",
+      "subcategory": "sistema-infraestructura",
+      "tags": [
+        "seguridad defensiva",
+        "plantillas",
+        "automatización",
+        "superficie de ataque"
+      ],
+      "type": "cli",
+      "indicators": [
+        "T",
+        "D",
+        "S",
+        "I"
+      ],
+      "region": "internacional",
+      "language": "en",
+      "rating": 4.8,
+      "usage_count": 0,
+      "last_updated": "2026-08-22",
       "status": "active",
       "requires_registration": false,
       "is_free": true,

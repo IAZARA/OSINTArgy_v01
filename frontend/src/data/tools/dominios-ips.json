@@ -1313,6 +1313,37 @@
       "requires_registration": true,
       "is_free": true,
       "difficulty_level": "intermediate"
+    },
+    {
+      "id": "criminal-ip",
+      "name": "Criminal IP",
+      "description": "Motor de búsqueda de inteligencia de amenazas para IPs, dominios, puertos y servicios expuestos.",
+      "utility": "Enriquece investigaciones defensivas con reputación, banners, historial, vulnerabilidades y relaciones técnicas observadas públicamente.",
+      "url": "https://search.criminalip.io/",
+      "category": "dominios-ips",
+      "subcategory": "analisis-ips",
+      "tags": [
+        "threat intelligence",
+        "ips",
+        "dominios",
+        "servicios expuestos"
+      ],
+      "type": "web",
+      "indicators": [
+        "D",
+        "I",
+        "S",
+        "A"
+      ],
+      "region": "internacional",
+      "language": "en",
+      "rating": 4.6,
+      "usage_count": 0,
+      "last_updated": "2026-08-22",
+      "status": "active",
+      "requires_registration": true,
+      "is_free": true,
+      "difficulty_level": "intermediate"
     }
   ]
 }

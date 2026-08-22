@@ -6,6 +6,16 @@ import {
   isAcademyModuleCompleted,
   markAcademyModuleCompleted
 } from '../src/utils/academyProgress.js'
+import {
+  calculateAcademySummary,
+  completeAcademyModule,
+  createDefaultAcademyProgress,
+  loadAcademyProgress,
+  recordAcademyActivity,
+  recordAcademyAudio,
+  recordAcademyQuiz,
+  visitAcademySlide
+} from '../src/components/OSINTAcademy/useAcademyProgress.js'
 
 const createMemoryStorage = (initialValue = null) => {
   const values = new Map()
@@ -39,4 +49,47 @@ test('marking academy progress is idempotent and queryable', () => {
   assert.deepEqual(markAcademyModuleCompleted('corp-lab', storage), ['corp1', 'corp-lab'])
   assert.equal(isAcademyModuleCompleted('corp1', storage), true)
   assert.equal(isAcademyModuleCompleted('corp2', storage), false)
+})
+
+test('academy progress records unique slides and resumes the last visit', () => {
+  let progress = createDefaultAcademyProgress()
+  progress = visitAcademySlide(progress, 'modulo1', 0)
+  progress = visitAcademySlide(progress, 'modulo1', 1)
+  progress = visitAcademySlide(progress, 'modulo1', 1)
+
+  assert.deepEqual(progress.modules.modulo1.viewedSlides, [0, 1])
+  assert.deepEqual(progress.lastVisited, { moduleId: 'modulo1', slideIndex: 1 })
+  assert.equal(calculateAcademySummary(progress).viewedSlides, 2)
+})
+
+test('academy quiz keeps the best score and module completion fills every slide', () => {
+  let progress = createDefaultAcademyProgress()
+  progress = recordAcademyQuiz(progress, 'modulo2', 80)
+  progress = recordAcademyQuiz(progress, 'modulo2', 60)
+  progress = completeAcademyModule(progress, 'modulo2', 90)
+
+  assert.equal(progress.modules.modulo2.lastScore, 90)
+  assert.equal(progress.modules.modulo2.bestScore, 90)
+  assert.equal(progress.modules.modulo2.completed, true)
+  assert.equal(progress.modules.modulo2.viewedSlides.length, 7)
+})
+
+test('academy activities and audio completion persist independently', () => {
+  let progress = recordAcademyActivity(createDefaultAcademyProgress(), 'mindmap', {
+    exploredNodes: ['osint', 'fuentes']
+  })
+  progress = recordAcademyAudio(progress, 90, 100)
+
+  assert.equal(progress.activities.mindmap.visited, true)
+  assert.deepEqual(progress.activities.mindmap.exploredNodes, ['osint', 'fuentes'])
+  assert.equal(progress.audio.completed, true)
+  assert.equal(progress.audio.currentTime, 100)
+  assert.equal(progress.activities.audio.completed, true)
+})
+
+test('academy storage loading tolerates corrupted data', () => {
+  const corruptedStorage = { getItem: () => '{not-json' }
+  const progress = loadAcademyProgress(corruptedStorage)
+
+  assert.deepEqual(progress, createDefaultAcademyProgress())
 })

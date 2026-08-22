@@ -376,7 +376,7 @@
       "name": "Registro Público de Comercio",
       "description": "Registro de sociedades comerciales de Argentina.",
       "utility": "Consulta de sociedades comerciales, contratos sociales y modificaciones societarias.",
-      "url": "https://www.argentina.gob.ar/justicia/registro-publico-comercio",
+      "url": "https://www.argentina.gob.ar/justicia/registro-nacional-sociedades/registros-locales",
       "category": "argentina-latam",
       "subcategory": "registros-publicos-ar",
       "tags": [
@@ -393,7 +393,7 @@
       "language": "es",
       "rating": 4.1,
       "usage_count": 2890,
-      "last_updated": "2025-06-19",
+      "last_updated": "2026-08-22",
       "status": "active",
       "requires_registration": true,
       "is_free": true,

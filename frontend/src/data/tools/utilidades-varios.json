@@ -35,7 +35,7 @@
       "name": "SpiderFoot (T)",
       "description": "Herramienta de reconocimiento automatizado para recopilar inteligencia sobre objetivos.",
       "utility": "Automatiza la recopilación de información OSINT con más de 200 módulos para diferentes fuentes de datos.",
-      "url": "http://www.spiderfoot.net/",
+      "url": "https://www.spiderfoot.net/",
       "category": "utilidades-varios",
       "subcategory": "herramientas-cli",
       "tags": [
@@ -53,7 +53,7 @@
       "language": "en",
       "rating": 4.6,
       "usage_count": 5670,
-      "last_updated": "2025-06-19",
+      "last_updated": "2026-08-22",
       "status": "active",
       "requires_registration": false,
       "is_free": true,
@@ -116,35 +116,6 @@
       "difficulty_level": "intermediate"
     },
     {
-      "id": "osrframework",
-      "name": "OSRFramework (T)",
-      "description": "Framework Python para investigaciones OSINT con múltiples herramientas integradas.",
-      "utility": "Suite de herramientas Python para búsqueda de usuarios, verificación de emails, análisis de dominios y más.",
-      "url": "https://github.com/i3visio/osrframework",
-      "category": "utilidades-varios",
-      "subcategory": "herramientas-cli",
-      "tags": [
-        "python",
-        "framework",
-        "usuarios",
-        "emails"
-      ],
-      "type": "tool",
-      "indicators": [
-        "T",
-        "D"
-      ],
-      "region": "internacional",
-      "language": "en",
-      "rating": 4.5,
-      "usage_count": 4560,
-      "last_updated": "2025-06-19",
-      "status": "active",
-      "requires_registration": false,
-      "is_free": true,
-      "difficulty_level": "advanced"
-    },
-    {
       "id": "inquisitor",
       "name": "Inquisitor (T)",
       "description": "Herramienta de reconocimiento para recopilar información de objetivos específicos.",
@@ -167,35 +138,6 @@
       "language": "en",
       "rating": 4.1,
       "usage_count": 2340,
-      "last_updated": "2025-06-19",
-      "status": "active",
-      "requires_registration": false,
-      "is_free": true,
-      "difficulty_level": "intermediate"
-    },
-    {
-      "id": "autosint",
-      "name": "AutoOSINT (T)",
-      "description": "Herramienta automatizada para recopilación de inteligencia de fuentes abiertas.",
-      "utility": "Automatiza la recopilación de información OSINT de múltiples fuentes con reportes estructurados.",
-      "url": "https://github.com/bharshbarger/AutOSINT",
-      "category": "utilidades-varios",
-      "subcategory": "herramientas-cli",
-      "tags": [
-        "automatización",
-        "inteligencia",
-        "reportes",
-        "fuentes abiertas"
-      ],
-      "type": "tool",
-      "indicators": [
-        "T",
-        "D"
-      ],
-      "region": "internacional",
-      "language": "en",
-      "rating": 4,
-      "usage_count": 1890,
       "last_updated": "2025-06-19",
       "status": "active",
       "requires_registration": false,
@@ -318,10 +260,10 @@
     },
     {
       "id": "vmware-workstation",
-      "name": "VMware Workstation Player (T)",
-      "description": "Software de virtualización para ejecutar múltiples sistemas operativos.",
-      "utility": "Permite ejecutar sistemas operativos especializados en OSINT de forma segura y aislada.",
-      "url": "http://www.vmware.com/products/player/playerpro-evaluation.html",
+      "name": "VMware Workstation Pro (T)",
+      "description": "Hipervisor de escritorio para ejecutar sistemas operativos y laboratorios aislados.",
+      "utility": "Permite separar identidades y entornos de análisis, usar snapshots y ejecutar sistemas especializados en OSINT de forma controlada.",
+      "url": "https://www.vmware.com/products/desktop-hypervisor/workstation-and-fusion",
       "category": "utilidades-varios",
       "subcategory": "virtualizacion",
       "tags": [
@@ -338,10 +280,10 @@
       "language": "es",
       "rating": 4.6,
       "usage_count": 8920,
-      "last_updated": "2025-06-19",
+      "last_updated": "2026-08-22",
       "status": "active",
       "requires_registration": true,
-      "is_free": false,
+      "is_free": true,
       "difficulty_level": "intermediate"
     },
     {
@@ -371,34 +313,6 @@
       "requires_registration": false,
       "is_free": true,
       "difficulty_level": "beginner"
-    },
-    {
-      "id": "buscador-os",
-      "name": "Buscador OS (T)",
-      "description": "Sistema operativo Linux especializado en investigaciones OSINT.",
-      "utility": "Distribución Linux preconfigurada con herramientas OSINT para investigaciones profesionales.",
-      "url": "https://inteltechniques.com/buscador/index.html",
-      "category": "utilidades-varios",
-      "subcategory": "sistemas-operativos",
-      "tags": [
-        "linux",
-        "osint",
-        "preconfigurado",
-        "investigaciones"
-      ],
-      "type": "desktop",
-      "indicators": [
-        "T"
-      ],
-      "region": "internacional",
-      "language": "en",
-      "rating": 4.7,
-      "usage_count": 5670,
-      "last_updated": "2025-06-19",
-      "status": "active",
-      "requires_registration": false,
-      "is_free": true,
-      "difficulty_level": "intermediate"
     },
     {
       "id": "kali-linux",
@@ -455,34 +369,6 @@
       "requires_registration": false,
       "is_free": true,
       "difficulty_level": "advanced"
-    },
-    {
-      "id": "microsoft-edge-vms",
-      "name": "Microsoft Edge Development OS VMs (T)",
-      "description": "Máquinas virtuales preconfiguradas para desarrollo y testing web.",
-      "utility": "VMs gratuitas con diferentes versiones de Windows y navegadores para testing de aplicaciones web.",
-      "url": "https://developer.microsoft.com/en-us/microsoft-edge/tools/vms/",
-      "category": "utilidades-varios",
-      "subcategory": "virtualizacion",
-      "tags": [
-        "microsoft",
-        "vms",
-        "desarrollo",
-        "testing"
-      ],
-      "type": "desktop",
-      "indicators": [
-        "T"
-      ],
-      "region": "internacional",
-      "language": "es",
-      "rating": 4.2,
-      "usage_count": 3450,
-      "last_updated": "2025-06-19",
-      "status": "active",
-      "requires_registration": false,
-      "is_free": true,
-      "difficulty_level": "intermediate"
     },
     {
       "id": "subgraph-os",
@@ -620,34 +506,6 @@
       "rating": 4.1,
       "usage_count": 3450,
       "last_updated": "2025-06-19",
-      "status": "active",
-      "requires_registration": false,
-      "is_free": true,
-      "difficulty_level": "beginner"
-    },
-    {
-      "id": "meta-osint",
-      "name": "Meta-OSINT",
-      "description": "Recurso metodológico para seleccionar herramientas OSINT según objetivos de investigación.",
-      "utility": "Sirve como guía para elegir técnicas, fuentes y herramientas de forma trazable antes de iniciar una investigación.",
-      "url": "https://meta-osint.github.io/",
-      "category": "utilidades-varios",
-      "subcategory": "recursos-educativos",
-      "tags": [
-        "metodología",
-        "recursos",
-        "selección de herramientas",
-        "osint"
-      ],
-      "type": "web",
-      "indicators": [
-        "D"
-      ],
-      "region": "internacional",
-      "language": "en",
-      "rating": 4.2,
-      "usage_count": 2700,
-      "last_updated": "2026-05-24",
       "status": "active",
       "requires_registration": false,
       "is_free": true,
@@ -1040,6 +898,67 @@
       "rating": 4.7,
       "usage_count": 7400,
       "last_updated": "2026-06-15",
+      "status": "active",
+      "requires_registration": false,
+      "is_free": true,
+      "difficulty_level": "advanced"
+    },
+    {
+      "id": "ooni-explorer",
+      "name": "OONI Explorer",
+      "description": "Explorador global de mediciones abiertas sobre censura, bloqueo y rendimiento de internet.",
+      "utility": "Permite comparar evidencia de interferencia de red por país, proveedor, sitio y período sin ejecutar pruebas sobre infraestructura ajena.",
+      "url": "https://explorer.ooni.org/",
+      "category": "utilidades-varios",
+      "subcategory": "sistema-infraestructura",
+      "tags": [
+        "censura",
+        "mediciones de red",
+        "internet",
+        "datos abiertos"
+      ],
+      "type": "web",
+      "indicators": [
+        "D",
+        "I",
+        "A"
+      ],
+      "region": "internacional",
+      "language": "multi",
+      "rating": 4.8,
+      "usage_count": 0,
+      "last_updated": "2026-08-22",
+      "status": "active",
+      "requires_registration": false,
+      "is_free": true,
+      "difficulty_level": "beginner"
+    },
+    {
+      "id": "nuclei",
+      "name": "Nuclei",
+      "description": "Escáner basado en plantillas para validar exposiciones y configuraciones de seguridad en activos autorizados.",
+      "utility": "Automatiza comprobaciones reproducibles sobre dominios, servicios y aplicaciones dentro de un alcance propio o expresamente permitido.",
+      "url": "https://github.com/projectdiscovery/nuclei",
+      "category": "utilidades-varios",
+      "subcategory": "sistema-infraestructura",
+      "tags": [
+        "seguridad defensiva",
+        "plantillas",
+        "automatización",
+        "superficie de ataque"
+      ],
+      "type": "cli",
+      "indicators": [
+        "T",
+        "D",
+        "S",
+        "I"
+      ],
+      "region": "internacional",
+      "language": "en",
+      "rating": 4.8,
+      "usage_count": 0,
+      "last_updated": "2026-08-22",
       "status": "active",
       "requires_registration": false,
       "is_free": true,

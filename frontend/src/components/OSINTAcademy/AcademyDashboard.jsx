@@ -24,6 +24,8 @@ import {
   corporateAcademy,
   corporateModules
 } from './data/corporateAcademy'
+import { ACADEMY_LABS } from './academyData'
+import { useAcademyProgress } from './useAcademyProgress'
 import { getCompletedAcademyModules } from '@/utils/academyProgress'
 import BrandSignature from '@components/Common/BrandSignature'
 import './AcademyDashboard.css'
@@ -63,6 +65,10 @@ const AcademyDashboard = () => {
   const location = useLocation()
   const [completedModules] = useState(() => getCompletedAcademyModules())
   const [selectedAcademy, setSelectedAcademy] = useState(location.state?.selectedAcademy || null)
+  const {
+    progress: detailedProgress,
+    recordActivity
+  } = useAcademyProgress()
 
   // Academias disponibles
   const academies = [
@@ -213,14 +219,19 @@ const AcademyDashboard = () => {
   const selectedAcademyData = academies.find((academy) => academy.id === selectedAcademy)
   const selectedModules = modulesByAcademy[selectedAcademy] || []
   const allModuleIds = Object.values(modulesByAcademy).flat().map((module) => module.id)
-  const completedCount = completedModules.filter((moduleId) => allModuleIds.includes(moduleId)).length
+  const hasCompletedModule = (moduleId) => (
+    completedModules.includes(moduleId)
+    || Boolean(detailedProgress.modules[moduleId]?.completed)
+    || (moduleId === 'audio-resumen' && detailedProgress.audio.completed)
+  )
+  const completedCount = allModuleIds.filter(hasCompletedModule).length
   const totalModules = allModuleIds.length
   const overallProgress = totalModules ? Math.round((completedCount / totalModules) * 100) : 0
-  const selectedCompletedCount = selectedModules.filter((module) => completedModules.includes(module.id)).length
+  const selectedCompletedCount = selectedModules.filter((module) => hasCompletedModule(module.id)).length
   const selectedProgress = selectedModules.length
     ? Math.round((selectedCompletedCount / selectedModules.length) * 100)
     : 0
-  const nextModule = selectedModules.find((module) => !completedModules.includes(module.id))
+  const nextModule = selectedModules.find((module) => !hasCompletedModule(module.id))
 
   const handleAcademyClick = (academy) => {
     setSelectedAcademy(academy.id)
@@ -243,7 +254,12 @@ const AcademyDashboard = () => {
   }
 
   const isModuleCompleted = (moduleId) => {
-    return completedModules.includes(moduleId)
+    return hasCompletedModule(moduleId)
+  }
+
+  const handleActivityClick = (activity) => {
+    recordActivity(activity.id)
+    navigate(activity.route)
   }
 
   return (
@@ -451,6 +467,54 @@ const AcademyDashboard = () => {
               ))}
             </div>
           </motion.section>
+
+          {selectedAcademy === 'osint' && (
+            <motion.section className="modules-section academy-practice-section" variants={itemVariants}>
+              <header className="academy-section-heading">
+                <div>
+                  <span>Práctica guiada</span>
+                  <h2>Aplicá lo aprendido</h2>
+                </div>
+                <p>Laboratorios simulados para entrenar técnicas y criterio sin afectar objetivos reales.</p>
+              </header>
+              <div className="modules-grid">
+                {ACADEMY_LABS.filter((activity) => activity.id !== 'audio').map((activity, index) => {
+                  const ActivityIcon = activity.icon
+                  const isCompleted = Boolean(detailedProgress.activities[activity.id]?.completed)
+
+                  return (
+                    <motion.button
+                      type="button"
+                      key={activity.id}
+                      className={`module-card module-card--lab ${isCompleted ? 'completed' : ''}`}
+                      onClick={() => handleActivityClick(activity)}
+                      variants={itemVariants}
+                      whileHover={{ y: -8, scale: 1.015 }}
+                      whileTap={{ scale: 0.985 }}
+                    >
+                      <span className="module-index">LAB {String(index + 1).padStart(2, '0')}</span>
+                      <div className="module-header">
+                        <div className="module-icon"><ActivityIcon size={32} /></div>
+                        <div className="difficulty-badge intermedio">práctico</div>
+                      </div>
+                      <h3>{activity.title}</h3>
+                      <p>{activity.description}</p>
+                      <div className="module-footer">
+                        <span><Activity size={15} /> {activity.meta}</span>
+                        <strong>Entrar al laboratorio <ArrowRight size={16} /></strong>
+                      </div>
+                      {isCompleted && (
+                        <div className="completed-indicator">
+                          <CheckCircle2 size={16} />
+                          <span>Completado</span>
+                        </div>
+                      )}
+                    </motion.button>
+                  )
+                })}
+              </div>
+            </motion.section>
+          )}
         </motion.section>
       )}
       </AnimatePresence>

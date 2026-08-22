@@ -718,3 +718,252 @@
     animation: none;
   }
 }
+
+/* Capa profesional de Academia */
+.dork-simulator {
+  width: 100%;
+  max-width: none;
+  min-height: 100dvh;
+  padding: 34px max(24px, calc((100vw - 1200px) / 2)) 90px;
+  background:
+    radial-gradient(circle at 85% 0%, rgba(42, 151, 177, 0.1), transparent 26rem),
+    #071017;
+  color: #edf8fb;
+}
+
+.dork-simulator::before {
+  display: none;
+}
+
+.simulator-header,
+.dork-simulator .categories-section,
+.dork-simulator .challenge-section,
+.dork-simulator .reference-section,
+.dork-simulator .progress-section,
+.feedback {
+  animation: none;
+}
+
+.simulator-header {
+  min-height: 250px;
+  display: grid;
+  align-content: end;
+  justify-items: start;
+  margin-bottom: 22px;
+  padding: 34px;
+  border: 1px solid rgba(129, 188, 211, 0.2);
+  border-radius: 16px;
+  background: linear-gradient(120deg, rgba(16, 42, 55, 0.96), rgba(9, 25, 34, 0.96));
+  text-align: left;
+}
+
+.simulator-header::after {
+  display: none;
+}
+
+.simulator-header h1 {
+  max-width: 14ch;
+  margin: 32px 0 12px;
+  background: none;
+  color: #edf8fb;
+  font-size: clamp(2.35rem, 5vw, 4.2rem);
+  letter-spacing: -0.055em;
+  line-height: 1;
+  -webkit-text-fill-color: currentColor;
+}
+
+.simulator-header p {
+  max-width: 62ch;
+  margin: 0;
+  color: #a8c3ce;
+  font-size: 1rem;
+}
+
+.simulator-back {
+  position: absolute;
+  top: 26px;
+  left: 26px;
+  min-height: 40px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 13px;
+  border: 1px solid rgba(129, 188, 211, 0.22);
+  border-radius: 9px;
+  color: #a8c3ce;
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.simulator-back:hover {
+  border-color: rgba(56, 189, 223, 0.52);
+  color: #edf8fb;
+}
+
+.simulator-header .score-display {
+  position: absolute;
+  right: 30px;
+  bottom: 30px;
+  padding: 7px 11px;
+  border: 1px solid rgba(56, 189, 223, 0.35);
+  border-radius: 8px;
+  background: rgba(43, 147, 174, 0.12);
+  color: #8dddef;
+  font-family: var(--maltego-font-mono);
+  font-size: 0.75rem;
+}
+
+.dork-simulator .categories-section,
+.dork-simulator .challenge-section,
+.dork-simulator .reference-section,
+.dork-simulator .progress-section {
+  margin-bottom: 18px;
+  padding: 26px;
+  border: 1px solid rgba(129, 188, 211, 0.2);
+  border-radius: 14px;
+  background: rgba(12, 30, 40, 0.9);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.035);
+}
+
+.dork-simulator .categories-section h3,
+.dork-simulator .challenge-section h3,
+.dork-simulator .reference-section h3,
+.dork-simulator .progress-section h3 {
+  color: #edf8fb;
+}
+
+.category-card {
+  min-height: 112px;
+  padding: 18px;
+  border-width: 1px;
+  border-radius: 11px;
+  background: rgba(8, 24, 33, 0.72);
+  color: #a8c3ce;
+  box-shadow: none;
+}
+
+.category-card:hover,
+.category-card.active {
+  border-color: rgba(56, 189, 223, 0.55) !important;
+  background: rgba(39, 132, 157, 0.12);
+  box-shadow: none;
+  transform: none;
+}
+
+.category-card .completed-indicator {
+  border-radius: 6px;
+  background: rgba(90, 143, 160, 0.13);
+  color: #7894a0;
+}
+
+.challenge-description,
+.simulated-results h4,
+.operator-card span,
+.progress-header,
+.result-snippet {
+  color: #a8c3ce;
+}
+
+.challenge-points {
+  color: #8dddef;
+}
+
+.google-mockup {
+  border: 1px solid rgba(129, 188, 211, 0.2);
+  border-radius: 12px;
+  background: #091923;
+  box-shadow: none;
+}
+
+.google-logo {
+  color: #c6dfe7;
+  filter: none;
+}
+
+.dork-input {
+  min-height: 48px;
+  border: 1px solid rgba(129, 188, 211, 0.25);
+  background: #07141c;
+  color: #edf8fb;
+}
+
+.dork-input:focus {
+  border-color: #39b9dc;
+  box-shadow: 0 0 0 3px rgba(57, 185, 220, 0.14);
+}
+
+.search-button,
+.hint-button {
+  min-height: 44px;
+  border: 1px solid rgba(56, 189, 223, 0.42);
+  border-radius: 9px;
+  background: rgba(43, 147, 174, 0.16);
+  color: #a7e6f5;
+  box-shadow: none;
+}
+
+.search-button:hover,
+.hint-button:hover {
+  background: rgba(43, 147, 174, 0.24);
+  box-shadow: none;
+  transform: none;
+}
+
+.hint-box,
+.feedback,
+.simulated-results,
+.operator-card,
+.progress-item,
+.result-item {
+  border: 1px solid rgba(129, 188, 211, 0.2);
+  border-radius: 10px;
+  background: rgba(7, 22, 30, 0.78);
+  box-shadow: none;
+}
+
+.operator-card code,
+.result-item h5 {
+  color: #8dddef;
+}
+
+.result-url {
+  color: #75cda0;
+}
+
+.example {
+  border-color: rgba(129, 188, 211, 0.15);
+  background: rgba(4, 14, 20, 0.55);
+}
+
+.dork-simulator .progress-fill {
+  box-shadow: none;
+}
+
+.simulator-back:focus-visible,
+.category-card:focus-visible,
+.search-button:focus-visible,
+.hint-button:focus-visible {
+  outline: 3px solid rgba(98, 209, 236, 0.75);
+  outline-offset: 3px;
+}
+
+@media (max-width: 680px) {
+  .dork-simulator {
+    padding: 12px 12px 72px;
+  }
+
+  .simulator-header {
+    min-height: 280px;
+    padding: 26px 22px;
+  }
+
+  .simulator-header .score-display {
+    position: static;
+    margin-top: 16px;
+  }
+
+  .categories-grid,
+  .operators-grid {
+    grid-template-columns: 1fr;
+  }
+}

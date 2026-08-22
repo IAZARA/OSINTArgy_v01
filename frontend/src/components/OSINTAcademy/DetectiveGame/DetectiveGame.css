@@ -592,3 +592,202 @@
     animation: none;
   }
 }
+
+/* Capa profesional de Academia */
+.detective-game {
+  width: 100%;
+  max-width: none;
+  min-height: 100dvh;
+  padding: 34px max(24px, calc((100vw - 1200px) / 2)) 90px;
+  background: radial-gradient(circle at 84% 0%, rgba(42, 151, 177, 0.1), transparent 26rem), #071017;
+}
+
+.detective-game::before {
+  display: none;
+}
+
+.game-header,
+.game-menu,
+.game-area,
+.game-completed,
+.game-paused,
+.menu-features .feature,
+.start-button {
+  animation: none;
+}
+
+.game-header {
+  min-height: 230px;
+  display: grid;
+  align-content: end;
+  justify-items: start;
+  margin-bottom: 18px;
+  padding: 30px;
+  border: 1px solid rgba(129, 188, 211, 0.2);
+  border-radius: 16px;
+  background: linear-gradient(120deg, rgba(16, 42, 55, 0.96), rgba(9, 25, 34, 0.96));
+  box-shadow: none;
+  text-align: left;
+}
+
+.game-navigation {
+  position: absolute;
+  top: 26px;
+  left: 26px;
+  margin: 0;
+}
+
+.detective-game .nav-button {
+  min-height: 40px;
+  padding: 0 13px;
+  border: 1px solid rgba(129, 188, 211, 0.22);
+  border-radius: 9px;
+  background: transparent;
+  color: #a8c3ce;
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.detective-game .nav-button:hover {
+  border-color: rgba(56, 189, 223, 0.52);
+  background: transparent;
+  box-shadow: none;
+  color: #edf8fb;
+  transform: none;
+}
+
+.game-header h1 {
+  max-width: 14ch;
+  margin: 34px 0 0;
+  background: none;
+  color: #edf8fb;
+  font-size: clamp(2.35rem, 5vw, 4.2rem);
+  letter-spacing: -0.055em;
+  line-height: 1;
+  -webkit-text-fill-color: currentColor;
+}
+
+.game-stats {
+  position: absolute;
+  right: 28px;
+  bottom: 28px;
+  gap: 8px;
+  margin: 0;
+}
+
+.stat {
+  padding: 7px 11px;
+  border: 1px solid rgba(129, 188, 211, 0.22);
+  border-radius: 8px;
+  background: rgba(43, 147, 174, 0.11);
+  color: #8dddef;
+  font-family: var(--maltego-font-mono);
+  font-size: 0.76rem;
+}
+
+.game-menu,
+.game-area,
+.game-completed,
+.game-paused {
+  max-width: none;
+  padding: clamp(24px, 4vw, 42px);
+  border: 1px solid rgba(129, 188, 211, 0.2);
+  border-radius: 14px;
+  background: rgba(12, 30, 40, 0.9);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.035);
+  backdrop-filter: none;
+}
+
+.game-menu > p,
+.case-info p {
+  color: #a8c3ce;
+}
+
+.menu-features {
+  gap: 12px;
+}
+
+.feature,
+.case-info,
+.stat-card {
+  border: 1px solid rgba(129, 188, 211, 0.2);
+  border-radius: 11px;
+  background: rgba(8, 24, 33, 0.7);
+}
+
+.feature:hover,
+.stat:hover,
+.tool-button:hover:not(:disabled) {
+  box-shadow: none;
+  transform: none;
+}
+
+.game-canvas {
+  width: min(100%, 700px);
+  height: auto;
+  border: 1px solid rgba(129, 188, 211, 0.28);
+  border-radius: 11px;
+  box-shadow: none;
+}
+
+.game-canvas:hover {
+  border-color: rgba(56, 189, 223, 0.55);
+  box-shadow: none;
+}
+
+.tool-button,
+.start-button,
+.next-button,
+.menu-button,
+.resume-button {
+  min-height: 44px;
+  border: 1px solid rgba(56, 189, 223, 0.42);
+  border-radius: 9px;
+  background: rgba(43, 147, 174, 0.16);
+  color: #a7e6f5;
+  box-shadow: none;
+}
+
+.start-button:hover,
+.next-button:hover,
+.menu-button:hover,
+.resume-button:hover {
+  background: rgba(43, 147, 174, 0.25);
+  box-shadow: none;
+  transform: none;
+}
+
+.game-hint {
+  max-width: 700px;
+  margin: 18px auto 0;
+  padding: 13px 15px;
+  border-left: 3px solid #39b9dc;
+  background: rgba(43, 147, 174, 0.1);
+  color: #b7d3dc;
+  font-size: 0.88rem;
+}
+
+.detective-game button:focus-visible {
+  outline: 3px solid rgba(98, 209, 236, 0.75);
+  outline-offset: 3px;
+}
+
+@media (max-width: 720px) {
+  .detective-game {
+    padding: 12px 12px 72px;
+  }
+
+  .game-header {
+    min-height: 280px;
+    padding: 24px 20px;
+  }
+
+  .game-stats {
+    position: static;
+    margin-top: 20px;
+  }
+
+  .game-tools {
+    flex-direction: column;
+  }
+}

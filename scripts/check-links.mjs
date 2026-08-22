@@ -101,7 +101,7 @@ const classifyStatus = (status) => {
   if (REACHABLE_RESTRICTED_STATUSES.has(status)) return 'ok'
   if (BROKEN_STATUSES.has(status)) return 'broken'
   if (TRANSIENT_STATUSES.has(status) || status >= 500) return 'warning'
-  if (status >= 400) return 'broken'
+  if (status >= 400) return 'warning'
   return 'warning'
 }
 
@@ -136,7 +136,10 @@ const checkUrl = async (tool, options) => {
   try {
     let response = await request({ method: 'HEAD', url: tool.url, timeout: options.timeout })
 
-    if ([405, 501].includes(response.status)) {
+    const shouldRetryWithGet = [405, 501].includes(response.status)
+      || (response.status >= 400 && !REACHABLE_RESTRICTED_STATUSES.has(response.status))
+
+    if (shouldRetryWithGet) {
       response = await request({ method: 'GET', url: tool.url, timeout: options.timeout })
     }
 

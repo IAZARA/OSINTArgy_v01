@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import React, { useState, useEffect, useMemo, useRef } from 'react'
+import { motion, AnimatePresence, useReducedMotion } from 'framer-motion'
+import { useNavigate } from '@/lib/router'
 import { 
   Search, 
   Target, 
@@ -10,17 +11,27 @@ import {
   Code,
   Eye,
   Award,
-  Zap
+  Zap,
+  ArrowLeft
 } from 'lucide-react'
 import './DorkSimulator.css'
+import { useAcademyProgress } from '../useAcademyProgress'
 
 const DorkSimulator = () => {
+  const reduceMotion = useReducedMotion()
+  const navigate = useNavigate()
+  const { progress, recordActivity } = useAcademyProgress()
+  const feedbackTimerRef = useRef(null)
   const [currentQuery, setCurrentQuery] = useState('')
   const [selectedCategory, setSelectedCategory] = useState('basic')
-  const [completedChallenges, setCompletedChallenges] = useState([])
+  const [completedChallenges, setCompletedChallenges] = useState(() => (
+    progress.activities['dork-simulator']?.completedChallenges || []
+  ))
   const [currentChallenge, setCurrentChallenge] = useState(null)
   const [feedback, setFeedback] = useState(null)
-  const [score, setScore] = useState(0)
+  const [score, setScore] = useState(() => (
+    progress.activities['dork-simulator']?.score || 0
+  ))
   const [showHint, setShowHint] = useState(false)
 
   // Base de conocimientos de Google Dorks
@@ -28,22 +39,22 @@ const DorkSimulator = () => {
     basic: {
       name: 'Básico',
       icon: BookOpen,
-      color: '#3498db'
+      color: '#39b9dc'
     },
     files: {
       name: 'Archivos',
       icon: Eye,
-      color: '#e74c3c'
+      color: '#39b9dc'
     },
     security: {
       name: 'Seguridad',
       icon: Target,
-      color: '#e67e22'
+      color: '#39b9dc'
     },
     social: {
       name: 'Social Media',
       icon: Search,
-      color: '#9b59b6'
+      color: '#39b9dc'
     }
   }
 
@@ -70,10 +81,10 @@ const DorkSimulator = () => {
       {
         id: 'inurl_operator',
         title: 'Buscar en URLs',
-        description: 'Encuentra páginas que tengan "admin" en la URL',
-        expectedPattern: /inurl:admin|inurl:"admin"/i,
-        hint: 'Usa el operador inurl: para buscar en las URLs',
-        solution: 'inurl:admin',
+        description: 'Encuentra páginas que tengan "publicaciones" en la URL del dominio who.int',
+        expectedPattern: /site:who\.int.*inurl:publications|inurl:publications.*site:who\.int/i,
+        hint: 'Combina site: con inurl: para limitar dominio y ruta',
+        solution: 'site:who.int inurl:publications',
         points: 150
       }
     ],
@@ -100,31 +111,31 @@ const DorkSimulator = () => {
     security: [
       {
         id: 'directory_listing',
-        title: 'Directorios listados',
-        description: 'Encuentra páginas con "Index of" para detectar directorios expuestos',
-        expectedPattern: /intitle:"index of"|"index of"/i,
-        hint: 'Busca el texto "Index of" que aparece en directorios expuestos',
-        solution: 'intitle:"Index of"',
+        title: 'Auditoría de indexación',
+        description: 'Formula una consulta simulada para revisar títulos "Index of" sólo en el dominio de práctica example.com',
+        expectedPattern: /site:example\.com.*intitle:"?index of"?|intitle:"?index of"?.*site:example\.com/i,
+        hint: 'Limita siempre el alcance con site:example.com',
+        solution: 'site:example.com intitle:"Index of"',
         points: 300
       },
       {
         id: 'config_files',
-        title: 'Archivos de configuración',
-        description: 'Encuentra archivos .config expuestos públicamente',
-        expectedPattern: /filetype:config.*site:|site:.*filetype:config|filetype:config/i,
-        hint: 'Usa filetype:config para encontrar archivos de configuración',
-        solution: 'filetype:config',
+        title: 'Archivos de configuración en laboratorio',
+        description: 'Formula una consulta simulada para revisar archivos .config sólo en example.com',
+        expectedPattern: /filetype:config.*site:example\.com|site:example\.com.*filetype:config/i,
+        hint: 'Combina filetype:config con el dominio reservado example.com',
+        solution: 'site:example.com filetype:config',
         points: 350
       }
     ],
     social: [
       {
         id: 'twitter_search',
-        title: 'Buscar en Twitter',
-        description: 'Encuentra tweets en Twitter sobre "OSINT"',
-        expectedPattern: /site:twitter\.com.*osint|osint.*site:twitter\.com/i,
-        hint: 'Usa site:twitter.com para buscar solo en Twitter',
-        solution: 'site:twitter.com OSINT',
+        title: 'Buscar publicaciones en X',
+        description: 'Encuentra páginas públicas de X sobre "OSINT"',
+        expectedPattern: /site:(x|twitter)\.com.*osint|osint.*site:(x|twitter)\.com/i,
+        hint: 'Usa el operador site: con el dominio x.com',
+        solution: 'site:x.com OSINT',
         points: 250
       }
     ]
@@ -138,9 +149,9 @@ const DorkSimulator = () => {
       snippet: 'Un manual de usuario es un documento técnico destinado a dar asistencia a las personas que utilizan un sistema en particular...'
     },
     {
-      title: 'Login - Sistema Administrativo',
-      url: 'https://ejemplo.com/admin/login',
-      snippet: 'Página de acceso al sistema administrativo. Ingrese sus credenciales para continuar...'
+      title: 'Publicaciones técnicas',
+      url: 'https://www.who.int/publications',
+      snippet: 'Catálogo público de informes, guías y publicaciones técnicas de la organización...'
     },
     {
       title: 'Manual de Usuario.pdf',
@@ -148,6 +159,16 @@ const DorkSimulator = () => {
       snippet: 'Documento PDF con instrucciones completas para el uso del software...'
     }
   ]
+
+  const totalChallenges = Object.values(dorkChallenges).reduce(
+    (total, challenges) => total + challenges.length,
+    0
+  )
+
+  const simulatedResult = useMemo(() => {
+    const normalizedLength = currentQuery.trim().length
+    return simulatedResults[normalizedLength % simulatedResults.length]
+  }, [currentQuery])
 
   useEffect(() => {
     if (selectedCategory && dorkChallenges[selectedCategory].length > 0) {
@@ -161,6 +182,23 @@ const DorkSimulator = () => {
       }
     }
   }, [selectedCategory, completedChallenges])
+
+  useEffect(() => {
+    recordActivity('dork-simulator', {
+      completedChallenges,
+      score,
+      completed: completedChallenges.length === totalChallenges
+    })
+  }, [completedChallenges, recordActivity, score, totalChallenges])
+
+  useEffect(() => () => {
+    if (feedbackTimerRef.current) clearTimeout(feedbackTimerRef.current)
+  }, [])
+
+  const scheduleFeedbackClear = (onClear) => {
+    if (feedbackTimerRef.current) clearTimeout(feedbackTimerRef.current)
+    feedbackTimerRef.current = setTimeout(onClear, 3000)
+  }
 
   const handleQuerySubmit = (e) => {
     e.preventDefault()
@@ -177,11 +215,11 @@ const DorkSimulator = () => {
       setCompletedChallenges([...completedChallenges, currentChallenge.id])
       setScore(score + currentChallenge.points)
       
-      setTimeout(() => {
+      scheduleFeedbackClear(() => {
         setFeedback(null)
         setCurrentQuery('')
         setShowHint(false)
-      }, 3000)
+      })
     } else {
       setFeedback({
         type: 'error',
@@ -189,14 +227,10 @@ const DorkSimulator = () => {
         points: 0
       })
       
-      setTimeout(() => {
+      scheduleFeedbackClear(() => {
         setFeedback(null)
-      }, 3000)
+      })
     }
-  }
-
-  const getRandomResult = () => {
-    return simulatedResults[Math.floor(Math.random() * simulatedResults.length)]
   }
 
   const handleHint = () => {
@@ -214,6 +248,14 @@ const DorkSimulator = () => {
   return (
     <div className="dork-simulator">
       <div className="simulator-header">
+        <button
+          type="button"
+          className="simulator-back"
+          onClick={() => navigate('/academy', { state: { selectedAcademy: 'osint' } })}
+        >
+          <ArrowLeft size={18} aria-hidden="true" />
+          Volver a Academia
+        </button>
         <h1>Simulador de Google Dorks</h1>
         <p>Aprende y practica técnicas de búsqueda avanzada de forma segura</p>
         <div className="score-display">
@@ -250,7 +292,7 @@ const DorkSimulator = () => {
           className="challenge-section"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: reduceMotion ? 0 : 0.4, ease: [0.22, 1, 0.36, 1] }}
         >
           <div className="challenge-header">
             <h3>{currentChallenge.title}</h3>
@@ -276,7 +318,7 @@ const DorkSimulator = () => {
                     placeholder="Introduce tu Google Dork aquí..."
                     className="dork-input"
                   />
-                  <button type="submit" className="search-button">
+                  <button type="submit" className="search-button" aria-label="Evaluar consulta">
                     <Search size={20} />
                   </button>
                 </div>
@@ -343,9 +385,9 @@ const DorkSimulator = () => {
             >
               <h4>Resultados simulados:</h4>
               <div className="result-item">
-                <h5>{getRandomResult().title}</h5>
-                <p className="result-url">{getRandomResult().url}</p>
-                <p className="result-snippet">{getRandomResult().snippet}</p>
+                <h5>{simulatedResult.title}</h5>
+                <p className="result-url">{simulatedResult.url}</p>
+                <p className="result-snippet">{simulatedResult.snippet}</p>
               </div>
             </motion.div>
           )}
@@ -374,12 +416,12 @@ const DorkSimulator = () => {
           <div className="operator-card">
             <code>inurl:</code>
             <span>Buscar en URLs</span>
-            <div className="example">inurl:admin</div>
+            <div className="example">inurl:publications</div>
           </div>
           <div className="operator-card">
             <code>intext:</code>
             <span>Buscar en contenido de página</span>
-            <div className="example">intext:"password"</div>
+            <div className="example">intext:"política de privacidad"</div>
           </div>
           <div className="operator-card">
             <code>" "</code>

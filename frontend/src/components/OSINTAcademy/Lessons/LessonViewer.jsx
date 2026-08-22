@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useMemo } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion, AnimatePresence, useReducedMotion } from 'framer-motion'
 import { useParams, useNavigate } from '@/lib/router'
 import DOMPurify from 'dompurify'
 import { corporateLessons } from '../data/corporateAcademy'
@@ -23,15 +23,24 @@ import {
   AlertTriangle
 } from 'lucide-react'
 import './LessonViewer.css'
+import { useAcademyProgress } from '../useAcademyProgress'
 
 const LessonViewer = () => {
   const { lessonId } = useParams()
   const navigate = useNavigate()
-  const [currentSlide, setCurrentSlide] = useState(0)
-  const [isCompleted, setIsCompleted] = useState(false)
-  const [progress, setProgress] = useState(0)
+  const reduceMotion = useReducedMotion()
+  const {
+    progress: academyProgress,
+    visitSlide,
+    recordQuiz,
+    completeModule
+  } = useAcademyProgress()
+  const [currentSlide, setCurrentSlide] = useState(() => (
+    academyProgress.modules[lessonId]?.lastSlide || 0
+  ))
   const [quizResults, setQuizResults] = useState({})
   const [showQuizResults, setShowQuizResults] = useState(false)
+  const [revealedItems, setRevealedItems] = useState([])
 
   // Contenido de los módulos OSINT - Nueva estructura de 5 módulos
   const lessons = {
@@ -49,7 +58,7 @@ const LessonViewer = () => {
             <p><strong>OSINT</strong> significa <em>Open Source Intelligence</em> o Inteligencia de Fuentes Abiertas.</p>
             <p>Es la disciplina que se encarga de <strong>recopilar, analizar y utilizar información</strong> que está disponible públicamente para obtener conocimiento útil.</p>
             <div class="highlight-box">
-              <p>💡 <strong>Punto clave:</strong> OSINT usa SOLO información pública, no requiere hacking ni acceso privilegiado</p>
+              <p><strong>Punto clave:</strong> OSINT trabaja con fuentes abiertas y accesos autorizados; no habilita a evadir controles ni acceder a información privada.</p>
             </div>
           `,
           interactive: {
@@ -134,7 +143,7 @@ const LessonViewer = () => {
           title: "Ciclo de Vida de la Investigación OSINT",
           content: `
             <h2>Proceso Sistemático de Investigación</h2>
-            <p>Una metodología estructurada garantiza resultados efectivos:</p>
+            <p>Una metodología estructurada mejora la trazabilidad, reduce errores y hace que los hallazgos puedan verificarse:</p>
             <div class="methodology-steps">
               <div class="step">
                 <span class="step-number">1</span>
@@ -178,7 +187,7 @@ const LessonViewer = () => {
               <div class="rule-item good">
                 <h3>✅ Principios Fundamentales</h3>
                 <ul>
-                  <li>Usar SOLO información pública y accesible</li>
+                  <li>Usar fuentes abiertas y accesos expresamente autorizados</li>
                   <li>Respetar la privacidad de las personas</li>
                   <li>Verificar múltiples fuentes antes de concluir</li>
                   <li>Documentar fuentes y métodos utilizados</li>
@@ -203,9 +212,9 @@ const LessonViewer = () => {
             type: 'ethics_quiz',
             questions: [
               {
-                question: "¿Es ético analizar perfiles públicos de redes sociales para una investigación?",
-                correct: "Sí, si la información es pública",
-                options: ["Sí, si la información es pública", "No, nunca", "Solo con autorización judicial"]
+                question: "¿Qué condición vuelve responsable el análisis de un perfil público?",
+                correct: "Tener un propósito legítimo, minimizar el daño y respetar la ley",
+                options: ["Que el perfil aparezca en Google", "Tener un propósito legítimo, minimizar el daño y respetar la ley", "Guardar todo por si resulta útil"]
               }
             ]
           }
@@ -219,7 +228,7 @@ const LessonViewer = () => {
             <div class="tools-showcase">
               <div class="tool-item">
                 <strong>🔍 Google Search</strong>
-                <p>Motor de búsqueda más potente con operadores avanzados</p>
+                <p>Motor de búsqueda de amplio alcance con operadores avanzados</p>
               </div>
               <div class="tool-item">
                 <strong>🖼️ Google Images</strong>
@@ -269,9 +278,9 @@ const LessonViewer = () => {
               },
               {
                 question: "¿Cuál es una característica fundamental de OSINT?",
-                options: ["Requiere hacking de sistemas", "Usa solo información pública", "Necesita acceso privilegiado"],
+                options: ["Requiere vulnerar sistemas", "Trabaja con fuentes abiertas y accesos autorizados", "Necesita acceso privilegiado"],
                 correct: 1,
-                explanation: "OSINT utiliza únicamente información que está disponible públicamente."
+                explanation: "OSINT trabaja con información abierta o legítimamente accesible, sin evadir controles de acceso."
               },
               {
                 question: "¿Cuál es el primer paso en una investigación OSINT?",
@@ -280,16 +289,16 @@ const LessonViewer = () => {
                 explanation: "Siempre debemos comenzar definiendo claramente qué información específica necesitamos."
               },
               {
-                question: "¿Es ético usar información de perfiles públicos de redes sociales?",
-                options: ["Sí, si es información pública", "No, nunca es ético", "Solo con permiso del usuario"],
-                correct: 0,
-                explanation: "Es ético usar información que está disponible públicamente, respetando términos de uso."
+                question: "¿Qué criterio debe aplicarse al analizar un perfil público?",
+                options: ["Recolectar todo porque es público", "Propósito legítimo, minimización y respeto por la ley", "Publicar los datos sin contexto"],
+                correct: 1,
+                explanation: "Que un dato sea público no elimina la obligación de justificar el propósito, reducir daños y respetar normas y términos aplicables."
               },
               {
-                question: "¿Qué profesionales NO suelen usar OSINT?",
-                options: ["Periodistas", "Analistas de ciberseguridad", "Ninguna profesión está excluida"],
-                correct: 2,
-                explanation: "OSINT es útil para múltiples profesiones: periodismo, seguridad, legal, empresarial, etc."
+                question: "¿Qué hace reproducible un hallazgo OSINT?",
+                options: ["Confiar en la memoria", "Documentar fuente, fecha, contexto y método", "Guardar sólo la conclusión"],
+                correct: 1,
+                explanation: "Registrar fuente, fecha, contexto y método permite que otra persona revise y reproduzca el hallazgo."
               }
             ]
           }
@@ -305,17 +314,17 @@ const LessonViewer = () => {
           id: 1,
           title: "Google: Más que una Búsqueda Simple",
           content: `
-            <h2>El Poder Oculto de Google</h2>
-            <p>Google procesa más de <strong>8.5 billones de búsquedas al día</strong> y indexa más de 130 trillones de páginas web.</p>
-            <p>Pero la mayoría de usuarios solo usa el 10% de su potencial real.</p>
+            <h2>Consultas con menos ruido</h2>
+            <p>Un buscador indexa una parte enorme de la web pública, pero una consulta amplia suele mezclar resultados relevantes, duplicados y contenido fuera de contexto.</p>
+            <p>Los operadores permiten delimitar la fuente, el formato, las palabras exactas y el período antes de evaluar un resultado.</p>
             <div class="highlight-box">
-              <p>💡 <strong>Dato fascinante:</strong> Google puede encontrar información específica en milisegundos usando operadores especiales</p>
+              <p><strong>Principio práctico:</strong> formula una hipótesis, limita la consulta y registra exactamente qué buscaste.</p>
             </div>
             <ul>
-              <li><strong>🎯 Búsquedas Precisas:</strong> Encuentra exactamente lo que necesitas</li>
-              <li><strong>🔍 Filtros Avanzados:</strong> Por tipo de archivo, fecha, sitio específico</li>
-              <li><strong>🕷️ Google Dorks:</strong> Consultas especializadas para descubrir información oculta</li>
-              <li><strong>⚡ Eficiencia:</strong> Reduce tiempo de investigación de horas a minutos</li>
+              <li><strong>Consultas precisas:</strong> reduce ambigüedad con frases y exclusiones</li>
+              <li><strong>Filtros avanzados:</strong> limita por archivo, fecha o sitio</li>
+              <li><strong>Google Dorks:</strong> combina operadores sobre contenido públicamente indexado</li>
+              <li><strong>Trazabilidad:</strong> conserva consulta, fecha y resultado relevante</li>
             </ul>
           `,
           interactive: {
@@ -357,15 +366,15 @@ const LessonViewer = () => {
               </div>
             </div>
             <div class="highlight-box">
-              <p>💡 <strong>Ejemplo práctico:</strong> "ciberseguridad 2023" -curso encontrará noticias sobre ciberseguridad de 2023, excluyendo cursos</p>
+              <p><strong>Ejemplo práctico:</strong> "ciberseguridad 2026" -curso busca la frase y excluye resultados centrados en cursos.</p>
             </div>
           `,
           interactive: {
             type: 'dork_builder',
             examples: [
-              '"data breach" 2024 -blog',
+              '"data breach" 2026 -blog',
               'phishing OR malware site:gov',
-              'cybersecurity budget 2023..2024'
+              'cybersecurity budget 2025..2026'
             ]
           }
         },
@@ -385,7 +394,7 @@ const LessonViewer = () => {
                 <p>Busca solo archivos del tipo especificado</p>
               </div>
               <div class="dork-example">
-                <code>intitle:"admin panel"</code>
+                <code>intitle:"informe anual"</code>
                 <p>Busca páginas con esas palabras en el título</p>
               </div>
               <div class="dork-example">
@@ -393,8 +402,8 @@ const LessonViewer = () => {
                 <p>Busca páginas con esa palabra en la URL</p>
               </div>
               <div class="dork-example">
-                <code>cache:ejemplo.com</code>
-                <p>Muestra la versión guardada en cache de Google</p>
+                <code>before:2026-01-01</code>
+                <p>Limita resultados anteriores a una fecha</p>
               </div>
               <div class="dork-example">
                 <code>related:ejemplo.com</code>
@@ -408,9 +417,9 @@ const LessonViewer = () => {
           interactive: {
             type: 'dork_builder',
             examples: [
-              'site:github.com "password" filetype:txt',
-              'intitle:"index of" "database.sql"',
-              'inurl:admin filetype:php'
+              'site:argentina.gob.ar filetype:pdf "presupuesto"',
+              'intitle:"informe anual" filetype:pdf',
+              'site:who.int inurl:publications'
             ]
           }
         },
@@ -448,7 +457,7 @@ const LessonViewer = () => {
               </div>
             </div>
             <div class="highlight-box">
-              <p>🎯 <strong>Tip profesional:</strong> Combina operadores: site:empresa.com filetype:pdf "confidencial"</p>
+              <p><strong>Ejemplo seguro:</strong> combina operadores sobre fuentes públicas: site:argentina.gob.ar filetype:pdf "informe anual"</p>
             </div>
           `,
           interactive: {
@@ -471,22 +480,22 @@ const LessonViewer = () => {
               <div class="step">
                 <span class="step-number">2</span>
                 <h3>Operadores Temporales</h3>
-                <p>Usar rangos: after:2023-01-01 before:2023-12-31</p>
+                <p>Usar rangos: after:2025-01-01 before:2026-01-01</p>
               </div>
               <div class="step">
                 <span class="step-number">3</span>
-                <h3>Cache Histórico</h3>
-                <p>cache:sitio.com para ver versiones anteriores</p>
+                <h3>Archivo Histórico</h3>
+                <p>Consultar Wayback Machine u otro archivo web y registrar la fecha de captura</p>
               </div>
             </div>
             <div class="dorks-examples">
               <div class="dork-example">
-                <code>after:2023-06-01 before:2023-06-30</code>
-                <p>Busca contenido de junio 2023 específicamente</p>
+                <code>after:2026-06-01 before:2026-07-01</code>
+                <p>Busca contenido de junio de 2026</p>
               </div>
               <div class="dork-example">
-                <code>"data breach" after:2024-01-01</code>
-                <p>Brechas de datos reportadas desde 2024</p>
+                <code>"data breach" after:2026-01-01</code>
+                <p>Reportes públicos de incidentes publicados desde 2026</p>
               </div>
             </div>
             <div class="highlight-box">
@@ -532,10 +541,9 @@ const LessonViewer = () => {
             </div>
             <div class="next-steps">
               <h3>¡Usa el Generador Ahora!</h3>
-              <button class="action-button" onclick="window.location.href='/dorks'">
-                <Search size={20} />
+              <a href="/dorks" class="action-button">
                 Abrir Generador de Dorks
-              </button>
+              </a>
             </div>
             <div class="highlight-box">
               <p>🚀 <strong>Ventaja profesional:</strong> Lo que tomaría horas crear manualmente, el generador lo hace en segundos</p>
@@ -601,41 +609,41 @@ const LessonViewer = () => {
           title: "El Ecosistema de Redes Sociales",
           content: `
             <h2>Mapeo del Universo Social Digital</h2>
-            <p>Las redes sociales son la mayor fuente de información personal pública en la historia:</p>
+            <p>Cada plataforma expone señales diferentes y cambia sus funciones con frecuencia. Antes de recolectar, define qué dato necesitas y qué limitaciones tiene la fuente:</p>
             <div class="applications-grid">
               <div class="app-card">
                 <h3>📘 Facebook</h3>
-                <p><strong>2.9 billones</strong> de usuarios activos</p>
-                <p>Información personal, relaciones, ubicaciones</p>
+                <p>Perfiles, páginas, grupos y publicaciones visibles según privacidad</p>
+                <p>Útil para contexto; la visibilidad no implica consentimiento para difundir</p>
               </div>
               <div class="app-card">
                 <h3>🐦 Twitter/X</h3>
-                <p><strong>450 millones</strong> de usuarios activos</p>
-                <p>Opiniones, noticias en tiempo real, tendencias</p>
+                <p>Publicaciones, listas, conversaciones y eventos de rápida evolución</p>
+                <p>Requiere archivar pronto y distinguir testimonio de verificación</p>
               </div>
               <div class="app-card">
                 <h3>💼 LinkedIn</h3>
-                <p><strong>900 millones</strong> de profesionales</p>
-                <p>Información laboral, conexiones profesionales</p>
+                <p>Trayectorias declaradas, organizaciones y relaciones profesionales</p>
+                <p>Los datos son autorreportados y deben contrastarse</p>
               </div>
               <div class="app-card">
                 <h3>📸 Instagram</h3>
-                <p><strong>2 billones</strong> de usuarios activos</p>
-                <p>Fotos geolocalizadas, actividades, intereses</p>
+                <p>Imágenes, videos, etiquetas, menciones y ubicaciones declaradas</p>
+                <p>El contexto visual suele ser más útil que los metadatos descargados</p>
               </div>
               <div class="app-card">
                 <h3>🎵 TikTok</h3>
-                <p><strong>1 billón</strong> de usuarios activos</p>
-                <p>Comportamientos, tendencias, demografía joven</p>
+                <p>Videos, sonidos, hashtags y redes de reutilización</p>
+                <p>Conserva URL, autor y fecha antes de que el contenido cambie</p>
               </div>
               <div class="app-card">
                 <h3>👻 Snapchat</h3>
-                <p><strong>750 millones</strong> de usuarios activos</p>
-                <p>Ubicaciones en tiempo real, contenido efímero</p>
+                <p>Contenido efímero y mapas sujetos a configuración de privacidad</p>
+                <p>No infieras ubicación actual sin corroboración independiente</p>
               </div>
             </div>
             <div class="highlight-box">
-              <p>📊 <strong>Dato impactante:</strong> Cada día se publican 95 millones de fotos en Instagram y 500 millones de tweets</p>
+              <p><strong>Regla de trabajo:</strong> una publicación es una pieza de evidencia, no una conclusión. Captura contexto y verifica con fuentes independientes.</p>
             </div>
           `,
           interactive: {
@@ -647,46 +655,46 @@ const LessonViewer = () => {
           id: 2,
           title: "Facebook: Búsquedas Avanzadas",
           content: `
-            <h2>Técnicas Especializadas para Facebook</h2>
-            <p>Facebook mantiene el motor de búsqueda social más potente. Aprende a dominarlo:</p>
+            <h2>Búsqueda pública y verificación en Facebook</h2>
+            <p>La búsqueda y los filtros disponibles dependen de la sesión, la región y la privacidad de cada contenido. Trabaja sólo con resultados legítimamente visibles:</p>
             <div class="methodology-steps">
               <div class="step">
                 <span class="step-number">1</span>
-                <h3>Búsqueda por Personas</h3>
-                <p>Nombre + Ciudad + Trabajo + Educación</p>
+                <h3>Definir identificadores</h3>
+                <p>Nombre, alias, organización y ubicación declarada</p>
               </div>
               <div class="step">
                 <span class="step-number">2</span>
-                <h3>Filtros Avanzados</h3>
-                <p>Por ubicación, empleador, escuela, año</p>
+                <h3>Aplicar filtros visibles</h3>
+                <p>Personas, páginas, grupos, publicaciones y fecha cuando estén disponibles</p>
               </div>
               <div class="step">
                 <span class="step-number">3</span>
-                <h3>Búsqueda de Posts</h3>
-                <p>Por fecha, ubicación, palabras clave</p>
+                <h3>Buscar fuera de la plataforma</h3>
+                <p>Usar site:facebook.com con términos públicos, sabiendo que la indexación es parcial</p>
               </div>
               <div class="step">
                 <span class="step-number">4</span>
-                <h3>Graph Search</h3>
-                <p>Consultas complejas de relaciones</p>
+                <h3>Documentar y contrastar</h3>
+                <p>Guardar URL, fecha y captura; validar identidad con otra fuente</p>
               </div>
             </div>
             <div class="dorks-examples">
               <div class="dork-example">
-                <code>Personas llamadas "Juan" que viven en "Madrid"</code>
-                <p>Búsqueda de personas por nombre y ubicación</p>
+                <code>"Nombre Apellido" "Organización"</code>
+                <p>Combina identificadores antes de atribuir un perfil</p>
               </div>
               <div class="dork-example">
-                <code>Empleados de "Microsoft" que estudiaron en "Universidad Complutense"</code>
-                <p>Combinación de filtros profesionales y educativos</p>
+                <code>site:facebook.com "evento público" "Buenos Aires"</code>
+                <p>Busca páginas indexadas; no reemplaza la verificación dentro de la plataforma</p>
               </div>
               <div class="dork-example">
-                <code>Posts de mis amigos sobre "vacaciones" en "2023"</code>
-                <p>Búsqueda temporal de contenido específico</p>
+                <code>URL + fecha + captura + fuente de contraste</code>
+                <p>Registra evidencia suficiente para una revisión posterior</p>
               </div>
             </div>
             <div class="highlight-box">
-              <p>🔍 <strong>Tip profesional:</strong> Usa múltiples variaciones del nombre (Juan, Juanito, J. García)</p>
+              <p><strong>Precaución:</strong> coincidencia de nombre no equivale a identidad. Exige dos o más atributos independientes antes de atribuir.</p>
             </div>
           `,
           interactive: {
@@ -698,43 +706,43 @@ const LessonViewer = () => {
           id: 3,
           title: "Twitter/X: Búsqueda en Tiempo Real",
           content: `
-            <h2>Dominar la Búsqueda Avanzada de Twitter</h2>
-            <p>Twitter es la fuente principal de información en tiempo real. Sus operadores son similares a Google:</p>
+            <h2>Búsqueda avanzada en X</h2>
+            <p>X puede aportar testimonios y señales tempranas sobre eventos. Sus operadores ayudan a reducir ruido, pero cada publicación debe verificarse:</p>
             <div class="dorks-examples">
               <div class="dork-example">
                 <code>from:usuario</code>
-                <p>Tweets de un usuario específico</p>
+                <p>Publicaciones de un usuario específico</p>
               </div>
               <div class="dork-example">
                 <code>to:usuario</code>
-                <p>Tweets dirigidos a un usuario específico</p>
+                <p>Respuestas dirigidas a un usuario específico</p>
               </div>
               <div class="dork-example">
                 <code>"frase exacta"</code>
-                <p>Tweets que contienen la frase exacta</p>
+                <p>Publicaciones que contienen la frase exacta</p>
               </div>
               <div class="dork-example">
                 <code>#hashtag</code>
-                <p>Tweets con hashtag específico</p>
+                <p>Publicaciones con un hashtag específico</p>
               </div>
               <div class="dork-example">
                 <code>since:2024-01-01 until:2024-01-31</code>
-                <p>Tweets en un rango de fechas específico</p>
+                <p>Publicaciones en un rango de fechas específico</p>
               </div>
               <div class="dork-example">
-                <code>near:"Madrid" within:15km</code>
-                <p>Tweets geolocalizados cerca de una ubicación</p>
+                <code>filter:media lang:es</code>
+                <p>Filtra contenido multimedia publicado en español</p>
               </div>
             </div>
             <div class="tools-showcase">
               <div class="tool-item">
                 <strong>🎯 Ejemplo Complejo</strong>
-                <p><code>from:elonmusk "Tesla" since:2024-01-01 -RT</code></p>
-                <p>Tweets originales de Elon Musk sobre Tesla desde enero 2024</p>
+                <p><code>from:cuenta "término" since:2026-01-01 filter:media</code></p>
+                <p>Combina autor, frase, fecha y tipo de contenido</p>
               </div>
             </div>
             <div class="highlight-box">
-              <p>⚡ <strong>Poder del tiempo real:</strong> Twitter es ideal para seguir eventos en vivo y crisis</p>
+              <p><strong>Verificación:</strong> en un evento en desarrollo, separa hora de publicación, hora del hecho y ubicación confirmada.</p>
             </div>
           `,
           interactive: {
@@ -747,7 +755,7 @@ const LessonViewer = () => {
           title: "LinkedIn: Inteligencia Profesional",
           content: `
             <h2>Investigación Profesional Avanzada</h2>
-            <p>LinkedIn es la mina de oro para inteligencia empresarial y profesional:</p>
+            <p>LinkedIn puede aportar contexto empresarial y profesional declarado por sus usuarios. Contrasta roles, fechas y organizaciones con registros o fuentes primarias:</p>
             <div class="applications-grid">
               <div class="app-card">
                 <h3>🏢 Por Empresa</h3>
@@ -788,7 +796,7 @@ const LessonViewer = () => {
               </div>
             </div>
             <div class="highlight-box">
-              <p>💡 <strong>Estrategia avanzada:</strong> Mapea organigramas empresariales siguiendo conexiones mutuas</p>
+              <p><strong>Uso responsable:</strong> limita la recolección al objetivo de investigación y respeta las restricciones de acceso y automatización de la plataforma.</p>
             </div>
           `,
           interactive: {
@@ -801,27 +809,27 @@ const LessonViewer = () => {
           title: "Instagram: Investigación Visual y Geográfica",
           content: `
             <h2>Análisis de Contenido Visual</h2>
-            <p>Instagram proporciona información única a través de imágenes y ubicaciones:</p>
+            <p>Instagram aporta señales visuales y contextuales. Las etiquetas y ubicaciones son declarativas y deben comprobarse con elementos observables:</p>
             <div class="tools-showcase">
               <div class="tool-item">
                 <strong>📍 Búsqueda por Ubicación</strong>
-                <p>Encuentra posts en lugares específicos</p>
-                <p>Mapea actividades en tiempo real</p>
+                <p>Revisa publicaciones asociadas a lugares públicos</p>
+                <p>Compara arquitectura, paisaje y luz; no asumas presencia actual</p>
               </div>
               <div class="tool-item">
                 <strong>#️⃣ Hashtags Estratégicos</strong>
                 <p>Descubre comunidades e intereses</p>
-                <p>Sigue tendencias y eventos</p>
+                <p>Contrasta etiquetas con el contenido visual y la fecha</p>
               </div>
               <div class="tool-item">
                 <strong>👥 Análisis de Seguidores</strong>
-                <p>Mapea redes sociales reales</p>
-                <p>Identifica conexiones ocultas</p>
+                <p>Observa interacciones públicas relevantes</p>
+                <p>No atribuyas relaciones personales sólo por un seguimiento</p>
               </div>
               <div class="tool-item">
                 <strong>🕐 Stories y Highlights</strong>
-                <p>Contenido más auténtico y espontáneo</p>
-                <p>Actividades en tiempo real</p>
+                <p>Contenido temporal o seleccionado por la cuenta</p>
+                <p>Registra URL, fecha y contexto cuando el uso sea legítimo</p>
               </div>
             </div>
             <div class="methodology-steps">
@@ -832,8 +840,8 @@ const LessonViewer = () => {
               </div>
               <div class="step">
                 <span class="step-number">2</span>
-                <h3>Análisis de Metadatos</h3>
-                <p>Extraer información EXIF de imágenes</p>
+                <h3>Analizar señales visuales</h3>
+                <p>Las plataformas suelen eliminar EXIF; prioriza indicios visibles y la fuente original</p>
               </div>
               <div class="step">
                 <span class="step-number">3</span>
@@ -842,7 +850,7 @@ const LessonViewer = () => {
               </div>
             </div>
             <div class="highlight-box">
-              <p>📷 <strong>Técnica avanzada:</strong> Usa reverse image search en fotos de Instagram para encontrar el origen</p>
+              <p><strong>Técnica de verificación:</strong> usa búsqueda inversa para rastrear versiones anteriores y confirmar si la imagen fue reutilizada fuera de contexto.</p>
             </div>
           `,
           interactive: {
@@ -955,18 +963,18 @@ const LessonViewer = () => {
           id: 1,
           title: "El Poder del Contenido Visual",
           content: `
-            <h2>La Era de la Información Visual</h2>
-            <p>Vivimos en una época donde las imágenes son la forma principal de comunicación:</p>
+            <h2>Leer una imagen como evidencia</h2>
+            <p>Una imagen puede aportar señales visuales, técnicas y contextuales, pero también puede haber sido recomprimida, editada o publicada con una descripción falsa:</p>
             <div class="applications-grid">
               <div class="app-card">
-                <h3>📊 Estadísticas Impactantes</h3>
-                <p><strong>95 millones</strong> de fotos subidas a Instagram diariamente</p>
-                <p><strong>3.2 billones</strong> de imágenes compartidas en redes sociales cada día</p>
+                <h3>📊 Contexto de publicación</h3>
+                <p>Cuenta, URL, fecha, texto asociado y versión del archivo</p>
+                <p>Preserva esos datos antes de iniciar el análisis</p>
               </div>
               <div class="app-card">
-                <h3>🔍 Información Oculta</h3>
-                <p>Cada imagen contiene metadatos</p>
-                <p>Geolocalización, cámara, fecha, software usado</p>
+                <h3>🔍 Metadatos disponibles</h3>
+                <p>Algunos archivos conservan EXIF o XMP; muchas plataformas los eliminan</p>
+                <p>Los metadatos son indicios y también pueden modificarse</p>
               </div>
               <div class="app-card">
                 <h3>⚠️ Desafíos</h3>
@@ -980,20 +988,20 @@ const LessonViewer = () => {
               </div>
             </div>
             <div class="highlight-box">
-              <p>📸 <strong>Dato fascinante:</strong> Una sola foto puede contener más de 100 datos diferentes en sus metadatos</p>
+              <p><strong>Principio:</strong> la ausencia de metadatos no invalida una imagen y su presencia no demuestra autenticidad por sí sola.</p>
             </div>
             <div class="highlight-box">
               <p>🔧 <strong>Herramienta Integrada:</strong> OSINTArgy incluye su propio analizador de metadatos para extraer información de imágenes y documentos de forma fácil y rápida</p>
               <div class="tool-access-button">
-                <a href="/file-analysis" target="_blank" class="internal-tool-button">
+                <a href="/file-analysis" class="internal-tool-button">
                   🔍 Abrir Análisis de Archivos
                 </a>
               </div>
             </div>
             <ul>
-              <li><strong>🗺️ Geolocalización:</strong> Coordenadas GPS exactas</li>
-              <li><strong>📅 Temporal:</strong> Fecha y hora precisa</li>
-              <li><strong>📱 Técnica:</strong> Dispositivo, software, configuración</li>
+              <li><strong>🗺️ Geolocalización:</strong> coordenadas cuando existan o comparación de señales visibles</li>
+              <li><strong>📅 Temporal:</strong> timestamp disponible, sombras, clima y contexto de publicación</li>
+              <li><strong>📱 Técnica:</strong> dispositivo o software sólo cuando el archivo conserva esos campos</li>
               <li><strong>🔍 Análisis:</strong> Reverse image search, similitudes</li>
             </ul>
           `,
@@ -1057,7 +1065,7 @@ const LessonViewer = () => {
                 <code>🔧 OSINTArgy - Análisis de Archivos</code>
                 <p>Herramienta integrada con análisis completo de metadatos</p>
                 <div class="tool-access-button">
-                  <a href="/file-analysis" target="_blank" class="internal-tool-button">
+                  <a href="/file-analysis" class="internal-tool-button">
                     🚀 Usar Ahora
                   </a>
                 </div>
@@ -1069,7 +1077,7 @@ const LessonViewer = () => {
             <div class="highlight-box">
               <p>🎯 <strong>Práctica Inmediata:</strong> Puedes probar ahora mismo el análisis de metadatos usando la herramienta integrada de OSINTArgy</p>
               <div class="tool-access-button">
-                <a href="/file-analysis" target="_blank" class="internal-tool-button">
+                <a href="/file-analysis" class="internal-tool-button">
                   📷 Practicar Análisis de Metadatos
                 </a>
               </div>
@@ -1256,7 +1264,7 @@ const LessonViewer = () => {
           title: "Herramientas y Workflow Profesional",
           content: `
             <h2>Flujo de Trabajo para Análisis de Imágenes</h2>
-            <p>Un enfoque sistemático garantiza análisis completos y precisos:</p>
+            <p>Un enfoque sistemático reduce omisiones y permite revisar cada inferencia:</p>
             <div class="methodology-steps">
               <div class="step">
                 <span class="step-number">1</span>
@@ -1296,7 +1304,7 @@ const LessonViewer = () => {
                 <p>FotoForensics, Google Earth</p>
                 <p><strong>OSINTArgy:</strong> Análisis integrado de metadatos</p>
                 <div class="tool-access-button">
-                  <a href="/file-analysis" target="_blank" class="internal-tool-button">
+                  <a href="/file-analysis" class="internal-tool-button">
                     🔧 Acceder a Herramienta
                   </a>
                 </div>
@@ -2424,6 +2432,7 @@ const LessonViewer = () => {
   }
 
   const currentLesson = lessons[lessonId]
+  const hasCurrentLesson = Boolean(currentLesson)
   const currentSlideData = currentLesson?.slides?.[currentSlide]
   const safeSlideContent = useMemo(
     () => DOMPurify.sanitize(currentSlideData?.content || ''),
@@ -2431,26 +2440,32 @@ const LessonViewer = () => {
   )
 
   useEffect(() => {
-    setCurrentSlide(0)
-    setIsCompleted(false)
-    setProgress(0)
+    const savedSlide = academyProgress.modules[lessonId]?.lastSlide || 0
+    const lastAvailableSlide = (currentLesson?.totalSlides || 1) - 1
+    setCurrentSlide(Math.min(savedSlide, lastAvailableSlide))
     setQuizResults({})
     setShowQuizResults(false)
+    setRevealedItems([])
   }, [lessonId])
 
   useEffect(() => {
-    if (currentLesson) {
-      setProgress((currentSlide + 1) / currentLesson.totalSlides * 100)
-    }
-  }, [currentSlide, currentLesson])
+    if (!hasCurrentLesson) return
+    visitSlide(lessonId, currentSlide)
+    setRevealedItems([])
+    globalThis.scrollTo?.({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' })
+  }, [currentSlide, hasCurrentLesson, lessonId, reduceMotion, visitSlide])
+
+  const slideProgress = currentLesson
+    ? Math.round(((currentSlide + 1) / currentLesson.totalSlides) * 100)
+    : 0
 
   const handleNext = () => {
     if (currentSlide < currentLesson.totalSlides - 1) {
       setCurrentSlide(currentSlide + 1)
     } else {
-      // Finalizar módulo y volver a la academia correspondiente
+      if (currentSlideData?.interactive?.type === 'quiz' && !showQuizResults) return
+      completeModule(lessonId, calculateQuizScore())
       markAcademyModuleCompleted(lessonId)
-      setIsCompleted(true)
       navigate('/academy', { state: { selectedAcademy: currentLesson.academyId || 'osint' } })
     }
   }
@@ -2461,8 +2476,16 @@ const LessonViewer = () => {
     setQuizResults(newResults)
   }
 
+  const toggleRevealedItem = (itemIndex) => {
+    setRevealedItems(current => current.includes(itemIndex)
+      ? current.filter(index => index !== itemIndex)
+      : [...current, itemIndex])
+  }
+
   const submitQuiz = () => {
+    const score = calculateQuizScore()
     setShowQuizResults(true)
+    recordQuiz(lessonId, score)
   }
 
   const calculateQuizScore = () => {
@@ -2490,6 +2513,31 @@ const LessonViewer = () => {
     navigate('/academy', { state: { selectedAcademy: currentLesson?.academyId || 'osint' } })
   }
 
+  const handleContentLinkClick = (event) => {
+    const link = event.target.closest('a[href^="/"]')
+    if (!link) return
+    event.preventDefault()
+    navigate(link.getAttribute('href'))
+  }
+
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      const tagName = event.target?.tagName?.toLowerCase()
+      if (['input', 'textarea', 'select', 'button', 'a'].includes(tagName)) return
+
+      if (event.key === 'ArrowLeft' && currentSlide > 0) {
+        setCurrentSlide(slide => slide - 1)
+      }
+
+      if (event.key === 'ArrowRight' && currentSlide < (currentLesson?.totalSlides || 1) - 1) {
+        setCurrentSlide(slide => slide + 1)
+      }
+    }
+
+    globalThis.addEventListener?.('keydown', handleKeyDown)
+    return () => globalThis.removeEventListener?.('keydown', handleKeyDown)
+  }, [currentLesson?.totalSlides, currentSlide])
+
   if (!currentLesson) {
     return (
       <div className="lesson-error">
@@ -2510,21 +2558,21 @@ const LessonViewer = () => {
           <h1>{currentLesson.title}</h1>
           <p>{currentLesson.description}</p>
         </div>
-        <div className="lesson-progress" aria-label={`Progreso de la lección: ${Math.round(progress)}%`}>
+        <div className="lesson-progress" aria-label={`Progreso de la lección: ${slideProgress}%`}>
           <div className="lesson-progress__meta">
             <span>Diapositiva {currentSlide + 1} de {currentLesson.totalSlides}</span>
-            <strong>{Math.round(progress)}%</strong>
+            <strong>{slideProgress}%</strong>
           </div>
           <div
             className="lesson-progress__track"
             role="progressbar"
             aria-valuemin="0"
             aria-valuemax="100"
-            aria-valuenow={Math.round(progress)}
+            aria-valuenow={slideProgress}
           >
             <i
               className="lesson-progress__fill"
-              style={{ width: `${progress}%` }}
+              style={{ width: `${slideProgress}%` }}
             />
           </div>
         </div>
@@ -2538,16 +2586,16 @@ const LessonViewer = () => {
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: -50 }}
-            transition={{ duration: 0.3 }}
+            transition={{ duration: reduceMotion ? 0 : 0.3, ease: [0.22, 1, 0.36, 1] }}
           >
             <div className="slide-content">
               <div 
                 className="slide-text"
+                onClick={handleContentLinkClick}
                 dangerouslySetInnerHTML={{ __html: safeSlideContent }}
               />
               
-              {/* Componente interactivo - solo elementos esenciales */}
-              {currentSlideData.interactive && ['quiz', 'icons', 'progress_bar'].includes(currentSlideData.interactive.type) && (
+              {currentSlideData.interactive && (
                 <div className="interactive-section">
                   {renderInteractiveComponent(currentSlideData.interactive)}
                 </div>
@@ -2570,6 +2618,7 @@ const LessonViewer = () => {
         <div className="slide-indicators">
           {Array.from({ length: currentLesson.totalSlides }).map((_, index) => (
             <button
+              type="button"
               key={index}
               className={`indicator ${index === currentSlide ? 'active' : ''} ${index < currentSlide ? 'completed' : ''}`}
               onClick={() => setCurrentSlide(index)}
@@ -2583,8 +2632,13 @@ const LessonViewer = () => {
         <button 
           onClick={handleNext}
           className="nav-button next"
+          disabled={currentSlide === currentLesson.totalSlides - 1
+            && currentSlideData?.interactive?.type === 'quiz'
+            && !showQuizResults}
         >
-          {currentSlide === currentLesson.totalSlides - 1 ? 'Finalizar' : 'Siguiente'}
+          {currentSlide === currentLesson.totalSlides - 1
+            ? (showQuizResults ? 'Finalizar módulo' : 'Completá la evaluación')
+            : 'Siguiente'}
           <ChevronRight size={20} />
         </button>
       </div>
@@ -2602,7 +2656,7 @@ const LessonViewer = () => {
                 className="icon-item"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1 }}
+                transition={{ delay: reduceMotion ? 0 : index * 0.08, duration: reduceMotion ? 0 : 0.3 }}
               >
                 <item.icon size={48} />
                 <span>{item.label}</span>
@@ -2625,7 +2679,7 @@ const LessonViewer = () => {
                     className="bar-fill"
                     initial={{ width: 0 }}
                     animate={{ width: `${item.percentage}%` }}
-                    transition={{ delay: index * 0.2, duration: 0.8 }}
+                    transition={{ delay: reduceMotion ? 0 : index * 0.12, duration: reduceMotion ? 0 : 0.7 }}
                   />
                 </div>
               </div>
@@ -2734,13 +2788,19 @@ const LessonViewer = () => {
       case 'click_reveal':
         return (
           <div className="interactive-section">
-            <h4>💡 Haz clic para más información:</h4>
-            <div className="applications-grid">
+            <h4>Explorá cada ámbito profesional</h4>
+            <div className="reveal-grid">
               {interactive.items.map((item, index) => (
-                <div key={index} className="app-card">
-                  <h3>{item.trigger}</h3>
-                  <p>{item.content}</p>
-                </div>
+                <button
+                  type="button"
+                  key={item.trigger}
+                  className={`reveal-card ${revealedItems.includes(index) ? 'is-open' : ''}`}
+                  onClick={() => toggleRevealedItem(index)}
+                  aria-expanded={revealedItems.includes(index)}
+                >
+                  <strong>{item.trigger}</strong>
+                  <span>{revealedItems.includes(index) ? item.content : 'Ver aplicación'}</span>
+                </button>
               ))}
             </div>
           </div>
@@ -2749,19 +2809,28 @@ const LessonViewer = () => {
       case 'methodology_flow':
         return (
           <div className="interactive-section">
-            <h4>📋 Proceso de {interactive.steps} pasos completado</h4>
-            <p>Sigue esta metodología para obtener mejores resultados en tus investigaciones OSINT</p>
+            <h4>Secuencia de trabajo</h4>
+            <div className="workflow-steps workflow-steps--compact">
+              {['Definir', 'Planificar', 'Recopilar', 'Analizar', 'Comunicar']
+                .slice(0, interactive.steps)
+                .map((step, index) => (
+                  <div key={step} className="workflow-step">
+                    <span>{String(index + 1).padStart(2, '0')}</span>
+                    <strong>{step}</strong>
+                  </div>
+                ))}
+            </div>
           </div>
         )
       
       case 'ethics_quiz':
         return (
           <div className="interactive-section">
-            <h4>⚖️ Reflexión Ética:</h4>
+            <h4>Decisión ética guiada</h4>
             {interactive.questions.map((q, index) => (
               <div key={index} className="ethics-question">
-                <p><strong>Pregunta:</strong> {q.question}</p>
-                <p><strong>Respuesta:</strong> {q.correct}</p>
+                <p><strong>{q.question}</strong></p>
+                <p>Respuesta recomendada: {q.correct}</p>
               </div>
             ))}
           </div>
@@ -2810,8 +2879,19 @@ const LessonViewer = () => {
           </div>
         )
       
-      case 'platform_stats':
       case 'visual_stats':
+        return (
+          <div className="icons-showcase">
+            {interactive.items?.map((item) => (
+              <div key={item.label} className="icon-item">
+                <item.icon size={32} aria-hidden="true" />
+                <span>{item.label}</span>
+              </div>
+            ))}
+          </div>
+        )
+
+      case 'platform_stats':
         return (
           <div className="interactive-section">
             <h4>📊 Estadísticas de Plataformas:</h4>

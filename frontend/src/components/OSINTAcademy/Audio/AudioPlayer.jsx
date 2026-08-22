@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react'
-import { motion } from 'framer-motion'
+import { motion, useReducedMotion } from 'framer-motion'
 import { useNavigate } from '@/lib/router'
 import { 
   Play, 
@@ -10,10 +10,15 @@ import {
 } from 'lucide-react'
 import { markAcademyModuleCompleted } from '@/utils/academyProgress'
 import './AudioPlayer.css'
+import { useAcademyProgress } from '../useAcademyProgress'
 
 const AudioPlayer = () => {
   const navigate = useNavigate()
   const audioRef = useRef(null)
+  const lastSavedSecondRef = useRef(-1)
+  const reduceMotion = useReducedMotion()
+  const { progress, recordAudio } = useAcademyProgress()
+  const savedAudioTimeRef = useRef(progress.audio.currentTime)
   
   const [isPlaying, setIsPlaying] = useState(false)
   const [duration, setDuration] = useState(0)
@@ -28,14 +33,26 @@ const AudioPlayer = () => {
 
     const setAudioData = () => {
       setDuration(audio.duration)
+      if (savedAudioTimeRef.current > 0 && savedAudioTimeRef.current < audio.duration) {
+        audio.currentTime = savedAudioTimeRef.current
+        setCurrentTime(savedAudioTimeRef.current)
+      }
       setIsLoading(false)
     }
 
-    const setAudioTime = () => setCurrentTime(audio.currentTime)
+    const setAudioTime = () => {
+      setCurrentTime(audio.currentTime)
+      const roundedSecond = Math.floor(audio.currentTime)
+      if (roundedSecond > 0 && roundedSecond % 5 === 0 && roundedSecond !== lastSavedSecondRef.current) {
+        lastSavedSecondRef.current = roundedSecond
+        recordAudio(audio.currentTime, audio.duration)
+      }
+    }
 
     const handleAudioEnd = () => {
       setIsPlaying(false)
-      setCurrentTime(0)
+      setCurrentTime(audio.duration)
+      recordAudio(audio.duration, audio.duration, true)
       markAcademyModuleCompleted('audio-resumen')
     }
 
@@ -55,27 +72,30 @@ const AudioPlayer = () => {
       audio.removeEventListener('loadstart', handleLoadStart)
       audio.removeEventListener('canplay', handleCanPlay)
     }
-  }, [])
+  }, [recordAudio])
 
-  const togglePlayPause = () => {
+  const togglePlayPause = async () => {
     const audio = audioRef.current
     if (!audio) return
 
     if (isPlaying) {
       audio.pause()
+      recordAudio(audio.currentTime, audio.duration)
+      setIsPlaying(false)
     } else {
-      audio.play()
+      try {
+        await audio.play()
+        setIsPlaying(true)
+      } catch {
+        setIsPlaying(false)
+      }
     }
-    setIsPlaying(!isPlaying)
   }
 
   const handleSeek = (e) => {
     const audio = audioRef.current
     if (!audio) return
-
-    const clickX = e.nativeEvent.offsetX
-    const width = e.currentTarget.offsetWidth
-    const newTime = (clickX / width) * duration
+    const newTime = Number(e.target.value)
     
     audio.currentTime = newTime
     setCurrentTime(newTime)
@@ -93,6 +113,7 @@ const AudioPlayer = () => {
   const progressPercentage = duration ? (currentTime / duration) * 100 : 0
 
   const handleBackToAcademy = () => {
+    recordAudio(currentTime, duration)
     navigate('/academy', { state: { selectedAcademy: 'osint' } })
   }
 
@@ -120,7 +141,7 @@ const AudioPlayer = () => {
           className="audio-player"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: reduceMotion ? 0 : 0.45, ease: [0.22, 1, 0.36, 1] }}
         >
           <audio ref={audioRef} src={audioSrc} preload="metadata" />
           
@@ -133,6 +154,7 @@ const AudioPlayer = () => {
                 onClick={togglePlayPause}
                 className="control-btn primary"
                 disabled={isLoading}
+                aria-label={isPlaying ? 'Pausar audio' : 'Reproducir audio'}
               >
                 {isLoading ? (
                   <div className="loading-spinner" />
@@ -148,18 +170,17 @@ const AudioPlayer = () => {
             <div className="progress-section">
               <span className="time-display">{formatTime(currentTime)}</span>
               
-              <div className="progress-bar" onClick={handleSeek}>
-                <div className="progress-track">
-                  <div 
-                    className="progress-fill"
-                    style={{ width: `${progressPercentage}%` }}
-                  />
-                  <div 
-                    className="progress-thumb"
-                    style={{ left: `${progressPercentage}%` }}
-                  />
-                </div>
-              </div>
+              <input
+                className="progress-range"
+                type="range"
+                min="0"
+                max={duration || 0}
+                step="0.1"
+                value={Math.min(currentTime, duration || 0)}
+                onChange={handleSeek}
+                aria-label="Posición del audio"
+                style={{ '--audio-progress': `${progressPercentage}%` }}
+              />
               
               <span className="time-display">{formatTime(duration)}</span>
             </div>
@@ -186,7 +207,7 @@ const AudioPlayer = () => {
           className="audio-description"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 0.3, duration: 0.6 }}
+          transition={{ delay: reduceMotion ? 0 : 0.16, duration: reduceMotion ? 0 : 0.4 }}
         >
           <h2>Sobre este podcast</h2>
           <p>

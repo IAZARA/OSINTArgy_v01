@@ -3,10 +3,10 @@
   "tools": [
     {
       "id": "facebook-search",
-      "name": "Facebook Graph Search",
-      "description": "Herramienta de búsqueda avanzada dentro de Facebook.",
-      "utility": "Busca personas, publicaciones, fotos y conexiones en Facebook usando operadores específicos de la plataforma.",
-      "url": "https://www.facebook.com/search",
+      "name": "Facebook Search",
+      "description": "Búsqueda nativa de personas, páginas, grupos y publicaciones visibles dentro de Facebook.",
+      "utility": "Permite usar palabras clave y filtros disponibles según sesión, región y configuración de privacidad; los resultados deben contrastarse antes de atribuir identidad.",
+      "url": "https://www.facebook.com/",
       "category": "redes-sociales",
       "subcategory": "plataformas-principales",
       "tags": [
@@ -23,7 +23,7 @@
       "language": "es",
       "rating": 4.2,
       "usage_count": 9870,
-      "last_updated": "2025-06-17",
+      "last_updated": "2026-08-22",
       "status": "active",
       "requires_registration": true,
       "is_free": true,
@@ -960,13 +960,13 @@
       "language": "es",
       "rating": 4.4,
       "usage_count": 9870,
-      "last_updated": "2025-06-19",
+      "last_updated": "2026-08-22",
       "status": "active",
       "requires_registration": true,
       "is_free": false,
       "difficulty_level": "intermediate",
-      "verification_date": "2025-06-19",
-      "verified_by": "perplexity"
+      "verification_date": "2026-08-22",
+      "verified_by": "official-source"
     },
     {
       "id": "osint-industries-social",

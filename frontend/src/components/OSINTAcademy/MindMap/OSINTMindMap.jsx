@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import * as d3 from 'd3'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion, AnimatePresence, useReducedMotion } from 'framer-motion'
+import { useNavigate } from '@/lib/router'
 import { 
   Search, 
   Image, 
@@ -12,21 +13,29 @@ import {
   Eye,
   Link,
   Code,
-  Zap
+  Zap,
+  ArrowLeft
 } from 'lucide-react'
 import './OSINTMindMap.css'
+import { useAcademyProgress } from '../useAcademyProgress'
 
 const OSINTMindMap = () => {
+  const navigate = useNavigate()
+  const reduceMotion = useReducedMotion()
+  const { progress, recordActivity } = useAcademyProgress()
   const svgRef = useRef(null)
+  const zoomLabelRef = useRef(null)
   const [selectedNode, setSelectedNode] = useState(null)
-  const [zoomLevel, setZoomLevel] = useState(1)
   const [searchTerm, setSearchTerm] = useState('')
+  const [exploredNodes, setExploredNodes] = useState(() => (
+    progress.activities.mindmap?.exploredNodes || []
+  ))
 
   // Datos del mapa mental OSINT
   const mindMapData = {
     name: "OSINT",
     icon: Eye,
-    description: "Intelligence de Fuentes Abiertas",
+    description: "Inteligencia de Fuentes Abiertas",
     category: "root",
     children: [
       {
@@ -47,8 +56,8 @@ const OSINTMindMap = () => {
         description: "Investigación en plataformas sociales",
         category: "social",
         children: [
-          { name: "Facebook", icon: Users, description: "Red social principal, Graph Search", category: "platform" },
-          { name: "Twitter/X", icon: Users, description: "Búsqueda avanzada de tweets", category: "platform" },
+          { name: "Facebook", icon: Users, description: "Perfiles, páginas, grupos y publicaciones públicas", category: "platform" },
+          { name: "X", icon: Users, description: "Búsqueda avanzada de publicaciones y conversaciones", category: "platform" },
           { name: "LinkedIn", icon: Users, description: "Red profesional, información laboral", category: "platform" },
           { name: "Instagram", icon: Image, description: "Fotos y ubicaciones", category: "platform" },
           { name: "TikTok", icon: Users, description: "Videos virales y tendencias", category: "platform" }
@@ -107,21 +116,41 @@ const OSINTMindMap = () => {
 
   // Colores por categoría
   const categoryColors = {
-    root: '#3498db',
-    search: '#e74c3c',
-    social: '#9b59b6',
-    images: '#f39c12',
-    email: '#2ecc71',
-    infrastructure: '#34495e',
-    tools: '#e67e22',
-    technique: '#1abc9c',
-    tool: '#95a5a6',
-    platform: '#8e44ad'
+    root: '#39b9dc',
+    search: '#50a9c2',
+    social: '#438ca3',
+    images: '#5bbfd1',
+    email: '#397b91',
+    infrastructure: '#2f6578',
+    tools: '#4c9bad',
+    technique: '#64c6d8',
+    tool: '#547783',
+    platform: '#3d8299'
+  }
+
+  const categoryLabels = {
+    root: 'Raíz',
+    search: 'Búsqueda',
+    social: 'Redes sociales',
+    images: 'Imágenes',
+    email: 'Correo',
+    infrastructure: 'Infraestructura',
+    tools: 'Herramientas',
+    technique: 'Técnica',
+    tool: 'Herramienta',
+    platform: 'Plataforma'
   }
 
   useEffect(() => {
     drawMindMap()
   }, [searchTerm])
+
+  useEffect(() => {
+    recordActivity('mindmap', {
+      exploredNodes,
+      completed: exploredNodes.length >= 8
+    })
+  }, [exploredNodes, recordActivity])
 
   const drawMindMap = () => {
     const svg = d3.select(svgRef.current)
@@ -137,7 +166,9 @@ const OSINTMindMap = () => {
       .scaleExtent([0.5, 3])
       .on('zoom', (event) => {
         container.attr('transform', event.transform)
-        setZoomLevel(event.transform.k)
+        if (zoomLabelRef.current) {
+          zoomLabelRef.current.textContent = `Zoom: ${Math.round(event.transform.k * 100)}%`
+        }
       })
 
     svg.call(zoom)
@@ -201,31 +232,41 @@ const OSINTMindMap = () => {
       .attr('y1', d => d.source.y)
       .attr('x2', d => d.target.x)
       .attr('y2', d => d.target.y)
-      .attr('stroke', '#bdc3c7')
+      .attr('stroke', '#477482')
       .attr('stroke-width', 2)
       .attr('opacity', 0.6)
 
     // Dibujar nodos
+    const activateNode = (event, d) => {
+      event?.preventDefault?.()
+      setSelectedNode(d.data)
+      setExploredNodes(nodes => Array.from(new Set([...nodes, d.data.name])))
+    }
+
     const nodeGroups = container.selectAll('.node')
       .data(root.descendants().filter(d => d.visible))
       .enter()
       .append('g')
       .attr('class', 'node')
       .attr('transform', d => `translate(${d.x}, ${d.y})`)
+      .attr('role', 'button')
+      .attr('tabindex', 0)
+      .attr('aria-label', d => `Explorar ${d.data.name}: ${d.data.description}`)
       .style('cursor', 'pointer')
-      .on('click', (event, d) => {
-        setSelectedNode(d.data)
+      .on('click', activateNode)
+      .on('keydown', (event, d) => {
+        if (event.key === 'Enter' || event.key === ' ') activateNode(event, d)
       })
       .on('mouseover', function(event, d) {
         d3.select(this).select('circle')
           .transition()
-          .duration(200)
+          .duration(reduceMotion ? 0 : 200)
           .attr('r', d => getNodeRadius(d) * 1.2)
       })
       .on('mouseout', function(event, d) {
         d3.select(this).select('circle')
           .transition()
-          .duration(200)
+          .duration(reduceMotion ? 0 : 200)
           .attr('r', d => getNodeRadius(d))
       })
 
@@ -233,15 +274,14 @@ const OSINTMindMap = () => {
     nodeGroups.append('circle')
       .attr('r', d => getNodeRadius(d))
       .attr('fill', d => categoryColors[d.data.category] || '#95a5a6')
-      .attr('stroke', '#fff')
+      .attr('stroke', '#0b1b24')
       .attr('stroke-width', 3)
-      .style('filter', 'drop-shadow(0 4px 8px rgba(0,0,0,0.1))')
 
     // Iconos de nodos (simulados con texto)
     nodeGroups.append('text')
       .attr('text-anchor', 'middle')
       .attr('dy', '0.35em')
-      .attr('fill', 'white')
+      .attr('fill', '#edf8fb')
       .attr('font-size', d => d.depth === 0 ? '20px' : '14px')
       .attr('font-weight', 'bold')
       .text(d => d.data.name.substring(0, 2).toUpperCase())
@@ -250,7 +290,7 @@ const OSINTMindMap = () => {
     nodeGroups.append('text')
       .attr('text-anchor', 'middle')
       .attr('dy', d => getNodeRadius(d) + 20)
-      .attr('fill', '#2c3e50')
+      .attr('fill', '#b7d0da')
       .attr('font-size', '12px')
       .attr('font-weight', '600')
       .text(d => d.data.name)
@@ -258,8 +298,8 @@ const OSINTMindMap = () => {
     // Animación de entrada
     nodeGroups.style('opacity', 0)
       .transition()
-      .duration(1000)
-      .delay((d, i) => i * 50)
+      .duration(reduceMotion ? 0 : 600)
+      .delay((d, i) => reduceMotion ? 0 : i * 28)
       .style('opacity', 1)
   }
 
@@ -275,18 +315,29 @@ const OSINTMindMap = () => {
 
   const resetZoom = () => {
     const svg = d3.select(svgRef.current)
-    svg.transition().duration(750).call(
+    svg.transition().duration(reduceMotion ? 0 : 500).call(
       d3.zoom().transform,
       d3.zoomIdentity
     )
-    setZoomLevel(1)
+    if (zoomLabelRef.current) zoomLabelRef.current.textContent = 'Zoom: 100%'
   }
 
   return (
     <div className="osint-mindmap">
       <div className="mindmap-header">
+        <button
+          type="button"
+          className="mindmap-back"
+          onClick={() => navigate('/academy', { state: { selectedAcademy: 'osint' } })}
+        >
+          <ArrowLeft size={18} aria-hidden="true" />
+          Volver a Academia
+        </button>
         <h1>Mapa Mental OSINT Interactivo</h1>
         <p>Explora las diferentes categorías y herramientas de OSINT</p>
+        <span className="mindmap-explored">
+          {exploredNodes.length} {exploredNodes.length === 1 ? 'nodo explorado' : 'nodos explorados'}
+        </span>
       </div>
 
       <div className="mindmap-controls">
@@ -302,7 +353,7 @@ const OSINTMindMap = () => {
         </div>
         
         <div className="zoom-controls">
-          <span className="zoom-level">Zoom: {Math.round(zoomLevel * 100)}%</span>
+          <span ref={zoomLabelRef} className="zoom-level">Zoom: 100%</span>
           <button onClick={resetZoom} className="reset-zoom">
             Centrar
           </button>
@@ -325,7 +376,7 @@ const OSINTMindMap = () => {
               initial={{ opacity: 0, scale: 0.8, x: 20 }}
               animate={{ opacity: 1, scale: 1, x: 0 }}
               exit={{ opacity: 0, scale: 0.8, x: 20 }}
-              transition={{ duration: 0.3 }}
+              transition={{ duration: reduceMotion ? 0 : 0.3 }}
             >
               <div className="node-details-header">
                 <div className="node-icon">
@@ -335,6 +386,7 @@ const OSINTMindMap = () => {
                 <button 
                   className="close-details"
                   onClick={() => setSelectedNode(null)}
+                  aria-label="Cerrar detalles"
                 >
                   ×
                 </button>
@@ -346,7 +398,7 @@ const OSINTMindMap = () => {
               
               <div className="node-category">
                 <span className={`category-badge ${selectedNode.category}`}>
-                  {selectedNode.category}
+                  {categoryLabels[selectedNode.category] || selectedNode.category}
                 </span>
               </div>
               
@@ -377,7 +429,7 @@ const OSINTMindMap = () => {
                 className="legend-color" 
                 style={{ backgroundColor: color }}
               />
-              <span>{category}</span>
+              <span>{categoryLabels[category] || category}</span>
             </div>
           ))}
         </div>

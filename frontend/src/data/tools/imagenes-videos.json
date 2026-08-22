@@ -203,34 +203,6 @@
       "difficulty_level": "intermediate"
     },
     {
-      "id": "jeffrey-exif-viewer",
-      "name": "Jeffrey's Exif Viewer",
-      "description": "Visor online de metadatos EXIF de imágenes.",
-      "utility": "Analiza metadatos EXIF de imágenes de forma online sin instalar software.",
-      "url": "http://exif.regex.info/exif.cgi",
-      "category": "imagenes-videos",
-      "subcategory": "analisis-metadatos",
-      "tags": [
-        "exif",
-        "online",
-        "metadatos",
-        "web"
-      ],
-      "type": "web",
-      "indicators": [
-        "F"
-      ],
-      "region": "internacional",
-      "language": "en",
-      "rating": 4.4,
-      "usage_count": 6540,
-      "last_updated": "2025-06-19",
-      "status": "active",
-      "requires_registration": false,
-      "is_free": true,
-      "difficulty_level": "beginner"
-    },
-    {
       "id": "fotoforensics",
       "name": "FotoForensics",
       "description": "Análisis forense de imágenes digitales.",
@@ -264,7 +236,7 @@
       "name": "InVID WeVerify",
       "description": "Plugin para verificación de videos e imágenes.",
       "utility": "Herramientas de verificación para periodistas: análisis de metadatos, búsqueda inversa y detección de manipulaciones.",
-      "url": "https://www.invid-project.eu/tools-and-services/invid-verification-plugin",
+      "url": "https://github.com/AFP-Medialab/verification-plugin",
       "category": "imagenes-videos",
       "subcategory": "analisis-metadatos",
       "tags": [
@@ -282,7 +254,7 @@
       "language": "en",
       "rating": 4.6,
       "usage_count": 4320,
-      "last_updated": "2025-06-19",
+      "last_updated": "2026-08-22",
       "status": "active",
       "requires_registration": false,
       "is_free": true,
@@ -1142,35 +1114,6 @@
       "requires_registration": false,
       "is_free": true,
       "difficulty_level": "beginner"
-    },
-    {
-      "id": "camera-trace",
-      "name": "Camera Trace",
-      "description": "Herramienta para rastrear el origen de fotografías por modelo de cámara.",
-      "utility": "Identifica el modelo de cámara usado para tomar una foto analizando patrones únicos.",
-      "url": "http://www.cameratrace.com/trace",
-      "category": "imagenes-videos",
-      "subcategory": "analisis-metadatos",
-      "tags": [
-        "cámara",
-        "modelo",
-        "patrones",
-        "origen"
-      ],
-      "type": "web",
-      "indicators": [
-        "F",
-        "A"
-      ],
-      "region": "internacional",
-      "language": "en",
-      "rating": 4,
-      "usage_count": 2340,
-      "last_updated": "2025-06-19",
-      "status": "active",
-      "requires_registration": false,
-      "is_free": true,
-      "difficulty_level": "intermediate"
     },
     {
       "id": "online-ocr",

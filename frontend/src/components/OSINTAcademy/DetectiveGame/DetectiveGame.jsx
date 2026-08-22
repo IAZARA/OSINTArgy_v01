@@ -12,15 +12,20 @@ import {
 } from 'lucide-react'
 import { Link, useNavigate } from '@/lib/router'
 import './DetectiveGame.css'
+import { useAcademyProgress } from '../useAcademyProgress'
 
 const DetectiveGame = () => {
+  const { progress, recordActivity } = useAcademyProgress()
   const canvasRef = useRef(null)
   const [gameState, setGameState] = useState('menu') // menu, playing, paused, completed
   const [currentCase, setCurrentCase] = useState(0)
   const [timeLeft, setTimeLeft] = useState(300) // 5 minutos por caso
   const [hints, setHints] = useState(3)
   const [foundClues, setFoundClues] = useState([])
-  const [completedCases, setCompletedCases] = useState([])
+  const [completedCases, setCompletedCases] = useState(() => (
+    progress.activities['detective-game']?.completedCases || []
+  ))
+  const [activeHint, setActiveHint] = useState('')
 
   // Casos del juego
   const cases = [
@@ -81,6 +86,13 @@ const DetectiveGame = () => {
       drawScene()
     }
   }, [gameState, currentCase, foundClues])
+
+  useEffect(() => {
+    recordActivity('detective-game', {
+      completedCases,
+      completed: completedCases.length === cases.length
+    })
+  }, [completedCases, recordActivity])
 
   const drawScene = () => {
     const canvas = canvasRef.current
@@ -278,8 +290,8 @@ const DetectiveGame = () => {
     
     const canvas = canvasRef.current
     const rect = canvas.getBoundingClientRect()
-    const x = e.clientX - rect.left
-    const y = e.clientY - rect.top
+    const x = (e.clientX - rect.left) * (canvas.width / rect.width)
+    const y = (e.clientY - rect.top) * (canvas.height / rect.height)
     
     // Verificar si se hizo clic en una pista
     const currentCaseData = cases[currentCase]
@@ -306,7 +318,7 @@ const DetectiveGame = () => {
     setGameState('completed')
     
     if (success) {
-      setCompletedCases([...completedCases, currentCase])
+      setCompletedCases(completed => Array.from(new Set([...completed, currentCase])))
     }
   }
 
@@ -316,6 +328,7 @@ const DetectiveGame = () => {
     setTimeLeft(300)
     setHints(3)
     setFoundClues([])
+    setActiveHint('')
   }
 
   const nextCase = () => {
@@ -323,6 +336,7 @@ const DetectiveGame = () => {
       setCurrentCase(currentCase + 1)
       setTimeLeft(300)
       setFoundClues([])
+      setActiveHint('')
       setGameState('playing')
     } else {
       // Juego completado
@@ -336,7 +350,7 @@ const DetectiveGame = () => {
       // Mostrar pista de una pista no encontrada
       const unFoundClues = cases[currentCase].clues.filter(c => !foundClues.includes(c.id))
       if (unFoundClues.length > 0) {
-        alert(`Pista: ${unFoundClues[0].hint}`)
+        setActiveHint(unFoundClues[0].hint)
       }
     }
   }
@@ -353,7 +367,10 @@ const DetectiveGame = () => {
     <div className="detective-game">
       <div className="game-header">
         <div className="game-navigation">
-          <button onClick={() => navigate('/academy')} className="nav-button">
+          <button
+            onClick={() => navigate('/academy', { state: { selectedAcademy: 'osint' } })}
+            className="nav-button"
+          >
             <ArrowLeft size={20} />
             <span>Volver a Academia</span>
           </button>
@@ -442,6 +459,7 @@ const DetectiveGame = () => {
               Pausar
             </button>
           </div>
+          {activeHint && <p className="game-hint" role="status">Pista: {activeHint}</p>}
         </div>
       )}
 

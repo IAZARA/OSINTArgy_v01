@@ -31,34 +31,6 @@
       "difficulty_level": "advanced"
     },
     {
-      "id": "blocktrail",
-      "name": "Blocktrail",
-      "description": "Explorador de blockchain Bitcoin con API y herramientas para desarrolladores.",
-      "utility": "Exploración de transacciones Bitcoin, direcciones y bloques con funciones avanzadas de búsqueda.",
-      "url": "https://www.blocktrail.com/BTC",
-      "category": "criptomonedas",
-      "subcategory": "exploradores-bitcoin",
-      "tags": [
-        "bitcoin",
-        "blockchain",
-        "explorador",
-        "api"
-      ],
-      "type": "web",
-      "indicators": [
-        "D"
-      ],
-      "region": "internacional",
-      "language": "en",
-      "rating": 4.4,
-      "usage_count": 6780,
-      "last_updated": "2025-06-19",
-      "status": "active",
-      "requires_registration": false,
-      "is_free": true,
-      "difficulty_level": "intermediate"
-    },
-    {
       "id": "blockchain-info",
       "name": "Blockchain.info",
       "description": "Uno de los exploradores de blockchain Bitcoin más populares y establecidos.",

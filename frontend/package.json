@@ -21,7 +21,7 @@
     "framer-motion": "^12.19.2",
     "leaflet": "^1.9.4",
     "lucide-react": "^0.294.0",
-    "react": "^18.2.0",
+    "react": "^19.2.6",
     "react-dom": "^18.2.0",
     "react-hot-toast": "^2.4.1",
     "react-leaflet": "^4.2.1",
@@ -33,7 +33,7 @@
   "devDependencies": {
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
-    "@types/react": "^18.2.37",
+    "@types/react": "^19.2.15",
     "@types/react-dom": "^18.2.15",
     "@vitejs/plugin-react": "^5.2.0",
     "eslint": "^8.53.0",

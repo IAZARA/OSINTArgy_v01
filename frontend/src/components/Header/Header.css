@@ -1,6 +1,9 @@
 /* Estilos del Header principal */
 
 .app--explorer .header {
+  --header-text: #e4eff5;
+  --header-text-muted: #b3c5d0;
+  --header-icon: #9fc4d5;
   --white: #0c1722;
   --gray-50: #102432;
   --gray-100: #172e3e;
@@ -12,7 +15,7 @@
   --gray-700: #c3d6df;
   --gray-800: #d6e5ec;
   --gray-900: #e4eff5;
-  color: var(--gray-900);
+  color: var(--header-text);
   color-scheme: dark;
 }
 
@@ -22,6 +25,10 @@
 }
 
 .header {
+  --header-text: var(--gray-900);
+  --header-text-muted: var(--gray-600);
+  --header-icon: var(--gray-700);
+  --header-on-accent: #ffffff;
   background-color: var(--white);
   border-bottom: 1px solid var(--gray-200);
   box-shadow: var(--shadow-sm);
@@ -52,7 +59,7 @@
   align-items: center;
   gap: var(--spacing-3);
   text-decoration: none;
-  color: var(--gray-900);
+  color: var(--header-text);
   transition: opacity var(--transition-fast);
 }
 
@@ -109,7 +116,7 @@
   border-color: transparent !important;
   background: transparent;
   font-size: var(--font-size-base);
-  color: var(--gray-900);
+  color: var(--header-text);
   outline: none !important;
   box-shadow: none !important;
   -webkit-box-shadow: none !important;
@@ -185,18 +192,18 @@
 }
 
 .search-suggestion:hover,
-.search-suggestion--active {
+.header .search-suggestion--active {
   background-color: var(--primary-blue);
-  color: var(--white);
+  color: var(--header-on-accent);
 }
 
 .search-suggestion--active {
   background-color: var(--primary-blue);
-  color: var(--white);
+  color: var(--header-on-accent);
 }
 
 .search-suggestion--recent {
-  color: var(--gray-600);
+  color: var(--header-text-muted);
 }
 
 .search-suggestion--trending {
@@ -206,7 +213,7 @@
 .search-suggestion--recent:hover,
 .search-suggestion--trending:hover {
   background-color: var(--primary-blue);
-  color: var(--white);
+  color: var(--header-on-accent);
 }
 
 .search-suggestion-text {
@@ -281,7 +288,7 @@
   padding: var(--spacing-2) var(--spacing-3);
   border: none;
   background: none;
-  color: var(--gray-600);
+  color: var(--header-text-muted);
   cursor: pointer;
   border-radius: var(--border-radius-sm);
   transition: all var(--transition-fast);
@@ -291,7 +298,7 @@
 }
 
 .view-toggle__button:hover {
-  color: var(--gray-900);
+  color: var(--header-text);
 }
 
 .view-toggle__button--active {
@@ -361,7 +368,7 @@
 .about-button:hover {
   background-color: var(--gray-50);
   border-color: var(--gray-400);
-  color: var(--gray-900);
+  color: var(--header-text);
   transform: translateY(-1px);
 }
 
@@ -392,7 +399,7 @@
 .system-menu__trigger:hover {
   background-color: var(--gray-50);
   border-color: var(--gray-400);
-  color: var(--gray-900);
+  color: var(--header-text);
 }
 
 .system-menu__text {
@@ -435,7 +442,7 @@
   display: flex;
   align-items: center;
   gap: var(--spacing-2);
-  color: var(--gray-900);
+  color: var(--header-text);
   font-weight: 600;
   font-size: var(--font-size-sm);
 }
@@ -465,7 +472,7 @@
 
 .system-menu__item:hover {
   background-color: var(--gray-50);
-  color: var(--gray-900);
+  color: var(--header-text);
 }
 
 .system-menu__item-content {
@@ -477,12 +484,12 @@
 .system-menu__item-title {
   font-size: var(--font-size-sm);
   font-weight: 500;
-  color: var(--gray-900);
+  color: var(--header-text);
 }
 
 .system-menu__item-description {
   font-size: var(--font-size-xs);
-  color: var(--gray-600);
+  color: var(--header-text-muted);
   line-height: 1.3;
 }
 
@@ -511,7 +518,7 @@
   height: 32px;
   border-radius: var(--border-radius-full);
   background-color: var(--primary-blue);
-  color: var(--white);
+  color: var(--header-on-accent);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -533,7 +540,7 @@
 .user-name {
   font-size: var(--font-size-sm);
   font-weight: 500;
-  color: var(--gray-900);
+  color: var(--header-text);
 }
 
 /* Dropdown del menú de usuario */
@@ -566,13 +573,13 @@
 .user-info__name {
   font-size: var(--font-size-base);
   font-weight: 600;
-  color: var(--gray-900);
+  color: var(--header-text);
   margin-bottom: var(--spacing-1);
 }
 
 .user-info__email {
   font-size: var(--font-size-sm);
-  color: var(--gray-600);
+  color: var(--header-text-muted);
 }
 
 .user-menu__section {
@@ -601,7 +608,7 @@
 
 .user-menu__item:hover {
   background-color: var(--gray-50);
-  color: var(--gray-900);
+  color: var(--header-text);
 }
 
 .user-menu__item--danger {
@@ -639,11 +646,11 @@
 
 .auth-button--secondary:hover {
   background-color: var(--gray-50);
-  color: var(--gray-900);
+  color: var(--header-text);
 }
 
 .auth-button--primary {
-  color: var(--white);
+  color: var(--header-on-accent);
   background-color: var(--primary-blue);
 }
 
@@ -665,7 +672,7 @@
 
 .header__mobile-menu:hover {
   background-color: var(--gray-50);
-  color: var(--gray-900);
+  color: var(--header-text);
 }
 
 .header__mobile-nav {
@@ -704,7 +711,7 @@
 
 .mobile-view-button--active {
   background-color: var(--primary-blue);
-  color: var(--white);
+  color: var(--header-on-accent);
   border-color: var(--primary-blue);
 }
 
@@ -726,7 +733,7 @@
 
 .user-email {
   font-size: var(--font-size-sm);
-  color: var(--gray-600);
+  color: var(--header-text-muted);
 }
 
 .mobile-user-actions {
@@ -753,7 +760,7 @@
 
 .mobile-user-action:hover {
   background-color: var(--gray-50);
-  color: var(--gray-900);
+  color: var(--header-text);
 }
 
 .mobile-user-action--danger {
@@ -770,7 +777,7 @@
   align-items: center;
   gap: var(--spacing-2);
   margin-bottom: var(--spacing-4);
-  color: var(--gray-900);
+  color: var(--header-text);
   font-weight: 600;
   font-size: var(--font-size-base);
 }
@@ -798,13 +805,17 @@
 
 .mobile-system-action:hover {
   background-color: var(--gray-50);
-  color: var(--gray-900);
+  color: var(--header-text);
 }
 
 .mobile-system-action--primary {
   color: #075b8a;
   background: rgba(22, 141, 204, 0.1);
   box-shadow: inset 0 0 0 1px rgba(22, 141, 204, 0.2);
+}
+
+.app--explorer .mobile-system-action--primary {
+  color: var(--header-icon);
 }
 
 .mobile-system-action-content {
@@ -816,12 +827,12 @@
 .mobile-system-action-title {
   font-size: var(--font-size-sm);
   font-weight: 500;
-  color: var(--gray-900);
+  color: var(--header-text);
 }
 
 .mobile-system-action-description {
   font-size: var(--font-size-xs);
-  color: var(--gray-600);
+  color: var(--header-text-muted);
   line-height: 1.3;
 }
 
@@ -847,7 +858,7 @@
 }
 
 .mobile-auth-button--primary {
-  color: var(--white);
+  color: var(--header-on-accent);
   background-color: var(--primary-blue);
 }
 
@@ -1010,6 +1021,9 @@
 /* Modo oscuro (preparación para futuras implementaciones) */
 @media (prefers-color-scheme: dark) {
   .header {
+    --header-text: #e4eff5;
+    --header-text-muted: #b3c5d0;
+    --header-icon: #9fc4d5;
     background-color: rgba(9, 12, 20, 0.94);
     border-bottom-color: rgba(0, 212, 255, 0.16);
     box-shadow: 0 10px 34px rgba(0, 0, 0, 0.3);
@@ -1017,7 +1031,7 @@
   }
   
   .header__logo {
-    color: var(--white);
+    color: var(--header-text);
   }
   
   .header__logo-title {
@@ -1025,7 +1039,7 @@
   }
   
   .header__logo-subtitle {
-    color: var(--gray-300);
+    color: var(--header-icon);
   }
   
   .search-input-container {
@@ -1043,12 +1057,12 @@
   }
   
   .search-input {
-    color: var(--white);
+    color: var(--header-text);
     background: transparent;
   }
   
   .search-input::placeholder {
-    color: var(--gray-400);
+    color: var(--header-text-muted);
   }
   
   .academy-button,
@@ -1065,14 +1079,14 @@
   .system-menu__trigger:hover {
     background-color: rgba(27, 36, 52, 0.96);
     border-color: rgba(0, 212, 255, 0.34);
-    color: var(--white);
+    color: var(--header-text);
   }
 
   .user-menu__dropdown,
   .system-menu__dropdown,
   .search-suggestions,
   .header__mobile-nav {
-    background-color: rgba(14, 20, 32, 0.98);
+    background-color: #0e1420;
     border-color: rgba(255, 255, 255, 0.1);
     box-shadow: 0 18px 46px rgba(0, 0, 0, 0.42);
   }
@@ -1081,7 +1095,7 @@
   .system-menu__item,
   .search-suggestion,
   .mobile-system-action {
-    color: var(--gray-300);
+    color: var(--header-icon);
   }
   
   .user-menu__item:hover,
@@ -1089,18 +1103,18 @@
   .search-suggestion:hover,
   .mobile-system-action:hover {
     background-color: rgba(255, 255, 255, 0.06);
-    color: var(--white);
+    color: var(--header-text);
   }
 
   .system-menu__header,
   .mobile-system-header,
   .system-menu__item-title,
   .mobile-system-action-title {
-    color: var(--white);
+    color: var(--header-text);
   }
 
   .system-menu__item-description,
   .mobile-system-action-description {
-    color: rgba(255, 255, 255, 0.58);
+    color: var(--header-text-muted);
   }
 }

@@ -1,4 +1,4 @@
-import React, { Suspense, lazy, useState } from 'react'
+import React, { Suspense, lazy, useCallback, useEffect, useState } from 'react'
 import { Routes, Route, useLocation } from '@/lib/router'
 import { Toaster } from 'react-hot-toast'
 
@@ -7,6 +7,7 @@ import Header from '@components/Header/Header'
 import Loading from '@components/Common/Loading'
 import DisclaimerModal from '@components/DisclaimerModal/DisclaimerModal'
 import FloatingHomeButton from '@components/Common/FloatingHomeButton'
+import GalaxyIntro from '@components/GalaxyIntro/GalaxyIntro'
 
 // Hooks
 import { useTools } from '@hooks/useTools'
@@ -34,6 +35,8 @@ const DorkSimulator = lazy(() => import('@components/OSINTAcademy/Simulator/Dork
 const InfrastructureLab = lazy(() => import('@components/OSINTAcademy/InfrastructureLab/InfrastructureLab'))
 const CorporateLab = lazy(() => import('@components/OSINTAcademy/CorporateLab/CorporateLab'))
 const LessonViewer = lazy(() => import('@components/OSINTAcademy/Lessons/LessonViewer'))
+const CertificateCenter = lazy(() => import('@components/OSINTAcademy/Certificates/CertificateCenter'))
+const CertificateVerify = lazy(() => import('@components/OSINTAcademy/Certificates/CertificateVerify'))
 const AudioPlayer = lazy(() => import('@components/OSINTAcademy/Audio/AudioPlayer'))
 
 const RouteLoading = () => (
@@ -42,7 +45,7 @@ const RouteLoading = () => (
   </div>
 )
 
-function App() {
+function AppContent() {
   const [searchQuery, setSearchQuery] = useState('')
   const [selectedCategory, setSelectedCategory] = useState(null)
   const location = useLocation()
@@ -79,29 +82,10 @@ function App() {
     setSelectedCategory(category)
   }
 
-  // Filtrar herramientas basado en búsqueda y categoría
-  const filteredTools = React.useMemo(() => {
-    if (!tools) return []
-    
-    let filtered = tools
-    
-    // Filtrar por búsqueda
-    if (searchQuery) {
-      const query = searchQuery.toLowerCase()
-      filtered = filtered.filter(tool => 
-        tool.name.toLowerCase().includes(query) ||
-        tool.description.toLowerCase().includes(query) ||
-        tool.tags.some(tag => tag.toLowerCase().includes(query))
-      )
-    }
-    
-    // Filtrar por categoría
-    if (selectedCategory) {
-      filtered = filtered.filter(tool => tool.category === selectedCategory.id)
-    }
-    
-    return filtered
-  }, [tools, searchQuery, selectedCategory])
+  // La verificación pública no depende del catálogo ni de la aceptación de uso.
+  if (location.pathname.startsWith('/certificates/')) {
+    return <Suspense fallback={<RouteLoading />}><Routes><Route path="/certificates/:certificateId" element={<CertificateVerify />} /></Routes></Suspense>
+  }
 
   // Mostrar loading si está cargando disclaimer o herramientas
   if (disclaimerLoading || toolsLoading) {
@@ -137,7 +121,7 @@ function App() {
   }
 
   return (
-    <div className="app">
+    <div className={`app ${['/', '/explore'].includes(location.pathname) ? 'app--explorer' : ''}`}>
       {/* Header principal - Solo mostrar si no estamos en Academy o Flowcharts */}
       {!shouldHideNavbar && (
         <Header
@@ -155,11 +139,12 @@ function App() {
               element={
                 <div className="app-content">
                   <GalaxyView
-                    tools={filteredTools}
+                    tools={tools}
                     categories={categories}
                     onCategorySelect={handleCategorySelect}
                     selectedCategory={selectedCategory}
                     searchQuery={searchQuery}
+                    onSearchChange={setSearchQuery}
                   />
                 </div>
               }
@@ -169,11 +154,12 @@ function App() {
               element={
                 <div className="app-content">
                   <GalaxyView
-                    tools={filteredTools}
+                    tools={tools}
                     categories={categories}
                     onCategorySelect={handleCategorySelect}
                     selectedCategory={selectedCategory}
                     searchQuery={searchQuery}
+                    onSearchChange={setSearchQuery}
                   />
                 </div>
               }
@@ -190,6 +176,7 @@ function App() {
             <Route path="/infrastructure-scanner" element={<InfrastructureScanner />} />
             <Route path="/about" element={<About />} />
             <Route path="/academy" element={<AcademyDashboard />} />
+            <Route path="/academy/certificates" element={<CertificateCenter />} />
             <Route path="/academy/detective-game" element={<DetectiveGame />} />
             <Route path="/academy/mindmap" element={<OSINTMindMap />} />
             <Route path="/academy/dork-simulator" element={<DorkSimulator />} />
@@ -231,6 +218,32 @@ function App() {
         }}
       />
     </div>
+  )
+}
+
+function App() {
+  const location = useLocation()
+  const isPublicCertificate = location.pathname.startsWith('/certificates/')
+  const [introPending, setIntroPending] = useState(() => !isPublicCertificate)
+  const handleIntroComplete = useCallback(() => setIntroPending(false), [])
+  const introVisible = introPending && !isPublicCertificate
+
+  useEffect(() => {
+    if (isPublicCertificate) setIntroPending(false)
+  }, [isPublicCertificate])
+
+  return (
+    <>
+      <div
+        className="app-entry-content"
+        inert={introVisible ? '' : undefined}
+        aria-hidden={introVisible || undefined}
+        style={{ visibility: introVisible ? 'hidden' : undefined }}
+      >
+        <AppContent />
+      </div>
+      {introVisible && <GalaxyIntro onComplete={handleIntroComplete} />}
+    </>
   )
 }
 

@@ -762,6 +762,65 @@
       "requires_registration": false,
       "is_free": true,
       "difficulty_level": "advanced"
+    },
+    {
+      "id": "cisa-kev",
+      "name": "CISA - Known Exploited Vulnerabilities",
+      "description": "Catálogo público de vulnerabilidades con evidencia de explotación conocida mantenido por CISA.",
+      "utility": "Prioriza la revisión defensiva de tecnologías propias o autorizadas y consulta acciones recomendadas. Una coincidencia de producto no prueba que un sistema concreto esté comprometido.",
+      "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
+      "category": "darkweb-amenazas",
+      "subcategory": "threat-intelligence",
+      "tags": [
+        "cisa",
+        "cve",
+        "vulnerabilidades",
+        "inteligencia de amenazas",
+        "priorización"
+      ],
+      "type": "dataset",
+      "indicators": [
+        "S"
+      ],
+      "region": "internacional",
+      "language": "en",
+      "rating": 0,
+      "usage_count": 0,
+      "last_updated": "2026-09-04",
+      "status": "active",
+      "requires_registration": false,
+      "is_free": true,
+      "difficulty_level": "intermediate"
+    },
+    {
+      "id": "nist-nvd",
+      "name": "NIST - National Vulnerability Database",
+      "description": "Base pública de vulnerabilidades y referencias técnicas mantenida por NIST.",
+      "utility": "Contrasta CVE, productos afectados y métricas disponibles con avisos del fabricante. Algunos registros pueden carecer de análisis completo o actualizarse después de su publicación.",
+      "url": "https://nvd.nist.gov/",
+      "category": "darkweb-amenazas",
+      "subcategory": "threat-intelligence",
+      "tags": [
+        "nist",
+        "nvd",
+        "cve",
+        "cvss",
+        "vulnerabilidades",
+        "seguridad"
+      ],
+      "type": "dataset",
+      "indicators": [
+        "S"
+      ],
+      "region": "internacional",
+      "language": "en",
+      "rating": 0,
+      "usage_count": 0,
+      "last_updated": "2026-09-04",
+      "status": "active",
+      "requires_registration": false,
+      "is_free": true,
+      "difficulty_level": "intermediate"
     }
   ]
 }

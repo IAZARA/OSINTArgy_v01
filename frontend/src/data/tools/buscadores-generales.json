@@ -1452,6 +1452,94 @@
       "requires_registration": false,
       "is_free": true,
       "difficulty_level": "intermediate"
+    },
+    {
+      "id": "google-fact-check-explorer",
+      "name": "Google Fact Check Explorer",
+      "description": "Buscador de verificaciones de afirmaciones publicadas por organizaciones de fact-checking.",
+      "utility": "Encuentra comprobaciones previas de una afirmación y revisa su artículo original, autor, fecha y evidencia. La presencia o ausencia de resultados no establece por sí sola la veracidad.",
+      "url": "https://toolbox.google.com/factcheck/explorer",
+      "category": "buscadores-generales",
+      "subcategory": "busquedas-especializadas",
+      "tags": [
+        "fact-checking",
+        "verificación",
+        "desinformación",
+        "afirmaciones",
+        "fuentes"
+      ],
+      "type": "web",
+      "indicators": [
+        "A"
+      ],
+      "region": "internacional",
+      "language": "multi",
+      "rating": 0,
+      "usage_count": 0,
+      "last_updated": "2026-09-04",
+      "status": "active",
+      "requires_registration": false,
+      "is_free": true,
+      "difficulty_level": "beginner"
+    },
+    {
+      "id": "openalex",
+      "name": "OpenAlex",
+      "description": "Índice abierto de publicaciones, autores, instituciones y relaciones de citación académica.",
+      "utility": "Rastrea publicaciones y afiliaciones para evaluar fuentes científicas. La consulta básica es gratuita; la API y el uso a escala tienen cuotas y opciones de pago.",
+      "url": "https://openalex.org/",
+      "category": "buscadores-generales",
+      "subcategory": "academicos",
+      "tags": [
+        "publicaciones",
+        "ciencia",
+        "citas",
+        "instituciones",
+        "investigación académica"
+      ],
+      "type": "web",
+      "indicators": [
+        "A",
+        "P"
+      ],
+      "region": "internacional",
+      "language": "en",
+      "rating": 0,
+      "usage_count": 0,
+      "last_updated": "2026-09-04",
+      "status": "active",
+      "requires_registration": false,
+      "is_free": true,
+      "difficulty_level": "beginner"
+    },
+    {
+      "id": "crossref-metadata-search",
+      "name": "Crossref Metadata Search",
+      "description": "Buscador de metadatos de artículos, libros, datasets y otros trabajos con identificadores DOI.",
+      "utility": "Verifica título, autoría, publicación y DOI de una referencia. Los metadatos ayudan a localizar el original y no garantizan acceso gratuito al texto completo.",
+      "url": "https://search.crossref.org/",
+      "category": "buscadores-generales",
+      "subcategory": "academicos",
+      "tags": [
+        "doi",
+        "crossref",
+        "bibliografía",
+        "metadatos",
+        "verificación de fuentes"
+      ],
+      "type": "web",
+      "indicators": [
+        "A"
+      ],
+      "region": "internacional",
+      "language": "en",
+      "rating": 0,
+      "usage_count": 0,
+      "last_updated": "2026-09-04",
+      "status": "active",
+      "requires_registration": false,
+      "is_free": true,
+      "difficulty_level": "beginner"
     }
   ]
 }

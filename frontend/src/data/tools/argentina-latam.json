@@ -3,37 +3,39 @@
   "tools": [
     {
       "id": "afip-cuit",
-      "name": "AFIP - Consulta CUIT",
-      "description": "Consulta oficial de CUIT/CUIL en la base de datos de AFIP.",
-      "utility": "Verifica la validez y obtiene datos básicos de contribuyentes argentinos. Permite consultar situación fiscal y actividades económicas.",
-      "url": "https://www.afip.gob.ar/sitio/externos/default.asp",
+      "name": "ARCA - Constancias y consultas tributarias",
+      "description": "Portal oficial de la Agencia de Recaudación y Control Aduanero, antes AFIP.",
+      "utility": "Accede a información tributaria y servicios de constancias. La información pública y los trámites con clave fiscal tienen alcances diferentes; no brinda acceso abierto a datos fiscales privados.",
+      "url": "https://www.arca.gob.ar/",
       "category": "argentina-latam",
       "subcategory": "registros-publicos-ar",
       "tags": [
-        "cuit",
+        "arca",
         "afip",
         "argentina",
-        "contribuyentes"
+        "cuit",
+        "constancias",
+        "tributación"
       ],
       "type": "web",
       "indicators": [
-        "R"
+        "A"
       ],
       "region": "argentina",
       "language": "es",
       "rating": 4.5,
       "usage_count": 8920,
-      "last_updated": "2025-06-19",
+      "last_updated": "2026-09-04",
       "status": "active",
-      "requires_registration": true,
+      "requires_registration": false,
       "is_free": true,
       "difficulty_level": "beginner"
     },
     {
       "id": "anses-cuil",
-      "name": "ANSES - Consulta CUIL",
-      "description": "Consulta de CUIL y beneficios en ANSES Argentina.",
-      "utility": "Verifica CUIL y consulta información de beneficios sociales, jubilaciones y pensiones.",
+      "name": "ANSES - Trámites y constancia de CUIL",
+      "description": "Información oficial para obtener la constancia de CUIL y acceder a trámites de ANSES.",
+      "utility": "Consulta requisitos y canales para gestionar la propia constancia de CUIL. Los datos personales de prestaciones se consultan mediante los mecanismos de autenticación del titular.",
       "url": "https://www.anses.gob.ar",
       "category": "argentina-latam",
       "subcategory": "registros-publicos-ar",
@@ -41,49 +43,49 @@
         "cuil",
         "anses",
         "argentina",
-        "beneficios"
+        "trámites",
+        "constancia"
       ],
       "type": "web",
       "indicators": [
-        "R",
-        "P"
+        "A"
       ],
       "region": "argentina",
       "language": "es",
       "rating": 4.3,
       "usage_count": 5670,
-      "last_updated": "2025-06-13",
+      "last_updated": "2026-09-04",
       "status": "active",
-      "requires_registration": true,
+      "requires_registration": false,
       "is_free": true,
       "difficulty_level": "beginner"
     },
     {
       "id": "renaper",
       "name": "RENAPER - Registro Nacional de las Personas",
-      "description": "Consulta de documentos de identidad y estado civil en Argentina.",
-      "utility": "Verifica validez de DNI, consulta estado civil y datos del Registro Civil.",
+      "description": "Portal institucional del Registro Nacional de las Personas con información de documentación y trámites.",
+      "utility": "Consulta canales oficiales y requisitos de documentos de identidad. La validación de identidad y las certificaciones personales requieren los procedimientos habilitados; no es un buscador público de DNI o estado civil.",
       "url": "https://www.argentina.gob.ar/interior/renaper",
       "category": "argentina-latam",
       "subcategory": "registros-publicos-ar",
       "tags": [
-        "dni",
         "renaper",
-        "identidad",
-        "registro civil"
+        "argentina",
+        "documentación",
+        "trámites",
+        "fuente oficial"
       ],
       "type": "web",
       "indicators": [
-        "R",
-        "P"
+        "A"
       ],
       "region": "argentina",
       "language": "es",
       "rating": 4.2,
       "usage_count": 4560,
-      "last_updated": "2025-06-19",
+      "last_updated": "2026-09-04",
       "status": "active",
-      "requires_registration": true,
+      "requires_registration": false,
       "is_free": true,
       "difficulty_level": "beginner"
     },
@@ -862,6 +864,270 @@
       "rating": 0,
       "usage_count": 0,
       "last_updated": "2026-07-12",
+      "status": "active",
+      "requires_registration": false,
+      "is_free": true,
+      "difficulty_level": "intermediate"
+    },
+    {
+      "id": "presupuesto-abierto-ar",
+      "name": "Presupuesto Abierto Argentina",
+      "description": "Portal oficial de consulta y descarga de la ejecución presupuestaria nacional.",
+      "utility": "Contrasta asignaciones y ejecución por organismo, finalidad, ubicación y período. Conservá la fecha de corte y diferenciá crédito, devengado y pago.",
+      "url": "https://www.presupuestoabierto.gob.ar/",
+      "category": "argentina-latam",
+      "subcategory": "bases-datos-gov",
+      "tags": [
+        "argentina",
+        "presupuesto",
+        "gasto público",
+        "transparencia",
+        "datos abiertos"
+      ],
+      "type": "web",
+      "indicators": [
+        "A"
+      ],
+      "region": "argentina",
+      "language": "es",
+      "rating": 0,
+      "usage_count": 0,
+      "last_updated": "2026-09-04",
+      "status": "active",
+      "requires_registration": false,
+      "is_free": true,
+      "difficulty_level": "beginner"
+    },
+    {
+      "id": "indec-bases-datos",
+      "name": "INDEC - Bases de datos",
+      "description": "Bases estadísticas y documentación metodológica publicadas por el INDEC.",
+      "utility": "Contextualiza una investigación con censos y encuestas. Trabajá con los microdatos publicados, sus ponderadores y su metodología; no permiten identificar personas.",
+      "url": "https://www.indec.gob.ar/Institucional/Indec/BasesDeDatos",
+      "category": "argentina-latam",
+      "subcategory": "bases-datos-gov",
+      "tags": [
+        "argentina",
+        "indec",
+        "estadísticas",
+        "censos",
+        "microdatos",
+        "datos abiertos"
+      ],
+      "type": "dataset",
+      "indicators": [
+        "A"
+      ],
+      "region": "argentina",
+      "language": "es",
+      "rating": 0,
+      "usage_count": 0,
+      "last_updated": "2026-09-04",
+      "status": "active",
+      "requires_registration": false,
+      "is_free": true,
+      "difficulty_level": "intermediate"
+    },
+    {
+      "id": "buenos-aires-data",
+      "name": "Buenos Aires Data",
+      "description": "Catálogo de datos abiertos producidos por el Gobierno de la Ciudad de Buenos Aires.",
+      "utility": "Encuentra datasets urbanos y administrativos para contrastar información de CABA. Revisá organismo, licencia y última actualización de cada recurso.",
+      "url": "https://data.buenosaires.gob.ar/",
+      "category": "argentina-latam",
+      "subcategory": "bases-datos-gov",
+      "tags": [
+        "argentina",
+        "caba",
+        "buenos aires",
+        "datos abiertos",
+        "transparencia"
+      ],
+      "type": "dataset",
+      "indicators": [
+        "A"
+      ],
+      "region": "argentina",
+      "language": "es",
+      "rating": 0,
+      "usage_count": 0,
+      "last_updated": "2026-09-04",
+      "status": "active",
+      "requires_registration": false,
+      "is_free": true,
+      "difficulty_level": "beginner"
+    },
+    {
+      "id": "datos-abiertos-pba",
+      "name": "Datos Abiertos de la Provincia de Buenos Aires",
+      "description": "Catálogo provincial con datos abiertos de administración pública, territorio, economía y otras áreas.",
+      "utility": "Cruza datos bonaerenses por tema y organismo para investigaciones territoriales. CABA y la provincia corresponden a jurisdicciones diferentes.",
+      "url": "https://catalogo.datos.gba.gob.ar/",
+      "category": "argentina-latam",
+      "subcategory": "bases-datos-gov",
+      "tags": [
+        "argentina",
+        "provincia de buenos aires",
+        "pba",
+        "datos abiertos",
+        "territorio"
+      ],
+      "type": "dataset",
+      "indicators": [
+        "A"
+      ],
+      "region": "argentina",
+      "language": "es",
+      "rating": 0,
+      "usage_count": 0,
+      "last_updated": "2026-09-04",
+      "status": "active",
+      "requires_registration": false,
+      "is_free": true,
+      "difficulty_level": "beginner"
+    },
+    {
+      "id": "brasil-transparencia",
+      "name": "Brasil - Portal da Transparência",
+      "description": "Portal de la Controladoria-Geral da União sobre recursos y contrataciones del Gobierno Federal de Brasil.",
+      "utility": "Consulta gastos, contratos, licitaciones y sanciones publicadas para documentar vínculos institucionales. Las descargas y la API tienen condiciones de acceso propias.",
+      "url": "https://portaldatransparencia.gov.br/",
+      "category": "argentina-latam",
+      "subcategory": "herramientas-latam",
+      "tags": [
+        "brasil",
+        "latam",
+        "contrataciones",
+        "transparencia",
+        "gasto público"
+      ],
+      "type": "web",
+      "indicators": [
+        "A"
+      ],
+      "region": "latam",
+      "language": "pt",
+      "rating": 0,
+      "usage_count": 0,
+      "last_updated": "2026-09-04",
+      "status": "active",
+      "requires_registration": false,
+      "is_free": true,
+      "difficulty_level": "intermediate"
+    },
+    {
+      "id": "colombia-datos-abiertos",
+      "name": "Datos Abiertos Colombia",
+      "description": "Portal nacional colombiano de datos abiertos de entidades públicas.",
+      "utility": "Localiza datasets, identifica a su productor y consulta descargas para analizar información territorial o administrativa. Verificá fecha de actualización y cobertura.",
+      "url": "https://www.datos.gov.co/",
+      "category": "argentina-latam",
+      "subcategory": "herramientas-latam",
+      "tags": [
+        "colombia",
+        "latam",
+        "datos abiertos",
+        "gobierno",
+        "datasets"
+      ],
+      "type": "dataset",
+      "indicators": [
+        "A"
+      ],
+      "region": "latam",
+      "language": "es",
+      "rating": 0,
+      "usage_count": 0,
+      "last_updated": "2026-09-04",
+      "status": "active",
+      "requires_registration": false,
+      "is_free": true,
+      "difficulty_level": "beginner"
+    },
+    {
+      "id": "chilecompra-datos-abiertos",
+      "name": "ChileCompra - Datos Abiertos",
+      "description": "Datos y descargas de compras públicas registradas en Mercado Público de Chile.",
+      "utility": "Analiza proveedores, organismos compradores y órdenes de compra. Sus montos representan compromisos de compra y no acreditan por sí solos pagos a proveedores.",
+      "url": "https://datos-abiertos.chilecompra.cl/",
+      "category": "argentina-latam",
+      "subcategory": "herramientas-latam",
+      "tags": [
+        "chile",
+        "latam",
+        "compras públicas",
+        "proveedores",
+        "ocds",
+        "transparencia"
+      ],
+      "type": "dataset",
+      "indicators": [
+        "A"
+      ],
+      "region": "latam",
+      "language": "es",
+      "rating": 0,
+      "usage_count": 0,
+      "last_updated": "2026-09-04",
+      "status": "active",
+      "requires_registration": false,
+      "is_free": true,
+      "difficulty_level": "intermediate"
+    },
+    {
+      "id": "uruguay-catalogo-datos",
+      "name": "Uruguay - Catálogo Nacional de Datos Abiertos",
+      "description": "Catálogo de conjuntos de datos abiertos de organizaciones públicas y otras entidades uruguayas.",
+      "utility": "Encuentra recursos por organismo, categoría y etiquetas. Verificá la licencia y la cobertura de cada dataset antes de combinarlo con fuentes de otros países.",
+      "url": "https://catalogodatos.gub.uy/",
+      "category": "argentina-latam",
+      "subcategory": "herramientas-latam",
+      "tags": [
+        "uruguay",
+        "latam",
+        "datos abiertos",
+        "agesic",
+        "datasets"
+      ],
+      "type": "dataset",
+      "indicators": [
+        "A"
+      ],
+      "region": "latam",
+      "language": "es",
+      "rating": 0,
+      "usage_count": 0,
+      "last_updated": "2026-09-04",
+      "status": "active",
+      "requires_registration": false,
+      "is_free": true,
+      "difficulty_level": "beginner"
+    },
+    {
+      "id": "ecuador-contrataciones-abiertas",
+      "name": "Ecuador - Contrataciones Abiertas",
+      "description": "Buscador y datos abiertos de procedimientos de contratación pública de Ecuador en formato OCDS.",
+      "utility": "Investiga procesos por año, entidad y proveedor y conserva su identificador OCID para reproducir la consulta. La plataforma documenta descargas y una API pública.",
+      "url": "https://datosabiertos.compraspublicas.gob.ec/PLATAFORMA/",
+      "category": "argentina-latam",
+      "subcategory": "herramientas-latam",
+      "tags": [
+        "ecuador",
+        "latam",
+        "sercop",
+        "ocds",
+        "contrataciones",
+        "proveedores"
+      ],
+      "type": "dataset",
+      "indicators": [
+        "A"
+      ],
+      "region": "latam",
+      "language": "es",
+      "rating": 0,
+      "usage_count": 0,
+      "last_updated": "2026-09-04",
       "status": "active",
       "requires_registration": false,
       "is_free": true,

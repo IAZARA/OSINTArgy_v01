@@ -630,6 +630,36 @@
       "requires_registration": true,
       "is_free": false,
       "difficulty_level": "beginner"
+    },
+    {
+      "id": "humanitarian-data-exchange",
+      "name": "Humanitarian Data Exchange (HDX)",
+      "description": "Catálogo de datos humanitarios de OCHA y organizaciones colaboradoras.",
+      "utility": "Consulta límites administrativos, población y contexto humanitario con fuentes y metodologías. Los recursos públicos se descargan sin cuenta; otros requieren solicitud y la API tabular requiere token.",
+      "url": "https://data.humdata.org/",
+      "category": "archivos",
+      "subcategory": "datasets-investigacion",
+      "tags": [
+        "ocha",
+        "hdx",
+        "datos humanitarios",
+        "población",
+        "datasets",
+        "datos abiertos"
+      ],
+      "type": "dataset",
+      "indicators": [
+        "A"
+      ],
+      "region": "internacional",
+      "language": "en",
+      "rating": 0,
+      "usage_count": 0,
+      "last_updated": "2026-09-04",
+      "status": "active",
+      "requires_registration": false,
+      "is_free": true,
+      "difficulty_level": "intermediate"
     }
   ]
 }

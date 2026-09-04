@@ -1344,6 +1344,65 @@
       "requires_registration": true,
       "is_free": true,
       "difficulty_level": "intermediate"
+    },
+    {
+      "id": "icann-rdap-lookup",
+      "name": "ICANN - RDAP Lookup",
+      "description": "Consulta pública de datos de registro de dominios y recursos de Internet mediante RDAP.",
+      "utility": "Comprueba registrador, fechas, estados y servidores de nombres con datos del registro correspondiente. Los campos protegidos pueden aparecer redactados.",
+      "url": "https://lookup.icann.org/",
+      "category": "dominios-ips",
+      "subcategory": "informacion-dominios",
+      "tags": [
+        "rdap",
+        "icann",
+        "dominios",
+        "registro",
+        "dns"
+      ],
+      "type": "web",
+      "indicators": [
+        "S"
+      ],
+      "region": "internacional",
+      "language": "en",
+      "rating": 0,
+      "usage_count": 0,
+      "last_updated": "2026-09-04",
+      "status": "active",
+      "requires_registration": false,
+      "is_free": true,
+      "difficulty_level": "beginner"
+    },
+    {
+      "id": "ripestat",
+      "name": "RIPEstat",
+      "description": "Servicio de RIPE NCC con información y visualizaciones de direcciones IP, prefijos y sistemas autónomos.",
+      "utility": "Contrasta anuncios BGP, asignación y cambios de enrutamiento con datos históricos. Una red o una IP no identifica por sí sola al responsable de una actividad.",
+      "url": "https://stat.ripe.net/",
+      "category": "dominios-ips",
+      "subcategory": "analisis-ips",
+      "tags": [
+        "ripe",
+        "asn",
+        "bgp",
+        "ip",
+        "enrutamiento",
+        "infraestructura"
+      ],
+      "type": "web",
+      "indicators": [
+        "S"
+      ],
+      "region": "internacional",
+      "language": "en",
+      "rating": 0,
+      "usage_count": 0,
+      "last_updated": "2026-09-04",
+      "status": "active",
+      "requires_registration": false,
+      "is_free": true,
+      "difficulty_level": "intermediate"
     }
   ]
 }

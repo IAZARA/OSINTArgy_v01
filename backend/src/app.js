@@ -10,6 +10,7 @@ import { dirname, join } from 'path'
 import { getAllowedOrigins, validateSecurityConfig } from './config/security.js'
 
 // Importar rutas
+import certificateRoutes from './routes/certificates.js'
 import authRoutes from './routes/auth.js'
 import toolsRoutes from './routes/tools.js'
 import usersRoutes from './routes/users.js'
@@ -70,6 +71,8 @@ if (process.env.NODE_ENV !== 'production' && process.env.NODE_ENV !== 'test') {
 }
 
 const app = express()
+// El despliegue Docker expone un único Nginx delante de la API.
+if (process.env.TRUST_PROXY === '1') app.set('trust proxy', 1)
 const PORT = process.env.PORT || 5000
 const allowedOrigins = getAllowedOrigins()
 const jsonBodyLimit = process.env.JSON_BODY_LIMIT || '1mb'
@@ -114,6 +117,7 @@ app.use((req, res, next) => {
 })
 
 // Rutas principales
+app.use('/api/certificates', certificateRoutes)
 app.use('/api/auth', authRoutes)
 app.use('/api/tools', toolsRoutes)
 app.use('/api/users', usersRoutes)

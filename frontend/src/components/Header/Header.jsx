@@ -33,6 +33,8 @@ const Header = ({
   const navigate = useNavigate()
   const { activeCase, activeCases, setActiveCaseId, createCase } = useCases()
 
+  useEffect(() => { setSearchValue(searchQuery || '') }, [searchQuery])
+
   // Hooks para datos y sugerencias
   const { tools, categories } = useTools()
   const { 

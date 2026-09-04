@@ -34,12 +34,15 @@ La descripción corta del proyecto es: **Plataforma OSINT open source para inves
 ## Características
 
 - Catálogo curado de herramientas OSINT con categorías, tags, dificultad, región e indicadores de uso.
-- Interfaz visual tipo galaxia, vistas alternativas y navegación por categorías.
+- Bienvenida animada de cinco segundos con galaxia de estrellas y marca OSINTArgy, opción de saltar y movimiento reducido.
+- Galaxia con constelaciones animadas, órbitas suaves, estrellas titilantes y pulsos en las conexiones; etiquetas fijas, pausa manual y respeto por movimiento reducido. Incluye foco por categoría, zoom, desplazamiento y navegación por teclado.
+- Catálogo de 485 fuentes con búsqueda sin acentos y filtros combinables por región, tipo, costo, registro, dificultad, idioma y repositorio.
 - Generador de dorks para Google, Yandex, Bing y DuckDuckGo.
 - Búsqueda de usernames en múltiples plataformas.
 - Módulos para OSINT de emails, análisis de archivos y reconocimiento de infraestructura.
 - Tablero local de investigación con entidades, relaciones, ubicaciones OpenStreetMap, autoguardado e intercambio JSON.
-- Academias interactivas de fundamentos OSINT, infraestructura defensiva e investigación corporativa con fuentes públicas.
+- Cuatro academias: fundamentos OSINT, infraestructura defensiva, investigación corporativa y verificación de evidencia; 18 módulos con progreso, reanudación y aprobación del 80%.
+- Certificados descargables e imprimibles, evaluación final y datos para agregar la credencial a LinkedIn. Modo local disponible; emisión pública firmada y registro persistente preparados.
 - API REST con Express, MongoDB, autenticación JWT, rate limiting, CORS y logging estructurado.
 - Frontend React + Vite con rutas SPA, servicios API y componentes modulares.
 
@@ -171,6 +174,9 @@ No se versionan builds, logs, bases locales, `.env`, carpetas MCP ni configuraci
 Endpoints principales:
 
 ```text
+GET    /api/certificates/assessment/:courseId
+POST   /api/certificates/issue
+GET    /api/certificates/:certificateId
 GET    /api/health
 GET    /api/tools
 GET    /api/tools/:id
@@ -185,6 +191,16 @@ GET    /api/search/tools
 GET    /api/search/suggestions
 POST   /api/dorks/generate
 ```
+
+## Academia y certificados
+
+Entrá a `/academy` para elegir un trayecto, buscar por temas, filtrar por nivel o estado y retomar la última lección. Cada módulo exige recorrer su contenido y aprobar la evaluación con al menos 80%. El progreso anterior se conserva como lectura revisada: debe reevaluarse para obtener una credencial.
+
+En `/academy/certificates`, una vez aprobadas las lecciones del trayecto, podés rendir una evaluación final de cinco preguntas. La constancia local se guarda en el navegador, se descarga como HTML imprimible y permite guardar un PDF desde el diálogo de impresión. El panel de LinkedIn abre el formulario oficial y ofrece cada dato para copiar; no publica en la cuenta automáticamente.
+
+La emisión pública opcional corrige la evaluación en el backend, guarda la credencial en MongoDB y comprueba su firma y revocación en `/certificates/:certificateId`, sin exigir acceso a la academia. Es formación no reglada y el nombre es declarado por el estudiante. Los requisitos, la configuración y los límites se detallan en [docs/certificados-despliegue.md](docs/certificados-despliegue.md).
+
+Las 32 fuentes agregadas y sus controles están registrados en [docs/catalogo-fuentes-2026-09.md](docs/catalogo-fuentes-2026-09.md).
 
 ## Datos y Herramientas
 

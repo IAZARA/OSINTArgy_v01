@@ -29,6 +29,9 @@ services:
       JWT_REFRESH_SECRET: ${JWT_REFRESH_SECRET}
       JWT_EXPIRE: 7d
       FRONTEND_URL: ${FRONTEND_URL}
+      CERTIFICATE_SIGNING_SECRET: ${CERTIFICATE_SIGNING_SECRET:-}
+      CERTIFICATE_PUBLIC_URL: ${CERTIFICATE_PUBLIC_URL:-}
+      TRUST_PROXY: '1'
       LOG_DIR: /app/logs
     depends_on:
       - mongodb
@@ -47,6 +50,9 @@ services:
       context: ./frontend
       dockerfile: Dockerfile
       target: production
+      args:
+        VITE_API_URL: /api
+        VITE_CERTIFICATE_MODE: ${VITE_CERTIFICATE_MODE:-local}
     container_name: osintargy-frontend
     restart: unless-stopped
     depends_on:

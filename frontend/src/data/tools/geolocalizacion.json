@@ -1084,6 +1084,184 @@
       "requires_registration": false,
       "is_free": true,
       "difficulty_level": "beginner"
+    },
+    {
+      "id": "georef-argentina",
+      "name": "Georef Argentina",
+      "description": "API oficial para normalizar direcciones y unidades territoriales de Argentina.",
+      "utility": "Relaciona nombres de provincias, municipios y localidades con sus códigos oficiales; georreferencia direcciones y contextualiza coordenadas sin atribuirlas a personas.",
+      "url": "https://www.argentina.gob.ar/georef",
+      "category": "geolocalizacion",
+      "subcategory": "coordenadas",
+      "tags": [
+        "argentina",
+        "georef",
+        "api",
+        "direcciones",
+        "coordenadas",
+        "normalización"
+      ],
+      "type": "api",
+      "indicators": [
+        "G"
+      ],
+      "region": "argentina",
+      "language": "es",
+      "rating": 0,
+      "usage_count": 0,
+      "last_updated": "2026-09-04",
+      "status": "active",
+      "requires_registration": false,
+      "is_free": true,
+      "difficulty_level": "intermediate"
+    },
+    {
+      "id": "ign-geoportal",
+      "name": "IGN - Geoportal Argentina",
+      "description": "Acceso a mapas, cartografía y servicios geográficos del Instituto Geográfico Nacional.",
+      "utility": "Contrasta topónimos, límites y elementos territoriales con cartografía oficial. Cada capa tiene escala y fecha propias que deben registrarse en el análisis.",
+      "url": "https://geoportal.ign.gob.ar/",
+      "category": "geolocalizacion",
+      "subcategory": "mapas-satelitales",
+      "tags": [
+        "argentina",
+        "ign",
+        "cartografía",
+        "mapas",
+        "geografía",
+        "fuente oficial"
+      ],
+      "type": "web",
+      "indicators": [
+        "G"
+      ],
+      "region": "argentina",
+      "language": "es",
+      "rating": 0,
+      "usage_count": 0,
+      "last_updated": "2026-09-04",
+      "status": "active",
+      "requires_registration": false,
+      "is_free": true,
+      "difficulty_level": "beginner"
+    },
+    {
+      "id": "idera-catalogo",
+      "name": "IDERA - Catálogo de Metadatos",
+      "description": "Catálogo federal de metadatos para descubrir información geográfica de Argentina.",
+      "utility": "Localiza capas y servicios por tema y organismo productor. Los metadatos ayudan a evaluar escala, cobertura, fecha y condiciones de uso antes de descargar.",
+      "url": "https://servicios.idera.gob.ar/geonetwork/srv/spa/catalog.search",
+      "category": "geolocalizacion",
+      "subcategory": "analisis-geoespacial",
+      "tags": [
+        "argentina",
+        "idera",
+        "metadatos",
+        "gis",
+        "wms",
+        "cartografía"
+      ],
+      "type": "web",
+      "indicators": [
+        "G"
+      ],
+      "region": "argentina",
+      "language": "es",
+      "rating": 0,
+      "usage_count": 0,
+      "last_updated": "2026-09-04",
+      "status": "active",
+      "requires_registration": false,
+      "is_free": true,
+      "difficulty_level": "intermediate"
+    },
+    {
+      "id": "copernicus-browser",
+      "name": "Copernicus Browser",
+      "description": "Visor de imágenes Sentinel y otras colecciones del Copernicus Data Space Ecosystem.",
+      "utility": "Compara fechas y combinaciones de bandas para analizar cambios territoriales. Requiere cuenta gratuita; la cobertura, nubosidad y resolución limitan las conclusiones.",
+      "url": "https://dataspace.copernicus.eu/browser/",
+      "category": "geolocalizacion",
+      "subcategory": "mapas-satelitales",
+      "tags": [
+        "satélite",
+        "sentinel",
+        "copernicus",
+        "geoint",
+        "cambios temporales"
+      ],
+      "type": "web",
+      "indicators": [
+        "G",
+        "R"
+      ],
+      "region": "internacional",
+      "language": "multi",
+      "rating": 0,
+      "usage_count": 0,
+      "last_updated": "2026-09-04",
+      "status": "active",
+      "requires_registration": true,
+      "is_free": true,
+      "difficulty_level": "intermediate"
+    },
+    {
+      "id": "nasa-worldview",
+      "name": "NASA Worldview",
+      "description": "Visor temporal de imágenes y capas satelitales de NASA con herramientas de comparación.",
+      "utility": "Contrasta incendios, humo, inundaciones y otros fenómenos por fecha. La vista es pública; descargar algunos productos de origen puede requerir Earthdata Login.",
+      "url": "https://worldview.earthdata.nasa.gov/",
+      "category": "geolocalizacion",
+      "subcategory": "mapas-satelitales",
+      "tags": [
+        "nasa",
+        "satélite",
+        "geoint",
+        "ambiente",
+        "comparación temporal"
+      ],
+      "type": "web",
+      "indicators": [
+        "G"
+      ],
+      "region": "internacional",
+      "language": "en",
+      "rating": 0,
+      "usage_count": 0,
+      "last_updated": "2026-09-04",
+      "status": "active",
+      "requires_registration": false,
+      "is_free": true,
+      "difficulty_level": "beginner"
+    },
+    {
+      "id": "openaerialmap",
+      "name": "OpenAerialMap",
+      "description": "Colección abierta de imágenes aéreas y servicios de mapas con licencias de reutilización.",
+      "utility": "Busca imágenes disponibles por zona para complementar la geolocalización. Comprobá proveedor, fecha, resolución y licencia: la cobertura es desigual y no implica observación en vivo.",
+      "url": "https://openaerialmap.org/",
+      "category": "geolocalizacion",
+      "subcategory": "mapas-satelitales",
+      "tags": [
+        "imágenes aéreas",
+        "mapas",
+        "geoint",
+        "licencias abiertas",
+        "cartografía"
+      ],
+      "type": "web",
+      "indicators": [
+        "G"
+      ],
+      "region": "internacional",
+      "language": "en",
+      "rating": 0,
+      "usage_count": 0,
+      "last_updated": "2026-09-04",
+      "status": "active",
+      "requires_registration": false,
+      "is_free": true,
+      "difficulty_level": "beginner"
     }
   ]
 }

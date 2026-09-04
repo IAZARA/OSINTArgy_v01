@@ -1,0 +1,254 @@
+[
+  {
+    "id": "osint",
+    "title": "Academia OSINT",
+    "version": 1,
+    "passingScore": 80,
+    "questions": [
+      {
+        "id": "osint-1",
+        "prompt": "Antes de recopilar datos para una investigación, ¿qué necesitás definir?",
+        "options": [
+          "Un objetivo, alcance y criterios de uso responsable",
+          "Una lista de contraseñas",
+          "Una conclusión definitiva"
+        ],
+        "answer": 0,
+        "explanation": "El objetivo y el alcance guían la búsqueda y la minimización de datos."
+      },
+      {
+        "id": "osint-2",
+        "prompt": "Dos sitios publican el mismo texto copiado. ¿Cuántas fuentes independientes tenés?",
+        "options": [
+          "Dos siempre",
+          "No se puede asumir independencia; hay que rastrear el origen",
+          "Ninguna información útil"
+        ],
+        "answer": 1,
+        "explanation": "La reproducción de una noticia no constituye corroboración independiente."
+      },
+      {
+        "id": "osint-3",
+        "prompt": "¿Qué consulta limita los resultados a PDFs de un dominio?",
+        "options": [
+          "site:ejemplo.org filetype:pdf informe",
+          "@ejemplo.org #pdf",
+          "pdf=ejemplo.org"
+        ],
+        "answer": 0,
+        "explanation": "site: limita el dominio y filetype: el formato; la indexación puede ser incompleta."
+      },
+      {
+        "id": "osint-4",
+        "prompt": "Encontrás el mismo alias en dos plataformas. ¿Qué podés concluir?",
+        "options": [
+          "Que necesariamente es la misma persona",
+          "Que una cuenta es falsa",
+          "Que es una coincidencia que necesita corroboración"
+        ],
+        "answer": 2,
+        "explanation": "Un alias por sí solo no permite atribuir identidad."
+      },
+      {
+        "id": "osint-5",
+        "prompt": "¿Qué registro permite reproducir mejor un hallazgo?",
+        "options": [
+          "Solo una captura recortada",
+          "URL, fecha de acceso, copia preservada y contexto",
+          "Una conclusión sin enlaces"
+        ],
+        "answer": 1,
+        "explanation": "La trazabilidad conserva la relación entre evidencia, fuente y conclusión."
+      }
+    ]
+  },
+  {
+    "id": "infrastructure",
+    "title": "Huella Digital e Infraestructura Defensiva",
+    "version": 1,
+    "passingScore": 80,
+    "questions": [
+      {
+        "id": "infrastructure-1",
+        "prompt": "¿Qué indica un registro MX?",
+        "options": [
+          "El servicio previsto para recibir correo del dominio",
+          "La identidad del propietario",
+          "Todas las direcciones de correo válidas"
+        ],
+        "answer": 0,
+        "explanation": "MX describe el enrutamiento del correo del dominio."
+      },
+      {
+        "id": "infrastructure-2",
+        "prompt": "Un subdominio aparece en un certificado antiguo. ¿Está activo hoy?",
+        "options": [
+          "Sí, necesariamente",
+          "No se puede concluir sin evidencia actual",
+          "Nunca estuvo activo"
+        ],
+        "answer": 1,
+        "explanation": "Los registros históricos no demuestran el estado actual."
+      },
+      {
+        "id": "infrastructure-3",
+        "prompt": "¿Qué demuestra un certificado TLS válido?",
+        "options": [
+          "Que la organización no puede ser fraudulenta",
+          "Que el contenido es verdadero",
+          "Una relación criptográfica con el dominio según el tipo de validación"
+        ],
+        "answer": 2,
+        "explanation": "TLS no valida la veracidad del contenido ni garantiza ausencia de fraude."
+      },
+      {
+        "id": "infrastructure-4",
+        "prompt": "¿Qué acción requiere revisar especialmente el alcance autorizado?",
+        "options": [
+          "Leer documentación pública",
+          "Escanear activamente servicios de un objetivo",
+          "Consultar un informe ya publicado"
+        ],
+        "answer": 1,
+        "explanation": "El reconocimiento activo puede interactuar con infraestructura del objetivo y exige alcance autorizado."
+      },
+      {
+        "id": "infrastructure-5",
+        "prompt": "¿Cómo informarías un indicio de mala configuración?",
+        "options": [
+          "Separando evidencia observada, impacto posible y verificación pendiente",
+          "Como explotación confirmada sin probarla",
+          "Publicando secretos encontrados"
+        ],
+        "answer": 0,
+        "explanation": "Un indicio debe distinguirse de una vulnerabilidad confirmada y documentar sus límites."
+      }
+    ]
+  },
+  {
+    "id": "corporate",
+    "title": "Investigación Corporativa y Fuentes Públicas",
+    "version": 1,
+    "passingScore": 80,
+    "questions": [
+      {
+        "id": "corporate-1",
+        "prompt": "Dos sociedades tienen nombres similares. ¿Qué harías?",
+        "options": [
+          "Unificarlas automáticamente",
+          "Comparar identificadores, jurisdicción y fechas",
+          "Descartar todos los registros"
+        ],
+        "answer": 1,
+        "explanation": "Los identificadores y la jurisdicción ayudan a resolver entidades homónimas."
+      },
+      {
+        "id": "corporate-2",
+        "prompt": "¿Qué representa una aparición en una base de filtraciones?",
+        "options": [
+          "Prueba automática de delito",
+          "Una condena firme",
+          "Un indicio que exige contexto y corroboración"
+        ],
+        "answer": 2,
+        "explanation": "La presencia en una base no permite atribuir ilegalidad por sí sola."
+      },
+      {
+        "id": "corporate-3",
+        "prompt": "Una dirección compartida entre sociedades permite afirmar que…",
+        "options": [
+          "Existe un vínculo a investigar; podría ser un domicilio de servicios",
+          "Tienen siempre el mismo beneficiario final",
+          "Son la misma entidad jurídica"
+        ],
+        "answer": 0,
+        "explanation": "Una dirección compartida admite varias explicaciones."
+      },
+      {
+        "id": "corporate-4",
+        "prompt": "¿Cómo representás un cambio de directorio?",
+        "options": [
+          "Sobrescribiendo todas las fechas previas",
+          "Registrando el evento con fecha efectiva y fuente",
+          "Aplicándolo a toda la historia de la sociedad"
+        ],
+        "answer": 1,
+        "explanation": "La cronología evita proyectar vínculos actuales sobre hechos pasados."
+      },
+      {
+        "id": "corporate-5",
+        "prompt": "¿Qué tiene un buen informe corporativo?",
+        "options": [
+          "Solo un gráfico llamativo",
+          "Afirmaciones definitivas sobre todo",
+          "Fuentes trazables, fechas, hipótesis y límites de cobertura"
+        ],
+        "answer": 2,
+        "explanation": "Un informe permite revisar cómo se alcanzaron las conclusiones."
+      }
+    ]
+  },
+  {
+    "id": "verification",
+    "title": "Verificación y Evidencia Digital",
+    "version": 1,
+    "passingScore": 80,
+    "questions": [
+      {
+        "id": "verification-1",
+        "prompt": "Una imagen viral vuelve a circular con una fecha nueva. ¿Qué verificás primero?",
+        "options": [
+          "El número de compartidos",
+          "La publicación más antigua localizable y su contexto",
+          "Si el título resulta convincente"
+        ],
+        "answer": 1,
+        "explanation": "Encontrar antecedentes permite detectar imágenes reales reutilizadas fuera de contexto."
+      },
+      {
+        "id": "verification-2",
+        "prompt": "¿Qué demuestra un hash SHA-256 de un archivo preservado?",
+        "options": [
+          "La veracidad del hecho representado",
+          "La identidad del fotógrafo",
+          "Permite comparar si los bytes cambiaron respecto de esa copia"
+        ],
+        "answer": 2,
+        "explanation": "La integridad del archivo no equivale a autenticidad del contenido."
+      },
+      {
+        "id": "verification-3",
+        "prompt": "¿Cuál es una fuente primaria para una declaración?",
+        "options": [
+          "El registro original completo de la declaración",
+          "Un comentario anónimo sobre ella",
+          "Un resumen sin enlace"
+        ],
+        "answer": 0,
+        "explanation": "La fuente primaria permite revisar contexto y contenido original."
+      },
+      {
+        "id": "verification-4",
+        "prompt": "Una búsqueda inversa no devuelve resultados. ¿Qué significa?",
+        "options": [
+          "La imagen es falsa",
+          "La búsqueda no encontró coincidencias en su cobertura",
+          "La imagen nunca se publicó"
+        ],
+        "answer": 1,
+        "explanation": "La falta de resultados no demuestra ausencia ni falsedad."
+      },
+      {
+        "id": "verification-5",
+        "prompt": "Dos indicios se contradicen. ¿Cómo cerrás el informe?",
+        "options": [
+          "Ocultando el que contradice la hipótesis",
+          "Eligiendo el más popular",
+          "Documentando la contradicción y la incertidumbre restante"
+        ],
+        "answer": 2,
+        "explanation": "La incertidumbre explícita es parte de una conclusión defendible."
+      }
+    ]
+  }
+]

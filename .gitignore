@@ -50,3 +50,7 @@ quick-deploy.sh
 docker-compose.override.yml
 *.backup
 *.tmp
+
+# Local browser validation artifacts
+.playwright-cli/
+output/playwright/

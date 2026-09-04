@@ -3,7 +3,8 @@ import { motion, AnimatePresence, useReducedMotion } from 'framer-motion'
 import { useParams, useNavigate } from '@/lib/router'
 import DOMPurify from 'dompurify'
 import { corporateLessons } from '../data/corporateAcademy'
-import { markAcademyModuleCompleted } from '@/utils/academyProgress'
+import { verificationLessons } from '../data/verificationAcademy'
+import { ACADEMY_PASS_SCORE } from '../data/academyCatalog'
 import { 
   BookOpen, 
   ChevronLeft, 
@@ -45,6 +46,7 @@ const LessonViewer = () => {
   // Contenido de los módulos OSINT - Nueva estructura de 5 módulos
   const lessons = {
     ...corporateLessons,
+    ...verificationLessons,
     modulo1: {
       title: "Módulo 1: Introducción a OSINT",
       description: "Fundamentos de la inteligencia de fuentes abiertas",
@@ -2456,16 +2458,15 @@ const LessonViewer = () => {
   }, [currentSlide, hasCurrentLesson, lessonId, reduceMotion, visitSlide])
 
   const slideProgress = currentLesson
-    ? Math.round(((currentSlide + 1) / currentLesson.totalSlides) * 100)
+    ? Math.round(((academyProgress.modules[lessonId]?.viewedSlides?.length || 0) / currentLesson.totalSlides) * 100)
     : 0
 
   const handleNext = () => {
     if (currentSlide < currentLesson.totalSlides - 1) {
       setCurrentSlide(currentSlide + 1)
     } else {
-      if (currentSlideData?.interactive?.type === 'quiz' && !showQuizResults) return
-      completeModule(lessonId, calculateQuizScore())
-      markAcademyModuleCompleted(lessonId)
+      if (!canCompleteModule) return
+      completeModule(lessonId)
       navigate('/academy', { state: { selectedAcademy: currentLesson.academyId || 'osint' } })
     }
   }
@@ -2486,6 +2487,7 @@ const LessonViewer = () => {
     const score = calculateQuizScore()
     setShowQuizResults(true)
     recordQuiz(lessonId, score)
+    if (score >= ACADEMY_PASS_SCORE) completeModule(lessonId)
   }
 
   const calculateQuizScore = () => {
@@ -2502,6 +2504,12 @@ const LessonViewer = () => {
     
     return Math.round((correct / questions.length) * 100)
   }
+
+  const moduleProgress = academyProgress.modules[lessonId]
+  const allSlidesViewed = (moduleProgress?.viewedSlides?.length || 0) === currentLesson?.totalSlides
+  const quizPassed = Boolean(moduleProgress?.quizSubmitted && moduleProgress.bestScore >= ACADEMY_PASS_SCORE)
+  const canCompleteModule = allSlidesViewed && quizPassed
+  const missingSlide = currentLesson?.slides.findIndex((_, index) => !moduleProgress?.viewedSlides?.includes(index))
 
   const handlePrevious = () => {
     if (currentSlide > 0) {
@@ -2595,7 +2603,7 @@ const LessonViewer = () => {
                 dangerouslySetInnerHTML={{ __html: safeSlideContent }}
               />
               
-              {currentSlideData.interactive && (
+              {currentSlideData?.interactive && (
                 <div className="interactive-section">
                   {renderInteractiveComponent(currentSlideData.interactive)}
                 </div>
@@ -2605,6 +2613,8 @@ const LessonViewer = () => {
         </AnimatePresence>
       </div>
 
+      {currentLesson.sources?.length > 0 && <aside className="lesson-sources" aria-label="Referencias del módulo"><strong>Fuentes y lectura complementaria</strong><p>Contenido didáctico original y casos ficticios. Referencias consultadas el 4 de septiembre de 2026.</p><ul>{currentLesson.sources.map(source => <li key={source.url}><a href={source.url} target="_blank" rel="noopener noreferrer">{source.title}</a></li>)}</ul></aside>}
+      <p className="lesson-learning-status" role="status">{moduleProgress?.viewedSlides?.length || 0}/{currentLesson.totalSlides} páginas recorridas · {moduleProgress?.quizSubmitted ? `Mejor evaluación: ${moduleProgress.bestScore}%` : `Nota mínima: ${ACADEMY_PASS_SCORE}%`}{moduleProgress?.completed ? ' · Módulo aprobado' : ''}</p>
       <div className="lesson-navigation">
         <button 
           onClick={handlePrevious}
@@ -2620,7 +2630,7 @@ const LessonViewer = () => {
             <button
               type="button"
               key={index}
-              className={`indicator ${index === currentSlide ? 'active' : ''} ${index < currentSlide ? 'completed' : ''}`}
+              className={`indicator ${index === currentSlide ? 'active' : ''} ${moduleProgress?.viewedSlides?.includes(index) ? 'completed' : ''}`}
               onClick={() => setCurrentSlide(index)}
               aria-label={`Ir a la diapositiva ${index + 1}`}
               aria-current={index === currentSlide ? 'step' : undefined}
@@ -2632,12 +2642,10 @@ const LessonViewer = () => {
         <button 
           onClick={handleNext}
           className="nav-button next"
-          disabled={currentSlide === currentLesson.totalSlides - 1
-            && currentSlideData?.interactive?.type === 'quiz'
-            && !showQuizResults}
+          disabled={currentSlide === currentLesson.totalSlides - 1 && !canCompleteModule}
         >
           {currentSlide === currentLesson.totalSlides - 1
-            ? (showQuizResults ? 'Finalizar módulo' : 'Completá la evaluación')
+            ? (canCompleteModule ? 'Finalizar módulo' : quizPassed ? 'Recorré todas las páginas' : 'Aprobá la evaluación')
             : 'Siguiente'}
           <ChevronRight size={20} />
         </button>
@@ -2728,13 +2736,19 @@ const LessonViewer = () => {
                     <span className="score-number">{calculateQuizScore()}%</span>
                   </div>
                   <p className="score-text">
-                    {calculateQuizScore() >= 80 
+                    {calculateQuizScore() >= ACADEMY_PASS_SCORE
                       ? "¡Excelente! Dominas este módulo" 
                       : calculateQuizScore() >= 60 
                       ? "Bien, pero puedes mejorar" 
                       : "Necesitas repasar el contenido"}
                   </p>
                 </div>
+                <p className="lesson-assessment-policy" role="status">
+                  {calculateQuizScore() >= ACADEMY_PASS_SCORE
+                    ? allSlidesViewed ? 'Evaluación aprobada. Tu módulo ya quedó registrado.' : 'Evaluación aprobada. Recorré las páginas pendientes para completar el módulo.'
+                    : `La nota mínima es ${ACADEMY_PASS_SCORE}%. Revisá las explicaciones y volvé a intentarlo.`}
+                </p>
+                {!allSlidesViewed && missingSlide >= 0 && <button className="retry-quiz" onClick={() => setCurrentSlide(missingSlide)}>Ir a la primera página pendiente</button>}
                 <div className="quiz-review">
                   {interactive.questions.map((question, questionIndex) => {
                     const isCorrect = quizResults[questionIndex] === question.correct
@@ -2754,7 +2768,7 @@ const LessonViewer = () => {
                     )
                   })}
                 </div>
-                {calculateQuizScore() < 80 && (
+                {calculateQuizScore() < ACADEMY_PASS_SCORE && (
                   <button 
                     className="retry-quiz"
                     onClick={() => {

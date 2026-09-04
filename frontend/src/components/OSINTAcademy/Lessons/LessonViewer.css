@@ -1224,3 +1224,11 @@
     animation: none;
   }
 }
+
+.lesson-sources { max-width: 1060px; width: calc(100% - 2rem); margin: 1rem auto; padding: 1rem 1.25rem; border: 1px solid #345164; border-radius: 10px; background: #0b202e; color: #c3d6e3; font-size: .8rem; line-height: 1.6; }
+.lesson-sources strong { color: #e2eff6; }
+.lesson-sources p { margin: .35rem 0; }
+.lesson-sources ul { display: flex; flex-wrap: wrap; gap: .4rem 1.4rem; padding: 0; margin: .4rem 0 0; list-style: none; }
+.lesson-sources a { color: #88d7f7; text-decoration: underline; text-underline-offset: 3px; }
+.lesson-learning-status { margin: 1rem; text-align: center; color: #a5c6d9; font-size: .82rem; }
+.lesson-assessment-policy { color: #c0dce9; padding: .8rem; background: #132c3c; border-radius: 8px; line-height: 1.6; }

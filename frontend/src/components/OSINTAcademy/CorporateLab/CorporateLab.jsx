@@ -18,7 +18,8 @@ import {
   ShieldCheck
 } from 'lucide-react'
 import { useNavigate } from '@/lib/router'
-import { markAcademyModuleCompleted } from '@/utils/academyProgress'
+import { useAcademyProgress } from '../useAcademyProgress'
+import { ACADEMY_PASS_SCORE } from '../data/academyCatalog'
 import {
   calculateCorporateLabScore,
   claimExercises,
@@ -45,6 +46,7 @@ const stages = [
 
 const CorporateLab = () => {
   const navigate = useNavigate()
+  const { recordActivity } = useAcademyProgress()
   const [stageIndex, setStageIndex] = useState(0)
   const [sourceAnswers, setSourceAnswers] = useState({})
   const [relationshipAnswers, setRelationshipAnswers] = useState({})
@@ -77,9 +79,9 @@ const CorporateLab = () => {
 
   useEffect(() => {
     if (report && isComplete) {
-      markAcademyModuleCompleted('corp-lab')
+      recordActivity('corp-lab', { score: score.percentage, completed: score.percentage >= ACADEMY_PASS_SCORE })
     }
-  }, [report, isComplete])
+  }, [report, isComplete, score.percentage, recordActivity])
 
   const currentStage = stages[stageIndex]
   const completedSources = sourceExercises.every((exercise) => sourceAnswers[exercise.id])

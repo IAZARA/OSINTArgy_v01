@@ -7,63 +7,11 @@ import {
   Target
 } from 'lucide-react'
 
-export const ACADEMY_MODULES = [
-  {
-    id: 'modulo1',
-    order: 1,
-    title: 'Introducción a OSINT',
-    description: 'Fundamentos, fuentes públicas, metodología y límites éticos de una investigación.',
-    icon: BookOpen,
-    durationMinutes: 20,
-    difficulty: 'principiante',
-    slideCount: 7,
-    topics: ['Fundamentos', 'Fuentes abiertas', 'Ética']
-  },
-  {
-    id: 'modulo2',
-    order: 2,
-    title: 'Búsqueda avanzada y Google Dorks',
-    description: 'Operadores, consultas combinadas y una práctica segura con búsquedas especializadas.',
-    icon: Search,
-    durationMinutes: 25,
-    difficulty: 'intermedio',
-    slideCount: 7,
-    topics: ['Operadores', 'Archivos', 'Consultas']
-  },
-  {
-    id: 'modulo3',
-    order: 3,
-    title: 'Investigación en redes sociales',
-    description: 'Búsqueda de perfiles, verificación cruzada y análisis responsable entre plataformas.',
-    icon: Target,
-    durationMinutes: 30,
-    difficulty: 'intermedio',
-    slideCount: 7,
-    topics: ['Perfiles', 'Verificación', 'Cruce de fuentes']
-  },
-  {
-    id: 'modulo4',
-    order: 4,
-    title: 'Análisis de imágenes',
-    description: 'Metadatos, búsqueda inversa, geolocalización y detección de manipulación visual.',
-    icon: Search,
-    durationMinutes: 35,
-    difficulty: 'avanzado',
-    slideCount: 7,
-    topics: ['EXIF', 'Geolocalización', 'Verificación']
-  },
-  {
-    id: 'modulo5',
-    order: 5,
-    title: 'Mentalidad del analista',
-    description: 'Hipótesis, evaluación de fuentes, sesgos y documentación reproducible de hallazgos.',
-    icon: Brain,
-    durationMinutes: 25,
-    difficulty: 'avanzado',
-    slideCount: 7,
-    topics: ['Hipótesis', 'Sesgos', 'Documentación']
-  }
-]
+import { ACADEMY_LESSON_CATALOG } from './data/academyCatalog.js'
+
+export const ACADEMY_MODULES = ACADEMY_LESSON_CATALOG.map((module, index) => ({
+  ...module, order: index + 1, icon: module.courseId === 'osint' ? BookOpen : Target
+}))
 
 export const ACADEMY_LABS = [
   {
@@ -97,7 +45,9 @@ export const ACADEMY_LABS = [
     route: '/academy/audio',
     icon: Headphones,
     meta: '7 min'
-  }
+  },
+  { id: 'infra-lab', title: 'Auditoría simulada', description: 'Clasificá exposición pública y priorizá recomendaciones defensivas.', route: '/academy/infrastructure-lab', icon: Target, meta: '20 min' },
+  { id: 'corp-lab', title: 'Expediente Río Claro', description: 'Resolvé un caso corporativo ficticio y redactá un informe.', route: '/academy/corporate-lab', icon: BookOpen, meta: '15 min' }
 ]
 
 export const ACADEMY_STATS = {

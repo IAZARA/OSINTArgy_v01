@@ -13,7 +13,7 @@
     "build": "cd frontend && npm run build",
     "start:backend": "cd backend && npm start",
     "install:all": "npm install && cd frontend && npm install && cd ../backend && npm install",
-    "sync:data": "node scripts/sync-tools-fallback.mjs",
+    "sync:data": "node scripts/sync-tools-fallback.mjs && node scripts/sync-academy-assessments.mjs",
     "validate:data": "node scripts/validate-catalog.mjs",
     "check:links": "node scripts/check-links.mjs",
     "pretest": "npm run sync:data",

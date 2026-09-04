@@ -963,6 +963,279 @@
       "requires_registration": false,
       "is_free": true,
       "difficulty_level": "advanced"
+    },
+    {
+      "id": "github-repo-datasette",
+      "name": "GitHub: Datasette",
+      "description": "Software abierto para explorar bases SQLite y publicar colecciones de datos con una interfaz consultable.",
+      "utility": "Organiza y consulta datos públicos de una investigación con consultas reproducibles. Permite conservar contexto de fuente y licencia junto a la colección.",
+      "url": "https://github.com/simonw/datasette",
+      "category": "utilidades-varios",
+      "subcategory": "repos-populares-github",
+      "tags": [
+        "github",
+        "python",
+        "sqlite",
+        "datos",
+        "periodismo de datos",
+        "análisis"
+      ],
+      "type": "cli",
+      "indicators": [
+        "T"
+      ],
+      "region": "internacional",
+      "language": "en",
+      "rating": 0,
+      "usage_count": 0,
+      "last_updated": "2026-09-04",
+      "status": "active",
+      "requires_registration": false,
+      "is_free": true,
+      "difficulty_level": "intermediate"
+    },
+    {
+      "id": "github-repo-visidata",
+      "name": "GitHub: VisiData",
+      "description": "Herramienta de terminal para explorar y ordenar tablas en formatos como CSV, JSON, SQLite y Excel.",
+      "utility": "Filtra y compara exportaciones de registros públicos, detecta duplicados y revisa valores sin subir los archivos a un servicio externo.",
+      "url": "https://github.com/saulpw/visidata",
+      "category": "utilidades-varios",
+      "subcategory": "repos-populares-github",
+      "tags": [
+        "github",
+        "python",
+        "csv",
+        "tablas",
+        "análisis",
+        "datos abiertos"
+      ],
+      "type": "cli",
+      "indicators": [
+        "T"
+      ],
+      "region": "internacional",
+      "language": "en",
+      "rating": 0,
+      "usage_count": 0,
+      "last_updated": "2026-09-04",
+      "status": "active",
+      "requires_registration": false,
+      "is_free": true,
+      "difficulty_level": "intermediate"
+    },
+    {
+      "id": "github-repo-duckdb",
+      "name": "GitHub: DuckDB",
+      "description": "Motor de análisis SQL local para consultar conjuntos de datos y archivos tabulares.",
+      "utility": "Cruza descargas públicas en CSV, JSON o Parquet y conserva las consultas para reproducir hallazgos. Es útil para analizar contratos y series de datos grandes.",
+      "url": "https://github.com/duckdb/duckdb",
+      "category": "utilidades-varios",
+      "subcategory": "repos-populares-github",
+      "tags": [
+        "github",
+        "sql",
+        "duckdb",
+        "csv",
+        "parquet",
+        "análisis",
+        "c++"
+      ],
+      "type": "cli",
+      "indicators": [
+        "T"
+      ],
+      "region": "internacional",
+      "language": "en",
+      "rating": 0,
+      "usage_count": 0,
+      "last_updated": "2026-09-04",
+      "status": "active",
+      "requires_registration": false,
+      "is_free": true,
+      "difficulty_level": "intermediate"
+    },
+    {
+      "id": "github-repo-tesseract",
+      "name": "GitHub: Tesseract OCR",
+      "description": "Motor OCR de código abierto para extraer texto de imágenes en múltiples idiomas.",
+      "utility": "Transforma escaneos y capturas autorizadas en texto buscable. Revisa nombres, números y fechas contra la imagen porque el OCR puede introducir errores.",
+      "url": "https://github.com/tesseract-ocr/tesseract",
+      "category": "utilidades-varios",
+      "subcategory": "repos-populares-github",
+      "tags": [
+        "github",
+        "ocr",
+        "documentos",
+        "imágenes",
+        "texto",
+        "c++"
+      ],
+      "type": "cli",
+      "indicators": [
+        "T"
+      ],
+      "region": "internacional",
+      "language": "en",
+      "rating": 0,
+      "usage_count": 0,
+      "last_updated": "2026-09-04",
+      "status": "active",
+      "requires_registration": false,
+      "is_free": true,
+      "difficulty_level": "intermediate"
+    },
+    {
+      "id": "github-repo-ocrmypdf",
+      "name": "GitHub: OCRmyPDF",
+      "description": "Utilidad abierta que agrega una capa de texto OCR a documentos PDF escaneados.",
+      "utility": "Prepara documentos públicos para búsquedas y análisis conservando el archivo original por separado. Validá el texto extraído y registrá qué copia fue procesada.",
+      "url": "https://github.com/ocrmypdf/OCRmyPDF",
+      "category": "utilidades-varios",
+      "subcategory": "repos-populares-github",
+      "tags": [
+        "github",
+        "python",
+        "ocr",
+        "pdf",
+        "documentos",
+        "preservación"
+      ],
+      "type": "cli",
+      "indicators": [
+        "T"
+      ],
+      "region": "internacional",
+      "language": "en",
+      "rating": 0,
+      "usage_count": 0,
+      "last_updated": "2026-09-04",
+      "status": "active",
+      "requires_registration": false,
+      "is_free": true,
+      "difficulty_level": "intermediate"
+    },
+    {
+      "id": "github-repo-yt-dlp",
+      "name": "GitHub: yt-dlp",
+      "description": "Utilidad de terminal para descargar audio, video y metadatos de sitios compatibles.",
+      "utility": "Preserva material propio, con licencia o cuya descarga esté autorizada junto a su URL y fecha. La compatibilidad cambia; respetá permisos, derechos y condiciones del servicio.",
+      "url": "https://github.com/yt-dlp/yt-dlp",
+      "category": "utilidades-varios",
+      "subcategory": "repos-populares-github",
+      "tags": [
+        "github",
+        "python",
+        "video",
+        "audio",
+        "metadatos",
+        "preservación"
+      ],
+      "type": "cli",
+      "indicators": [
+        "T"
+      ],
+      "region": "internacional",
+      "language": "en",
+      "rating": 0,
+      "usage_count": 0,
+      "last_updated": "2026-09-04",
+      "status": "active",
+      "requires_registration": false,
+      "is_free": true,
+      "difficulty_level": "intermediate"
+    },
+    {
+      "id": "github-repo-zotero",
+      "name": "GitHub: Zotero",
+      "description": "Gestor de investigación abierto para recopilar, anotar, organizar y citar fuentes.",
+      "utility": "Mantiene bibliografía, documentos y notas de una investigación. La aplicación local es gratuita y no requiere cuenta; la sincronización y el almacenamiento en línea tienen condiciones propias.",
+      "url": "https://github.com/zotero/zotero",
+      "category": "utilidades-varios",
+      "subcategory": "repos-populares-github",
+      "tags": [
+        "github",
+        "javascript",
+        "bibliografía",
+        "fuentes",
+        "citas",
+        "documentos"
+      ],
+      "type": "desktop",
+      "indicators": [
+        "T",
+        "P"
+      ],
+      "region": "internacional",
+      "language": "en",
+      "rating": 0,
+      "usage_count": 0,
+      "last_updated": "2026-09-04",
+      "status": "active",
+      "requires_registration": false,
+      "is_free": true,
+      "difficulty_level": "beginner"
+    },
+    {
+      "id": "github-repo-uwazi",
+      "name": "GitHub: Uwazi",
+      "description": "Plataforma abierta de HURIDOCS para construir colecciones de documentos y entidades relacionadas.",
+      "utility": "Estructura evidencia documental y sus relaciones con campos, búsquedas y permisos. El código es gratuito; alojar y administrar una instancia requiere infraestructura y usuarios locales.",
+      "url": "https://github.com/huridocs/uwazi",
+      "category": "utilidades-varios",
+      "subcategory": "repos-populares-github",
+      "tags": [
+        "github",
+        "typescript",
+        "huridocs",
+        "documentos",
+        "derechos humanos",
+        "colecciones"
+      ],
+      "type": "app",
+      "indicators": [
+        "T"
+      ],
+      "region": "internacional",
+      "language": "en",
+      "rating": 0,
+      "usage_count": 0,
+      "last_updated": "2026-09-04",
+      "status": "active",
+      "requires_registration": false,
+      "is_free": true,
+      "difficulty_level": "advanced"
+    },
+    {
+      "id": "github-repo-brozzler",
+      "name": "GitHub: Brozzler",
+      "description": "Rastreador de Internet Archive que utiliza un navegador real para preservar páginas web.",
+      "utility": "Construye capturas reproducibles de sitios permitidos con warcprox. Requiere instalación y configuración de servicios; definí alcance y límites del rastreo y respetá robots y permisos.",
+      "url": "https://github.com/internetarchive/brozzler",
+      "category": "utilidades-varios",
+      "subcategory": "repos-populares-github",
+      "tags": [
+        "github",
+        "python",
+        "archivo web",
+        "warc",
+        "preservación",
+        "internet archive"
+      ],
+      "type": "cli",
+      "indicators": [
+        "T",
+        "A"
+      ],
+      "region": "internacional",
+      "language": "en",
+      "rating": 0,
+      "usage_count": 0,
+      "last_updated": "2026-09-04",
+      "status": "active",
+      "requires_registration": false,
+      "is_free": true,
+      "difficulty_level": "advanced"
     }
   ]
 }

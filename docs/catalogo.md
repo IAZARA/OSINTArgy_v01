@@ -52,8 +52,8 @@ Las URLs duplicadas se informan como advertencia para permitir casos editoriales
   "indicators": ["D"],
   "region": "internacional",
   "language": "es",
-  "rating": 4.5,
-  "usage_count": 100,
+  "rating": 0,
+  "usage_count": 0,
   "last_updated": "2026-01-01",
   "status": "active",
   "requires_registration": false,
@@ -81,3 +81,16 @@ Ejemplos:
 npm run check:links -- --report-only
 npm run check:links -- --concurrency 4 --timeout 12000 --markdown link-check-report.md
 ```
+
+## Revisión de fuentes de septiembre de 2026
+
+La [revisión de fuentes y accesos](catalogo-fuentes-2026-09.md) documenta las 32 nuevas entradas, sus enlaces primarios y los resultados del control HTTP. El catálogo sincronizado contiene 485 herramientas y fuentes.
+
+Al incorporar fuentes nuevas:
+
+- Usar `rating: 0` y `usage_count: 0` cuando no hay valoraciones ni actividad medidas.
+- Interpretar `last_updated` como fecha de revisión editorial, no como fecha de actualización del proveedor.
+- Indicar en `utility` las limitaciones de cuenta, cuotas, descargas o funciones de pago. `is_free: true` significa que la modalidad descrita tiene acceso gratuito, no que todas las funciones del proveedor sean gratuitas.
+- Usar `region: "argentina"` o `"latam"` para cobertura regional y agregar el país a las etiquetas. La región describe los datos, no el lugar donde está alojado el servicio.
+- Describir fuentes institucionales por la información que publican; no prometer acceso a expedientes, beneficios, identidad o datos reservados a partir de una página institucional.
+- Para repositorios, enlazar el proyecto original y verificar que la misma URL no exista ya en otra categoría; documentar instalación, permisos y servicios adicionales cuando sean necesarios.

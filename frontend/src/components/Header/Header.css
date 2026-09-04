@@ -1,5 +1,26 @@
 /* Estilos del Header principal */
 
+.app--explorer .header {
+  --white: #0c1722;
+  --gray-50: #102432;
+  --gray-100: #172e3e;
+  --gray-200: #294250;
+  --gray-300: #405968;
+  --gray-400: #819ba9;
+  --gray-500: #9db3c0;
+  --gray-600: #b3c5d0;
+  --gray-700: #c3d6df;
+  --gray-800: #d6e5ec;
+  --gray-900: #e4eff5;
+  color: var(--gray-900);
+  color-scheme: dark;
+}
+
+.app--explorer .header .search-input-container:focus-within {
+  outline: 2px solid #71bdd0;
+  outline-offset: 2px;
+}
+
 .header {
   background-color: var(--white);
   border-bottom: 1px solid var(--gray-200);

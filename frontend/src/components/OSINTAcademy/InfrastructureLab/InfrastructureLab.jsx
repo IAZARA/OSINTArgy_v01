@@ -16,7 +16,8 @@ import {
   XCircle
 } from 'lucide-react'
 import { useNavigate } from '@/lib/router'
-import { markAcademyModuleCompleted } from '@/utils/academyProgress'
+import { useAcademyProgress } from '../useAcademyProgress'
+import { ACADEMY_PASS_SCORE } from '../data/academyCatalog'
 import './InfrastructureLab.css'
 
 const severityLabels = {
@@ -116,6 +117,7 @@ const severityGuide = [
 
 const InfrastructureLab = () => {
   const navigate = useNavigate()
+  const { recordActivity } = useAcademyProgress()
   const [activeFindingId, setActiveFindingId] = useState(findings[0].id)
   const [answers, setAnswers] = useState({})
   const [feedback, setFeedback] = useState(null)
@@ -135,9 +137,10 @@ const InfrastructureLab = () => {
 
   useEffect(() => {
     if (isComplete) {
-      markAcademyModuleCompleted('infra-lab')
+      const percentage = Math.round(totalScore / maxScore * 100)
+      recordActivity('infra-lab', { score: percentage, completed: percentage >= ACADEMY_PASS_SCORE })
     }
-  }, [isComplete])
+  }, [isComplete, totalScore, maxScore, recordActivity])
 
   const handleSeveritySelect = (severity) => {
     const isCorrect = severity === activeFinding.correctSeverity

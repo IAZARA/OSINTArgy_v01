@@ -1,0 +1,93 @@
+/* Motion stays inside each constellation so labels and category centers stay fixed. */
+.galaxy-constellation-drift {
+  transform-box: view-box;
+  transform-origin: 0 0;
+  animation: galaxy-constellation-drift var(--drift-duration, 24s) ease-in-out var(--cluster-delay, 0s) infinite;
+}
+
+.galaxy-core-halo {
+  transform-box: view-box;
+  transform-origin: 0 0;
+  animation: galaxy-halo-breathe 6s ease-in-out var(--cluster-delay, 0s) infinite;
+}
+
+.galaxy-core-wave {
+  opacity: 0;
+  transform-box: view-box;
+  transform-origin: 0 0;
+  animation: galaxy-core-wave 7s ease-out var(--cluster-delay, 0s) infinite;
+}
+
+.galaxy-orbit-comet {
+  animation: galaxy-orbit-travel 16s linear var(--cluster-delay, 0s) infinite;
+}
+
+.galaxy-cluster:nth-of-type(even) .galaxy-orbit-comet { animation-direction: reverse; }
+
+.galaxy-connection-pulse {
+  opacity: 0;
+  animation: galaxy-connection-travel 4.8s ease-in-out var(--pulse-delay, 0s) infinite;
+}
+
+.galaxy-star-light {
+  animation: galaxy-star-shimmer var(--twinkle-duration, 4s) ease-in-out var(--twinkle-delay, 0s) infinite;
+}
+
+.galaxy-star.is-hovered .galaxy-star-light { opacity: 1; animation: none; }
+.galaxy-distant-star { animation: galaxy-distant-shimmer var(--twinkle-duration, 6s) ease-in-out var(--twinkle-delay, 0s) infinite; }
+.galaxy-nebula { pointer-events: none; animation: galaxy-nebula-breathe 12s ease-in-out infinite; }
+.galaxy-orbital-track { pointer-events: none; animation: galaxy-track-travel 16s linear infinite; }
+
+/* Pause at the current frame, including on touch, so moving targets remain easy to select. */
+.galaxy-map-panel[data-motion="paused"] *,
+.galaxy-cluster:is(:hover, :focus-within, :active) * {
+  animation-play-state: paused !important;
+}
+
+.galaxy-cluster.is-empty * { animation: none; }
+.galaxy-map-controls .galaxy-motion-toggle { color: #9bdef5; }
+
+@keyframes galaxy-constellation-drift {
+  0%, 100% { transform: rotate(calc(-1 * var(--drift-angle, 7deg))); }
+  50% { transform: rotate(var(--drift-angle, 7deg)); }
+}
+
+@keyframes galaxy-halo-breathe {
+  0%, 100% { opacity: .04; transform: scale(.88); }
+  50% { opacity: .105; transform: scale(1.16); }
+}
+
+@keyframes galaxy-core-wave {
+  0% { transform: scale(.85); opacity: 0; }
+  15% { opacity: .38; }
+  75%, 100% { transform: scale(3.4); opacity: 0; }
+}
+
+@keyframes galaxy-orbit-travel { to { stroke-dashoffset: -100; } }
+@keyframes galaxy-track-travel { to { stroke-dashoffset: -104; } }
+
+@keyframes galaxy-connection-travel {
+  0% { stroke-dashoffset: 16; opacity: 0; }
+  16% { opacity: .7; }
+  67% { opacity: .55; }
+  82%, 100% { stroke-dashoffset: -104; opacity: 0; }
+}
+
+@keyframes galaxy-star-shimmer {
+  0%, 100% { opacity: .58; }
+  45% { opacity: 1; }
+}
+
+@keyframes galaxy-distant-shimmer {
+  0%, 100% { opacity: .14; }
+  50% { opacity: .6; }
+}
+
+@keyframes galaxy-nebula-breathe {
+  0%, 100% { opacity: .58; }
+  50% { opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .galaxy-map-panel * { animation: none !important; }
+}
